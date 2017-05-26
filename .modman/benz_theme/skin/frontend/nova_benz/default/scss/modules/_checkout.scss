@@ -1,0 +1,263 @@
+#checkoutSteps{
+	.section{
+		clear: both;
+		border-width: 0px 1px 1px;
+		border-style: solid;
+		border-color: $border_color;
+		&:first-child{
+			border-top-width: 1px;
+		}
+		.step-title{
+			text-align: right;
+			overflow: hidden;
+			color: $heading_color;
+			padding: 15px;
+			background: none;
+			position: relative;
+			.number{
+				font-size: 1.167em;
+				float: left;
+				width: 20px;
+				text-align: left;
+				&:after{
+					content: ".";
+				}
+			}
+			h2{
+				color: inherit;
+				float: left;
+				font-family: inherit;
+				line-height: inherit;
+				font-size: 1.167em;
+				letter-spacing: 2px;
+				margin: 0;
+				text-transform: uppercase;
+			}
+			a{
+				display: none;
+				float: right;
+				overflow: hidden;
+				position: relative;
+				text-indent: 999em;
+				width: 20px;
+				color: inherit;
+				&:before{
+					@include icon("\f044");
+					color: inherit;
+				}
+			}
+		}
+		&.allow{
+			.step-title{
+				a{
+					display: block;
+				}
+			}
+		}
+		&.active.allow{
+			.step-title{
+				a{
+					display: none;
+				}
+				&:before{
+					background: $heading_color;
+					bottom: 0;
+					content: "";
+					display: block;
+					height: 2px;
+					position: absolute;
+					width: 50px;
+					left: 35px;
+				}
+			}
+		}
+		.step{
+			padding: 20px 35px;
+			&#checkout-step-login{
+				padding: 20px;
+			}
+			h3,
+			h4{
+				font-size: $font_h5;
+				text-transform: uppercase;
+			}
+			label{
+				text-transform: uppercase;
+				font-size: .917em;
+			}
+			select{
+				border: 1px solid $input_border_color;
+				height: 42px;
+				line-height: 40px;
+				margin: 0;
+				padding: 0 25px 0 10px;
+				text-transform: uppercase;
+				background: url("../images/arrow-select.png") no-repeat right center;
+				@include appearance(none);
+			}
+			.sp-methods{
+				dt{
+					padding-bottom: 10px;
+				}
+				dd li{
+					padding: 0 0 5px;
+				}
+			}
+			.data-table{
+				.product-name{
+					font-size: 1em;
+				}
+				.price{
+					color: $primary;
+				}
+				tfoot{
+					text-transform: uppercase;
+					tr.last{
+						font-size: 1.25em;
+						strong{
+							font-weight: normal;
+						}
+					}
+				}
+			}
+		}
+		.please-wait{
+			float: right;
+		}
+	}
+	#login-form{
+		border: none;
+	}
+	#checkout-step-login .col-2 .required{
+		//display: none;
+	}
+}
+
+// Multi checkout address
+ul#checkout-progress-state{
+	text-align: center;
+	li{
+		display: inline-block;
+		padding: 15px;
+		background: $block_title_bg;
+		position: relative;
+		text-transform: uppercase;
+		margin-bottom: 15px;
+		color: $heading_color;
+		i{
+			padding-right: 5px;
+		}
+
+		&.active{
+			background: $primary;
+			color: #fff;
+			& ~ li i{
+				display: none;
+			}
+		}
+		@media (max-width: $screen-sm-max) {
+			&:nth-child(3n+1){
+				clear: both;
+				margin-left: 0 !important;
+			}
+		}
+		@media (max-width: $screen-xs) {
+			display: none;
+		}
+	}
+}
+.multiple-checkout{
+	clear: both;
+	.checkout-multishipping-success &{
+		text-align: center;
+	}
+	form,table,.col3-set{
+		background: $table_bg;
+	}
+	.product-name{
+		margin: 0;
+		font-size: 1em;
+		padding: 0;
+		border-bottom: none;
+	}
+	.item-options{
+		font-size: .833em;
+		@media (max-width: $screen-xs) {
+			display: none;
+		}
+	}
+	.data-table {
+		margin-bottom: 0;
+		td,th{
+			vertical-align: middle !important;
+			&:first-child{
+				padding-left: 15px;
+				width: 40%;
+				text-align: left;
+			}
+			&.last{
+				width: 3%;
+			}
+		}
+	}
+	.col2-set{
+		margin-left: -15px;
+		margin-right: -15px;
+		width: auto;
+		.legend{
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	}
+	.col3-set{
+		.actions{
+			padding-top: 15px;
+		}
+	}
+	#multishipping-billing-form{
+		#payment-tool-tip {
+			background: $table_head_bg;
+			left: 50%;
+			max-width: 100%;
+			padding: 15px;
+			position: fixed;
+			top: 50%;
+			width: 400px;
+			@include transform(translate(-50%, -50%));
+		}
+	}
+	#checkout-review-submit {
+		text-align: right;
+		.grand-total{
+			.price{
+				color: $primary;
+			}
+		}
+		#review-button {
+			margin-top: 20px;
+		}
+	}
+	> p {
+		background: $table_head_bg;
+		margin: 0;
+		padding: 10px 15px;
+	}
+	.input-text.qty {
+		width: 50px;
+	}
+}
+ul#checkout-progress-state {
+	float: left;
+	width: 100%;
+	@include clearfix;
+}
+ul.messages{
+	clear: both;
+}
+.cart-collaterals #co-shipping-method-form .sp-methods label {
+	margin-bottom: 12px;
+	padding: 0;
+}
+.cart-collaterals #co-shipping-method-form .sp-methods dd {
+	padding-top: 10px;
+}

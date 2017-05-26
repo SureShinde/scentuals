@@ -1,0 +1,48 @@
+<?php
+$theme_helper = Mage::helper('sebian');
+?>
+
+<?php if ($this->getCategories()->count() && Mage::getStoreConfig('blog/menu/category')): ?>
+    <div class="block block-blog block-blog-category block-layered-nav">
+        <div class="block-title">
+            <strong><span><?php echo Mage::helper('blog')->__('Categories'); ?></span></strong>
+        </div>
+        <div class="block-content">
+            <ul>
+                <?php $cats = $this->getCategories(); ?>
+                <?php foreach ($cats as $cat): ?>
+                    <li><a href="<?php echo $cat->getAddress(); ?>" ><?php echo $cat->getTitle(); ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if ($posts = $this->getRecent()): ?>
+    <div class="block block-blog block-recent-post">
+        <div class="block-title">
+            <strong><span><?php echo Mage::helper('blog')->__('Recent Posts'); ?></span></strong>
+        </div>
+        <div class="block-content">
+            <ul>
+                <?php foreach ($posts as $post): ?>
+                    <li>
+                        <?php if($post->getImage()):?>
+                        <a class="blog-image" href="<?php echo $post->getAddress(); ?>">
+                            <img src="<?php echo $theme_helper->resizeImage($post->getImage(),70,70);?>" alt="<?php echo $post->getTitle(); ?>"/>
+                        </a>
+                        <?php endif;?>
+                        <div class="blog-info">
+                            <a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a>
+                            <?php if(Mage::helper('blog')->commentsEnabled() && $post->getCommentCount()):?>
+                            <span><?php echo $post->getCommentCount();?> <?php echo Mage::helper('blog')->__('Comments'); ?></span>
+                            <?php endif;?>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php echo $this->getChildHtml('blog_tags'); ?>

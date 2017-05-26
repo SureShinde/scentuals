@@ -1,0 +1,127 @@
+/* Post List CSS */
+.post-content { margin-bottom:25px; }
+.post-content .post-metadata { margin-bottom:10px; }
+.post-content .post-date, .post-content .post-author { display:inline-block; }
+
+.post-image figure { margin-bottom:10px;}
+.post-summary .read-more { margin:10px 0 }
+
+.post-categories > li { display:inline; margin-left:5px;}
+.post-categories > li:first-child { margin-left:0;}
+
+.category-description { padding-bottom:20px; }
+.category-description > p { margin:10px 0; }
+
+/* Post Detail CSS */
+.post-content h2 { font-size:24px; }
+.post-content .post-metadata { margin-bottom:10px; }
+.post-content .post-date, .post-content .post-author { display:inline-block; }
+
+.post-image figure { margin-bottom:10px;}
+.post-content .blog-description p { margin:10px 0; }
+
+.post-info { margin-top:10px; }
+.post-categories { display:inline; }
+.post-categories > li { display:inline; margin-left:5px; }
+.post-categories > li:first-child { margin-left:0; }
+
+.author-bio { width:100%; min-height:200px; margin-top:10px; }
+.author-avatar { width:30%; float:left;min-height:200px; margin-right:5px; }
+.author-description { padding:10px 10px 4px 32%; background:#f4f4f4; }
+
+/* Comment CSS */
+.flexibleblog-post-comments { margin-top:50px; }
+.flexibleblog-comment-box { margin-top:20px; }
+.user-comment { background:#f4f4f4; border:none; border-radius:5px; margin:5px; padding:5px; }
+.user-comment .comment-description p { padding: 10px 0; }
+.user-comment .post-by span{ font-weight:700; }
+
+.flexibleblog-comment-box ul { padding-left:20px; }
+.flexibleblog-comment-box > ul { padding-left:0; }
+
+a:hover { text-decoration:underline; }
+
+
+/*  Responsive
+==============================================*/
+.block-content li:after, .toolbar:after, .block-blog-tag-cloud .block-content ul:after { clear:both; content:""; display:table; }
+
+.post-content figure img { max-width:100%; }
+.block-title strong span { margin-bottom:10px; display:block; }
+.blog-search { padding-right:0; position:relative; }
+.blog-search input[type="text"] { padding-right:100px; width:100%; }
+.blog-search .button { padding:6px 20px; position:absolute; right:0; top:0; }
+.blog-search input[type="text"], .blog-search .button { height:35px; } 
+
+.footer .block-subscribe { padding:0; background:transparent; }
+.footer .block-title strong span:before { display:none; }
+.footer .block-title strong span { margin:0; padding:0; }
+.footer .block-title { border:none; }
+
+.post-info { margin:20px 0 10px; display:inline-table; width:100%; font-weight:bold; }
+.post-info ul { margin-right:15px; font-weight:normal; display:inline; }
+.post-info ul li { display:inline; margin:0 3px; }
+.toolbar.flexibleblog { margin:0; padding:7px 10px; }
+.toolbar.flexibleblog .pager-no-toolbar { margin:0; }
+.toolbar.flexibleblog .pager { float:none; position:relative; }
+.block-blog-tag-cloud .block-content li { border:none; float:left; padding:0; width:auto; margin:0 4px 4px; }
+
+.post-content .page-title h2 { border-bottom:none; text-transform:none; font-weight:normal; }
+.post-content { border-bottom:1px dashed #d7d9db; padding-bottom:15px; text-transform:none; font-weight:normal; }
+.page-title h1, .category-title h1 { font-size:30px !important;   }
+.block-blog-comments .block-content li { text-align:left; }
+.comment-author-link { float:none; font-weight:600; }
+.block-blog-comments .block-content li a { float:none; padding:0; }
+.post-metadata .post-author a { font-weight:bold; }
+
+.author-bio { margin:20px 0 40px; }
+.author-avatar { float:left; height:auto; margin:0; width:20%; }
+.author-avatar img { max-width:100%; }
+.author-description { padding-left:170px; }
+.author-description { background:#f7f8f9; padding:10px 20px 20px; position:relative; overflow:hidden; }
+.author-name h3 { font-size:20px; margin-bottom:8px; line-height:1; text-transform:none; font-weight:bold; margin-top:4px; }
+.flexibleblog-comment-box ul li .user-comment { margin:14px 0; padding:13px; background:#f0f2f4; border-radius:5px; }
+
+.flexibleblog-post-comments .fieldset .form-list { max-width:365px; }
+.flexibleblog-post-comments .buttons-set button.button { float:left; }
+
+.user-comment .flexibleblog-post-comments { margin-top:20px; padding:0 20px; margin-bottom:20px; }
+.user-comment .fieldset { margin:20px 0; padding:0; }
+.flexibleblog-post-comments .buttons-set { margin:0; }
+.flexibleblog-post-comments .form-list { padding:0; }
+
+.flexibleblog .pager > .count-container { width:100%; }
+.flexibleblog .pager .limiter { float:right; }
+.flexibleblog .pages { display:inline-table; float:none; left:0; margin:0 auto; padding:0 110px; position:absolute; right:0; }
+.flexibleblog .count-container p, .flexibleblog .pager .limiter { margin-bottom:0; }
+
+.social-icon { margin-top:15px; }
+.post-by { margin-bottom:4px; }
+.posted-on { color:#888; display:inline; font-size:13px; }
+.post-metadata .post-comment { border-left:2px solid #999; display:inline-block; line-height:1; margin-left:10px; padding-bottom:2px; padding-left:10px; vertical-align:middle; }
+.pages .next, .pages .previous { height:28px; }
+
+flexibleblog .pages a, flexibleblog .pages .current { line-height:2.1; }
+.post-content .author-bio { border-top:1px dashed #d7d9db; margin:25px 0 15px; padding-top:25px; }
+.flexible-comment-error p{ font-size:20px; background:#FFE5E5; padding:20px 0; text-align:center;}
+.std .post-info ul li { margin-left:3px; }
+
+/* Responsive Css
+==========================================================================================================*/
+@media only screen and (max-width: 979px) {
+	.col2-right-layout .flexibleblog .pager .pages { margin:0 auto; }
+}
+@media only screen and (max-width: 770px) {
+	.block-title strong span { margin-bottom:0; }
+}
+
+@media only screen and (max-width: 567px) {
+	.flexibleblog .pages { padding:0 70px; }
+	.post-info ul.post-categories { margin:0 0 8px;}
+	.post-info ul.post-categories:after { display:block; content:''; clear:left; }
+	.author-avatar { width:40%; }
+}
+
+@media only screen and (max-width: 479px) {
+	.flexibleblog .pages { padding:0 40px; }
+}

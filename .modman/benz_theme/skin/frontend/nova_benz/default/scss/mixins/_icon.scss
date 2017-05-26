@@ -1,0 +1,45 @@
+@mixin icon( $glyph: "" , $font : "FontAwesome") {
+	font-family: $font;
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	margin:0;
+	text-indent: 0;
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height: 100%;
+	text-align: center;
+	content: $glyph;
+}
+@mixin icon-before( $glyph: "" , $font : "FontAwesome") {
+	font-family:$font;
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	content: $glyph;
+}
+@mixin label-input($icon: "" , $bg: "transparent"){
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	display: block;
+	text-indent: -999em;
+	font-weight: normal;
+	background: $bg;
+	border-right: 1px solid #fff;
+	&:before{
+		@include icon($icon);
+	}
+}

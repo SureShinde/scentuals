@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <dckap translate="label" module="faq">
+            <label>DCKAP</label>
+            <sort_order>100</sort_order>
+        </dckap>
+    </tabs>
+    <sections>
+        <faq translate="label" module="faq">
+            <label>FAQ's Manager</label>
+            <tab>dckap</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <faq_group translate="label" module="faq">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <faq_select translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </faq_select>
+                        <category_enabled translate="label">
+                            <label>Enable Category Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>91</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <faq_select>1</faq_select>
+                            </depends>
+                            <comment>Allows to group the questions and answers.</comment>
+                        </category_enabled>
+                        <description translate="label">
+                            <label>Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>92</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <faq_select>1</faq_select>
+                            </depends>
+                            <comment>This is general description and will be displayed in FAQ homepage.</comment>
+                        </description>
+                        <viewsorter translate="label">
+                            <label>Sort questions by number of views / clicks</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>94</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <faq_select>1</faq_select>
+                            </depends>
+                            <comment>If No selected, It will sorted by given Priority.</comment>
+                        </viewsorter>
+                        <faq_text translate="label">
+                            <label>Pagination List</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>95</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <faq_select>1</faq_select>
+                            </depends>
+                            <comment>By default, 5 will be taken for pagination.</comment>
+                        </faq_text>
+                        
+                    </fields>
+                </faq_group>
+                <faq_recaptcha translate="label" module="faq">
+                    <label>User Questions and Google reCaptcha</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>101</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <faq_user translate="label">
+                            <label>Enable User to ask questions from frontend</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </faq_user>
+                        <faq_customer translate="label">
+                            <label>Allow only loggedin customers to ask questions</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </faq_customer>
+                        <faq_text translate="label">
+                            <label>Description to ask new question</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>91</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <faq_user>1</faq_user>
+                            </depends>
+                        </faq_text>
+                        <faq_btnlabel translate="label">
+                            <label>Ask question button label</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>92</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <faq_user>1</faq_user>
+                            </depends>
+                        </faq_btnlabel>
+                        <faq_recaptchaselect translate="label">
+                            <label>Enable captcha</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends>
+                                <faq_user>1</faq_user>
+                            </depends>
+                        </faq_recaptchaselect>
+                        <faq_sitekey translate="label">
+                            <label>Site Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <faq_user>1</faq_user>
+                                <faq_recaptchaselect>1</faq_recaptchaselect>
+                            </depends>
+                        </faq_sitekey>
+                        <faq_secretkey translate="label">
+                            <label>Secret Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>111</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <faq_user>1</faq_user>
+                                <faq_recaptchaselect>1</faq_recaptchaselect>
+                            </depends>
+                        </faq_secretkey>
+                    </fields>
+                </faq_recaptcha>
+                <notifications translate="label" module="faq">
+                    <label>Email Notifications</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>102</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <mail_enable translate="label">
+                            <label>Send Mail to Customer/Guest if the question is answered.</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </mail_enable>
+                        <emailtemplate translate="label">
+                            <label>Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>91</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <depends>
+                                <mail_enable>1</mail_enable>
+                            </depends>
+                        </emailtemplate>
+                        <mail_subject translate="label">
+                            <label>Subject</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>92</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mail_enable>1</mail_enable>
+                            </depends>
+                        </mail_subject>
+                        <mail_sendername translate="label">
+                            <label>Sender Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>93</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mail_enable>1</mail_enable>
+                            </depends>
+                        </mail_sendername>
+                        <mail_sendermail translate="label">
+                            <label>Sender Mail ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>94</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <mail_enable>1</mail_enable>
+                            </depends>
+                        </mail_sendermail>
+                    </fields>
+                </notifications>
+            </groups>
+        </faq>
+    </sections>
+</config>

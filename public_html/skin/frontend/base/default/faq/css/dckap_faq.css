@@ -1,0 +1,396 @@
+.dckap_faq {
+  margin-bottom: 50px;
+}
+.dckap_faq .page-title h1{
+  border: none;
+}
+.pages.dckap_pager {g
+  width: 100%;
+}
+.pages.dckap_pager > span {
+  display: block;
+  float: right;
+  margin-right: 5px;
+  margin-top: 4px;
+}
+.pages.dckap_pager > ol {
+  float: right;
+}
+
+.dckap_faq .dckap_answers {
+  background: none repeat scroll 0 0 #f7f7f7;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.8;
+  margin-left: 26px;
+  padding: 10px;
+  text-transform: inherit;
+  /* custom */
+  background-color: #e5f6e9;
+}
+.dckap_faq .page-title {
+  color: #39c;
+  font-size: 40px;
+  text-align: center;
+}
+.dckap_faq .ask_title {
+  margin-top: 20px;
+  text-transform: inherit;
+  margin-bottom: 20px;
+}
+.dckap_new .ask_title .asknew:hover {
+  background: none repeat scroll 0 0 #343434;
+  border-color: #333;
+}
+#dckap_askform {
+  margin: 25px 0 0;
+  text-align: center;
+  display: none;
+}
+#dckap_askform .fieldset label {
+  display: inline-block;
+  width: 125px;
+}
+#dckap_askform .fieldset textarea {
+  border: 1px solid #ccc;
+}
+#dckap_askform .fieldset input {
+  border: 1px solid #ccc;
+  padding: 5px 15px;
+}
+#dckap_askform .fieldset input:hover {
+  border-color: #888;
+}
+.dckap_pager span {
+  color: #444;
+}
+.dckap_overlay {
+  background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+  display: none;
+  height: 100%;
+  padding-top: 40px;
+  position: absolute;
+  width: 100%;
+}
+.dckap_response {
+  border: 2px solid;
+  display: none;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 10px;
+}
+#dckap_askform .fieldset select {
+  cursor: pointer;
+  font-size: 16px;
+  padding: 3px;
+  width: 443px;
+}
+#dckap_askform .fieldset select option {
+  padding: 3px;
+}
+#dckap_askform .fieldset > span {
+  font-size: 20px;
+}
+#dckap_askform .fieldset.forminput {
+  margin-top: 0px;
+}
+.dckap_leftbar a:hover {
+  text-decoration: none;
+}
+.pages.dckap_pager a:hover {
+  text-decoration: none;
+  border-color: #777;
+}
+.pages.dckap_pager li.current {
+  background: none repeat scroll 0 0 #777;
+  border: 1px solid #777;
+  color: #fff;
+  line-height: 27px;
+}
+.pages.dckap_pager a {
+  background: none repeat scroll 0 0 #f2f2f2;
+  border: 1px solid #ddd;
+  color: #000;
+  width: 30px;
+  line-height: 27px;
+}
+.dckap_content span.notfound {
+  display: block;
+  margin: 10px 0;
+}
+.dckap_wrap a:focus{
+  outline: none;
+}
+.pages.dckap_pager .totalitems {
+  color: #444;
+  margin-right: 15px;
+  text-transform: uppercase;
+}
+.user-info {
+  clear: both;
+  display: block; 
+  width: 100%;
+}
+.user-info .fieldset-input {
+  float: left;
+}
+.user-info .fieldset-input input {
+  border: 1px solid #ccc;
+  border-radius: 0;
+  height: 40px;
+  margin-right: 5px;
+  width: 300px;
+}
+.dckap_answers > p {
+  margin: 0;
+}
+.dckap_faq .page-title h1 strong {
+    font-weight: normal;
+}
+.dckap_faq .page-title h1 {
+    border: medium none;
+    color: #000;
+    font-family: Lato;
+    font-size: 44px;
+    font-weight: normal !important;
+    letter-spacing: 2px;
+    margin: 0 auto;
+    padding: 0;
+}
+.dckap_faq .page-title .catdescription {
+  color: #555;
+  font-size: 14px;
+  line-height: 2;
+  margin: 0 auto;
+  padding: 10px 0 20px;
+  text-transform: uppercase;
+}
+.dckap_faq .dckap_wrap .catdescription {
+  clear: both;
+  color: #555;
+  display: block;
+  font-size: 14px;
+  margin: 0 auto;
+  padding: 15px 0 10px;
+  line-height: 2;
+}
+.dckap_faq .dckap_content {
+    border: medium none;
+    float: none;
+    margin: 0 auto;
+}
+.dckap_faq .dckap_questions {
+  border-radius: 5px;
+  color: #b8b8b8;
+  cursor: pointer;
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: normal;
+  margin: 5px 0 0;
+  padding: 7px;
+  text-transform: inherit;
+}
+
+#more_menu > img {
+  float: right;
+  margin-left: 8px;
+  margin-top: 2px;
+}
+.dckap_wrap .dckap_leftbar {
+  background: none repeat scroll 0 0 #f2f2f2;
+  border: 1px solid #c3c3c3;
+  margin-bottom: 5px;
+  float: left;
+  padding: 0;
+  width: 100%;
+}
+.dckap_leftbar > ul {
+  margin: 0;
+}
+.dckap_wrap .dckap_leftbar li {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  float: left;
+  height: 40px;
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+.dckap_wrap .dckap_leftbar li.active > a {
+    color: #81d294;
+}
+.dckap_wrap .dckap_leftbar a:hover {
+    color: #81d294;
+    background: #f2f2f2;
+}
+.dckap_wrap .dckap_leftbar li a {
+  border-bottom: medium none;
+  border-right: 1px solid rgb(195, 195, 195);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: block;
+  font-family: Lato;
+  font-size: 14px;
+  font-style: normal;
+  height: 40px;
+  padding: 10px 30px;
+  position: relative;
+  text-transform: uppercase;
+  width: auto;
+}
+.faq-search {
+  float: right;
+  position: relative;
+}
+.dckap_faq .guest-alert {
+  font-size: 16px;
+  margin-top: 5px;
+}
+#faq-searchform .btn-searchform {
+  background: url("../images/search.png") no-repeat scroll 0 0 / 20px auto rgba(0, 0, 0, 0);
+  border: 0 none;
+  height: 20px;
+  margin-top: 8px;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  padding: 0px;
+  width: 20px;
+}
+#faq-searchform > input[type="text"] {
+  border: 1px solid #c3c3c3;
+  border-radius: 2px;
+  height: 36px;
+  margin-right: 2px;
+  margin-top: 2px;
+  padding-right: 38px;
+  width: 250px;
+}
+.dckap_new {
+    margin: 0 auto;
+}
+.dckap_new .ask_title {
+  color: #a61b1b;
+  font-family: Lato;
+  font-size: 17px;
+  font-weight: lighter;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.dckap_new #dckap_askform .fieldset span {
+  display: inline-block;
+  font-family: Lato;
+  font-size: 12px !important;
+  padding: 9px 0;
+  text-transform: uppercase;
+  width: 125px;
+}
+
+#dckap_askform .user-info .fieldset-input > label {
+  display: inline-block;
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 8px 0;
+  text-transform: uppercase;
+  width: 125px;
+}
+.user-info .fieldset-input {
+    float: none;
+    margin-bottom: 11px;
+}
+#dckap_askform .fieldset {
+    clear: both;
+    float: none;
+    margin-bottom: 13px;
+}
+#dckap_askform .fieldset textarea {
+    border: 1px solid #dddddd;  
+}
+.user-info .fieldset-input input {
+    border: 1px solid #dddddd;
+    height: 35px;
+    width: 440px;
+}
+.dckap_faq #dckap_askform .fieldset.recap {
+  margin: 0 auto;
+}
+.dckap_new .ask_title .asknew {
+  background: none repeat scroll 0 0 #484847;
+  border: 1px solid;
+  border-radius: 2px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 15px;
+  padding: 8px 15px;
+}
+.dckap_questions.active {
+    background: none;
+    border: none;
+	color: #81d294;
+}
+.pages.dckap_pager {
+  background: none repeat scroll 0 0 #f7f7f7;
+  border: 1px solid #c3c3c3;
+  margin: 10px 0;
+  padding: 2px;
+  width: 100%;
+}
+#dckap_askform .fieldset input {
+  background: none repeat scroll 0 0 #484847;
+  border: 1px solid #555555;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 16px;
+  margin: 10px 0;
+  padding: 5px 30px;
+  position: relative;
+  text-transform: uppercase;
+}
+#dckap_askform .fieldset input:hover {
+  background: none repeat scroll 0 0 #343433;
+  border-color: #333;
+}
+#search-box > input {
+  background: #000000 none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 4px;
+  color: #ffffff;
+  float: right;
+  height: 32px;
+  margin-right: 15%;
+  margin-top: 4px;
+  width: 230px;
+}
+.pages.dckap_pager > span.totalitems {
+  float: none;
+  margin-left: 10px;
+}
+.dckap_faq .more_menu > ul li {
+  background: none repeat scroll 0 0 #f2f2f2;
+  border-left: 1px solid #c3c3c3;
+  clear: left;
+  left: 0;
+  position: relative;
+  width: 180px;
+}
+.dckap_faq .more_menu > ul {
+  background: none repeat scroll 0 0 #f2f2f2;
+  display: none;
+  left: -1px;
+  position: relative;
+  top: 0px;
+  width: 123px;
+}
+.dckap_faq .more_menu > ul li a {
+  border-top: 1px solid #dddddd;
+  padding: 8px 20px;
+}
+.dckap_faq .more_menu > ul li:last-child a {
+  border-bottom: 1px solid #c3c3c3;
+}

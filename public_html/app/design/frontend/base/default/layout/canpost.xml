@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/ch_style.css</stylesheet></action>
+            <!-- <action method="addItem"><type>js_css</type><name>prototype/windows/themes/cpost.css</name></action> -->
+            <action method="addJs"><script>prototype/window.js</script></action>
+            <action method="addJs"><script>collinsharper/canpost/checkout.js</script></action>
+        </reference> 
+    </default>
+    <checkout_onepage_shippingmethod>
+        <!-- Mage_Checkout -->
+        <remove name="right"/>
+        <remove name="left"/>
+        <block type="checkout/onepage_shipping_method_available" name="root" output="toHtml" template="collinsharper/canpost/shipping_method/ch_available.phtml"/>
+    </checkout_onepage_shippingmethod>
+    <canpost_gmap_index>
+        <reference name="root">
+            <action method="setTemplate"><template>collinsharper/canpost/google/map_popup.phtml</template></action>
+        </reference>
+    </canpost_gmap_index>
+    <canpost_gmap_office>
+        <reference name="root">
+            <action method="setTemplate"><template>collinsharper/canpost/google/office_map.phtml</template></action>
+        </reference>
+    </canpost_gmap_office>
+</layout>

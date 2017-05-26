@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * @category     AM
+ * @package      AM_Export
+ *
+ * @copyright    Copyright (C) 2013 ArexMage.com. All Rights Reserved.
+ * @license      GNU General Public License version 2 or later;
+ * @author       ArexMage.com
+ * @email        support@arexmage.com
+ *
+ */
+ -->
+<config>
+    <menu>
+        <am translate="title" module="export">
+            <title>AM</title>
+            <sort_order>71</sort_order>               
+            <children>
+                <export translate="title" module="export">
+                    <title>AM Export</title>
+                    <children>
+                        <page translate="title" module="export">
+                            <title>Export Page</title>
+                            <sort_order>1</sort_order>
+                            <action>export/adminhtml_page</action>
+                        </page>
+                        <block translate="title" module="export">
+                            <title>Export Static Block</title>
+                            <sort_order>2</sort_order>
+                            <action>export/adminhtml_block</action>
+                        </block>
+                        <widget translate="title" module="export">
+                            <title>Export Widget</title>
+                            <sort_order>3</sort_order>
+                            <action>export/adminhtml_widget</action>
+                        </widget>
+                    </children>
+                </export>
+            </children>
+        </am>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <export>
+                                        <title>AM Export</title>
+                                    </export>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <am translate="title" module="export">
+                        <title>AM</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <export translate="title">
+                                <title>AM Export</title>
+                                <children>
+                                    <page translate="title">
+                                        <title>Export Page</title>
+                                        <sort_order>1</sort_order>
+                                    </page>
+                                    <block translate="title">
+                                        <title>Export Static Block</title>
+                                        <sort_order>2</sort_order>
+                                    </block>
+                                    <widget translate="title">
+                                        <title>Export Widget</title>
+                                        <sort_order>3</sort_order>
+                                    </widget>
+                                </children>
+                            </export>
+                        </children>
+                    </am>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,56 @@
+<!-- navigation BOF -->
+<?php
+$megaeffect     = Mage::getStoreConfig('base/menu/effect');
+$_menu          = $this->renderCategoriesMenuHtml(FALSE, 0, 'level-top', 'sub-wrapper shown-sub' );
+$routeName      = Mage::app()->getRequest()->getRouteName();
+$identifier     = Mage::getSingleton('cms/page')->getIdentifier();
+$rand_id        = rand();
+?>
+<div class="arw-mobile-menu">
+    <div class="arw-mobile-menu-header">
+        <span class="arw-mobile-menu-title">
+            <i class="fa fa-bars"></i><span><?php echo $this->__('Menu');?></span>
+        </span>
+        <span class="arw-close-canvas"><i class="fa fa-close"></i></span>
+    </div>
+    <div class="sidebar-menu">
+        <ul id="arw_accordionmenu_<?php echo $rand_id;?>" class="nav-accordion nav-mobile-accordion">
+            <li><a href="<?php echo $this->getBaseUrl(); ?>"><span><?php echo $this->__('Home'); ?></span></a></li>
+            <?php echo $this->renderCategoriesMenuHtml(TRUE, 0, 'level-top'); ?>
+            <?php
+            if(Mage::getStoreConfig('megamenu/menu/enable_custom')){
+                $urlkey                 = Mage::getStoreConfig('megamenu/menu/url_key');
+                $arrayUrlKey            = explode(";", $urlkey);
+                foreach($arrayUrlKey as $url){
+                    $condition          = explode(':', $url);
+                    $page               = Mage::getModel('cms/page')->load($condition[0], 'identifier');
+                    $class = '';
+                    if(isset($condition[1])) $class = 'menu-item-'.$condition[1];
+                    if($page->getIsActive()) {
+                        ?>
+                        <li class="level0 level-top cms-static-page <?php if($routeName == 'cms' && $identifier == $page->getIdentifier()) {echo " active";}?> <?php echo $class;?>">
+                            <a href="<?php echo Mage::helper('cms/page')->getPageUrl($condition[0]);?>" class="level-top">
+                                <span><?php echo $page->getTitle();?></span>
+                            </a>
+                        </li>
+                    <?php
+                    }
+                }
+            }
+            ?>
+        </ul>
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                jQuery("#arw_accordionmenu_<?php echo $rand_id;?>").arwAccordionMenu({
+                    accordion:true,
+                    speed: 400,
+                    closedSign: 'collapse',
+                    openedSign: 'expand',
+                    mouseType: 0,
+                    easing: 'easeInOutQuad'
+                });
+            });
+        </script>
+    </div>
+</div>
+<div class="site-overlay"></div>

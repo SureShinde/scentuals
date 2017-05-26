@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <?php 
+    $base_url = Mage::app()->getStore()->isCurrentlySecure() ? Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, true) : Mage::getBaseUrl();
+    ?>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
+      #map_canvas { float:left; width:500px; height:500px; }
+      .officel_list{ float:left; width:200px; height:500px; overflow: auto;}
+      .office_item{background:white;border:solid black 1px;cursor:pointer;}
+      .office_item:hover{background:#c2c2c2;}
+    </style>
+    <?php echo $this->getChildHtml('head') ?>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=<?php echo Mage::getStoreConfig('google/server_apps/key'); ?>&sensor=false">
+    </script>
+    <script type="text/javascript">
+      var map;
+      var geocoder;
+      var infowindow;
+      function initialize() {
+        geocoder = new google.maps.Geocoder();               
+        var mapOptions = {
+          center: new google.maps.LatLng(-122.9203, 49.2121),
+          zoom: 11,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+        infowindow = new google.maps.InfoWindow();   
+        markOffices();
+      }
+      function markOffices() {       
+        new Ajax.Request('<?php echo $base_url; ?>' + 'canpost/shipping/getNearestOffice/postal_code/' + parent.$('postcode').value, {
+          method:'get',
+          requestHeaders: {Accept: 'application/json'},
+          onSuccess: function(response) {
+              var json = response.responseText.evalJSON();  
+              if (json != '') {
+                  $('office_list').innerHTML = ''; 
+                  for (var office_id in json) {
+                      $('office_list').innerHTML += '<div class="office_item" onclick="selectOffice(\'' + office_id + '\', \'' + json[office_id].name + '\', \'' + json[office_id].address + '\');"><b>' + json[office_id].name + '</b><br />' + json[office_id].address + '</div>'; 
+                      createMarker(json[office_id]);
+                  }
+              } else {
+                  if ($('option_D2PO')) {
+                      $('option_D2PO').checked = false;
+                  }
+                  alert(parent.message_no_location);
+                  parent.win.close();
+              }
+          }
+        });
+      }
+      function createMarker(office)
+      {
+        geocoder.geocode( { 'address': office.gm_address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });                       
+            google.maps.event.addListener(marker, 'click', function() {
+              var content = '<b>' + office.name + '</b><br />' + office.address;
+              $('shipping-method-please-wait').show();
+              new Ajax.Request('<?php echo $base_url; ?>' + 'canpost/shipping/getCpOfficeDetails/office_id/' + office.id, {
+                  method:'get',
+                  requestHeaders: {Accept: 'application/json'},
+                  onSuccess: function(response) {
+                      var json = response.responseText.evalJSON();  
+                      if (json != '') {
+                          for (var i = 0; i < json.length; i++) {
+                              content += '<br>' + json[i].day + ' ' + json[i].from + ' - ' + json[i].to;
+                          }
+                          infowindow.setContent(content);
+                          infowindow.open(map, marker);
+                      } else {
+
+                      }
+                      $('shipping-method-please-wait').hide();
+                  }
+              });
+            });
+          } else {
+            //alert('Geocode was not successful for the following reason: ' + status + ' for address ' + office.address);
+          }
+        });
+      }
+      function selectOffice(office_id, office_name, office_address)
+      {
+          parent.document.getElementById('cp_office_name').innerHTML = office_name;
+          parent.document.getElementById('cp_office_address').innerHTML = office_address;
+          parent.document.getElementById('office').value = office_id;
+          parent.document.getElementById('update_office_list').disabled = false;
+          parent.win.close();
+          parent.chUpdateRates('<?php echo $base_url; ?>');
+      }
+    </script>
+  </head>
+  <body onload="initialize();">
+    <div class="officel_list" id="office_list"></div>  
+    <div id="map_canvas"></div>
+    <span style="display: none;width:700px;height:500px; background:grey;z-index:120;position:absolute;top:0;left:0;opacity:0.4;filter:alpha(opacity=40);" class="please-wait" id="shipping-method-please-wait">
+        <img class="v-middle" alt="Loading next step..." src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" style="position:absolute;top:200px;left:300px;" /> 
+    </span>
+  </body>
+</html>

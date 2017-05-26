@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <KJ_MageMail>
+            <version>1.0.16</version>
+        </KJ_MageMail>
+    </modules>
+    <global>
+        <helpers>
+            <kj_magemail>
+                <class>KJ_MageMail_Helper</class>
+            </kj_magemail>
+        </helpers>
+        <models>
+            <kj_magemail>
+                <class>KJ_MageMail_Model</class>
+            </kj_magemail>
+        </models>
+        <blocks>
+            <kj_magemail>
+                <class>KJ_MageMail_Block</class>
+            </kj_magemail>
+        </blocks>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <admin_magemail before="Mage_Adminhtml">KJ_MageMail</admin_magemail>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <frontend>
+        <layout>
+            <updates>
+                <kj_magemail>
+                    <file>kj_magemail.xml</file>
+                </kj_magemail>
+            </updates>
+        </layout>
+        <routers>
+            <magemail>
+                <use>standard</use>
+                <args>
+                    <module>KJ_MageMail</module>
+                    <frontName>magemail</frontName>
+                </args>
+            </magemail>
+        </routers>
+        <secure_url>
+            <magemail_api>/magemail/api/</magemail_api>
+        </secure_url>
+    </frontend>
+
+    <default>
+        <kj_magemail>
+            <advanced>
+                <magemail_domain>magemail.co/app/</magemail_domain>
+            </advanced>
+        </kj_magemail>
+
+        <newsletter>
+            <kj_magemail_advanced>
+                <enable_ip_address_whitelist>1</enable_ip_address_whitelist>
+                <whitelisted_ip_addresses>192.241.220.17, 45.55.38.132</whitelisted_ip_addresses>
+                <enable_auto_login>0</enable_auto_login>
+                <auto_login_ip_restricted>0</auto_login_ip_restricted>
+                <query_blacklist>sales_flat_order_payment</query_blacklist>
+                <capture_email_enabled>1</capture_email_enabled>
+                <disable_sql_api>0</disable_sql_api>
+            </kj_magemail_advanced>
+            <kj_magemail_language>
+                <product_review>Product Review</product_review>
+                <thanks_review_complete>Thanks!  Your review has been submitted!</thanks_review_complete>
+                <submitting_review>Submitting review.  One moment...</submitting_review>
+                <there_was_problem>Uh-oh!  There was a problem:</there_was_problem>
+                <authentication_fail>Couldn't authenticate.  Please try posting your review on the product detail page.</authentication_fail>
+                <invalid_email>Email doesn't look valid: </invalid_email>
+                <network_problem_couldnt_save_email>Looks like there was a network problem, couldn't save your email.</network_problem_couldnt_save_email>
+                <thanks_you_will_receive_email>Thanks, you'll receive an email shortly.  You can close this window now.</thanks_you_will_receive_email>
+                <loading>Loading...</loading>
+                <before_you_leave>Before You Leave....</before_you_leave>
+                <enter_email_to_have_cart_emailed>Would you like to have your cart emailed to you?  Enter your email below:</enter_email_to_have_cart_emailed>
+                <enter_email_to_receive_newsletter>Enter your email address to sign up for the newsletter.</enter_email_to_receive_newsletter>
+                <save_exit_modal_button>Save</save_exit_modal_button>
+                <no_thanks>No Thanks</no_thanks>
+            </kj_magemail_language>
+        </newsletter>
+    </default>
+
+    <crontab>
+        <jobs>
+            <kj_magemail_send_order_confirmation_email>
+                <schedule>
+                    <cron_expr>*/1 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>kj_magemail/cron::sendOrderConfirmationEmail</model>
+                </run>
+            </kj_magemail_send_order_confirmation_email>
+        </jobs>
+    </crontab>
+</config>

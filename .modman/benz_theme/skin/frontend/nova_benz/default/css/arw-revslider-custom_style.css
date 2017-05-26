@@ -1,0 +1,83 @@
+.tp-caption.sebian_fashion_1_transparent_bg_border_white_14 a,
+.tp-caption.sebian_fashion_1_primary_bg_white_14 a,
+.tp-caption.sebian_fashion_4_primary_bg_white_14 a,
+.tp-caption.sebian_fashion_2_transparent_bg_border_white_14 a,
+.tp-caption.sebian_fashion_2_transparent_bg_border_white_hover_black_14 a,
+.tp-caption.sebian_fashion_3_transparent_bg_border_white_hover_white_14 a {
+    display: block;
+    padding: 10px 30px 10px 30px;
+    margin: -10px -30px -10px -30px;
+    color: #ffffff;
+}
+.tp-caption.sebian_fashion_1_primary_bg_14 a {
+    display: block;
+    padding: 10px 30px 10px 30px;
+    margin: -10px -30px -10px -30px;
+    color: #ffffff;
+    background-color: #eeb013;
+    border-color: #eeb013;
+}
+.tp-caption.sebian_fashion_3_white_bg_14 a {
+    display: block;
+    padding: 10px 30px 10px 30px;
+    margin: -10px -30px -10px -30px;
+    color: #272727;
+}
+.tp-caption.sebian_fashion_3_white_bg_14 a:hover {
+    color: #272727;
+}
+
+.tp-caption.sebian_fashion_1_transparent_bg_border_white_14 a:hover,
+.tp-caption.sebian_fashion_2_transparent_bg_border_white_14 a:hover{
+    background-color: #eeb013;
+    border-color: #eeb013;
+}
+.tp-caption.sebian_fashion_2_transparent_bg_border_white_hover_black_14 a:hover {
+    background-color: #272727;
+    border-color: #272727;
+}
+.tp-caption.sebian_fashion_1_primary_bg_white_14 a:hover,
+.tp-caption.sebian_fashion_4_primary_bg_white_14 a:hover {
+    background-color: #eeb013;
+}
+.tp-caption.sebian_fashion_3_transparent_bg_border_white_hover_white_14 a:hover {
+    background-color: #fff;
+    border-color: #fff;
+    color: #272727;
+}
+
+.tp-caption.sebian_watches_white_button_12 a,
+.tp-caption.sebian_watches_black_button_12 a {
+    display: block;
+    padding: 12px 30px 12px 30px;
+    margin: -12px -30px -12px -30px;
+    color: #ffffff;
+}
+.tp-caption.sebian_watches_white_button_12 a:hover,
+.tp-caption.sebian_watches_black_button_12 a:hover {
+    color: #ffffff;
+}
+.tp-caption.sebian_watches_gray_border_nobg_button_10 a,
+.tp-caption.sebian_watches_gray_border_nobg_button_12 a {
+    display: block;
+    color: #272727;
+    margin: -12px -30px;
+    padding: 12px 30px;
+}
+.tp-caption.sebian_watches_gray_border_nobg_button_10 a:hover,
+.tp-caption.sebian_watches_gray_border_nobg_button_12 a:hover {
+    color: #ffffff;
+    background-color: #6D831C;
+    border-color: #6D831C;
+}
+.tp-caption.sebian_cosmetic_primary_button_14 a,
+.tp-caption.sebian_cosmetic_black_button_14 a {
+    display: block;
+    color: #fff;
+    margin: -12px -30px;
+    padding: 12px 30px;
+}
+.tp-caption.sebian_cosmetic_primary_button_14 a:hover,
+.tp-caption.sebian_cosmetic_black_button_14 a:hover {
+    color: #fff;
+}

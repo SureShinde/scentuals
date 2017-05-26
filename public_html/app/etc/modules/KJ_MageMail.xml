@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <KJ_MageMail>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends></depends>
+        </KJ_MageMail>
+    </modules>
+</config>

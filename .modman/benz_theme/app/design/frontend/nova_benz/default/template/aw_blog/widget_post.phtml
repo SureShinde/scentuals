@@ -1,0 +1,72 @@
+<?php
+$theme_helper = Mage::helper('sebian');
+$_template = $this->getData('template') ? $this->getData('template') : 'template_1';
+$_column = $this->getData('column') ? $this->getData('column') : 1;
+$post_per_page = 12/$_column;
+$class_post = "col-xs-12 col-sm-$post_per_page col-md-$post_per_page col-lg-$post_per_page";
+?>
+<?php if ($posts = $this->getRecent()): ?>
+    <?php if($_template == 'template_1'):?>
+        <div class="row">
+            <?php foreach ($posts as $post): ?>
+                <div class="<?php echo $class_post;?>">
+                    <div class="post-item">
+                        <div class="post-item-inner">
+                            <div class="post-thumbnail">
+                                <?php if($post->getImage()):?>
+                                    <a href="<?php echo $post->getAddress(); ?>">
+                                        <img src="<?php echo $theme_helper->resizeImage($post->getImage(),370,220);?>" alt="<?php echo $post->getTitle(); ?>"/>
+                                    </a>
+<!--
+                                    <a class="btn-viewmore btn2" title="<?php echo Mage::helper('blog')->__('View this post')?>" data-toggle="tooltip" href="<?php echo $post->getAddress(); ?>">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+				-->
+                                <?php endif;?>
+                            </div>
+                            <div class="post-item-content">
+                                <div class="blog-content-top">
+                                    <?php
+                                    $postCats = Mage::getModel('blog/post')->getCategoriesForPosts(array($post->getPostId()));
+                                    if (!empty($postCats)): ?>
+                                        <div class="post-category">
+                                            <?php foreach ($postCats as $data): ?>
+                                                <a href="<?php echo $this->getBlogUrl(null,array(AW_Blog_Helper_Data::CATEGORY_URI_PARAM  => $data['identifier'])); ?>"><?php echo $data['title']; ?></a>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif;?>
+                                    <div class="post-date"><a class="authur" href="<?php echo $post->getAddress(); ?>" style="display: none;"><span><?php echo $post->getUser(); ?></span></a><span class="by" style="text-transform: lowercase; display: none;"><?php echo _('by     '); ?></span><span class="media-meta"><?php $_ct= new Zend_Date($post->getCreatedTime());
+      echo $_ct->toString('MMM dd, yyyy'); ?><!--<?php echo Mage::helper('core')->formatDate($post->getCreatedDate(),"medium", false); ?>--></span></div>
+                                </div>
+
+                                <h2 class="post-title"><a href="<?php echo $post->getAddress(); ?>"><?php echo $post->getTitle(); ?></a></h2>
+                                <div class="post-meta">
+                                    <div class="post-by"><span style="text-transform: lowercase"><?php echo _('by     '); ?></span><a href="<?php echo $post->getAddress(); ?>"><span><?php echo $post->getUser(); ?></span></a></div>
+                                </div>
+                                <div class="post-excerpt std">
+                                    <?php
+                                        $strManager = new AW_Blog_Helper_Substring(
+                                            array(
+                                                'input' => Mage::helper('blog')->filterWYS($post->getPostContent())
+                                            )
+                                        );
+                                        echo $strManager->getHtmlSubstr(120);
+                                    ?>
+                                </div>
+                                <div class="post-meta">
+                                    <?php if ($this->getCommentsEnabled() && $post->getCommentCount()): ?>
+                                        <div class="post-view"><a href="<?php echo $post->getAddress(); ?>#commentBox"><i class="fa fa-eye"></i><span><?php echo $post->getCommentCount();?></span></a></div>
+                                    <?php endif;?>
+                                </div>
+                                <div class="post-readmore">
+                                    <a href="<?php echo $post->getAddress(); ?>" class="btn3">read more</a>
+                                </div>
+                            </div>
+                            <div class="line-blog-home3" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach;?>
+        </div>
+    <?php endif;?>
+<?php endif; ?>

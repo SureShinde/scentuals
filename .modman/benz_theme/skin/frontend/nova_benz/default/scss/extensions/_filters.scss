@@ -1,0 +1,40 @@
+.price-slider{
+	height: 2px;
+	position: relative;
+	margin: 40px 0 40px 0px;
+	float: left;
+	width: 100%;
+	@include user-select(none);
+	background: $block_content_border;
+	.price-slider-handle{
+		height: 19px;
+		width: 19px;
+		position: absolute;
+		top: -9px;
+		cursor: pointer;
+		background: #fff;
+		border: 2px solid shade($border_color,20%);
+		z-index: 2;
+		&:hover,
+		&:focus{
+			border-color: $primary;
+		}
+	}
+	.price-slider-span {
+		background:$button_bg;
+		height: 2px;
+		position: absolute;
+		top: 0px;
+	}
+}
+.layer-price {
+	text-align: center;
+	color: $heading_color;
+	margin-top: 10px;
+	position: absolute;
+	width: 100%;
+	letter-spacing: 2px;
+}
+.block-layered-nav dd {
+	position: relative;
+}

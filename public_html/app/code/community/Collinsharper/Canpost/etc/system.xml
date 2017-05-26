@@ -1,0 +1,779 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <carriers>
+            <groups>
+                <chcanpost2module translate="label" module="chcanpost2module">
+                    <label>Canada Post v2</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>14</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>chcanpost2module/adminhtml_system_config_source_yesno</backend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <frontend_disable translate="label">
+                            <label>Hide in Shipping Quote and Checkout</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>chcanpost2module/adminhtml_system_config_source_yesno</backend_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </frontend_disable>
+                        <canadapost_signup translate="button_label">
+                            <label></label>
+                            <button_label>Signup To Canada Post Now</button_label>
+                            <tooltip>Click here to sign up for Canada Post services, or retrieve/change your existing Canada Post account information/API details.</tooltip>
+                            <frontend_model>chcanpost2module/adminhtml_system_config_signup</frontend_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </canadapost_signup>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <flat_rate_for_usaep_enable translate="label">
+                            <label>Enable Flat Rate for Expedited Parcel USA</label>
+                            <comment>Ensure the methods is Allowed below.</comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>chcanpost2module/adminhtml_system_config_source_yesno</backend_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_usaep_enable>
+                        <flat_rate_for_usaep_title translate="label">
+                            <label>Expedited Parcel USA Flat Rate Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_usaep_title>
+                        <flat_rate_for_usaep translate="label">
+                            <label>Expedited Parcel USA Flat Rate</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_usaep>
+
+                        <flat_rate_for_intxp_enable translate="label">
+                            <label>Enable Flat Rate for Xpresspost International</label>
+                            <comment>Ensure the methods is Allowed below.</comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>chcanpost2module/adminhtml_system_config_source_yesno</backend_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_intxp_enable>
+                        <flat_rate_for_intxp_title translate="label">
+                            <label>Xpresspost International Flat Rate Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_intxp_title>
+                        <flat_rate_for_intxp translate="label">
+                            <label>Xpresspost International Flat Rate</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_intxp>
+
+                        <flat_rate_for_canada_enable translate="label">
+                            <label>Enable Flat Rate for Regular/Expedited</label>
+                            <comment>Ships as either Regular or Expedited Parcel. Ensure at least one of the methods is Allowed below.</comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>chcanpost2module/adminhtml_system_config_source_yesno</backend_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_canada_enable>
+                        <flat_rate_for_canada_title translate="label">
+                            <label>Regular/Expedited Flat Rate Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_canada_title>
+                        <flat_rate_for_canada translate="label">
+                            <label>Regular/Expedited Flat Rate</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_canada>
+                        <flat_rate_for_xpresspost_enable translate="label">
+                            <label>Enable Flat Rate for Xpresspost</label>
+                            <comment>Ships as Xpresspost. Ensure this method is Allowed below.</comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>chcanpost2module/adminhtml_system_config_source_yesno</backend_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_xpresspost_enable>
+                        <flat_rate_for_xpresspost_title translate="label">
+                            <label>Xpresspost Flat Rate Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_xpresspost_title>
+                        <flat_rate_for_xpresspost translate="label">
+                            <label>Xpresspost Flat Rate</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </flat_rate_for_xpresspost>
+                        <fail_rate translate="label">
+                            <label>Failover shipping rate</label>
+                            <comment>Fixed rate to display when rates cannot be retrieved from CP</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fail_rate>
+                        <fail_title translate="label">
+                            <label>Failover shipping rate title</label>
+                            <comment>Shipping service title to display when rates cannot be retrieved from CP</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fail_title>
+                        <nondelivery_preference translate="label comment">
+                            <label>Non-Delivery Preference</label>
+                            <comment>Service option to use if shipment cannot be delivered and there are multiple options available.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>chcanpost2module/system_config_source_nondelivery</source_model>
+                            <sort_order>18</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </nondelivery_preference>
+                        <api_customer_number>
+                            <label>API Customer Number</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_customer_number>
+
+                        <contract translate="label">
+                            <label>Contract Number</label>
+                            <comment>Also called Agreement Number</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </contract>
+                        <allowed_methods translate="label">
+                            <label>Allowed Shipping Services</label>
+                            <comment></comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>chcanpost2module/Source_Method</source_model>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </allowed_methods>
+
+                        <handling_type translate="label">
+                            <label>Handling Fee Calculation Method</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>shipping/source_handlingType</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </handling_type>
+                        <handling_action translate="label">
+                            <label>Handling Applied</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>shipping/source_handlingAction</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </handling_action>
+                        <handling_fee translate="label">
+                            <label>Handling Fee Amount</label>
+                            <comment>In CDN dollars</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </handling_fee>
+                        <sallowspecific translate="label">
+                            <label>Ship to applicable countries</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1900</sort_order>
+                            <frontend_class>shipping-applicable-country</frontend_class>
+                            <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sallowspecific>
+                        <specificcountry translate="label">
+                            <label>Ship to specific countries</label>
+                            <comment></comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>1910</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </specificcountry>
+                        <showmethod translate="label">
+                            <label>Show 'Shipping Service' if not applicable</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1940</sort_order>
+                            <frontend_class>shipping-skip-hide</frontend_class>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </showmethod>
+
+                        <specificerrmsg translate="label">
+                            <label>Displayed Error Message</label>
+                            <comment>Error Message displayed when no failover rate or title is specified.</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificerrmsg>
+
+                        <graceful_failure translate="label comment">
+                            <label>Gracefully Fail?</label>
+                            <comment>If no rates are returned from canada post, do not show an error message (this would be used when you have myultiple shipping options and want to force another option when canada post is not available due to weight or delivery restrictions.)</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>830</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </graceful_failure>
+
+                        <lead_time_days translate="label">
+                            <label>Lead time for order processing</label>
+                            <comment>Adds a lead time (in days) to all 'Expected Delivery Dates' to account for order processing</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>860</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </lead_time_days>
+                        <show_delivery_date translate="label">
+                            <label>Show 'Estimated Delivery Date' for all shipments?</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>861</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_delivery_date>
+
+                        <date_format translate="label">
+                            <label>Estimated Delivery Date display format</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>chcanpost2module/Source_Dateformats</source_model>
+                            <sort_order>861</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </date_format>
+
+                        <back_order_no_estimate translate="label">
+                            <label>Hide 'Estimated Delivery Date' for shipments with backordered items?</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>865</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </back_order_no_estimate>
+
+                        <locale translate="label">
+                            <label>Set Canada Post preferred language to current Store Language?</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <!--<source_model>chcanpost2module/Source_Locale</source_model> -->
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>870</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </locale>
+
+                        <scope translate="label">
+                            <label>Global scope of manifests</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <!--<source_model>chcanpost2module/Source_Locale</source_model> -->
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>875</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </scope>
+
+
+                        <quote_type translate="label">
+                            <label>Quote type</label>
+                            <comment>Select the shipping rates to display to the customer in quotes/checkout.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>chcanpost2module/Source_Quotetype</source_model>
+                            <backend_model>chcanpost2module/adminhtml_quotetype</backend_model>
+                            <sort_order>880</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </quote_type>
+
+                        <api_url translate="label">
+                            <label>API URL (Production)</label>
+                            <comment></comment>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>2500</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_url>
+                        <api_login translate="label">
+                            <label>API Login (Production)</label>
+                            <comment></comment>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>2700</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_login>
+                        <api_password translate="label">
+                            <label>API Password (Production)</label>
+                            <comment></comment>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>2900</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_password>
+                        <api_test_url translate="label">
+                            <label>API URL (Testing)</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_test_url>
+                        <api_test_login translate="label">
+                            <label>API Login (Testing)</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_test_login>
+                        <api_test_password translate="label">
+                            <label>API Password (Testing)</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_test_password>
+                        <hide_shipping_options translate="label comment">
+                            <label>Hide Shipping options</label>
+                            <comment>Hide all shipping options on the frontend</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3320</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </hide_shipping_options>
+                        <require_signature translate="label">
+                            <label>'Require Signature' option</label>
+                            <comment>Forces 'Require Signature' option for all shipments over the threshold value</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3401</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </require_signature>
+                        <signature_threshhold translate="label">
+                            <label>'Require Signature' threshold value</label>
+                            <comment>Threshold value for forcing 'Require Signature'</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3402</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </signature_threshhold>
+                        <require_coverage translate="label">
+                            <label>'Coverage' option</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Collinsharper_Canpost_Model_Source_Coverage</source_model>
+                            <sort_order>3403</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </require_coverage>
+                        <coverage_treshhold translate="label">
+                            <label>'Coverage' threshold value</label>
+                            <comment>Threshold value for Coverage when option is set to Always</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3404</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </coverage_treshhold>
+                        <deliver_to_postoffice translate="label">
+                            <label>Display 'Deliver to Post Office' option</label>
+                            <comment>Allows customer to have parcel delivered to a post office within Canada</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3405</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </deliver_to_postoffice>
+                        <postoffice_list_size translate="label">
+                            <label>'Deliver to Post Office' list size</label>
+                            <comment>Max. number of locations to display in the 'Deliver to Post Office' list</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3406</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </postoffice_list_size>
+                        <card_for_pickup translate="label">
+                            <label>Display 'Card for Pick Up' option</label>
+                            <comment>A Delivery Notice Card will be left for the addressee and the
+                                item will then be forwarded to the designated post office.
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3407</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </card_for_pickup>
+                        <do_not_safe_drop translate="label">
+                            <label>Display 'Do not Safe Drop' option</label>
+                            <comment>If no one is able to receive the
+                                item, parcel will be left at designated post office
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3408</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </do_not_safe_drop>
+                        <safe_drop_default translate="label">
+                            <label>Safe Drop Default</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3408</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </safe_drop_default>
+                        <leave_at_door translate="label">
+                            <label>Display 'Leave at Door (Do not card)' option</label>
+                            <comment>If no one is able to receive the
+                                item, parcel will be left in a safe drop location or at designated post office
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3408</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </leave_at_door>
+                        <enable_cod translate="label tooltip">
+                            <label>Allow COD Option</label>
+                            <tooltip>
+                                <![CDATA[This will allow the COD option during checking / order placement. When selected a payment option of COD can be shown and the user will not be required to pay at checkout. Please refer to the Canada Post site for details and requirements.]]>
+                            </tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3409</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_cod>
+                                  <notify_on_shipment>
+                            <label>Notify Customer on Shipment</label>
+                            <comment>
+                                <![CDATA[Note: If 'Deliver to Post Office' is used, then the customer will be emailed
+                                when their parcel is ready for pickup, regardless of these notification settings.]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify_on_shipment>
+                        <notify_on_exception>
+                            <label>Notify Customer on Exception</label>
+                            <comment>
+                                <![CDATA[Notify the customer when a problem with the shipment occurs.
+                                Note: If 'Deliver to Post Office' is used, then the customer will be emailed
+                                when their parcel is ready for pickup, regardless of these notification settings.]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3411</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify_on_exception>
+                        <notify_on_delivery>
+                            <label>Notify Customer on Delivery</label>
+                            <comment>
+                                <![CDATA[Note: If 'Deliver to Post Office' is used, then the customer will be emailed
+                                when their parcel is ready for pickup, regardless of these notification settings.]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3412</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notify_on_delivery>
+                        <output_format translate="label">
+                            <label>Output Format</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Collinsharper_Canpost_Model_Source_Output</source_model>
+                            <sort_order>3409</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </output_format>
+                        <default_h translate="label">
+                            <label>Default Height</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3420</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </default_h>
+                        <default_w translate="label">
+                            <label>Default Width</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3421</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </default_w>
+                        <default_l translate="label">
+                            <label>Default Length</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3422</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </default_l>
+                        <reason_for_export translate="label">
+                            <label>Reason For Export</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Collinsharper_Canpost_Model_Source_Reason</source_model>
+                            <sort_order>3440</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reason_for_export>
+                        <other_reason translate="label">
+                            <label>Other Reason for Export</label>
+                            <comment>This reason will be used if selected "Reason For Export" is "other"</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3444</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </other_reason>
+
+
+                        <!--
+                                                <use_bundle translate="label comment">
+                                                    <label>Use Parent Product for Dimensions / Customs?</label>
+                                                    <comment>When generating shipments / calculating weights / dimensions / sending customs documentation would you like to use only the parent products for inforamtion and skip any child items? \n Please note if the weight of children items do not match the parent item this can cause customs issues.</comment>
+                                                    <frontend_type>select</frontend_type>
+                                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                                    <sort_order>3451</sort_order>
+                                                    <show_in_default>1</show_in_default>
+                                                    <show_in_website>1</show_in_website>
+                                                    <show_in_store>1</show_in_store>
+                                                </use_bundle>
+                                                -->
+
+                        <free_method translate="label">
+                            <label>Free Services</label>
+                            <comment></comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>chcanpost2module/Source_Method</source_model>
+                            <sort_order>3452</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </free_method>
+                        <free_shipping_enable translate="label">
+                            <label>Free shipping with minimum order amount</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>3453</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </free_shipping_enable>
+                        <free_shipping_subtotal translate="label">
+                            <label>Minimum order amount for free shipping</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3454</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </free_shipping_subtotal>
+
+                        <exclude_provinces translate="label">
+                            <label>Exclude Free Shipping to Provinces</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>chcanpost2module/source_regionca</source_model>
+                            <sort_order>3456</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </exclude_provinces>
+
+                        <exclude_states translate="label">
+                            <label>Exclude Free Shipping to US States</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>chcanpost2module/source_regionus</source_model>
+                            <sort_order>3458</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </exclude_states>
+
+                        <showmethod translate="label">
+                            <label>Show Method if Not Applicable</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3500</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </showmethod>
+
+
+
+                        <enable_cache translate="label">
+                            <label>Enable Quote Caching for the Shipping Quote and Checkout</label>
+                            <comment>Improves performance on sites with OneStepCheckout.</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3501</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enable_cache>
+                        <test_mode translate="label">
+                            <label>Enable Test Mode</label>
+                            <comment>Uses API URL (Testing), API Login (Testing) and API Password (Testing)</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_mode>
+                        <debug translate="label">
+                            <label>Enable Debug Mode</label>
+                            <comment>Verbose logging to help developers</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3601</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </debug>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sort_order>
+                    </fields>
+                </chcanpost2module>
+            </groups>
+        </carriers>
+    </sections>
+</config>

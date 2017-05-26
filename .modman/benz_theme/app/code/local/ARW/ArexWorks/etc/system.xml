@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+     <tabs>
+		<arexworks translate="label" module="arexworks">
+            <label><![CDATA[Novaworks]]></label>
+			<sort_order>108</sort_order>
+		</arexworks>
+    </tabs>
+</config>

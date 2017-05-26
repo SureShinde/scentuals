@@ -1,0 +1,36 @@
+<div class="box cNoticias">
+	<div class="boxFndPie">
+		<div class="head">
+			<h1><span><?php echo $this->__('News')?></span><?php echo $this->__(' &amp; Innovations') ?></h1>
+		</div>
+		<div class="cuerpo">
+			<?php $news = $this->getLoadedNewsCollection();?>
+			<?php if($news->getSize() > 0) : ?>
+			<?php echo $this->getToolbarHtml(); ?>
+			<?php foreach ($news as $noticia): ?>
+			<div class="noticia">
+				<div style="width:75%;float:left;">
+					<h4><a href="<?php echo $this->getUrl('news/detalle', array('id' => $noticia->getId().'/'.$noticia->getAmigable().'.html')) ?>"><?php echo $noticia->getTitle() ?></a></h4>
+					<p class="cBreve" style="margin-left:0px;"><?php echo nl2br(Mage::helper('core/string')->truncate($noticia->getTexto(),160)); ?></p>
+					<p style="text-align:right;"><span class="news_more"><a href="<?php echo $this->getUrl('news/detalle', array('id' => $noticia->getId().'/'.$noticia->getAmigable().'.html')) ?>"><?php echo $this->__('more')?></a></span></p>
+				</div>
+				<div style="width:18%;float:right;margin-left:15px;border:1px solid #e4e4e4;">
+					<?php if($noticia->getFilename()) : ?>
+						<?php $location = Mage::getStoreConfig('web/secure/base_url'); 
+						$dire = $location . 'media/news/' . $noticia->getFilename();?>
+					
+					
+				
+						<img src="<?php echo $dire; ?>" width="100%" alt="<?php echo $noticia->getFilename(); ?>" title="<?php echo $noticia->getTitle(); ?>"  />
+					<?php endif;?>	
+				</div>
+			</div>
+			<?php endforeach; ?>
+			
+			<?php else : ?>
+			<p class="msgNoResultados"><?php echo $this->__("At this moment there is no available information in this section. Please, try again in the next days.") ?></p>
+			<?php endif;?>
+		</div>
+	</div>
+</div>
+

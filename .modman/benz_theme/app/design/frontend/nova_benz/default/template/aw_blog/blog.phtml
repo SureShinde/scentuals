@@ -1,0 +1,53 @@
+<?php
+$theme_helper = Mage::helper('sebian');
+$posts = $this->getPosts();
+?>
+<div class="page-title">
+    <h1><?php echo Mage::getStoreConfig('blog/blog/title'); ?></h1>
+</div>
+<div id="messages_product_view">
+    <?php Mage::app()->getLayout()->getMessagesBlock()->setMessages(Mage::getSingleton('customer/session')->getMessages(true)); ?>
+    <?php echo Mage::app()->getLayout()->getMessagesBlock()->getGroupedHtml(); ?>
+</div>
+<div class="blog-list">
+<?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+    <div class="clearfix"></div>
+<?php foreach ($posts as $post): ?>
+    <div class="post-item">
+        <div class="post-item-inner">
+            <div class="post-thumbnail">
+                <?php if($post->getImage()):?>
+                    <a href="<?php echo $post->getAddress(); ?>">
+                        <img src="<?php echo $theme_helper->resizeImage($post->getImage());?>" alt="<?php echo $post->getTitle(); ?>"/>
+                    </a>
+                <?php endif;?>
+            </div>
+            <div class="post-item-content">
+                <?php $postCats = $post->getCats(); ?>
+                <?php if (!empty($postCats)): ?>
+                    <div class="post-category">
+                        <?php foreach ($postCats as $data): ?>
+                            <a href="<?php echo $data['url']; ?>"><?php echo $data['title']; ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif;?>
+		<br/>
+                <h2 class="post-title"><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>
+                <?php echo $this->getBookmarkHtml($post) ?>
+                <div class="post-excerpt std"><?php echo $post->getPostContent(); ?></div>
+                <div class="post-meta">
+                    <div class="post-date"><span class="media-meta"><?php echo Mage::helper('core')->formatDate($post->getCreatedDate(),"medium", true); ?></span></div>
+                    <div class="post-by"><span style="text-transform: lowercase"><?php echo _('by     '); ?></span><a href="<?php echo $post->getAddress(); ?>"><span><?php echo $post->getUser(); ?></span></a></div>
+                <?php if ($this->getCommentsEnabled() && $post->getCommentCount()): ?>
+                    <div class="post-view"><a href="<?php echo $post->getAddress(); ?>#commentBox"><i class="fa fa-eye"></i><span><?php echo $post->getCommentCount();?></span></a></div>
+                <?php endif;?>
+                    <a class="btn" href="<?php echo $post->getAddress(); ?>"><?php echo Mage::helper('blog')->__('Read More'); ?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
+    <div class="toolbar-bottom">
+        <?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+    </div>
+</div>

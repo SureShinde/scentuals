@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<DCKAP_Faq>
+			<version>1.0.4</version>
+		</DCKAP_Faq>
+	</modules>
+	<frontend>
+		<routers>
+			<faq>
+				<use>standard</use>
+				<args>
+					<module>DCKAP_Faq</module>
+					<frontName>faq</frontName>
+				</args>
+			</faq>
+		</routers>
+		<layout>
+			<updates>
+				<faq>
+					<file>faq.xml</file>
+				</faq>
+			</updates>
+		</layout>
+	</frontend>
+	<admin>
+		<routers>
+			<faq>
+				<use>admin</use>
+				<args>
+					<module>DCKAP_Faq</module>
+					<frontName>faq</frontName>
+				</args>
+			</faq>
+		</routers>
+	</admin>
+	<adminhtml>
+		<menu>
+			<dckap module="faq">
+				<title>DCKAP</title>
+				<sort_order>60</sort_order>	
+				<children>
+					<faq translate="title" module="faq">
+						<title>FAQ's Manager</title>
+						<sort_order>0</sort_order>
+						<depends>
+							<config>faq/faq_group/faq_select</config>
+						</depends>
+						<children>
+							<items translate="title" module="faq">
+								<title>Manage FAQ's</title>
+								<sort_order>0</sort_order>
+								<action>faq/adminhtml_faq</action>
+							</items>
+							<categoryitems translate="title" module="faq">
+								<title>Manage Categories</title>
+								<sort_order>1</sort_order>
+								<action>faq/adminhtml_category</action>
+								<depends>
+									<config>faq/faq_group/category_enabled</config>
+								</depends>
+							</categoryitems>
+							<settings translate="title" module="faq">
+								<title>Settings</title>
+								<sort_order>2</sort_order>
+								<action>adminhtml/system_config/edit/section/faq/</action>
+							</settings>
+						</children>
+					</faq>
+				</children>
+			</dckap>
+		</menu>		
+		<acl>
+			<resources>
+				<admin>
+					<children>
+                  		<system>
+                        	<children>
+                            	<config>
+                                	<children>
+                                    	<faq>
+                                       	 	<title>Faq - All</title>
+                                    	</faq>
+                                	</children>
+                            	</config>
+                        	</children>
+                   	 	</system>
+                   	 	<dckap translate="title" module="faq">
+							<title>Faq</title>
+							<sort_order>10</sort_order>
+							<children>
+								<faq translate="title" module="faq">
+								<title>FAQ's Manager</title>
+								<sort_order>0</sort_order>
+								<children>
+									<items translate="title" module="faq">
+										<title>Manage FAQ'settings</title>
+										<sort_order>0</sort_order>
+										<action>faq/adminhtml_faq</action>
+									</items>
+									<categoryitems translate="title" module="faq">
+										<title>Manage Categories</title>
+										<sort_order>1</sort_order>
+										<action>faq/adminhtml_category</action>
+										
+									</categoryitems>
+									<settings translate="title" module="faq">
+										<title>Settings</title>
+										<sort_order>2</sort_order>
+										<action>adminhtml/system_config/edit/section/faq/</action>
+									</settings>
+								</children>
+							</faq>
+							</children>
+						</dckap>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<faq>
+					<file>faq.xml</file>
+				</faq>
+			</updates>
+		</layout>
+	</adminhtml>
+	<global>
+		<models>
+			<faq>
+				<class>DCKAP_Faq_Model</class>
+				<resourceModel>faq_mysql4</resourceModel>
+			</faq>
+			<faq_mysql4>
+				<class>DCKAP_Faq_Model_Mysql4</class>
+				<entities>
+					<faq>
+						<table>dckap_faq</table>
+					</faq>
+					<category>
+						<table>dckap_category</table>
+					</category>
+				</entities>
+			</faq_mysql4>
+		</models>
+		<resources>
+			<dckap_faq_setup>
+				<setup>
+					<module>DCKAP_Faq</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</dckap_faq_setup>
+			<faq_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</faq_write>
+			<faq_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</faq_read>
+		</resources>
+		<template>
+			<email>
+				<faq_notifications_emailtemplate>
+					<label>Customer/Guest Notification</label>
+					<file>faq_notification.html</file>
+					<type>html</type>
+				</faq_notifications_emailtemplate>
+			</email>
+		</template>
+		<blocks>
+			<faq>
+				<class>DCKAP_Faq_Block</class>
+			</faq>
+		</blocks>
+		<helpers>
+			<faq>
+				<class>DCKAP_Faq_Helper</class>
+			</faq>
+		</helpers>
+	</global>
+	 <default>
+        <faq>
+          <faq_group>
+            <faq_select>1</faq_select>
+            <category_enabled>0</category_enabled>
+            <viewsorter>0</viewsorter>
+            <faq_text>5</faq_text>
+          </faq_group>
+          <faq_recaptcha>
+            <faq_user>0</faq_user>
+            <faq_customer>0</faq_customer>
+            <faq_text>Is the question that you are looking for, not here? No need to worry. Ask your questions here.</faq_text>
+            <faq_btnlabel>Ask new Question</faq_btnlabel>
+          </faq_recaptcha>
+          <notifications>
+          	<emailtemplate>faq_notifications_emailtemplate</emailtemplate>
+          	<mail_subject>Your question is answered</mail_subject>
+          </notifications>
+        </faq>
+  </default>
+</config>

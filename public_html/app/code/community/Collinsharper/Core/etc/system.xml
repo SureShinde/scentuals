@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <chcore translate="label" module="chcore">
+            <label>Collins Harper - Modules</label>
+            <sort_order>100</sort_order>
+        </chcore>
+    </tabs>
+	<sections>
+		<chcore translate="label" module="chcore">
+			<label>Info</label>
+			<tab>chcore</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>99999</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<feed>
+					<label>Notifications</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>60</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label">
+							<label>Enable </label>
+							<comment>Will check for Collins Harper Module updates</comment>
+							<frontend_type>select</frontend_type>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+						</enabled>
+					</fields>
+				</feed>
+				<merged_cssjs>
+					<label>CDN Bypass for Merged CSS / JS</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>300</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<tail translate="label tooltip">
+							<label>Merged tail</label>
+							<tooltip>Will be appended to the URI for the merged files to force a CDN bypass - leave blank to disable feature</tooltip>
+							<frontend_type>text</frontend_type>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</tail>
+					</fields>	
+				</merged_cssjs>
+				<support>
+					<label>Support Assistance</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>400</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enablelog translate="label">
+							<label></label>
+							<button_label>Enable Magento logging</button_label>
+							<frontend_type>button</frontend_type>
+							<tooltip>Will enable magento logging at all store levels</tooltip>
+							<frontend_model>chcore/adminhtml_system_config_form_buttons_disablelog</frontend_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</enablelog>
+						<disablelog translate="label">
+							<label></label>
+							<button_label>Disable Magento logging</button_label>
+							<frontend_type>button</frontend_type>
+							<tooltip>Will disable magento logging at all store levels</tooltip>
+							<frontend_model>chcore/adminhtml_system_config_form_buttons_enablelog</frontend_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</disablelog>
+						<clear_log translate="label">
+							<label></label>
+							<button_label>Clear all Magento logs</button_label>
+							<frontend_type>button</frontend_type>
+							<tooltip>Will clear any logs in the var/log directory</tooltip>
+							<frontend_model>chcore/adminhtml_system_config_form_buttons_clearlog</frontend_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</clear_log>
+						<email_log translate="button_label">
+							<label></label>
+							<button_label>Download logs</button_label>
+							<frontend_type>button</frontend_type>
+							<tooltip>Will zip and download the current system information to send to Collins Harper support.</tooltip>
+							<frontend_model>chcore/adminhtml_system_config_form_buttons_emaillog</frontend_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</email_log>
+					</fields>
+				</support>
+			</groups>
+		</chcore>
+	</sections>
+</config>

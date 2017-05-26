@@ -1,0 +1,120 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!doctype html>
+<html lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<?php
+$body_style = Mage::helper('sebian')->getCfgLayout('layout/style') ? Mage::helper('sebian')->getCfgLayout('layout/style') : 'stretched';
+$sidebar_style = Mage::helper('sebian')->getCfg('general/sidebar_mobile') ? Mage::helper('sebian')->getCfg('general/sidebar_mobile') :  'hide';
+$grid_style = Mage::helper('sebian')->getCfg('category_grid/style') ? Mage::helper('sebian')->getCfg('category_grid/style') : 'style_1';
+$this->addBodyClass('sidebar-mobile-'.$sidebar_style);
+$this->addBodyClass('body-'.$body_style);
+if($grid_style == 'style_2'){
+    $this->addBodyClass('grid-style-2');
+}
+?>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+        <?php if($global_top = $this->getChildHtml('arw.layout.global.top')):?>
+            <div class="arw_layout_global_top"><?php echo $global_top;?></div>
+        <?php endif;?>
+        <div class="main-container col3-layout">
+            <?php $breadcrumbs = $this->getChildHtml('breadcrumbs');?>
+            <div class="arw-page-title<?php echo $breadcrumbs ? ' has-page-title' : ''?>">
+                <?php if($breadcrumbs) :?>
+                    <div class="arw_breadcrumbs"><div class="container"><?php echo $breadcrumbs;?></div></div>
+                <?php endif;?>
+            </div>
+            <div class="main">
+                <?php if($global_messages = $this->getChildHtml('global_messages')) :?>
+                    <div class="arw_global_messages"><div class="container"><?php echo $global_messages;?></div></div>
+                <?php endif;?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-main col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-push-3 col-lg-push-3">
+                            <?php if($global_content_top = $this->getChildHtml('arw.layout.content.top')){
+                                echo $global_content_top;
+                            }?>
+                            <?php echo $this->getChildHtml('content') ?>
+                            <?php if($global_content_bottom = $this->getChildHtml('arw.layout.content.bottom')){
+                                echo $global_content_bottom;
+                            }?>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-md-pull-6 col-lg-pull-6">
+                            <div data-toggle="tooltip" data-placement="right" title="<?php echo $this->__('Show Sidebar')?>" data-class="active-sidebar-left" class="arw-toggle-sidebar arw-toggle-sidebar-left"><i class="fa fa-angle-double-right"></i></div>
+                            <div class="col-left sidebar">
+                                <div class="sidebar-content">
+                                    <?php if($global_col_left_top = $this->getChildHtml('arw.layout.left.top')){
+                                        echo $global_col_left_top;
+                                    }?>
+                                    <?php echo $this->getChildHtml('left') ?>
+                                    <?php if($global_col_left_bottom = $this->getChildHtml('arw.layout.left.bottom')){
+                                        echo $global_col_left_bottom;
+                                    }?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                            <div data-toggle="tooltip" data-placement="left" title="<?php echo $this->__('Show Sidebar')?>" data-class="active-sidebar-right" class="arw-toggle-sidebar arw-toggle-sidebar-right"><i class="fa fa-angle-double-left"></i></div>
+                            <div class="col-right sidebar">
+                                <div class="sidebar-content">
+                                    <?php if($global_col_right_top = $this->getChildHtml('arw.layout.right.top')){
+                                        echo $global_col_right_top;
+                                    }?>
+                                    <?php echo $this->getChildHtml('right') ?>
+                                    <?php if($global_col_right_bottom = $this->getChildHtml('arw.layout.right.bottom')){
+                                        echo $global_col_right_bottom;
+                                    }?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php if($global_bottom = $this->getChildHtml('arw.layout.global.bottom')):?>
+            <div class="arw_layout_global_bottom"><?php echo $global_bottom;?></div>
+        <?php endif;?>
+        <?php echo $this->getChildHtml('footer') ?>
+        <?php echo $this->getChildHtml('global_cookie_notice') ?>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

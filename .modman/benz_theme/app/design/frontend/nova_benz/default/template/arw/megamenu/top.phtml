@@ -1,0 +1,69 @@
+<?php
+$megaeffect     = Mage::getStoreConfig('megamenu/menu/effect');
+$_menu          = $this->renderCategoriesMenuHtml(FALSE, 0, 'level-top', 'sub-wrapper' );
+$routeName      = Mage::app()->getRequest()->getRouteName();
+$identifier     = Mage::getSingleton('cms/page')->getIdentifier();
+ 
+?> 
+<?php if($_menu): ?>
+<div class="nav-container hidden-xs">
+    <ul id="arw_nav" class="megamenu">
+        <?php if(Mage::getStoreConfig('megamenu/menu/home')): ?>
+        <li class="level0 home level-top <?php if($routeName == 'cms' && $identifier == (Mage::app()->getStore()->getConfig('web/default/cms_home_page'))) {echo " active";}?> m-dropdown ">
+            <a href="<?php echo $this->getBaseUrl(); ?>" class="level-top"><span><?php echo $this->__('Home'); ?></span></a>
+        </li><!--
+        <?php else:?>
+            <!--
+        <?php endif;?>
+        <?php
+        echo '-->'.$_menu.'<!--';
+        if(Mage::getStoreConfig('megamenu/menu/enable_custom')){
+            $getidentifier          = Mage::getStoreConfig('megamenu/menu/static_identifier');
+            $arrayidentifier        = explode(";", $getidentifier);
+            foreach($arrayidentifier as $mcustom){
+                $static_block       = explode(':', $mcustom);
+                $custom_menu        = Mage::getModel('cms/block')->load($static_block[0]);
+                $class = '';
+                if(isset($static_block[1])) $class = $static_block[1];
+                if($custom_menu->getIsActive()) {
+                    echo '
+                    --><li class="level0 level-top parent custom-block '.$class.'">
+                        <a href="#" class="level-top">
+                            <span>'.$custom_menu->getTitle().'</span>
+                        </a>
+                        <div class="level0 sub-wrapper">'.$this->getLayout()->createBlock('cms/block')->setBlockId($static_block[0])->toHtml().'</div>
+                    </li><!--';
+                }
+            }
+            $urlkey                 = Mage::getStoreConfig('megamenu/menu/url_key');
+            $arrayUrlKey            = explode(";", $urlkey);
+            foreach($arrayUrlKey as $url){
+                $condition          = explode(':', $url);
+                $page               = Mage::getModel('cms/page')->load($condition[0], 'identifier');
+                $class = '';
+                if(isset($condition[1])) $class = 'menu-item-'.$condition[1];
+                if($page->getIsActive()) {
+            ?>
+                --><li class="level0 level-top custom-cms-page <?php if($routeName == 'cms' && $identifier == $page->getIdentifier()) {echo " active";}?> <?php echo $class;?>">
+                    <a href="<?php echo Mage::helper('cms/page')->getPageUrl($condition[0]);?>" class="level-top">
+                        <span><?php echo $page->getTitle();?></span>
+                    </a>
+                </li><!--
+            <?php
+                }
+            }
+        }
+        ?>
+    --></ul>
+</div>
+<script type="text/javascript">
+    jQuery(function(){
+        jQuery(".megamenu").megamenu({
+            //'animation':'<?php echo $megaeffect;?>',
+            'animation' : 'fade',
+            'mm_timeout': 0
+        });
+    });
+</script>
+<?php endif ?>
+<!-- navigation EOF -->

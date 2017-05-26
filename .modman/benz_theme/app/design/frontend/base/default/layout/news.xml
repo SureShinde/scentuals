@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+		<reference name="top.links">
+            <action method="addLink" translate="label" module="news"><name>News And Innovation</name><path>news/listado</path><label>News And Innovation</label><prepare>true</prepare></action>
+       </reference>
+		<reference name="left">
+		  <block type="news/listado" name="news.left" template="news/left.phtml"/>
+		</reference>
+    </default>
+	<news_listado_index>
+		 <reference name="head">
+			<action method="setTitle" translate="title" module="news"><title>News and Innovations</title></action>
+		</reference>
+		<reference name="content">
+		  <block type="news/listado" name="news.listado" template="news/listado.phtml"/>
+		</reference>
+	</news_listado_index>
+	<news_detalle_index>
+		<reference name="head">
+			<action method="setTitle" translate="title" module="news"><title>News and Innovations</title></action>
+		</reference>
+		<reference name="content">
+		  <block type="news/detalle" name="news.detalle" template="news/detalle.phtml"/>
+		</reference>
+	</news_detalle_index>
+</layout> 

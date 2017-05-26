@@ -1,0 +1,263 @@
+
+<?php
+$d_row=Mage::helper('producttab')->getCf('row');
+$slide=$this->getTabslider();
+$_productCollection = $this->_getProductCollection();
+$_helper            = $this->helper('catalog/output');
+$_collectionSize    = $_productCollection->count();
+$identifier			=$this->getIdentifier();
+$narwe=strtolower($slide['arw_name']);
+$p_name=str_replace(' ','-',$name);
+$class              ='products-slider-'.$p_name;
+if($slide['arw_use_default']==0){
+	$_scroll=$slide['arw_enable_scroll'];
+	switch($_scroll){
+		case ARW_ProductTab_Model_Content::SHOW_SLIDE:
+			$_rowCount=$slide['arw_row'];
+			$loop=$slide['arw_animation_loop'];
+			$autoplay=$slide['arw_auto_play'];
+			$autoplayTimeout=$slide['arw_speed'];
+			$dots=$slide['arw_enable_dots'];
+			$navigation=$slide['arw_enable_navigation'];
+			$lazy=$slide['arw_lazy_loading'];
+			$responsive=$slide['arw_responsive'];
+			$_columnCount=$slide['arw_limit'];
+			$class_products_list='products-slide';
+            $margin=$slide['arw_margin'];
+			break;
+		case ARW_ProductTab_Model_Content::SHOW_GRID:
+			$_column=$slide['arw_column'];
+			$_columnCount=$_column;
+			$class_products_list='products-grid';
+			break;
+		case ARW_ProductTab_Model_Content::SHOW_LIST:
+			$_column=1;
+			$_columnCount=1;
+			break;
+		default:
+	}
+}elseif($slide['arw_use_default']==1){
+	$_scroll=Mage::helper('producttab')->getCf('enable_scroll');
+	switch($_scroll){
+		case ARW_ProductTab_Model_Content::SHOW_SLIDE:
+			$_rowCount=Mage::helper('producttab')->getCf('row');
+			$loop=Mage::helper('producttab')->getCf('loop');
+			$autoplay=Mage::helper('producttab')->getCf('autoplay');
+			$autoplayTimeout=Mage::helper('producttab')->getCf('speed');
+			$dots=Mage::helper('producttab')->getCf('dots');
+			$navigation=Mage::helper('producttab')->getCf('navigation');
+			$lazy=Mage::helper('producttab')->getCf('lazy');
+			$responsive=Mage::helper('producttab')->getCf('responsive');
+			$_columnCount= Mage::helper('producttab')->getCf('limit');
+			$class_products_list='products-slide';
+            $margin=Mage::helper('producttab')->getCf('margin');;
+			break;
+		case ARW_ProductTab_Model_Content::SHOW_GRID:
+			$_column=Mage::helper('producttab')->getCf('column');
+			$_columnCount=$_column;
+			$class_products_list='products-grid';
+			break;
+		case ARW_ProductTab_Model_Content::SHOW_LIST:
+			$_column=1;
+			$_columnCount=1;
+			break;
+		default:
+	}
+}else{
+}	
+if($responsive)
+	{
+		$respon=explode(',',$responsive);
+	}
+$repon_grid='arw-col-'.$_column;
+?>	
+<?php if(!$_productCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else :?>
+    <?php if ($_scroll == ARW_ProductTab_Model_Content::SHOW_SLIDE):?>
+        <script type="text/javascript">
+           jQuery(document).ready(function($){
+			var owl = $('.<?php echo $class ?>');
+               owl.owlCarousel({
+                   lazyLoad:<?php echo $lazy ? 'true' : 'false'?>,
+                   nav:<?php echo $navigation ? 'true' : 'false'?>,
+                   margin:<?php echo $margin ? $margin : '0'?>,
+                   <?php if($autoplay): ?>
+                   autoplay:true,
+                   autoplayTimeout:<?php echo $autoplayTimeout?>,
+                   autoplayHoverPause: true,
+                   <?php endif; ?>
+                   loop:<?php echo $loop ? 'true' : 'false'?>,
+                   dots:<?php echo $dots ? 'true' : 'false'?>,
+                   responsive:{<?php foreach ($respon as $res){
+                        $resp=explode(':',$res);
+                        echo $resp[0].":{items:$resp[1]},";
+                        }?>0:{items:1}
+                   }
+               });
+		});
+</script>
+    <div class="<?php echo $class_products_list ?> clearfix">
+        <div class="product-list-title">		   
+			<?php if ($title):?>
+			   <h2 class="subtitle"><?php echo $title?></h2>
+			<?php endif ?>
+		 </div>
+        <?php $i=0; foreach ($_productCollection as $_product): ?>
+            <?php if ($_rowCount>1 && $i==0):?>
+                <div class="<?php echo $class?>">
+            <?php endif ?>
+					<?php if ($_rowCount>1 && $i%$_rowCount==0):?>
+					<div class="item"> 
+					<?php endif ?>
+						<?php if ($i%$_columnCount==0 || ($_rowCount>1 && $i%$_rowCount==0)): ?>
+							<ul class="arw_tab_items <?php echo $name_type_product;?> <?php echo $_rowCount==1 ? $class : ''?>">
+						<?php endif ?>						
+								<li class="item <?php if($i%$_columnCount==0 || ($_rowCount>1 && $i%$_column==0)): ?> first<?php elseif(($i+1)%$_columnCount==0 || ($_scroll == ARW_ProductTab_Model_Content::SHOW_SLIDE && $_rowCount>1 && ($i+1)%$_column==0)): ?> last<?php endif; ?> <?php //if($_scroll==0){echo $repon_grid;}?>">
+									<?php $i++ ?>
+											<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">							
+												<?php if($lazy && $_scroll == ARW_ProductTab_Model_Content::SHOW_SLIDE): ?>
+													<img class="owl-lazy" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(170 ,200); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/>
+												<?php else:?>
+													<img class="" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(170 ,200); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+												<?php endif;?>
+											</a>
+									<div class="product-info">
+										<h2 class="product-name">
+											<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
+												<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+											</a>
+										</h2>
+										<?php echo $this->getPriceHtml($_product, true) ?>
+										<?php if ($_product->getShortDescription()):?>
+											<div class="short-description">
+												<h4><?php echo $this->__('Description:') ?></h4>
+												<?php 
+												if($this->getConfig('desc_striptags')){
+													$short_desc = strip_tags($_product->getShortDescription(), '<p>');
+												}else{
+													$short_desc = $_product->getShortDescription();
+												}?>
+												<?php echo $this->helper('core/string')->truncate($short_desc,50) ?>
+											</div>
+											<?php endif;?>
+									
+										<div class="actions">
+											<?php if($_product->isSaleable()): ?>
+												<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+											<?php else: ?>
+												<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+											<?php endif; ?>
+											<ul class="add-to-links">
+												<?php if ($this->helper('wishlist')->isAllow()) : ?>
+													<li><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+												<?php endif; ?>
+												<?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?>
+													<li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+												<?php endif; ?>
+											</ul>
+										</div>
+									</div>
+								</li>
+						<?php if ($i%$_columnCount==0 || $i==$_collectionSize || ($_rowCount>1 && $i%$_rowCount==0)): ?>
+							</ul>
+						<?php endif ?>
+						<?php if ($_rowCount>1 && ($i%$_rowCount==0 || $i==$_collectionSize)):?>
+						</div>
+						<?php endif ?>
+            <?php if ($_rowCount>1 && $i==$_collectionSize):?>
+                </div>
+            <?php endif ?>
+        <?php endforeach ?>
+    </div>
+<?php elseif($_scroll == ARW_ProductTab_Model_Content::SHOW_GRID):?>
+	<ul class="arw_tab_items arw-col <?php echo $class_products_list?> <?php echo $repon_grid?>">
+		<?php $i=0;foreach ($_productCollection as $_product): ?>
+			<li class="item <?php echo $i==0?' first':(($i==$_productCollection->count()-1)?'last':'')?>">
+				<?php $i++ ?>
+				<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">							
+					<?php if($lazy && $_scroll == ARW_ProductTab_Model_Content::SHOW_SLIDE): ?>
+						<img class="owl-lazy" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(170 ,200); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/>
+					<?php else:?>
+						<img class="" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(170 ,200); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+					<?php endif;?>
+				</a>
+				<div class="product-info">
+					<h2 class="product-name">
+						<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
+							<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+						</a>
+					</h2>
+					<?php echo $this->getPriceHtml($_product, true) ?>
+					<?php if ($_product->getShortDescription()):?>
+						<div class="short-description">
+							<h4><?php echo $this->__('Description:') ?></h4>
+							<?php 
+							if($this->getConfig('desc_striptags')){
+								$short_desc = strip_tags($_product->getShortDescription(), '<p>');
+							}else{
+								$short_desc = $_product->getShortDescription();
+							}?>
+							<?php echo $this->helper('core/string')->truncate($short_desc,50) ?>
+						</div>
+					<?php endif;?>
+				
+				<div class="actions">
+                    <?php if($_product->isSaleable()): ?>
+                        <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                    <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; ?>
+                        <?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+				</div>
+			</li>
+		<?php endforeach ?>
+	</ul>
+	<?php elseif($_scroll == ARW_ProductTab_Model_Content::SHOW_LIST):?>
+		 <?php $_iterator = 0; ?>
+    <ol class="products-list" id="products-list">
+    <?php foreach ($_productCollection as $_product): ?>
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <?php // Product Image ?>
+            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+            <?php // Product description ?>
+            <div class="product-shop">
+                <div class="f-fix">
+                    <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
+                    <?php if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                    <?php endif; ?>
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <?php if($_product->isSaleable()): ?>
+                        <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                    <div class="desc std">
+                        <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+                    </div>
+                    <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ol>
+	<?php endif;?>
+<?php endif; ?>

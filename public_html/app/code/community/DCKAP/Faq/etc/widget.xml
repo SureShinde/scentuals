@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<widgets>
+  <dc_faq_widget type="faq/widget" translate="faq" module="faq">
+     <name>FAQ - Ask Questions</name>
+     <description>Displays Frequently Asked Questions of the website / store. </description>
+  </dc_faq_widget>
+</widgets>

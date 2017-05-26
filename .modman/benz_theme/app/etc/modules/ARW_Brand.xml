@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/******************************************************
+ * Package   : Brand
+ * Author    : ArexWorks
+ * Copyright : (c) 2015
+*******************************************************/
+-->
+<config>
+    <modules>
+        <ARW_Brand>
+            <active>true</active>
+            <codePool>local</codePool>
+        </ARW_Brand>
+    </modules>
+</config> 

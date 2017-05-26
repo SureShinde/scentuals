@@ -1,0 +1,365 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<arexworks translate="label" module="megamenu">
+			<sort_order>108</sort_order>
+		</arexworks>
+    </tabs>
+    <sections>
+        <megamenu translate="label" module="megamenu">
+            <label>Mega Menu</label>
+            <tab>arexworks</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<general>
+					<label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>					
+						<use_jquery translate="label">
+								<label>Using Shipped Jquery</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_enabledisable</source_model>
+								<sort_order>60</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+						</use_jquery>
+						<!-- <enable_ver_megamenu translate="label">
+								<label>Show Vertical Megamenu</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_enabledisable</source_model>
+								<sort_order>70</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+						</enable_ver_megamenu> -->
+						<depth translate="label">
+							<label>Visible menu depth</label>
+							<comment></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>230</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							 <comment><![CDATA[e.g. 1, 2, 3, 4. For example, if you set this value to <b>2</b>, only second level categories will be displayed]]></comment>
+						</depth>
+					</fields>
+				</general>
+            	 <menu translate="label">
+                    <label>Top Menu</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>70</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<enable_top_megamenu translate="label">
+								<label>Show Top Menu</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_enabledisable</source_model>
+								<sort_order>1</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+						</enable_top_megamenu>
+                        <effect translate="label">
+                            <label>Menu Animation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>megamenu/system_config_source_mainmenu_menuanimation</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </effect>
+                        <home translate="label">
+                            <label>Home Link in Top Menu</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </home>
+                        <show_if_no_children translate="label">
+                            <label>Show Category Blocks if No Sub-categories</label>
+                            <comment>If set to "Yes", custom Category Blocks will be displayed in the drop-down box even if the category doesn't have any sub-categories.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_if_no_children>
+                        <heading_menucustom translate="label">
+                            <label>Custom Top Menu</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_menucustom>
+                        <enable_custom translate="label">
+                            <label>Enable Custom Menu</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_custom>
+                        <static_identifier translate="label comment">
+                            <label>Static block identifier: </label>
+                            <comment><![CDATA[Which static block you want they show on menu (Seperate by Semicolon And you want to put it right added up :right after Identifier). <br/>Example: custom_menu:right]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </static_identifier>
+                        <url_key translate="label comment">
+                            <label>CMS Page Url Key: </label>
+                            <comment><![CDATA[Which cms page you want they show on menu (Seperate by Semicolon And you want to put it right added up :right after url key). <br/>Example: about-magento-demo-store:right ]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url_key>
+                    </fields>
+                </menu>
+				<sidemenu translate="label">
+					<label>Vertical Menu</label>
+					<comment></comment>
+					<frontend_type>text</frontend_type>
+					<sort_order>90</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<block_name translate="label">
+							<label>Category Title</label>
+							<comment></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</block_name>
+						<heading_enable translate="label">
+							<label>Position Vertical Menu</label>
+							<frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</heading_enable>						
+						<enable_category_left translate="label">
+							<label>Category View (Left)</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_category_left>
+						<enable_category_right translate="label">
+							<label>Category View (Right)</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_category_right>
+						<enable_home_left translate="label">
+							<label>Home Page (Left)</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_home_left>
+						<enable_home_right translate="label">
+							<label>Home Page (Right)</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_home_right>
+						<enable_cms_left translate="label">
+							<label>CMS Pages (Left)</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_cms_left>
+						<enable_cms_right translate="label">
+							<label>CMS Pages (Right)</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_cms_right>
+						<enable_product_left translate="label">
+							<label>Product Page (Left)</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_product_left>
+						<enable_product_right translate="label">
+							<label>Product Page (Right)</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_product_right>
+						
+						<!-- <parent translate="label">
+							<label>Parent Category</label>
+							<comment>The menu will only contain children (subcategories) of the selected parent category.</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>megamenu/system_config_source_verticalmenu_parent</source_model>
+							<sort_order>220</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</parent> -->
+						<!-- <depth translate="label">
+							<label>Visible menu depth</label>
+							<comment></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>230</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							 <comment><![CDATA[e.g. 1, 2, 3, 4. For example, if you set this value to <b>2</b>, only second level categories will be displayed]]></comment>
+						</depth> -->
+						<!-- <fallback translate="label">
+							<label>Fallback To Root Category</label>
+							<comment></comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>240</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fallback>
+						<block_name_fallback translate="label">
+							<label>Fallback Block Title</label>
+							<comment>This block title will be used if current category doesn't exist.</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>250</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<fallback>1</fallback>
+							</depends>
+						</block_name_fallback> -->
+
+                        <heading_additional_settings translate="label">
+                            <label>Additional Settings</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_additional_settings>
+
+						<hide_on_mobile translate="label">
+							<label>Hide Sidebar Menu on Mobile Devices</label>
+							<comment></comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>310</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</hide_on_mobile>
+						<hide_laynav_categories translate="label">
+							<label>Hide Magento's Category Filter</label>
+							<comment></comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>320</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</hide_laynav_categories>
+					</fields>
+				</sidemenu>
+                <category_label translate="label">
+                    <label>Category label</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>        
+                        <heading_label_category translate="label">
+                            <label>Category Labels</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_label_category>
+                        <label>
+                      			<label>Label</label>
+	                   			<frontend_type>text</frontend_type>
+			                    <sort_order>130</sort_order>
+			                    <show_in_default>1</show_in_default>
+			                    <show_in_website>1</show_in_website>
+			                    <show_in_store>1</show_in_store>
+			                  	<comment>Define the text of the category label. Labels can be assigned to every category in Catalog > Manage Categories.
+			                  	You can fill out the label separated by ','
+			                  	</comment>
+			              </label>
+                       <!--  <label1 translate="label">
+                            <label>Label 1</label>
+                            <comment>
+                                <![CDATA[Define the text of the category label 1. Labels can be assigned to every category in Catalog > Manage Categories.]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </label1>
+                        <label2 translate="label">
+                            <label>Label 2</label>
+                            <comment>
+                                <![CDATA[Define the text of the category label 2. Labels can be assigned to every category in Catalog > Manage Categories.]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </label2> -->
+                    </fields>
+                </category_label>               
+            </groups>
+        </megamenu>	
+    </sections>
+</config>

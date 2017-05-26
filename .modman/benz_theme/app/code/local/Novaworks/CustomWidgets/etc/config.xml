@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Novaworks_CustomWidgets>
+            <version>0.1.0</version>
+        </Novaworks_CustomWidgets>
+    </modules>
+    <global>
+        <models>
+            <customwidgets>
+                <class>Novaworks_CustomWidgets_Model</class>
+            </customwidgets>
+        </models>
+        <blocks>
+            <customwidgets>
+                <class>Novaworks_CustomWidgets_Block</class>
+            </customwidgets>
+        </blocks>
+        <helpers>
+            <customwidgets>
+                <class>Novaworks_CustomWidgets_Helper</class>
+            </customwidgets>
+        </helpers>
+    </global>
+</config>

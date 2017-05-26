@@ -1,0 +1,182 @@
+.nav {
+	> li {
+		> a {
+			&:hover,
+			&:focus {
+				background: none;
+				color: $link_hover_color;
+			}
+		}
+
+		&.disabled > a {
+			&:hover,
+			&:focus {
+				color: $link_color;
+			}
+		}
+	}
+
+	// Open dropdowns
+	.open > a ,.active > a{
+		&,
+		&:hover,
+		&:focus {
+			background: none;
+			color: $link_hover_color;
+		}
+	}
+}
+
+.nav-tabs {
+	border-bottom: 1px solid $border_color;
+	> li {
+		> a {
+
+		}
+
+		// Active state, and its :hover to override normal :hover
+		&.active > a {
+			&,
+			&:hover,
+			&:focus {
+
+			}
+		}
+	}
+	// pulling this in mainly for less shorthand
+	&.nav-justified {
+		@extend .nav-justified;
+		@extend .nav-tabs-justified;
+	}
+}
+
+.nav-pills {
+	> li {
+		&.active > a {
+			&,
+			&:hover,
+			&:focus {
+				color: $link_hover_color;
+			}
+		}
+	}
+}
+
+.nav-justified {
+	width: 100%;
+
+	> li {
+		float: none;
+		> a {
+			text-align: center;
+			margin-bottom: 5px;
+		}
+	}
+
+	> .dropdown .dropdown-menu {
+		top: auto;
+		left: auto;
+	}
+
+	@media (min-width: 768px) {
+		> li {
+			display: table-cell;
+			width: 1%;
+			> a {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.nav-tabs-justified {
+	border-bottom: 0;
+	> li > a {
+
+	}
+	> .active > a,
+	> .active > a:hover,
+	> .active > a:focus {
+		border: 1px solid $border_color;
+	}
+
+	@media (min-width: 768px) {
+		> li > a {
+			border-bottom: 1px solid $border_color;
+			border-radius: 0 0 0 0;
+		}
+		> .active > a,
+		> .active > a:hover,
+		> .active > a:focus {
+			border-bottom-color: $border_color;
+		}
+	}
+}
+
+.navbar{
+	@include border-radius(0px);
+	border: none;
+	min-height: auto;
+}
+.caret {
+	border-top:   5px solid;
+	border-right: 5px solid transparent;
+	border-left:  5px solid transparent;
+}
+
+.dropdown {
+	position: relative;
+	&.size-full,&.sub-fullwidth{
+		position: static;
+		> .dropdown-menu{
+			width: 100%;
+		}
+	}
+}
+.dropdown-submenu{
+	position: relative;
+	.dropdown-menu{
+		left: 100%;
+		top: 0;
+		margin: 0;
+	}
+}
+.dropdown-menu {
+	background-color: #fff;
+	border: none;
+	padding: 15px 0;
+	@include border-radius(0px);
+	> li > a {
+		color: $link_color;
+		padding: .5em 1em;
+		font-size: 0.833em;
+	}
+}
+.dropdown-menu > li > a {
+	&:hover,
+	&:focus {
+		color: $link_hover_color;
+		background:none;
+	}
+}
+
+.dropdown-menu > .active > a {
+	&,
+	&:hover,
+	&:focus {
+		color: $link_hover_color;
+		background:none;
+	}
+}
+
+
+.dropdown-menu > .disabled > a {
+	&,
+	&:hover,
+	&:focus {
+		color: $text_color;
+	}
+}
+.dropdown-header {
+	color: $text_color;
+}

@@ -1,0 +1,15 @@
+<?php
+/**
+ * @var $this Mage_Core_Block_Template
+ */
+?>
+
+<div class="unsubscribe">
+
+    <div id="container">
+        <section id="page-title">
+            <h2 class='clean'><?php echo $this->__("You've Been Unsubscribed");?></h2>
+            <p class="section-paragraph"><?php echo $this->__("The email address %s has been unsubscribed.", htmlspecialchars($this->getRequest()->getParam('mm_recipient')));?></p>
+        </section>
+    </div>
+</div>

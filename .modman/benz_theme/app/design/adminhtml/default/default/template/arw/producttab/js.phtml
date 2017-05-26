@@ -1,0 +1,148 @@
+<script type="text/javascript">	
+$$('body')[0].insert("<div id='import_producttab_popup'></div><div id='background_producttab_popup'></div>");
+setStylePopup(); 
+function import_producttab_save(){
+	var url="<?php echo  $this->getUrl('*/*/popupTab')?>"
+	new Ajax.Request(url, {
+			method: 'post',
+			postBody : "form_key=" + FORM_KEY+"&param=1",
+			onSuccess: function(transport) {
+				if (transport.responseText.isJSON()) {
+					var response = transport.responseText.evalJSON();
+					if (response.error) {
+						alert(response.error);
+					}
+					else{
+						show_popup_tab(response.popup_import_tab);
+					}
+				}
+			},
+			onFailure: function()
+			{
+				alert("Something gone wrong. Please try one more time.")
+			}    
+	   });
+}
+<!--ducquang-->
+function setStylePopup(){
+	$('import_producttab_popup').setStyle({
+		display: 'none'
+	});
+	$('background_producttab_popup').setStyle({
+		display: 'none'
+	});
+    if ($('arw_information_site_you')) {
+        $('arw_information_site_you').setStyle({
+            display: 'none'
+        });
+    }
+} 
+function arw_import_producttab(){
+	form = $('importTab_form');
+	var validator = new Validation(form);
+    if (validator.validate()){
+		close_popup_tab();
+    }
+	else{
+       return '';                
+    }
+	
+}
+function show_popup_tab(data){
+	var ele=$('import_producttab_popup');
+	ele.replace('<div id=\'import_producttab_popup\'>'+data+'</div>');
+	setStylePopup(); 
+	$('background_producttab_popup').setStyle({display:'block',opacity:'0.5'});
+	Effect.SlideDown($('import_producttab_popup'),{ duration: 1});
+	Event.observe($('background_producttab_popup'), 'click',function() {setStylePopup();} );
+}
+// function get_information_site(){
+	// var url="<?php echo  $this->getUrl('*/*/informationTab')?>"
+	// new Ajax.Request(url, {
+			// method: 'post',
+			// postBody : "form_key=" + FORM_KEY+"&arw_information=1",
+			// onCreate:function(){
+				// close_popup_tab();
+			// },
+			// onSuccess: function(transport) {
+				// if (transport.responseText.isJSON()) {
+					// var response = transport.responseText.evalJSON();
+					// if (response.error) {
+						// alert(response.error);
+					// }
+					// else{
+						// show_information_tab(response.popup_infor_tab);
+					// }
+				// }
+			// },
+			// onFailure: function()
+			// {
+				// alert("Something gone wrong. Please try one more time.")
+			// }    
+	   // });
+// }
+function disable(param)
+{
+	$(param).hide();
+}
+function enable(param)
+{
+	$(param).show();
+}
+function get_values_change()
+{
+	var value = $('select_information_site').getValue();
+	switch(value) {
+    case 'information':
+		disable('arw_information_site_you');
+        break;
+    case 'store':
+		enable('arw_information_site_you');
+		enable('store_section');
+		disable('cat_section');
+		disable('produc_type_section');
+		disable('produc_sort_type_section');
+		disable('current_cat_type_section');
+        break;
+    case 'categories':
+		enable('arw_information_site_you');
+		enable('cat_section');
+		disable('store_section');
+		disable('produc_type_section');
+		disable('produc_sort_type_section');
+		disable('current_cat_type_section');
+        break;
+	case 'product_type':
+		enable('arw_information_site_you');
+		enable('produc_type_section');
+		disable('store_section');
+		disable('cat_section');
+		disable('produc_sort_type_section');
+		disable('current_cat_type_section');
+		break;
+	case 'product_sort':
+		enable('arw_information_site_you');
+		enable('produc_sort_type_section');
+		disable('store_section');
+		disable('cat_section');
+		disable('produc_type_section');
+		disable('current_cat_type_section');
+		break;
+	case "current_cat_type":
+		enable('arw_information_site_you');
+		enable('current_cat_type_section');
+		disable('store_section');
+		disable('cat_section');
+		disable('produc_sort_type_section');
+		disable('produc_type_section');
+		break;
+}
+}
+function get_information_site(){
+	$('arw_information_site_you').toggle(true);
+}
+function close_popup_tab(){
+ 	setStylePopup(); 
+	Effect.SlideUp($('import_producttab_popup'),{ duration: 1});
+}
+</script>

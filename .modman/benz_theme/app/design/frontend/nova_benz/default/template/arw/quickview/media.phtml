@@ -1,0 +1,133 @@
+<?php
+$_product = $this->getProduct();
+$_helper = $this->helper('catalog/output');
+$theme_helper = $this->helper('sebian');
+$galleryImages = $_product->getMediaGalleryImages();
+
+$image_width = $theme_helper->getCfg('product_detail_zoom/image_main_width');
+$image_height = $theme_helper->getCfg('product_detail_zoom/image_main_height');
+
+$zoom_image_width = $image_width * 3;
+$zoom_image_height = $image_height * 3;
+
+$s_width        = $theme_helper->getCfg('product_detail_slideshow/width_thumbnail');
+$s_height       = $theme_helper->getCfg('product_detail_slideshow/height_thumbnail');
+$s_position     = $theme_helper->getCfg('product_detail_slideshow/position');
+
+$config_slider_array = array(
+    'vertical'          => ($s_position == 'left' || $s_position == 'right') ? true : false,
+    'infinite'          => $theme_helper->getCfg('product_detail_slideshow/infinite') ? true : false,
+    'speed'             => intval($theme_helper->getCfg('product_detail_slideshow/speed')),
+    'slidesToShow'      => intval($theme_helper->getCfg('product_detail_slideshow/slides_to_show')),
+    'slidesToScroll'    => intval($theme_helper->getCfg('product_detail_slideshow/slides_to_scroll'))
+);
+if($theme_helper->getCfg('product_detail_slideshow/auto_play')){
+    $config_slider_array['autoplay'] = true;
+    $config_slider_array['autoplaySpeed'] = intval($theme_helper->getCfg('product_detail_slideshow/autoplay_speed'));
+}else{
+    $config_slider_array['autoplay'] = 500;
+}
+if($responsive=$theme_helper->getCfg('product_detail_slideshow/responsive')){
+    $res_array = explode(';',$responsive);
+    $responsive_tmp = array();
+    if(count($res_array) > 0){
+        foreach($res_array as $res){
+            $res_tmp = explode(':',$res);
+            $arr_tmp = array();
+            $arr_tmp['breakpoint'] = intval($res_tmp[0]);
+            $res_tmp2 = str_replace(array('[',']'),'',$res_tmp[1]);
+            $arr_tmp2 = explode(',',$res_tmp2);
+            $arr_tmp['settings'] = array(
+                'slidesToShow' => intval($arr_tmp2[0]),
+                'slidesToScroll' => intval($arr_tmp2[1]),
+                'infinite'=> $theme_helper->getCfg('product_detail_slideshow/infinite') ? true : false
+            );
+            $responsive_tmp[] = $arr_tmp;
+        }
+    }
+    if(count($responsive_tmp) > 0){
+        $config_slider_array['responsive'] = $responsive_tmp;
+    }
+    $btn_slider_prev = (in_array($s_position,array('top','bottom'))) ? '<span><i class="fa fa-angle-left"></i></span>' : '<span><i class="fa fa-angle-up"></i></span>';
+    $btn_slider_next = (in_array($s_position,array('top','bottom'))) ? '<span><i class="fa fa-angle-right"></i></span>' : '<span><i class="fa fa-angle-down"></i></span>';
+    $btn_slider_prev = '<button type="button" class="slick-prev">'.$btn_slider_prev.'</button>';
+    $btn_slider_next = '<button type="button" class="slick-next">'.$btn_slider_next.'</button>';
+}
+?>
+<div class="product-img-box-<?php echo $s_position;?><?php if($theme_helper->getCfg('quick_view_product/show_more_view') == '0' || count($galleryImages) == 0) echo ' full-width'?>">
+    <?php if($s_position != 'top'):?>
+        <p class="product-image arw-product-image">
+            <a href='<?php echo $this->helper('catalog/image')->init($_product, 'small_image');?>' id='arw-zoom'>
+                <?php
+                $_img = '<img id="image" src="'.$this->helper('catalog/image')->init($_product, 'small_image')->resize($image_width,$image_height).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+                echo $_helper->productAttribute($_product, $_img, 'image');
+                ?>
+            </a>
+        </p>
+    <?php endif;?>
+    <?php if ($theme_helper->getCfg('quick_view_product/show_more_view') && count($galleryImages) > 0): ?>
+        <div class="more-views">
+            <div class="arw-slick-slider">
+                <?php if ($_product->getImage() == 'no_selection'): ?>
+                    <div class="thumbnail-item">
+                        <a href="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($image_width,$image_height);?>"title="<?php echo $this->htmlEscape($this->getImageLabel()) ?>">
+                            <?php $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'small_image')->resize($s_width, $s_height).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                            echo $_helper->productAttribute($_product, $_img, 'small_image'); ?>
+                        </a>
+                    </div>
+                <?php endif;?>
+                <?php foreach ($galleryImages as $_image): ?>
+                    <?php if ($this->isGalleryImageVisible($_image)): ?>
+                    <div class="thumbnail-item">
+                        <a href="<?php echo $this->helper('catalog/image')->init($_product, 'small_image', $_image->getFile())->resize($image_width,$image_height); ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>">
+                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image', $_image->getFile())->resize($s_width, $s_height); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+                        </a>
+                    </div>
+                    <?php endif;?>
+                <?php endforeach; ?>
+            </div>
+            <script type="text/javascript">
+                jQuery(document).ready(function($){
+                    if(typeof $.fn.slick !== 'undefined'){
+                        var _opts = $.parseJSON('<?php echo json_encode($config_slider_array);?>'),
+                            extra = {
+                                prevArrow : '<?php echo $btn_slider_prev?>',
+                                nextArrow : '<?php echo $btn_slider_next?>'
+                            };
+                        var opts = $.extend(_opts, extra);
+                        $('.arw-slick-slider').slick(opts);
+                        $('#arw-zoom').on('click',function(e){
+                            e.preventDefault();
+                        })
+                        $('.thumbnail-item a').on('click',function(e){
+                            e.preventDefault();
+                            $('img#image').attr('src',$(this).attr('href'));
+                        })
+                    }
+                })
+            </script>
+        </div>
+    <?php endif; ?>
+    <?php if($s_position == 'top'):?>
+        <p class="product-image arw-product-image">
+            <a href='<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($image_width,$image_height)?>' id='arw-zoom'>
+                <?php
+                $_img = '<img id="image" src="'.$this->helper('catalog/image')->init($_product, 'small_image')->resize($image_width,$image_height).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+                echo $_helper->productAttribute($_product, $_img, 'small_image');
+                ?>
+            </a>
+        </p>
+    <?php endif;?>
+</div>
+<?php
+$_productCollection = Mage::registry('product');
+$_productCollection = array($_productCollection);
+?>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        <?php foreach ($theme_helper->getProductImageFallbacks($_productCollection,true,array('image','detail_image','detail_image3x')) as $imageFallback): ?>
+        ConfigurableMediaImages.setImageFallback(<?php echo $imageFallback['product']->getId(); ?>, jQuery.parseJSON('<?php echo $imageFallback['image_fallback']; ?>'));
+        <?php endforeach; ?>
+        jQuery(document).trigger('configurable-media-images-init', ConfigurableMediaImages);
+    })
+</script>

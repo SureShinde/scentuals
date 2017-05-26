@@ -1,0 +1,402 @@
+<?php
+$_product_tab_helper= Mage::helper('producttab');
+$d_row              = $_product_tab_helper->getCf('row');
+$slide              = $this->getFirst();
+$_productCollection = $this->getCollection();
+$_helper            = $this->helper('catalog/output');
+$_collectionSize    = $_productCollection->count();
+$_column            = 1;
+$show_countdown     = $this->getEnableCountDown();
+$_rowCount          = 1;
+
+if($slide['arw_use_default']==0){
+    $_scroll    =   $slide['arw_enable_scroll'];
+    switch($_scroll){
+        case ARW_ProductTab_Model_Content::SHOW_SLIDE:
+            $_rowCount          =   $slide['arw_row'];
+            $loop               =   $slide['arw_animation_loop'];
+            $autoplay           =   $slide['arw_auto_play'];
+            $autoplayTimeout    =   $slide['arw_speed'];
+            $dots               =   $slide['arw_enable_dots'];
+            $navigation         =   $slide['arw_enable_navigation'];
+            $lazy               =   $slide['arw_lazy_loading'];
+            $responsive         =   $slide['arw_responsive'];
+            $_columnCount       =   $slide['arw_limit'];
+            $class_products_list=   'products-slide products-grid arw-1-col arw-row';
+            $margin             =   $slide['arw_margin'];
+            break;
+        case ARW_ProductTab_Model_Content::SHOW_GRID:
+            $_column            =   $slide['arw_column'];
+            $_columnCount       =   $_column;
+            $class_products_list=   'products-grid arw-'.$_column . '-col arw-row';
+            break;
+        case ARW_ProductTab_Model_Content::SHOW_LIST:
+            $_column            =   1;
+            $_columnCount       =   1;
+            break;
+        default:
+    }
+}
+if($slide['arw_use_default']==1){
+    $_scroll    =   $_product_tab_helper->getCf('enable_scroll');
+    switch($_scroll){
+        case ARW_ProductTab_Model_Content::SHOW_SLIDE:
+            $_rowCount          =   $_product_tab_helper->getCf('row');
+            $loop               =   $_product_tab_helper->getCf('loop');
+            $autoplay           =   $_product_tab_helper->getCf('autoplay');
+            $autoplayTimeout    =   $_product_tab_helper->getCf('speed');
+            $dots               =   $_product_tab_helper->getCf('dots');
+            $navigation         =   $_product_tab_helper->getCf('navigation');
+            $lazy               =   $_product_tab_helper->getCf('lazy');
+            $responsive         =   $_product_tab_helper->getCf('responsive');
+            $_columnCount       =   $_product_tab_helper->getCf('limit');
+            $class_products_list=   'products-slide products-grid arw-1-col arw-row';
+            $margin             =   $_product_tab_helper->getCf('margin');
+            break;
+        case ARW_ProductTab_Model_Content::SHOW_GRID:
+            $_column            =   $_product_tab_helper->getCf('column');
+            $_columnCount       =   $_column;
+            $class_products_list=   'products-grid arw-'.$_column . '-col arw-row';
+            break;
+        case ARW_ProductTab_Model_Content::SHOW_LIST:
+            $_column            =   1;
+            $_columnCount       =   1;
+            break;
+        default:
+    }
+}
+
+$id_rand = rand();
+$theme_helper = $this->helper('sebian');
+$quick_view	= $theme_helper->getCfg('quick_view_product/enableview') ? true : false;
+$aspect_ratio = ($theme_helper->getCfg('category/aspect_ratio')) ? true : false;
+$image_options = ($image_options = $theme_helper->getCfg('category/image_options')) ? $image_options : 'none';
+$image_options_slideshow_item = ($image_options_slideshow_item = $theme_helper->getCfg('category/slideshow_item')) ? $image_options_slideshow_item : 4;
+
+$second_image_column = ($second_image_column = $theme_helper->getCfg('category/alt_image_column')) ? $second_image_column : 'position';
+$second_image_column_value = ($second_image_column_value = $theme_helper->getCfg('category/alt_image_column_value')) ? $second_image_column_value : '1';
+$image_width = ($image_width = $theme_helper->getCfg('category/image_width')) ? $image_width : 270;
+$image_height = ($image_height = $theme_helper->getCfg('category/image_height')) ? $image_height : 340;
+$second_image_effect = ($second_image_effect = $theme_helper->getCfg('category/alt_image_effect')) ? $second_image_effect : 'transform';
+$class_item_effect = '';
+$second_image_effect_tmp = explode('_',$second_image_effect);
+foreach($second_image_effect_tmp as $cl){
+    $class_item_effect .= " {$cl}-effect";
+}
+$class_item_effect_2 = $class_item_effect;
+
+$grid_style = $theme_helper->getCfg('category_grid/style') ? $theme_helper->getCfg('category_grid/style') : 'style_1';
+?>
+<?php if(!$_productCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else :?>
+    <div id="product-list-<?php echo $id_rand;?>">
+        <?php if($_scroll == ARW_ProductTab_Model_Content::SHOW_SLIDE || $_scroll == ARW_ProductTab_Model_Content::SHOW_GRID ):?>
+            <ul class="<?php echo $class_products_list?>">
+                <?php $i = 0;?>
+                <?php foreach ($_productCollection as $_product):?>
+                <?php
+                $_tpl_image = '<a class="product-image" href="%s" title="%s">%s<div class="image-overlay"></div></a>';
+                if($image_options == 'slideshow'){
+                    $_tpl_image = '<div class="product-image product-image-slideshow"><div class="wrapper-slideshow"><div class="image-overlay"></div><a href="%s" title="%s">%s</a></div></div>';
+                }
+                $_front_image = '<img class="front product-collection-image" src="'.$this->helper('catalog/image')
+                        ->init($_product, 'small_image')
+                        ->keepAspectRatio($aspect_ratio)
+                        ->resize($image_width,$image_height) .'"
+                        alt="'.$this->stripTags($_product->getName(), null, true).'" />';
+                $_back_image = '';
+                if($image_options == 'alt_image' || $image_options == 'slideshow'){
+                    $product        =   Mage::getModel('catalog/product')->load($_product->getId());
+                    $mediaGallery   =   $product->getMediaGalleryImages();
+                    if($image_options == 'alt_image'){
+                        $filterMediaGallery=$mediaGallery->getItemsByColumnValue($second_image_column,$second_image_column_value);
+                        if(count($filterMediaGallery) > 0){
+                            foreach ($filterMediaGallery as $singleMediaGallery) {
+                                $file = $singleMediaGallery->getFile();
+                                $_back_image = '<img class="back" src="'.$this->helper('catalog/image')
+                                        ->init($product, 'small_image', $file)
+                                        ->keepAspectRatio($aspect_ratio)
+                                        ->resize($image_width,$image_height).'"
+                                        alt="'.$this->stripTags($product->getName(), null, true).'"/>';
+                            }
+                        }
+                    }
+                    if($image_options == 'slideshow'){
+                        $class_item_effect = '';
+                        if($product->getImage() == 'no_selection' && count($galleryImages) == 0){
+                            $_back_image = '';
+                            $_tpl_image = '<a class="product-image" href="%s" title="%s"><div class="image-overlay"></div>%s</a>';
+                        }else{
+                            $i_counter = 0;
+                            foreach ($mediaGallery as $_gallery_item){
+                                if($i_counter == 0){
+                                    $_front_image = '<img class="product-collection-image thumbnail-item" src="'.$this->helper('catalog/image')
+                                            ->init($product, 'small_image', $_gallery_item->getFile())
+                                            ->keepAspectRatio($aspect_ratio)
+                                            ->resize($image_width,$image_height).'"
+                                            alt="'.$this->stripTags($product->getName(), null, true).'" />';
+                                }else{
+                                    $_back_image .= '<img class="thumbnail-item hidden-slowly" src="'.$this->helper('catalog/image')
+                                            ->init($product, 'small_image', $_gallery_item->getFile())
+                                            ->keepAspectRatio($aspect_ratio)
+                                            ->resize($image_width,$image_height).'"
+                                            alt="'.$this->stripTags($product->getName(), null, true).'" />';
+                                }
+                                if($image_options_slideshow_item == $i_counter++) break;
+                            }
+                        }
+                    }
+                }
+                if($_back_image == ''){
+                    $class_item_effect = '';
+                }
+                ?>
+                <?php if($_scroll == ARW_ProductTab_Model_Content::SHOW_SLIDE && $_rowCount > 1):?>
+                    <?php if($i % $_rowCount == 0): ?>
+                        <?php if($i != 0):?>
+                            </li>
+                        <?php endif;?>
+                        <li class="arw-col item">
+                    <?php endif;?>
+                <?php else:?>
+                    <li class="arw-col item">
+                <?php endif;?>
+                <div class="wrapper-item">
+                    <?php echo $theme_helper->getLabel($_product);?>
+                    <input type="hidden" value="<?php echo $_product->getId()?>" name="product"/>
+                    <div class="wrapper-item-inner <?php echo $class_item_effect;?>">
+                        <div class="outer-image">
+                            <?php echo sprintf(
+                                $_tpl_image,
+                                $_product->getProductUrl(),
+                                $this->stripTags($_product->getName(), null, true),
+                                $_front_image . $_back_image
+                            );?>
+                        </div>
+                        <?php if($grid_style == 'style_1'):?>
+                        <div class="actions">
+                            <div class="link-actions">
+                                <?php if($quick_view):?><a data-toggle="tooltip" href="<?php echo $this->getUrl('arexworks/quickview/index',array('product_id'=>$_product->getId()));?>" class="button link-quickview" title="<?php echo $this->__('Quick View') ?>"><span class="fa fa-search"></span></a><?php endif;?><?php /*
+                            */?><?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?><a data-toggle="tooltip" href="<?php echo $_compareUrl ?>" class="button link-compare" title="<?php echo $this->__('Add to Compare') ?>"><span class="fa fa-check"></span></a><?php endif; ?><?php /*
+                            */?><?php if ($this->helper('wishlist')->isAllow()) : ?><a data-toggle="tooltip" href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="button link-wishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><span class="fa fa-heart-o"></span></a><?php endif; ?>
+                            </div>
+                            <?php if($_product->isSaleable()): ?>
+                                <button onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')" class="button btn-cart" title="<?php echo $this->__('Add to Cart') ?>"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                            <?php else: ?>
+                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                            <?php endif; ?>
+                            <?php if($_product->getRatingSummary()):?>
+                                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                            <?php else:?>
+                                <div class="ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width:0%"></div>
+                                    </div>
+                                </div>
+                            <?php endif;?>
+                        </div>
+                        <?php endif;?>
+                        <?php if($grid_style == 'style_2'):?>
+                            <?php if($quick_view):?><a data-toggle="tooltip" href="<?php echo $this->getUrl('arexworks/quickview/index',array('product_id'=>$_product->getId()));?>" class="button link-quickview" title="<?php echo $this->__('Quick View') ?>"><span class="fa fa-search"></span></a><?php endif;?>
+                            <div class="product-info">
+                                <div class="link-actions-2">
+                                    <?php if($_product->isSaleable()): ?><a data-toggle="tooltip" href="<?php echo $this->getAddToCartUrl($_product) ?>" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')" class="button btn-cart" title="<?php echo $this->__('Add to Cart') ?>"><span class="fa fa-shopping-cart"></span></span></a><?php endif;?><?php /*
+                                    */?><?php if ($this->helper('wishlist')->isAllow()) : ?><a data-toggle="tooltip" href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="button link-wishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><span class="fa fa-heart-o"></span></a><?php endif; ?><?php /*
+                                    */?><?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?><a data-toggle="tooltip" href="<?php echo $_compareUrl ?>" class="button link-compare" title="<?php echo $this->__('Add to Compare') ?>"><span class="fa fa-check"></span></a><?php endif; ?>
+                                </div>
+                                <h2 class="product-name">
+                                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
+                                        <span><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
+                                    </a>
+                                </h2>
+                                <?php echo $this->getPriceHtml($_product, true ,'-clone') ?>
+                            </div>
+                        <?php endif;?>
+                    </div>
+                    <?php if($grid_style == 'style_1'):?>
+                    <div class="product-info">
+                        <h2 class="product-name">
+                            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
+                                <span><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
+                            </a>
+                        </h2>
+                        <?php echo $this->getPriceHtml($_product, true ,'-clone') ?>
+                    </div>
+                    <?php endif;?>
+                </div>
+                <?php if($_scroll == ARW_ProductTab_Model_Content::SHOW_SLIDE && $_rowCount > 1):?>
+                    <?php if($i == ($_collectionSize - 1)):?>
+                        </li>
+                    <?php endif;?>
+                <?php else:?>
+                    </li>
+                <?php endif;?>
+                <?php $class_item_effect = $class_item_effect_2;?>
+                <?php $i++;?>
+            <?php endforeach;?>
+            </ul>
+        <?php else:?>
+            <ol class="products-list">
+                <?php foreach ($_productCollection as $_product): ?>
+                <?php
+                $_tpl_image = '<a class="product-image" href="%s" title="%s">%s<div class="image-overlay"></div></a>';
+                if($image_options == 'slideshow'){
+                    $_tpl_image = '<div class="product-image product-image-slideshow"><div class="wrapper-slideshow"><div class="image-overlay"></div><a href="%s" title="%s">%s</a></div></div>';
+                }
+                $_front_image = '<img class="front product-collection-image" src="'.$this->helper('catalog/image')
+                        ->init($_product, 'small_image')
+                        ->keepAspectRatio($aspect_ratio)
+                        ->resize($image_width,$image_height) .'"
+                        alt="'.$this->stripTags($_product->getName(), null, true).'" />';
+                $_back_image = '';
+                if($image_options == 'alt_image' || $image_options == 'slideshow'){
+                    $product        =   Mage::getModel('catalog/product')->load($_product->getId());
+                    $mediaGallery   =   $product->getMediaGalleryImages();
+                    if($image_options == 'alt_image'){
+                        $filterMediaGallery=$mediaGallery->getItemsByColumnValue($second_image_column,$second_image_column_value);
+                        if(count($filterMediaGallery) > 0){
+                            foreach ($filterMediaGallery as $singleMediaGallery) {
+                                $file = $singleMediaGallery->getFile();
+                                $_back_image = '<img class="back" src="'.$this->helper('catalog/image')
+                                        ->init($product, 'small_image', $file)
+                                        ->keepAspectRatio($aspect_ratio)
+                                        ->resize($image_width,$image_height).'"
+                                        alt="'.$this->stripTags($product->getName(), null, true).'"/>';
+                            }
+                        }
+                    }
+                    if($image_options == 'slideshow'){
+                        $class_item_effect = '';
+                        if($product->getImage() == 'no_selection' && count($galleryImages) == 0){
+                            $_back_image = '';
+                            $_tpl_image = '<a class="product-image" href="%s" title="%s"><div class="image-overlay"></div>%s</a>';
+                        }else{
+                            $i_counter = 0;
+                            foreach ($mediaGallery as $_gallery_item){
+                                if($i_counter == 0){
+                                    $_front_image = '<img class="product-collection-image thumbnail-item" src="'.$this->helper('catalog/image')
+                                            ->init($product, 'small_image', $_gallery_item->getFile())
+                                            ->keepAspectRatio($aspect_ratio)
+                                            ->resize($image_width,$image_height).'"
+                                            alt="'.$this->stripTags($product->getName(), null, true).'" />';
+                                }else{
+                                    $_back_image .= '<img class="thumbnail-item hidden-slowly" src="'.$this->helper('catalog/image')
+                                            ->init($product, 'small_image', $_gallery_item->getFile())
+                                            ->keepAspectRatio($aspect_ratio)
+                                            ->resize($image_width,$image_height).'"
+                                            alt="'.$this->stripTags($product->getName(), null, true).'" />';
+                                }
+                                if($image_options_slideshow_item == $i_counter++) break;
+                            }
+                        }
+                    }
+                }
+                if($_back_image == ''){
+                    $class_item_effect = '';
+                }
+                ?>
+                <li class="item">
+                    <input type="hidden" value="<?php echo $_product->getId()?>" name="product"/>
+                    <div class="inner-item">
+                        <div class="outer-image<?php echo $class_item_effect;?>">
+                            <?php if($show_countdown){
+                                echo $theme_helper->show_product_countdown($_product);
+                            }?>
+                            <?php echo $theme_helper->getLabel($_product);?>
+                            <?php echo sprintf(
+                                $_tpl_image,
+                                $_product->getProductUrl(),
+                                $this->stripTags($_product->getName(), null, true),
+                                $_front_image . $_back_image
+                            );?>
+
+                            <?php if($quick_view):?><a data-toggle="tooltip" href="<?php echo $this->getUrl('arexworks/quickview/index',array('product_id'=>$_product->getId()));?>" class="button link-quickview" title="<?php echo $this->__('Quick View') ?>"><span class="fa fa-search"></span></a><?php endif;?>
+                        </div>
+                        <div class="product-shop">
+                            <div class="f-fix">
+                                <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><span><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></span></a></h2>
+                                <?php echo $this->getPriceHtml($_product, true ,'-clone') ?>
+                                <?php if($_product->getRatingSummary()):?>
+                                    <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                                <?php else:?>
+                                    <div class="ratings">
+                                        <div class="rating-box">
+                                            <div class="rating" style="width:0%"></div>
+                                        </div>
+                                    </div>
+                                <?php endif;?>
+
+                                <div class="desc std">
+                                    <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                                </div>
+                                <?php if($_product->isSaleable()): ?>
+                                <?php else: ?>
+                                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                <?php endif; ?>
+                                <div class="actions">
+                                    <div class="add-to-box clearfix">
+                                        <?php if($_product->isSaleable()): ?>
+                                            <button onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')" class="button1 button btn-cart" title="<?php echo $this->__('Add to Cart') ?>"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                                        <?php endif; ?>
+                                        <div class="link-actions">
+                                            <?php if($quick_view):?><a data-toggle="tooltip" href="<?php echo $this->getUrl('arexworks/quickview/index',array('product_id'=>$_product->getId()));?>" class="button link-quickview" title="<?php echo $this->__('Quick View') ?>"><span class="fa fa-search"></span></a><?php endif;?>
+                                            <?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?><a data-toggle="tooltip" href="<?php echo $_compareUrl ?>" class="button link-compare" title="<?php echo $this->__('Add to Compare') ?>"><span class="fa fa-check"></span></a><?php endif; ?>
+                                            <?php if ($this->helper('wishlist')->isAllow()) : ?><a data-toggle="tooltip" href="<?php echo $this->getAddToWishlistUrl($_product) ?>" class="button link-wishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><span class="fa fa-heart-o"></span></a><?php endif; ?>
+                                        </div>
+                                        <?php if($_product->isSaleable()): ?>
+                                            <button onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')" class="button btn-cart" title="<?php echo $this->__('Add to Cart') ?>"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                                        <?php else: ?>
+                                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php $class_item_effect = $class_item_effect_2;?>
+                    <?php endforeach; ?>
+            </ol>
+        <?php endif;?>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            <?php if($_scroll == ARW_ProductTab_Model_Content::SHOW_SLIDE):?>
+            var owl = jQuery('#product-list-<?php echo $id_rand;?> .products-slide');
+            owl.owlCarousel({
+                lazyLoad:<?php echo $lazy ? 'true' : 'false'?>,
+                nav:<?php echo $navigation ? 'true' : 'false'?>,
+                margin:<?php echo $margin ? $margin : '0'?>,
+                <?php if($autoplay): ?>
+                autoplay:true,
+                autoplayTimeout:<?php echo $autoplayTimeout?>,
+                autoplayHoverPause: true,
+                <?php endif; ?>
+                loop:<?php echo $loop ? 'true' : 'false'?>,
+                dots:<?php echo $dots ? 'true' : 'false'?>
+                <?php if(isset($responsive)):?>
+                ,responsive:{<?php foreach (explode(',',$responsive) as $res){
+                    $resp=explode(':',$res);
+                    echo $resp[0].":{items:$resp[1]},";
+                    }?>0:{items:1}
+                }
+                <?php endif;?>
+            });
+            <?php endif;?>
+            setTimeout(function(){
+                equalheight2(jQuery('#product-list-<?php echo $id_rand;?> .products-slide'),'.product-name');
+            },1000);
+            jQuery(window)
+                .load(function(){
+                    equalheight2(jQuery('#product-list-<?php echo $id_rand;?> .products-slide'),'.product-name');
+                })
+                .resize(function(){
+                    setTimeout(function(){
+                        equalheight2(jQuery('#product-list-<?php echo $id_rand;?> .products-slide'),'.product-name');
+                    },1000);
+                })
+            arexworks.Frontend.initOwlGalleryImage(jQuery('#product-list-<?php echo $id_rand;?> .product-image.product-image-slideshow .wrapper-slideshow'));
+        });
+    </script>
+<?php endif; ?>

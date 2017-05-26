@@ -1,0 +1,379 @@
+<script type="text/javascript">
+var exclude_services = [];
+var allow_update_ch_price = true;
+function chInitCanadaPost() {
+    $$('input[class="cp_option"]').each(function(el){ el.disabled = true; });
+    var selected_shipping_method = $$('input:checked[type="radio"][name="order[shipping_method]"]').pluck('value');
+    if (String(selected_shipping_method).indexOf('chcanpost2module') == 0) {
+        new Ajax.Request('<?php echo Mage::getSingleton('adminhtml/url')->getUrl('adminhtml/shipping/getInitState'); ?>', {
+          method:'post',
+          parameters:{service_code: String(selected_shipping_method)},
+          requestHeaders: {Accept: 'application/json'},
+          onSuccess: function(response) {          
+              var json = response.responseText.evalJSON();
+              for (var code in json.saved_params) {
+                  if ($('option_' + code) && json.saved_params[code] == 1) {
+                        $('option_' + code).checked=true;
+                  }
+              }    
+              updateRates(); 
+          }
+        });
+    } 
+}
+function chApplyRates() {
+    order.setShippingMethod($$('input:checked[type="radio"][name="order[shipping_method]"]').pluck('value'));
+}
+function updateRates() {
+    $$('input[class="cp_option"]').each(function(el){ el.disabled = true; });
+    new Ajax.Request('<?php echo Mage::getSingleton('adminhtml/url')->getUrl('adminhtml/shipping/getRates'); ?>', {
+      method:'post',
+      parameters:{
+          signature:($('option_SO') && $('option_SO').checked) ? 1 : 0, 
+          coverage: ($('option_COV') && $('option_COV').checked) ? 1 : 0, 
+          cod: ($('option_COD') && $('option_COD').checked) ? 1 : 0,
+          card_for_pickup:($('option_HFP') && $('option_HFP').checked) ? 1 : 0,
+          do_not_safe_drop:($('option_DNS') && $('option_DNS').checked) ? 1 : 0,
+          leave_at_door:($('option_LAD') && $('option_LAD').checked) ? 1 : 0,
+          deliver_to_post_office:($('option_D2PO') && $('option_D2PO').checked) ? 1 : 0,
+          office_id: ($('office') && $('office').value) ? $('office').value : 0,
+          service_code: $$('input:checked[type="radio"][name="order[shipping_method]"]') ? $$('input:checked[type="radio"][name="order[shipping_method]"]').pluck('value') : ''
+      },
+      requestHeaders: {Accept: 'application/json'},
+      onSuccess: function(response) {          
+          var json = response.responseText.evalJSON();
+          if (allow_update_ch_price) {
+              for (var code in json.rates) {
+                  if ($('s_label_method_chcanpost2module_' + code)) {
+                    $('s_label_method_chcanpost2module_' + code).innerHTML = json.rates[code].title + ' - <b>' + json.rates[code].price + '</b>';
+                  }
+              }    
+          }
+          //something going in background , perhaps later it will be possible to move this peace to that background process
+          setTimeout(function(){
+              $$('input[class="cp_option"]').each(function(el){ el.disabled = false; });
+              for (var i=0; i<json.conflicted_options.length; i++) {
+                  if ($('option_' + json.conflicted_options[i])) {
+                    $('option_' + json.conflicted_options[i]).disabled = true;
+                  }
+              }
+          }, 1000);
+      }
+    });
+    //save selected shipping method
+    //order.setShippingMethod($$('input:checked[type="radio"][name="order[shipping_method]"]').pluck('value'));
+}
+function updateNearestOfices(update_rates)
+{    
+    $('office').innerHTML = '';
+    var regexp = /\w\d\w\s?\d\w\d/i;
+    if ($('postcode')) {
+        if (regexp.exec($('postcode').value)) {
+            new Ajax.Request('<?php echo Mage::getSingleton('adminhtml/url')->getUrl('adminhtml/shipping/getNearestOffice'); ?>', {
+              method:'post',
+              parameters:{
+                postcode: $('postcode').value  
+              },
+              requestHeaders: {Accept: 'application/json'},
+              onSuccess: function(response) {
+                  var json = response.responseText.evalJSON();  
+                  if (json != '') {
+                      for (var office_id in json) {
+                          if (json[office_id].selected) {
+                            $('office').options.add(new Option(json[office_id].name, office_id, true));
+                          } else {
+                            $('office').options.add(new Option(json[office_id].name, office_id));                      
+                          }
+                      }
+                      $('office').show();
+                      if (update_rates) {
+                          updateRates();
+                      }
+                  } else {
+                      $('office').hide();
+                      if ($('option_D2PO')) {
+                          $('option_D2PO').checked = false;
+                      }
+                  }
+              }
+            });
+        } else {
+            alert('<?php echo str_replace("'", "\'", Mage::helper('chcanpost2module')->__('Deliver to post office is only available to Canadian destinations')); ?>');
+            $('office').hide();
+            if ($('option_D2PO')) {
+              $('option_D2PO').checked = false;
+            }
+        }
+    }
+}
+function getServiceOptions(service_code)
+{
+    $$('input[type="checkbox"]').each(function(el){ 
+        if (el.id.indexOf('option_') == 0) {
+            el.disabled = true; 
+            el.checked = false; 
+        }
+    });
+    new Ajax.Request('<?php echo Mage::getSingleton('adminhtml/url')->getUrl('adminhtml/shipping/getServices'); ?>service_code/' + service_code, {
+      method:'get',
+      requestHeaders: {Accept: 'application/json'},
+      onSuccess: function(response) {
+          var json = response.responseText.evalJSON();  
+          if (json != '') {
+              $$('input[type="checkbox"]').each(function(el){ 
+                  if (el.id.indexOf('option_') == 0) {
+                    el.disabled = false; 
+                    el.checked = false; 
+                  }
+              });
+              for (var i in json.exclude_services) {
+                  if ($('option_' + json.exclude_services[i])) {
+                      $('option_' + json.exclude_services[i]).disabled = true;
+                  }
+              }
+              exclude_services = json.exclude_services;
+              updateRates();
+          }
+      }
+    });
+}
+</script>
+<style>
+    .shipping_method_options{margin:0 0 0 20px;}
+    .update_item{margin: 10px 0 10px 0;}
+.shipment-methods dt { margin-top: 5px; margin-bottom: 5px; font-weight: bold; }
+.shipment-methods dt.secondary_dt {
+	margin-left: 5px;
+	color: #333;
+}
+.shipment-methods ul li {
+	line-height: 20px;
+	margin-left: 5px;
+}
+.shipment-methods input {
+	margin-bottom: 3px;
+}
+ul.ch_inline {
+	padding: 0px;
+}
+ul.ch_inline li {
+	display: inline;
+	padding: 0px;
+	margin: 0px;
+}
+#nearest_office {
+	padding-top: 2px;
+}
+#postcode {
+	 height: 19px;
+    margin-top: 3px;
+}
+#postcode:disabled {
+	border: 1px solid #999;
+	background-color: #ddd;
+	color: #666;
+}
+#update_office_list:disabled {
+		border: 1px solid #999;
+	background-color: #ddd;
+	color: #666;
+}
+#update_office_list:disabled span {
+	background-color: #ddd;
+	border: none;
+	color: #666;
+}
+	
+</style>
+<?php /** @var $this Mage_Adminhtml_Block_Sales_Order_Create_Shipping_Method_Form */ ?>
+<?php $_shippingRateGroups = $this->getShippingRates(); ?>
+<?php if ($_shippingRateGroups): ?>
+    <div id="order-shipping-method-choose" style="display:none">
+    <dl class="shipment-methods">
+    <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
+        <dt>
+            <strong><?php echo $this->escapeHtml($this->getCarrierName($code)) ?></strong>
+		</dt>
+		<?php if ($code == 'chcanpost2module'): ?>
+		<dt class="secondary_dt">
+			<?php echo $this->__('Shipping Service'); ?>
+		</dt>   
+		<?php endif;?>
+		
+			<ul>
+            <?php $show_office_list = false; ?>
+            <?php foreach ($_rates as $_rate): ?>
+                <?php 
+                    $price = $_rate->getPrice();
+
+                    $_radioProperty = 'name="order[shipping_method]" type="radio"';
+                    $_code=$_rate->getCode();
+                    if ($code == 'chcanpost2module' && $this->isMethodActive($_code)) {
+                        $show_office_list = true;
+                    } 
+                ?>
+                <li>
+                   <?php if ($_rate->getErrorMessage()): ?>
+                        <ul class="messages">
+                            <li class="error-msg"><?php echo $this->escapeHtml($_rate->getErrorMessage()) ?></li>
+                        </ul>
+                   <?php else: ?>
+                        <?php $_checked = $this->isMethodActive($_code) ? 'checked="checked"' : '' ?>
+                        <input <?php echo $_radioProperty ?> value="<?php echo $_code ?>" id="s_method_<?php echo $_code ?>" <?php echo $_checked ?>/>
+                        <label class="normal" for="s_method_<?php echo $_code ?>" id="s_label_method_<?php echo $_code ?>">
+                            <?php echo $this->escapeHtml($_rate->getMethodTitle() ? $_rate->getMethodTitle() : $_rate->getMethodDescription()) ?> -
+                            <strong>
+                                <?php $_excl = $this->getShippingPrice($price, $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                                <?php $_incl = $this->getShippingPrice($price, true); ?>
+
+                                <?php echo $_excl; ?>
+                                <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                    (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                                <?php endif; ?>
+                            </strong>
+                        </label>
+                   <?php endif ?>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+		
+			<?php if ($code == 'chcanpost2module'): ?>
+			<dt class="secondary_dt" id="shipping_options_title">
+				<?php echo $this->__('Shipping Options'); ?>
+			</dt>   
+			<?php endif;?>		
+		
+			<dd>
+		
+            <?php if ($code == 'chcanpost2module'): ?>
+            <div class="shipping_method_options">   
+                <input type="checkbox" name="signature" class="cp_option" id="option_SO" />
+                <label for="signature"><?php echo __('Require Signature'); ?></label>
+            </div>
+            <?php endif; ?>
+            <?php if ($code == 'chcanpost2module' && Mage::getStoreConfig('carriers/chcanpost2module/require_coverage') == 'optional'): ?>
+            <div class="shipping_method_options">
+                <input type="checkbox" name="coverage" class="cp_option" id="option_COV" />
+                <label for="coverage"><?php echo __('Include Coverage'); ?></label>
+            </div>
+            <?php endif; ?>
+            <?php if ($code == 'chcanpost2module' && Mage::getStoreConfig('carriers/chcanpost2module/card_for_pickup')): ?>
+            <div class="shipping_method_options">
+                <input type="checkbox" name="card_for_pickup" class="cp_option" id="option_HFP" />
+                <label for="card_for_pickup"><?php echo __('Card for Pick Up'); ?></label>
+            </div>
+            <?php endif; ?>
+            <?php if ($code == 'chcanpost2module' && Mage::getStoreConfig('carriers/chcanpost2module/enable_cod')): ?>
+            <div class="shipping_method_options">
+                <input type="checkbox" name="cash_on_delivery" class="cp_option" id="option_COD" />
+                <label for="cash_on_delivery"><?php echo __('COD'); ?></label>
+            </div>
+            <?php endif; ?>
+            <?php if ($code == 'chcanpost2module' && !Mage::helper('chcanpost2module/option')->isPaOption('admin', $this->getQuote()) && Mage::getStoreConfig('carriers/chcanpost2module/do_not_safe_drop')): ?>
+            <div class="shipping_method_options">
+                <input type="checkbox" name="do_not_safe_drop" class="cp_option" id="option_DNS" />
+                <label for="do_not_safe_drop"><?php echo __('Do not Safe Drop'); ?></label>
+            </div>
+            <?php endif; ?>
+            <?php if ($code == 'chcanpost2module' && !Mage::helper('chcanpost2module/option')->isPaOption('admin', $this->getQuote()) && Mage::getStoreConfig('carriers/chcanpost2module/leave_at_door')): ?>
+            <div class="shipping_method_options">
+                <input type="checkbox" name="leave_at_door" class="cp_option" id="option_LAD" />
+                <label for="leave_at_door"><?php echo __('Leave at Door (Do not card)'); ?></label>
+            </div>
+            <?php endif; ?>
+
+
+            <?php if ($code == 'chcanpost2module' && Mage::getStoreConfig('carriers/chcanpost2module/deliver_to_postoffice')): ?>
+            <div class="shipping_method_options" style="display:<?php echo $show_office_list ? 'block' : 'none'; ?>;" id="nearest_office">
+                <div class="update_item">
+				<ul class="ch_inline">
+					<li><input type="checkbox" id="option_D2PO" name="deliver_to_post_office" <?php echo (Mage::getSingleton('checkout/session')->getDeliverToPostOffice()) ? 'checked' : '' ?> /></li>
+					<li><label for="office"><?php echo __('Deliver to Post Office Near Postal Code:'); ?></label></li>
+					<li><input type="text" size="6" name="postcode" id="postcode" value="<?php echo Mage::getSingleton('adminhtml/sales_order_create')->getQuote()->getShippingAddress()->getPostcode(); ?>"/></li>
+					<li><button onclick="updateNearestOfices(true);" class="scalable " type="button" title="<?php echo __('Search'); ?>"><span><span><span><?php echo __('Search'); ?></span></span></span></button></li>
+				</ul>
+                </div>
+                <select name="office" id="office" onchange="updateRates();"></select>                
+            </div>
+                <?php if ($show_office_list): ?>            
+                    <script type="text/javascript">updateNearestOfices(false);</script>
+                <?php endif ?>
+            <?php endif ?>
+        </dd>        
+    <?php endforeach; ?>
+        <button type="button" name="" class="scalable" title="<?php echo __('Apply'); ?>" onclick="chApplyRates();">
+            <span><span><span><?php echo __('Apply'); ?></span></span></span>            
+        </button>
+    </dl>
+    </div>
+    <?php if ($_rate = $this->getActiveMethodRate()): ?>
+        <div id="order-shipping-method-info">
+            <strong><?php echo $this->escapeHtml($this->getCarrierName($_rate->getCarrier())) ?></strong><br/>
+            <?php echo $this->escapeHtml($_rate->getMethodTitle() ? $_rate->getMethodTitle() : $_rate->getMethodDescription()) ?> -
+            <strong>
+                <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+
+                <?php echo $_excl; ?>
+                <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                    (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                <?php endif; ?>
+            </strong>
+            <!--input type="text" class="input-text" style="width:70px"/-->
+            <br/>
+            <a href="#" onclick="$('order-shipping-method-info').hide();$('order-shipping-method-choose').show();return false;">
+                <?php echo Mage::helper('sales')->__('Click to change shipping method') ?>
+            </a>
+        </div>
+    <?php else: ?>
+        <script type="text/javascript">$('order-shipping-method-choose').show();</script>
+    <?php endif; ?>
+<?php elseif($this->getIsRateRequest()): ?>
+    <strong><?php echo Mage::helper('sales')->__('Sorry, no quotes are available for this order at this time.') ?></strong>
+<?php else: ?>
+    <div id="order-shipping-method-summary">
+        <a href="#" onclick="order.loadShippingRates();return false">
+            <?php echo Mage::helper('sales')->__('Get shipping methods and rates') ?>
+        </a>
+        <input type="hidden" name="order[has_shipping]" value="" class="required-entry" />
+    </div>
+<?php endif; ?>
+<div style="display:none;" id="shipping-method-overlay" class="overlay"><span><?php echo $this->__('Shipping method selection is not applicable') ?></span></div>
+<script type="text/javascript">
+order.overlay('shipping-method-overlay', <?php if ($this->getQuote()->isVirtual()): ?>false<?php else: ?>true<?php endif; ?>);
+order.overlay('address-shipping-overlay', <?php if ($this->getQuote()->isVirtual()): ?>false<?php else: ?>true<?php endif; ?>);
+$$('input[type="radio"][name="order[shipping_method]"]').each(function(el){
+    Event.observe(el, 'click', function(){
+        //---------------- canadapost ---------------------                
+        if (el.value.indexOf('chcanpost2module') == 0) {
+            if ($('nearest_office')) {
+                $('nearest_office').show();
+            }
+            getServiceOptions(el.value);
+        } else {
+            if ($('nearest_office')) {
+                $('nearest_office').hide();
+            }
+            $$('input[type="checkbox"]').each(function(el){
+               el.disabled = true;
+            });
+            order.setShippingMethod($$('input:checked[type="radio"][name="order[shipping_method]"]').pluck('value'));
+        }
+        if ($('office')) {
+            $('office').hide();
+        }
+        //---------------- /canadapost ---------------------
+        return false;
+   });
+});
+$$('input[type="checkbox"]').each(function(el){
+    Event.observe(el, 'click', function(){
+        if (el.id == 'option_D2PO') {
+            updateNearestOfices(true);
+        } else {
+            updateRates();
+        }        
+    });
+});
+chInitCanadaPost();
+</script>

@@ -1,0 +1,35 @@
+<?php $formKey = Mage::getSingleton('core/session')->getFormKey();?>
+<div class="entry-edit">
+    <div class="box">
+        <form id="importTab_form" action="<?php echo  $this->getUrl('*/*/importTab')?>" method="post" enctype="multipart/form-data">
+			<input name="form_key" value="<?php echo $formKey ?>" type="hidden" />
+			<div class="entry-edit-head">
+					<h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('producttab')->__('Import Tab By CSV File') ?></h4>
+			</div>
+            <fieldset>
+                <legend><?php echo Mage::helper('producttab')->__('Import Tabs') ?></legend>
+				<input id="csv_tabs" name="csv_tabs" class="required-entry required-entry" type="file" />
+				<p class="note" id="note_csv_store">
+				<span>
+					Click <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)?>arw/producttab/import/producttabs.csv">here</a> to download the sample csv file.
+				</span>
+				</p>
+					<span>Get Information for site</span>
+					<select class="select" name="select_information_site" id="select_information_site" onchange="get_values_change()">
+						<option selected="selected" value="information">Information</option>
+						<option value="store">Store View</option>
+						<option value="categories">Categories Information</option>
+						<option value="product_type">Product Type</option>
+						<option value="product_sort">Product Sort</option>
+						<option value="current_cat_type">Current Category Type</option>
+					</select>
+				<button style="" type="submit" class="scalable add" type="button" onclick='arw_import_producttab()'><span><?Php echo $this->__('Import Tab') ?></span></button>
+				<button style="" type="submit" class="scalable delete" type="button" onclick='close_popup_tab();return false;'><span id="tab_close_popup"> <?php echo $this->__('Close')?></span></button>
+            </fieldset>
+        </form>
+      
+    </div>
+</div>
+<script type="text/javascript">
+	//var dataTabForm = new varienForm('importTab_form');
+</script>

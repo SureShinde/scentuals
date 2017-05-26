@@ -1,0 +1,16 @@
+<p id="loading_mask_loader" class="loader">
+    <img alt="Loading..." src="<?php echo $this->getSkinUrl('images/ajax-loader-tr.gif'); ?>"><br />
+    <?php echo Mage::helper('chcanpost2module')->__('Redirecting to Canada Post ...'); ?>
+</p>
+<form name="canadapost-signup" id="canadapost-signup" method="POST" action="<?php echo $this->getPostUrl(); ?>">
+<?php $post_data = $this->getPostData();
+foreach ($post_data as $k => $v) {
+    echo '<input type="hidden" value="'.$v.'"  name="'.$k.'" />';
+}
+?>
+</form>
+<script>
+    <?php if (!empty($post_data)): ?>
+        document.getElementById('canadapost-signup').submit();
+    <?php endif; ?>
+</script>

@@ -1,0 +1,93 @@
+
+<script type="text/javascript">	
+$$('body')[0].insert("<div id='import_brand_popup'></div><div id='background_brand_popup'></div>");
+		// setStyle();
+		setStylePopup(); 
+function import_save(){
+		var url="<?php echo  $this->getUrl('*/*/popup')?>"
+	    new Ajax.Request(url, {
+				method: 'post',
+				postBody : "form_key=" + FORM_KEY+"&param=1",
+			  /*   requestHeaders: {Accept: 'application/json'}, */
+				onSuccess: function(transport) {
+					if (transport.responseText.isJSON()) {
+						var response = transport.responseText.evalJSON();
+						if (response.error) {
+							alert(response.error);
+						}
+						else{
+						
+							show_popup(response.popupimport);
+						}
+					}
+				},
+				onFailure: function()
+				{
+					alert("Something gone wrong. Please try one more time.")
+				}    
+		   });
+}
+/*  function setStyle(){
+	$$('#search-autocomplete li').setStyle({
+    borderBottom: '1px solid #f4eee7',
+    cursor: 'pointer',
+    padding: '2px 8px 1px',
+    textAlign: 'left',
+	});
+} */
+function setStylePopup(){
+	$('import_brand_popup').setStyle({
+						/*  background: 'none repeat scroll 0 0 transparent', */
+						 display: 'none',
+						// left: '30%',
+						// position: 'fixed',
+						// top: '20%',
+						//  width: '36%',
+						// zIndex: '9999',
+				});
+	$('background_brand_popup').setStyle({
+						 //background: 'none repeat scroll 0 0 #000000',
+						 display: 'none',
+						// left: '0',
+						// position: 'fixed',
+						// top: '0',
+						//  width: '100%',
+						//  height: '100%',
+						// zIndex: '1',
+				});
+} 
+
+function arw_import(){
+				
+	var data=$('importbrand_form').serialize();
+	var url="<?php echo  $this->getUrl('*/*/importbPost')?>";
+	new Ajax.Request(url, {
+		method: 'post',
+		postBody : data,
+		onLoading: function(){
+			close_popup();
+		},
+		onSuccess: function(transport) {
+			/* close_popup(); */
+			window.location.href="<?php echo  $this->getUrl('*/*/index')?>";
+		},
+		onFailure: function()
+		{
+		alert("Something gone wrong. Please try one more time.")
+		}    
+	});
+}
+function show_popup(data){
+	var ele=$('import_brand_popup');
+	ele.replace('<div id=\'import_brand_popup\'>'+data+'</div>');
+	 setStylePopup(); 
+	$('background_brand_popup').setStyle({display:'block',opacity:'0.5'});
+	Effect.SlideDown($('import_brand_popup'),{ duration: 1});
+	Event.observe($('background_brand_popup'), 'click',function() {setStylePopup();} );
+}
+function close_popup(){
+ 	setStylePopup(); 
+	Effect.SlideUp($('import_brand_popup'),{ duration: 1});
+			/* $('import_brand_popup').hide(); */
+}
+</script>

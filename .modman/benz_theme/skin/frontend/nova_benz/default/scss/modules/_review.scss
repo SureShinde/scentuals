@@ -1,0 +1,80 @@
+.review-product-list .add-to-box + .buttons-set {
+	padding-bottom: 10px;
+}
+.ratings-table{
+	margin-bottom: 5px;
+}
+.box-reviews .buttons-set {
+	padding-bottom: 15px;
+}
+#customer-reviews {
+	dl{
+		margin-bottom: 0;
+		dt{
+			color: $text_color;
+		}
+		dd{
+			padding-left: 15px;
+			padding-top: 5px;
+			padding-bottom: 15px;
+		}
+	}
+	.form-add{
+		h3,h4{
+			letter-spacing: 1px;
+			font-size: 1em;
+		}
+	}
+	#product-review-table{
+		width: auto;
+		text-align: center;
+		th{
+			text-transform: capitalize;
+			@media (max-width: 480px) {
+				font-size: 12px;
+			}
+		}
+		td,th{
+			vertical-align: middle;
+			@media (max-width: 480px) {
+				padding: 8px 3px;
+			}
+		}
+		.radio{
+			@extend %radio2;
+			& ~ label{
+				height: 20px;
+				overflow: hidden;
+				text-indent: -999em;
+				padding-left: 0;
+				margin-bottom: 0;
+				&:before{
+					display: block;
+					text-indent: 0;
+					padding-right: 0px;
+					width: 100%;
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+.review-product-list{
+	.product-view{
+		.product-image{
+			margin-bottom: 0 !important;
+		}
+		.product-shop{
+			.add-to-box{
+				overflow: hidden;
+			}
+		}
+	}
+}
+#review-form{
+	fieldset{
+		> h3{
+			margin-top: 0;
+		}
+	}
+}

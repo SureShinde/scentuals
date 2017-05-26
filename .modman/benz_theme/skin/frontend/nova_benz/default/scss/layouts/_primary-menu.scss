@@ -1,0 +1,125 @@
+.nav-primary-container{
+	position: relative;
+	.nav-container{
+		text-align: center;
+	}
+	// Level 1
+	ul#nav > li > a{
+		background:$level1_bg;
+		color: $level1_color;
+	}
+	ul#nav > li > a > span{
+		display: inline-block;
+	}
+	ul#nav > li:hover > a,
+	ul#nav > li.active > a{
+		 background:$level1_hover_bg;
+		 color: $level1_hover_color;
+ 	}
+	ul#nav ul{
+		background: $primary_sub2_bg;
+	}
+	ul#nav ul ul{
+		background: $primary_sub3_bg;
+	}
+	ul#nav > li > ul > li > a{
+		background:$level2_bg;
+		color: $level2_color;
+	}
+
+	ul#nav > li > ul > li:hover > a,
+	ul#nav > li > ul > li.active > a{
+		background:$level2_hover_bg;
+		color: $level2_hover_color;
+	}
+	ul#nav li li ul,
+	ul#nav li.level1 ul.level1{
+		background:$primary_sub3_bg;
+		li > a{
+			background:$level3_bg;
+			color: $level3_color;
+		}
+		li.active > a,
+		li:hover > a{
+			background:$level3_hover_bg;
+			color: $level3_hover_color;
+		}
+	}
+	ul#nav{
+		display: inline;
+		text-align: center;
+		> li{
+			float: none;
+			display: inline-block;
+			padding: 0 0px 15px 0px;
+			position: relative;
+			> a{
+				font-weight: 400;
+				font-size: 1em;
+				padding: 0 20px 0px 20px;
+				display: inline-block;
+				position: relative;
+				text-transform: uppercase;
+				line-height: 40px;
+				letter-spacing: 2.5px;
+			}
+			&.active,
+			&:hover{
+				> a{
+
+				}
+			}
+			> ul{
+				top: 55px;
+			}
+		}
+		ul{
+			text-align: left;
+			display: none;
+			position: absolute;
+			min-width: 180px;
+			left: 20px;
+			li{
+				display: block;
+				position: relative;
+				a{
+					display: block;
+					padding: 12px 20px;
+					text-transform: uppercase;
+					letter-spacing: 2px;
+					font-size: 0.833em;
+				}
+				+ li{
+					> a{
+						border-top: 1px solid $level2_color;
+					}
+				}
+				li{
+					+ li{
+						> a{
+							border-top: 1px solid $level3_color;
+						}
+					}
+				}
+				&.parent > a:after{
+					content: "\f0da";
+					font-family: FontAwesome;
+					position: absolute;
+					right: 20px;
+				}
+				&:hover{
+					> ul{
+						display: block;
+						left: 100%;
+						top: 0;
+					}
+				}
+			}
+		}
+		li:hover{
+			> ul{
+				display: block;
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		 <reference name="head">
+             <action method="addItem" ifconfig="producttab/general/enabled"><type>skin_js</type><name>arw/producttab/js/tab.js</name></action>
+        </reference> 
+		<reference name="after_body_start">
+			<block type="producttab/producttab" name="arw_producttab_js" as="arw_producttab_js">
+				<action method="setTemplate" ifconfig="producttab/general/enabled">
+					<file>arw/producttab/js.phtml</file>
+				</action>
+			</block>
+		</reference>
+	</default>
+	<cms_index_index>
+		<update handle="MAP_popup" />
+	</cms_index_index>
+</layout> 

@@ -1,0 +1,54 @@
+<script>
+    MageMailData = typeof(MageMailData) != 'undefined' ? MageMailData : {};
+    MageMailData.username = '<?php echo Mage::helper('kj_magemail')->getUsername();?>';
+    MageMailData.magemail_domain = '<?php echo Mage::helper('kj_magemail')->getMageMailBaseUrl();?>';
+    MageMailData.magento_base_url = '<?php echo Mage::helper('kj_magemail')->getMagentoSecureBaseUrl();?>';
+    MageMailData.capture_email = <?php echo Mage::helper('kj_magemail')->shouldCaptureEmail() ? "true" : "false"; ?>;
+    MageMailData.exit_modal_enabled = <?php echo Mage::helper('kj_magemail')->isExitModalEnabled() ? "true" : "false"; ?>;
+    MageMailData.newsletter_exit_modal_disabled = <?php echo Mage::helper('kj_magemail')->isNewsletterExitModalDisabled() ? "true" : "false"; ?>;
+
+    MageMailData.jquery_remodal_js_url = <?php echo Mage::helper('kj_magemail')->getJqueryRemodalJsUrl(); ?>;
+    MageMailData.jquery_remodal_css_url = <?php echo Mage::helper('kj_magemail')->getJqueryRemodalCssUrl(); ?>;
+    MageMailData.ouibounce_js_url = <?php echo Mage::helper('kj_magemail')->getOuibounceJslUrl(); ?>;
+    MageMailData.exit_modal_css_url = <?php echo Mage::helper('kj_magemail')->getExitModalCssUrl(); ?>;
+
+    <?php if (Mage::helper('kj_magemail')->autoLoginEnabled()): ?>
+        MageMailData.auto_login = true;
+    <?php endif; ?>
+    <?php if (Mage::helper('kj_magemail')->getJavascriptLoggingDisabled()): ?>
+        MageMailData.javascript_logging_disabled = true;
+    <?php endif; ?>
+    <?php if (Mage::helper('kj_magemail')->getCouponBarMessageNotActivated()): ?>
+        MageMailData.coupon_bar_message_not_activated = "<?php echo Mage::helper('kj_magemail')->getCouponBarMessageNotActivated(); ?>";
+    <?php endif; ?>
+    <?php if (Mage::helper('kj_magemail')->getCouponBarMessageActivated()): ?>
+        MageMailData.coupon_bar_message_activated = "<?php echo Mage::helper('kj_magemail')->getCouponBarMessageActivated(); ?>";
+    <?php endif; ?>
+    <?php if (Mage::helper('kj_magemail')->getMessageUpdatingCart()): ?>
+        MageMailData.message_updating_cart = "<?php echo Mage::helper('kj_magemail')->getMessageUpdatingCart(); ?>";
+    <?php endif; ?>
+    <?php if (Mage::helper('kj_magemail')->getMessageReloadingForCoupon()): ?>
+        MageMailData.message_reloading_for_coupon = "<?php echo Mage::helper('kj_magemail')->getMessageReloadingForCoupon(); ?>";
+    <?php endif; ?>
+    <?php if (Mage::helper('kj_magemail')->getMessageReloadingForCart()): ?>
+        MageMailData.message_reloading_for_cart = "<?php echo Mage::helper('kj_magemail')->getMessageReloadingForCart(); ?>";
+    <?php endif; ?>
+    <?php if (Mage::helper('kj_magemail')->getMessageClose()): ?>
+        MageMailData.message_close = "<?php echo Mage::helper('kj_magemail')->getMessageClose(); ?>";
+    <?php endif; ?>
+    <?php if (Mage::helper('kj_magemail')->getMessageHoursSymbol()): ?>
+        MageMailData.message_hours_symbol = "<?php echo Mage::helper('kj_magemail')->getMessageHoursSymbol(); ?>";
+    <?php endif; ?>
+    <?php foreach (Mage::helper('kj_magemail')->getLanguageKeys() as $langKey): ?>
+        <?php if (Mage::helper('kj_magemail')->getLanguageValue($langKey)): ?>
+            MageMailData.lang_<?php echo $langKey; ?> = "<?php echo Mage::helper('kj_magemail')->getLanguageValue($langKey); ?>";
+        <?php endif; ?>
+    <?php endforeach; ?>
+
+</script>
+
+<?php echo Mage::helper('kj_magemail')->getAdditionalHtml(); ?>
+
+<!--[if gte IE 9]><!-->
+<script async type="text/javascript" src="<?php echo Mage::helper('kj_magemail')->getMageMailJavascriptUrl();?>"></script>
+<!--[[endif]><!-->

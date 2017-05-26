@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><css>arw/producttab/css/producttab.css</css></action>
+        </reference>
+    </default>
+    <producttab_adminhtml_producttab_index>
+        <reference name="content">
+            <block type="producttab/adminhtml_producttab" name="producttab" />
+        </reference>
+    </producttab_adminhtml_producttab_index>
+    <producttab_adminhtml_blocks_edit>
+        <reference name="head">
+            <action method="addJs"><script>prototype/window.js</script></action>
+            <action method="addJs"><script>arw/producttab/producttab.js</script></action>
+            <action method="addJs"><script>extjs/ext-tree.js</script></action>
+            <action method="addJs"><script>extjs/ext-tree-checkbox.js</script></action>
+            <action method="addItem"><type>js_css</type><name>extjs/resources/css/ext-all.css</name></action>
+        </reference>
+    </producttab_adminhtml_blocks_edit>
+    <producttab_adminhtml_producttab_productsgrid>
+    </producttab_adminhtml_producttab_productsgrid>
+    <adminhtml_catalog_category_edit>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>arw/producttab/fonts/font-awesome.css</name></action>
+        </reference>
+    </adminhtml_catalog_category_edit>
+</layout>

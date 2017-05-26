@@ -1,0 +1,300 @@
+/*  Colors variables global*/
+$body_bg_color : #fff;
+$main_bg_color:#fff;
+
+$primary:#af5875;
+$text_color:#b8b8b8;
+$heading_color:#272727;
+$link_color:#272727;
+$link_hover_color:#af5875;
+$label_color:#272727;
+$border_color:#ebebeb;
+
+$button_bg:transparent;
+$button_color:#272727;
+$button_border_color:#272727;
+$button_hover_bg:#af5875;
+$button_hover_color:#fff;
+$button_hover_border_color:#af5875;
+
+$button_2_bg:transparent;
+$button_2_color:#fff;
+$button_2_border_color:#fff;
+$button_2_hover_bg:#af5875;
+$button_2_hover_color:#fff;
+$button_2_hover_border_color:#af5875;
+
+$button_3_bg:#fff;
+$button_3_color:#272727;
+$button_3_border_color:transparent;
+$button_3_hover_bg:#af5875;
+$button_3_hover_color:#fff;
+$button_3_hover_border_color:transparent;
+
+$input_bg:#ffffff;
+$input_color:#272727;
+$input_border_color:#ebebeb;
+$input_focus_bg:#ebebeb;
+$input_focus_border_color:#ebebeb;
+$input_focus_color:#272727;
+$input_disable_bg:#ebebeb;
+
+$block_title_bg:#fff;
+$block_title_color:#272727;
+$block_content_bg:#fff;
+$block_content_border:#ebebeb;
+$block_text_color:#b8b8b8;
+$block_link_color:#272727;
+$block_nav_link_color:#272727;
+$block_nav_link_hover_color:#af5875;
+$block_link_hover_color:#af5875;
+
+$danger:red;
+$success:green;
+$warning:orange;
+$info:#eee;
+
+$cat_label1:transparent;
+$cat_label2:transparent;
+$cat_label3:transparent;
+$cat_label4:transparent;
+
+/*  Font family */
+$font_size:12px;
+$font_h1:2em;
+$font_h2:1.75em;
+$font_h3:1.5em;
+$font_h4:1.250em;
+$font_h5:1.167em;
+$font_h6:1em;
+$font_family:'Montserrat', sans-serif;
+$font_family_heading:'Montserrat', sans-serif;
+$font_family_highlight:'Playfair Display', serif;
+
+/*  HEADER  */
+$header_bg_color:transparent;
+$header_text_color:#272727;
+$header_link_color:#272727;
+$header_link_bg:transparent;
+$header_link_hover_color:#af5875;
+$header_link_hover_bg:transparent;
+
+$header_dropdown_bg:#272727;
+$header_dropdown_text_color:#858585;
+$header_dropdown_link_color:#858585;
+$header_dropdown_link_bg:transparent;
+$header_dropdown_link_hover_color:#af5875;
+$header_dropdown_link_hover_bg:transparent;
+
+/*  primary */
+$primary_menu_bg:#fff;
+$primary_menu_text_color:#fff;
+
+$mobile_menu_bar_color:#b8b8b8;
+$mobile_menu_bar_bg:transparent;
+$mobile_menu_bg:#272727;
+$mobile_menu_link_color:#fff;
+$mobile_menu_link_hover_color:#af5875;
+
+$level1_bg:transparent;
+$level1_color:#272727;
+$level1_hover_bg:transparent;
+$level1_hover_color:#af5875;
+
+$primary_sub2_bg:#272727;
+$level2_bg:transparent;
+$level2_color:#858585;
+$level2_hover_bg:transparent;
+$level2_hover_color:#ffffff;
+
+$primary_sub3_bg:#272727;
+$level3_bg:transparent;
+$level3_color:#858585;
+$level3_hover_bg:transparent;
+$level3_hover_color:#ffffff;
+
+/*  Breadcumbs  */
+
+$breadcrumb_bg:#fff;
+$breadcrumb_link_color:#b8b8b8;
+$breadcrumb_link_hover_color:#da5171;
+$breadcrumb_current_color:#b8b8b8;
+$breadcrumb_caret:#b8b8b8;
+
+/*  Toolbar */
+$toolbar_bg:#fff;
+$toolbar_border_color:#ebebeb;
+$toolbar_text_color:#b8b8b8;
+$toolbar_link_color:#b8b8b8;
+$toolbar_link_bg:transparent;
+$toolbar_link_hover_color:#da5171;
+$toolbar_link_hover_bg:transparent;
+
+
+/*  Table   */
+$table_bg:#fff;
+$table_head_bg:#fff;
+$table_head_color:#333;
+$table_head_border:#ededed;
+$table_body_border:#ededed;
+$table_text_color:$text_color;
+$table_link_color:$link_color;
+$table_hover_link_color:$link_hover_color;
+
+/*	Footer */
+$footer_heading_color : #b8b8b8;
+
+$footer_bg_color:#272727;
+$footer_text_color:#616161;
+$footer_link_color:#616161;
+$footer_link_hover_color:#af5875;
+$footer_border_color:#505050;
+
+$footer_copyright_bg:#272727;
+$footer_copyright_text:#616161;
+$footer_copyright_link_color:#af5875;
+$footer_copyright_link_hover_color:$primary;
+$footer_copyright_border_color:#353535;
+
+/*  Catalog Grid View    */
+
+$cat_product_name_color:$heading_color;
+$cat_product_name_hover_color:$link_hover_color;
+$cat_price_color:#af5875;
+$cat_border_color:#eaeaea;
+
+$cat_product_name_color2:$heading_color;
+$cat_product_name_hover_color2:$link_hover_color;
+$cat_price_color2:#af5875;
+$cat_border_color2:#eaeaea;
+
+$cat_label_new_bg:#ababab;
+$cat_label_new_color:#fff;
+$cat_label_new_border:#ababab;
+$cat_label_sale_bg:#8090a5;
+$cat_label_sale_color:#fff;
+$cat_label_sale_border:#8090a5;
+
+
+
+$cat_button_quickview_bg:#ffffff;
+$cat_button_quickview_color:#272727;
+$cat_button_quickview_border_color:#fff;
+$cat_button_quickview_hover_bg:#af5875;
+$cat_button_quickview_hover_color:#ffffff;
+$cat_button_quickview_hover_border_color:#af5875;
+
+$cat_button_cart_bg:transparent;
+$cat_button_cart_color:#fff;
+$cat_button_cart_border_color:#fff;
+$cat_button_cart_hover_bg:#af5875;
+$cat_button_cart_hover_color:#fff;
+$cat_button_cart_hover_border_color:#af5875;
+
+$cat_button_compare_bg:#ffffff;
+$cat_button_compare_color:#272727;
+$cat_button_compare_border_color:#fff;
+$cat_button_compare_hover_bg:#af5875;
+$cat_button_compare_hover_color:#ffffff;
+$cat_button_compare_hover_border_color:#af5875;
+
+$cat_button_wishlist_bg:#ffffff;
+$cat_button_wishlist_color:#272727;
+$cat_button_wishlist_border_color:#fff;
+$cat_button_wishlist_hover_bg:#af5875;
+$cat_button_wishlist_hover_color:#ffffff;
+$cat_button_wishlist_hover_border_color:#af5875;
+
+$cat_button_quickview_bg2:#ffffff;
+$cat_button_quickview_color2:#272727;
+$cat_button_quickview_border_color2:#ebebeb;
+$cat_button_quickview_hover_bg2:#af5875;
+$cat_button_quickview_hover_color2:#ffffff;
+$cat_button_quickview_hover_border_color2:#af5875;
+
+$cat_button_cart_bg2:transparent;
+$cat_button_cart_color2:#272727;
+$cat_button_cart_border_color2:#272727;
+$cat_button_cart_hover_bg2:#af5875;
+$cat_button_cart_hover_color2:#fff;
+$cat_button_cart_hover_border_color2:#af5875;
+
+$cat_button_compare_bg2:#ffffff;
+$cat_button_compare_color2:#272727;
+$cat_button_compare_border_color2:#ebebeb;
+$cat_button_compare_hover_bg2:#af5875;
+$cat_button_compare_hover_color2:#ffffff;
+$cat_button_compare_hover_border_color2:#af5875;
+
+$cat_button_wishlist_bg2:#ffffff;
+$cat_button_wishlist_color2:#272727;
+$cat_button_wishlist_border_color2:#ebebeb;
+$cat_button_wishlist_hover_bg2:#af5875;
+$cat_button_wishlist_hover_color2:#ffffff;
+$cat_button_wishlist_hover_border_color2:#af5875;
+
+/*  Catalog Details View    */
+$detail_borer_color:#ebebeb;
+$detail_background_color:#fff;
+$detail_price_color:#af5875;
+
+$detail_button_cart_bg:transparent;
+$detail_button_cart_color:#272727;
+$detail_button_cart_border_color:#272727;
+$detail_button_cart_hover_bg:#af5875;
+$detail_button_cart_hover_color:#fff;
+$detail_button_cart_hover_border_color:#af5875;
+
+$detail_button_compare_bg:#ffffff;
+$detail_button_compare_color:#272727;
+$detail_button_compare_border_color:#ebebeb;
+$detail_button_compare_hover_bg:#af5875;
+$detail_button_compare_hover_color:#ffffff;
+$detail_button_compare_hover_border_color:#af5875;
+
+$detail_button_wishlist_bg:#ffffff;
+$detail_button_wishlist_color:#272727;
+$detail_button_wishlist_border_color:#ebebeb;
+$detail_button_wishlist_hover_bg:#af5875;
+$detail_button_wishlist_hover_color:#ffffff;
+$detail_button_wishlist_hover_border_color:#af5875;
+
+$detail_tab_control_color:#272727;
+$detail_tab_control_bg:#fff;
+$detail_tab_control_border_color:#272727;
+$detail_tab_control_hover_color:#af5875;
+$detail_tab_control_hover_bg:#fff;
+$detail_tab_control_hover_border_color:#333;
+
+$detail_tab_content_color:#b8b8b8;
+$detail_tab_content_link_color:#272727;
+$detail_tab_content_hover_link_color:#af5875;
+$detail_tab_content_border:#ebebeb;
+$detail_tab_content_bg:#fff;
+
+
+//== Media queries breakpoints
+$screen-xs:                  480px;
+$screen-xs-min:              $screen-xs;
+$screen-phone:               $screen-xs-min;
+
+// Small screen / tablet
+
+$screen-sm:                  768px;
+$screen-sm-min:              $screen-sm;
+$screen-tablet:              $screen-sm-min;
+
+// Medium screen / desktop
+$screen-md:                  992px;
+$screen-md-min:              $screen-md;
+$screen-desktop:             $screen-md-min;
+
+// Large screen / wide desktop
+$screen-lg:                  1200px;
+$screen-lg-min:              $screen-lg;
+$screen-lg-desktop:          $screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-sm-max:              ($screen-md-min - 1);
+$screen-md-max:              ($screen-lg-min - 1);

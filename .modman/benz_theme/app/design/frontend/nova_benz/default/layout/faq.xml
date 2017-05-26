@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">	
+    <default>
+        <reference name="head">
+             <block type="core/text" name="recaptcha">
+            <action ifconfig="faq/faq_recaptcha/faq_recaptchaselect" method="setText"><text><![CDATA[<script src="https://www.google.com/recaptcha/api.js"></script>]]></text></action>
+            </block>
+        </reference>
+    </default>
+	<faq_index_index>
+		<reference name="root">
+            <action method="setTemplate">
+            	<template>page/1column.phtml</template>
+            </action>
+        </reference>
+		<reference name="content">
+			<block type="faq/faq" name="faq" template="faq/faq.phtml" />
+		</reference>
+	</faq_index_index>
+	<default>
+		<reference name="footer_links">
+            <action method="addLink" translate="label title" ifconfig="faq/faq_group/faq_select">
+                <label>FAQ</label>
+                <url>faq</url>
+                <prepare>Frequently Asked Questions</prepare>
+                <title>FAQ</title>
+            </action>
+        </reference>
+    </default>
+</layout>
+
+

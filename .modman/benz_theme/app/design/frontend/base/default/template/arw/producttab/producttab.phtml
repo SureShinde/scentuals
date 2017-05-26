@@ -1,0 +1,31 @@
+<?php
+if(Mage::helper('producttab')->getEnableModule()){
+$effect=Mage::helper('producttab')->getEffect();
+$tabs=$this->getTabs();
+$tab_first_data=$this->getTabFirst();
+$tab_first_id=$tab_first_data['arw_tab_id'];
+$identifier=$this->getConfig('identifier');
+$enable_jquery=Mage::helper('producttab')->getEnableJquery();
+$enable_bootstrap=Mage::helper('producttab')->getEnableBootstrap();
+$_secure = Mage::app()->getStore()->isCurrentlySecure();
+$i=0;
+?>
+<?php if($tabs->count()):?>
+
+<div class="arw_tab_slider">
+	<ul class="slider-tab">
+			<?php foreach($tabs as $tab):?>
+					<li id="tab_<?php echo $tab['arw_tab_id'];?>_<?php echo $identifier ?>" class="<?php if($tabs->count()==1){echo 'arw_custom_css';}?> <?php echo $i==0?' active first':(($i==count($tabs)-1)?'last':'')?>"><a href=""><span><?php echo $tab['arw_name'];?></span></a></li>
+			<?php $i++; endforeach;?>
+	</ul>
+	<?php foreach($tabs as $tab){?>
+			<?php if($tab_first_id==$tab['arw_tab_id']){?>
+					<div id="tab_<?php echo $tab['arw_tab_id']; ?>_<?php echo $identifier; ?>_contents"><?php echo $this->getPagerHtml() ?></div>
+			<?php }else{?>
+					<div id="tab_<?php echo $tab['arw_tab_id']; ?>_<?php echo $identifier; ?>_contents"></div>             
+	<?php }}?>
+	<div class="ajax_loading_tab"></div>
+	<div class="backgroundajax_tab"></div>
+</div>
+<?php endif;}?>
+<?php // duc?>

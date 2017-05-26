@@ -1,0 +1,17 @@
+<?php
+?>
+<?php
+    $bar = Mage::helper('arwfilter')->getConfig('arwfilter/general/bar');
+    $barColor = '#'.Mage::helper('arwfilter')->getConfig('arwfilter/general/bar_color');
+?>
+<div id="<?php echo $this->getHash()?>" class="price-slider">
+    <div id="<?php echo $this->getHash('-min')?>" class="price-slider-handle min"></div>
+    <div id="<?php echo $this->getHash('-max')?>" class="price-slider-handle max"></div>
+    <div id="<?php echo $this->getHash('-span')?>" class="price-slider-span"></div>
+</div>
+<div class="layer-price">
+    <?php echo $this->getCurrencySymbol()?><span id="layer-price-min"></span>&nbsp;&nbsp;-&nbsp;&nbsp;<?php echo $this->getCurrencySymbol()?><span id="layer-price-max"></span>
+</div>
+<script type="text/javascript">
+    window.arwFilter.initPriceFilter(<?php echo $this->getConfig()?>);
+</script>

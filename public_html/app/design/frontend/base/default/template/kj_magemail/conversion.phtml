@@ -1,0 +1,17 @@
+<?php
+
+$lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+if ($lastOrderId) {
+    $lastOrder = Mage::getSingleton('sales/order')->load($lastOrderId);
+}
+
+?>
+
+<script>
+    <?php if (isset($lastOrder)): ?>
+        MageMailData = typeof(MageMailData) != 'undefined' ? MageMailData : {};
+        MageMailData.mm_conversion = true;
+        MageMailData.mm_entity = '<?php echo $lastOrder->getEntityId(); ?>';
+        MageMailData.mm_customer_email = '<?php echo urlencode($lastOrder->getData('customer_email')); ?>';
+    <?php endif; ?>
+</script>

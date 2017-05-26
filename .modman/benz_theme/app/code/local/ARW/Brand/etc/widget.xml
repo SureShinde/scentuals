@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<!--
+/******************************************************
+ * Package   : Brand
+ * Author    : ArexWorks
+ * Copyright : (c) 2015
+*******************************************************/
+-->
+<widgets>
+    <brand type="brand/brand_widget" translate="name description" module="brand">
+        <name>ARW Brand</name>
+        <description></description>
+        <parameters>
+            <template translate="label">
+                <label>Template</label>
+                <visible>0</visible>
+                <type>text</type>
+                <value>arw/brand/widget/default.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>arw/brand/widget/default.phtml</value>
+                        <label>Default Template</label>
+                    </default>
+                </values>
+            </template>
+            <title translate="label">
+                <label>Title</label>
+                <visible>1</visible>
+                <type>text</type>
+            </title>
+            <ids translate="label">
+                <label>Select Brands</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>multiselect</type>
+                <source_model>brand/source_option</source_model>
+            </ids>
+            <show_widget_as translate="label">
+                <label>Show Widget As</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <list translate="label">
+                        <value>list</value>
+                        <label>List</label>
+                    </list>
+                    <slider translate="label">
+                        <value>slider</value>
+                        <label>Slider</label>
+                    </slider>
+                </values>
+            </show_widget_as>
+            <show_brands_title translate="label">
+                <label>Show Brands Title</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>0</value>
+                <description>Show Brands Title</description>
+                <depends>
+                    <show_widget_as>
+                        <value>slider</value>
+                    </show_widget_as>
+                </depends>
+            </show_brands_title>
+            <infinite translate="label">
+                <label>Infinite</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>1</value>
+                <description>Infinite loop sliding</description>
+                <depends>
+                    <show_widget_as>
+                        <value>slider</value>
+                    </show_widget_as>
+                </depends>
+            </infinite>
+            <slides_to_show translate="label">
+                <label>Slides to Show</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>5</value>
+                <description>Number of slides to show</description>
+                <depends>
+                    <show_widget_as>
+                        <value>slider</value>
+                    </show_widget_as>
+                </depends>
+            </slides_to_show>
+            <slides_to_scroll translate="label">
+                <label>Slides to Scroll</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>1</value>
+                <description>Number of slides to scroll</description>
+                <depends>
+                    <show_widget_as>
+                        <value>slider</value>
+                    </show_widget_as>
+                </depends>
+            </slides_to_scroll>
+            <speed translate="label">
+                <label>Speed</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>300</value>
+                <description>Slide/Fade animation speed in milliseconds.</description>
+                <depends>
+                    <show_widget_as>
+                        <value>slider</value>
+                    </show_widget_as>
+                </depends>
+            </speed>
+            <autoplay translate="label">
+                <label>Autoplay</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>1</value>
+                <description>Enables Autoplay</description>
+                <depends>
+                    <show_widget_as>
+                        <value>slider</value>
+                    </show_widget_as>
+                </depends>
+            </autoplay>
+            <autoplaySpeed translate="label">
+                <label>Autoplay Speed</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>3000</value>
+                <description>Autoplay Speed in milliseconds</description>
+                <depends>
+                    <show_widget_as>
+                        <value>slider</value>
+                    </show_widget_as>
+                </depends>
+            </autoplaySpeed>
+            <arrows translate="label">
+                <label>Arrow</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>1</value>
+                <description>Prev/Next Arrows</description>
+                <depends>
+                    <show_widget_as>
+                        <value>slider</value>
+                    </show_widget_as>
+                </depends>
+            </arrows>
+            <dots translate="label">
+                <label>Dots</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>0</value>
+                <description>Show dot indicators</description>
+                <depends>
+                    <show_widget_as>
+                        <value>slider</value>
+                    </show_widget_as>
+                </depends>
+            </dots>
+            <vertical translate="label">
+                <label>Vertical</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>0</value>
+                <description>Vertical slide mode</description>
+                <depends>
+                    <show_widget_as>
+                        <value>slider</value>
+                    </show_widget_as>
+                </depends>
+            </vertical>
+        </parameters>
+    </brand>
+</widgets>

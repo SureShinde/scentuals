@@ -1,0 +1,162 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_modern
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ */
+?>
+<?php
+    $product_collateral_display = Mage::getStoreConfig('sebian/product_details/product_collateral_display');
+    $__tabs = $this->getTabs();
+    $custom_block_1 = Mage::getModel('cms/block')->load('arw_sebian_custom_tab_1');
+    $custom_block_2 = Mage::getModel('cms/block')->load('arw_sebian_custom_tab_2');
+?>
+<div>
+<?php
+    $tab_related = array();
+    foreach ($__tabs as $_index => $_tab){
+        if($this->getChildHtml($_tab['alias'])){
+            if($_tab['alias'] == 'related_products'){
+                $tab_related['alias'] = $_tab['alias'];
+                $tab_related['title'] = $_tab['title'];
+                unset($__tabs[$_index]);
+            }
+        }else{
+            unset($__tabs[$_index]);
+        }
+    }
+?>
+
+    <div class="product_details_tabs<?php echo ($product_collateral_display == 'accordion') ? ' mode_accordion' : ''?>">
+        <ul class="product-tabs clearfix">
+            <?php foreach ($__tabs as $_index => $_tab): ?><?php /*
+                */?><li data-content="product_tabs_<?php echo $_tab['alias'] ?>_contents" id="product_tabs_<?php echo $_tab['alias'] ?>" class="product-tab-heading<?php echo !$_index?' active first':(($_index==count($this->getTabs())-1)?' last':'')?>"><a href="#"><?php echo $_tab['title']?></a></li><?php /*
+            */?><?php endforeach; ?><?php /*
+            */?><?php if($custom_block_1->getIsActive()):?><?php /*
+                */?><li data-content="product_tabs_custom_tab_1_contents" id="product_tabs_custom_tab_1" class="product-tab-heading"><a href="#"><?php echo $custom_block_1->getTitle();?></a></li><?php /*
+            */?><?php endif;?><?php /*
+            */?><?php if($custom_block_2->getIsActive()):?><?php /*
+            */?><li data-content="product_tabs_custom_tab_2_contents" id="product_tabs_custom_tab_2" class="product-tab-heading"><a href="#"><?php echo $custom_block_2->getTitle();?></a></li>
+            <?php endif;?>
+        </ul>
+        <div class="tab-content">
+            <?php foreach ($__tabs as $_index => $_tab): ?>
+                <div data-content="product_tabs_<?php echo $_tab['alias'] ?>_contents" class="product-accordion-heading" id="product_accordion_<?php echo $_tab['alias'] ?>">
+                    <a href="#"><?php echo $_tab['title']?></a>
+                </div>
+                <div class="product-tabs-content" id="product_tabs_<?php echo $_tab['alias'] ?>_contents">
+                    <div class="product-tabs-content-inner clearfix">
+                        <?php echo $this->getChildHtml($_tab['alias']) ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            <?php if($custom_block_1->getIsActive()):?>
+                <div data-content="product_tabs_custom_tab_1_contents" class="product-accordion-heading" id="product_accordion_custom_tab_1>">
+                    <a href="#"><?php echo $custom_block_1->getTitle();?></a>
+                </div>
+                <div class="product-tabs-content" id="product_tabs_custom_tab_1_contents">
+                    <div class="product-tabs-content-inner clearfix">
+                        <?php echo $custom_block_1->getContent(); ?>
+                    </div>
+                </div>
+            <?php endif;?>
+            <?php if($custom_block_2->getIsActive()):?>
+                <div data-content="product_tabs_custom_tab_2_contents" class="product-accordion-heading" id="product_accordion_custom_tab_2">
+                    <a href="#"><?php echo $custom_block_2->getTitle();?></a>
+                </div>
+                <div class="product-tabs-content" id="product_tabs_custom_tab_2_contents">
+                    <div class="product-tabs-content-inner clearfix">
+                        <?php echo $custom_block_2->getContent(); ?>
+                    </div>
+                </div>
+            <?php endif;?>
+        </div>
+    </div>
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        $('.product-tabs li,.product-accordion-heading').on('click',function(e){
+            e.preventDefault();
+            var $parent = $(this).closest('.product_details_tabs'),
+                $this = $(this),
+                swap_id = $this.is('li') ? $this.attr('id').replace('tabs','accordion') : $this.attr('id').replace('accordion','tabs'),
+                swap_class = $this.is('li') ? '.product-accordion-heading' : '.product-tab-heading',
+                current_class = $this.is('li') ? '.product-tab-heading' : '.product-accordion-heading';
+            $parent.find(current_class).each(function(){
+                if($this.attr('id') == $(this).attr('id'))
+                    $(this).addClass('active');
+                else
+                    $(this).removeClass('active');
+            });
+            $parent.find(swap_class).each(function(){
+                if(swap_id == $(this).attr('id'))
+                    $(this).addClass('active');
+                else
+                    $(this).removeClass('active');
+            });
+            $parent.find('.product-tabs-content').each(function(){
+                if($this.data('content') == $(this).attr('id')){
+                    if($this.is('li')){
+                        $(this).show();
+                    }else{
+                        if($(this).hasClass('slide-down')){
+                            $this.removeClass('active');
+                            $(this).slideUp().removeClass('slide-down');
+                        }else{
+                            $this.addClass('active');
+                            $(this).slideDown().addClass('slide-down');
+                        }
+                    }
+                }else{
+                    if($this.is('li')){
+                        $(this).hide();
+                    }else{
+                        $(this).slideUp().removeClass('slide-down');
+                    }
+                }
+                if($(this).find('.products-grid').length > 0){
+                    arw_equal_height($('.products-grid li.item .product-info'));
+                }
+            });
+        });
+        $('.product-accordion-heading').first().trigger('click');
+        function changeTabsToAccordion(){
+            if($(window).width() < 992){
+                $('.product_details_tabs').addClass('active_mode_accordion');
+            }else{
+                $('.product_details_tabs').removeClass('active_mode_accordion');
+            }
+        }
+        changeTabsToAccordion();
+        $(window).resize(function(){
+            setTimeout(function(){
+                changeTabsToAccordion();
+            },500)
+        })
+    })
+</script>
+</div>

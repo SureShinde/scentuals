@@ -1,0 +1,143 @@
+<?php 
+$base_url = Mage::app()->getStore()->isCurrentlySecure() ? Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, true) : Mage::getBaseUrl();
+?>
+<style>
+    .osc_shipping_method_options{}
+</style>
+<div id="_overlay" class="overlay" style="display: none;"></div>
+<?php if (!($_shippingRateGroups = $this->getShippingRates())): ?>
+    <strong><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></strong>
+<?php else: ?>
+    <?php if (count($_shippingRateGroups)=='1' && Mage::getStoreConfig('onestepcheckout/general/hide_shipping_method')):?>
+        <dl class="shipment-methods" style="display: none">
+            <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
+            <?php                
+            if (Mage::getStoreConfig('carriers/chcanpost2module/frontend_disable') && $code == 'chcanpost2module') {            
+                continue;            
+            }
+            ?>
+            <dd><?php echo $this->getCarrierName($code) ?></dd>
+                <?php foreach ($_rates as $_rate): ?>
+                <dt style="margin-bottom: 5px;">
+                   <?php if ($_rate->getErrorMessage()): ?>
+                   <ul class="messages"><li class="error-msg"><ul><li><?php echo $_rate->getErrorMessage() ?></li></ul></li></ul>
+                   <?php else: ?>
+                   <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" />
+                   <label for="s_method_<?php echo $_rate->getCode() ?>"><!--<b><?php echo $this->getCarrierName($code) ?>:</b>--> <?php echo $_rate->getMethodTitle() ?>
+                        <strong>
+                        <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                        <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+                        <?php echo $_excl; ?>
+                        <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                            (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                        <?php endif; ?>
+                        </strong>
+                    </label>
+                   <?php endif ?>
+                   </dt>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
+        </dl>
+    <?php else: ?>
+        <dl class="shipment-methods">
+            <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
+                    <?php                
+                    if (Mage::getStoreConfig('carriers/chcanpost2module/frontend_disable') && $code == 'chcanpost2module') {            
+                        continue;            
+                    }
+                    ?>
+                        <dd><?php echo $this->getCarrierName($code) ?></dd>
+                    <?php foreach ($_rates as $_rate): ?>
+                        <dt style="margin-bottom: 5px;">
+
+                           <?php if ($_rate->getErrorMessage()): ?>
+                            <ul class="messages"><li class="error-msg"><ul><li><?php echo $_rate->getErrorMessage() ?></li></ul></li></ul>
+                           <?php else: ?>
+                                <?php $on_click = ($code == 'chcanpost2module') ? "getServiceOptions(this.value, '".$base_url."', false);" : 'chDisableOptions();' ?>   
+                                <input name="shipping_method" type="radio" class="validate-one-required-by-name"  onclick="<?php echo $on_click; ?>" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> />
+                                <label for="s_method_<?php echo $_rate->getCode() ?>" id="s_label_method_<?php echo $_rate->getCode() ?>"><!--<b><?php echo $this->getCarrierName($code) ?>:</b>--> <?php echo $_rate->getMethodTitle() ?>
+                                <strong>
+                                <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                                <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+
+                                <?php echo $_excl; ?>
+                                <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                    (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                                <?php endif; ?>
+                                </strong>
+                                </label>
+                           <?php endif ?>
+                        </dt>
+                    <?php endforeach; ?>
+            <?php if ($code == 'chcanpost2module'): ?>
+            <?php 
+            $postal_code = Mage::getSingleton('checkout/session')->getPostalCode();
+            if (empty($postal_code)) {
+                $postal_code = $this->getAddress()->getPostcode();
+            }
+            ?>
+            <dt class="secondary_dt" id="shipping_options_title">
+                <b><?php echo $this->__('Shipping Options'); ?></b>
+            </dt>   
+            <?php endif;?>
+            <dd>
+                <?php if ($code == 'chcanpost2module'): ?>
+                <div class="osc_shipping_method_options" >   
+                    <input type="checkbox" name="signature" disabled="disabled" id="option_SO" onclick="chUpdateRates('<?php echo $base_url; ?>');" />
+                    <label for="signature"><?php echo Mage::helper('chcanpost2module')->__('Require Signature'); ?></label>
+                </div>
+                <?php endif; ?>
+                <?php if ($code == 'chcanpost2module' && Mage::getStoreConfig('carriers/chcanpost2module/require_coverage') == 'optional'): ?>
+                <div class="osc_shipping_method_options" >
+                    <input type="checkbox" name="coverage" disabled="disabled" id="option_COV" onclick="chUpdateRates('<?php echo $base_url; ?>');" />
+                    <label for="coverage"><?php echo Mage::helper('chcanpost2module')->__('Include Coverage'); ?></label>
+                </div>
+                <?php endif; ?>
+                <?php if ($code == 'chcanpost2module' && Mage::getStoreConfig('carriers/chcanpost2module/card_for_pickup')): ?>
+                <div class="osc_shipping_method_options" >
+                    <input type="checkbox" name="card_for_pickup" disabled="disabled" id="option_HFP" onclick="chUpdateRates('<?php echo $base_url; ?>');" />
+                    <label for="card_for_pickup"><?php echo Mage::helper('chcanpost2module')->__('Card for Pick Up'); ?></label>
+                </div>
+                <?php endif; ?>
+                <?php if ($code == 'chcanpost2module' && !Mage::helper('chcanpost2module/option')->isPaOption() && Mage::getStoreConfig('carriers/chcanpost2module/do_not_safe_drop')): ?>
+                <div class="osc_shipping_method_options" >
+                    <input type="checkbox" name="do_not_safe_drop" disabled="disabled" id="option_DNS" onclick="chUpdateRates('<?php echo $base_url; ?>');" />
+                    <label for="do_not_safe_drop"><?php echo Mage::helper('chcanpost2module')->__('Do not Safe Drop'); ?></label>
+                </div>
+                <?php endif; ?>
+                <?php if ($code == 'chcanpost2module' && !Mage::helper('chcanpost2module/option')->isPaOption() && Mage::getStoreConfig('carriers/chcanpost2module/leave_at_door')): ?>
+                <div class="osc_shipping_method_options" >
+                    <input type="checkbox" name="leave_at_door" disabled="disabled" id="option_LAD" onclick="chUpdateRates('<?php echo $base_url; ?>');" />
+                    <label for="leave_at_door"><?php echo Mage::helper('chcanpost2module')->__('Leave at Door (Do not card)'); ?></label>
+                </div>
+                <?php endif; ?>
+               <?php if ($code == 'chcanpost2module' && Mage::getStoreConfig('carriers/chcanpost2module/enable_cod')): ?>
+                <div class="osc_shipping_method_options" >
+                    <input type="checkbox" name="cod" disabled="disabled" id="option_COD" onclick="chUpdateRates('<?php echo $base_url; ?>');" />
+                    <label for="collect_on_delivery"><?php echo Mage::helper('chcanpost2module')->__('COD'); ?></label>
+                </div>
+                <?php endif; ?>
+
+                <?php if ($code == 'chcanpost2module' && Mage::getStoreConfig('carriers/chcanpost2module/deliver_to_postoffice')): ?>
+                <div class="osc_shipping_method_options" id="nearest_office">
+                    <input type="checkbox" id="option_D2PO" disabled="disabled" onclick="chReloadRates('<?php echo $base_url; ?>');" name="deliver_to_post_office" />
+                    <label for="nearest_office"><?php echo Mage::helper('chcanpost2module')->__('Deliver to Post Office'); ?></label>
+                </div>
+                <div class="osc_shipping_method_options" id="nearest_office">
+                    <label for="nearest_office"><?php echo Mage::helper('chcanpost2module')->__('Near Postal Code'); ?></label>
+                </div>
+                <div class="osc_shipping_method_options" id="nearest_office">
+                    <input type="text" size="6" name="postcode" id="postcode" value="<?php echo $postal_code; ?>" />
+                    <button id="update_office_list" class="button" onclick="chReloadRates('<?php echo $base_url; ?>');" type="button" title="<?php echo Mage::helper('chcanpost2module')->__('Update'); ?>" disabled="disabled"><span><span><?php echo Mage::helper('chcanpost2module')->__('Search'); ?></span></span></button>
+                </div>
+                <div class="osc_shipping_method_options" id="nearest_office">    
+                    <div id="cp_office_name" style="font-weight:bold;"></div>
+                    <div id="cp_office_address"></div>
+                    <input type="hidden" name="office" id="office" />
+                </div>
+                <?php endif; ?>
+            </dd><br />
+            <?php endforeach; ?>
+        </dl>
+    <?php endif; ?>
+<?php endif; ?>

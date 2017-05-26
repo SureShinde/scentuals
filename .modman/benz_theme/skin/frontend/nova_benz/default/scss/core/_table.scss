@@ -1,0 +1,126 @@
+
+.hide-th {
+    text-indent: -9999px;
+}
+
+/* ============================================ *
+ * Data Table
+ * ============================================ */
+th{
+	color: $table_head_color;
+	font-weight: normal;
+}
+.data-table {
+	width: 100%;
+	background: $table_bg;
+	thead {
+		border: 1px solid $table_head_border;
+		background: $table_head_bg;
+		color: $table_head_color;
+	}
+	th {
+		font-size: 1em;
+		font-weight: normal;
+		vertical-align: middle;
+		padding: 10px;
+		text-align: center;
+		text-transform: uppercase;
+		border: 1px solid $table_head_border;
+		&.wrap {
+			white-space: normal;
+		}
+	}
+	tbody{
+		tr{
+			border: 1px solid $table_body_border;
+		}
+	}
+	tr{
+		td{
+			padding: 9px 10px;
+			border: 1px solid $table_body_border;
+			vertical-align: middle;
+			text-align: center;
+		}
+	}
+	td{
+		.product-name,
+		h3{
+			margin: 0 0 5px;
+			line-height: normal;
+			font-size:1.167em;
+		}
+	}
+	body & {
+		border-collapse: collapse;
+	}
+	tfoot {
+		border-top: none;
+		border-top: 1px solid $table_body_border;
+	}
+}
+.table,.data-table{
+	margin-bottom: 30px;
+	color: $table_text_color;
+	clear: both;
+	a{
+		color: $table_link_color;
+		&:hover{
+			color: $table_hover_link_color;
+		}
+	}
+}
+
+.ratings-table td,
+.ratings-table th {
+	padding: 3px 10px 3px 0;
+	font-weight: normal;
+}
+.data-table .first.odd,
+.box-account .data-table .odd {
+	background: none;
+}
+
+
+#product-attribute-specs-table,
+#product-attribute-specs-table th,
+#product-attribute-specs-table td
+{
+	border: 1px solid $table_body_border;
+}
+#product-attribute-specs-table .label{
+	display: table-cell;
+	text-align: inherit;
+}
+#checkout-review-table{
+	th:first-child,td:first-child {
+		text-align: left;
+	}
+}
+#product-attribute-specs-table{
+	tr td{
+		text-align: left;
+	}
+}
+@media (max-width: 767px) {
+	table.arw-responsive-table{
+		colgroup,
+		thead{
+			display: none;
+		}
+		td{
+			display: block;
+			border-top: none;
+			border-left: none;
+			border-right:none;
+			text-align: left !important;
+			&:before{
+				content: attr(data-th);
+				width: 120px;
+				display: inline-block;
+				text-transform: uppercase;
+				color: $table_head_color;
+			}
+		}
+	}
+}

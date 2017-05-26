@@ -1,0 +1,15 @@
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="action-content">
+            <h1>Hello {{var receiver}},</h1>
+            <p style="font-size: 14px;margin-bottom: 25px;line-height: 1.5;" > We are glad to notify you that the question ( <b>{{var question}}</b> ) posted by you on our website has been answered. And also we added that question with answer into our website frequently asked question's page.
+            <br /><br />To know the answer, kindly check our <a href="{{var faq_url}}">faq page</a>.</p>
+            <p>If you have any questions, please feel free to contact us at <a href="mailto:{{var store_email}}">{{var store_email}}</a> {{depend store_phone}} or by phone at <a href="tel:{{var phone}}">{{var store_phone}}</a>{{/depend}}.</p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer"}}

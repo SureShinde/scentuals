@@ -1,0 +1,49 @@
+ <?php
+ $theme_helper = Mage::helper('sebian');
+ $posts = $this->getPosts();
+ $current_category = $this->getCategory();
+ ?>
+ <div class="page-title">
+     <h1><?php echo $current_category->getTitle(); ?></h1>
+ </div>
+ <?php if (count($posts)): ?>
+ <div class="blog-list">
+     <?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+     <div class="clearfix"></div>
+     <?php foreach ($posts as $post): ?>
+         <div class="post-item">
+             <div class="post-item-inner">
+                 <div class="post-thumbnail">
+                     <?php if($post->getImage()):?>
+                         <a href="<?php echo $post->getAddress(); ?>">
+                             <img src="<?php echo $theme_helper->resizeImage($post->getImage());?>" alt="<?php echo $post->getTitle(); ?>"/>
+                         </a>
+                     <?php endif;?>
+                 </div>
+                 <div class="post-item-content">
+                     <div class="post-category">
+                         <a href="<?php echo $current_category->getUrl(); ?>"><?php echo $current_category->getTitle(); ?></a>
+                     </div>
+                     <h2 class="post-title"><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>
+                     <div class="title-divider-style-3 margin-left-0"></div>
+                     <?php echo $this->getBookmarkHtml($post) ?>
+                     <div class="post-excerpt std"><?php echo $post->getPostContent(); ?></div>
+                     <div class="post-meta">
+                         <div class="post-by"><a href="<?php echo $post->getAddress(); ?>"><i class="fa fa-user"></i><span><?php echo $post->getUser(); ?></span></a></div>
+                         <div class="post-date"><a href="<?php echo $post->getAddress(); ?>"><i class="fa fa-calendar"></i><span><?php echo $post->getCreatedTime(); ?></span></a></div>
+                         <?php if ($this->getCommentsEnabled() && $post->getCommentCount()): ?>
+                             <div class="post-view"><a href="<?php echo $post->getAddress(); ?>#commentBox"><i class="fa fa-eye"></i><span><?php echo $post->getCommentCount();?></span></a></div>
+                         <?php endif;?>
+                         <a class="btn" href="<?php echo $post->getAddress(); ?>"><?php echo Mage::helper('blog')->__('Read More'); ?></a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     <?php endforeach; ?>
+     <div class="toolbar-bottom">
+         <?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+     </div>
+ </div>
+ <?php else: ?>
+     <?php echo Mage::helper('blog')->__('No Posts in this Category.'); ?>
+ <?php endif; ?>

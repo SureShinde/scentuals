@@ -1,0 +1,1093 @@
+<root><blocks><cms_block><title><![CDATA[Footer Links Company]]></title><identifier>footer_links_company</identifier><content><![CDATA[<div class="links">
+    <div class="block-title">
+        <strong><span>Company</span></strong>
+    </div>
+    <ul>
+        <li><a href="{{store url=""}}about-magento-demo-store/">About Us</a></li>
+        <li><a href="{{store url=""}}contacts/">Contact Us</a></li>
+        <li><a href="{{store url=""}}customer-service/">Customer Service</a></li>
+        <li><a href="{{store url=""}}privacy-policy-cookie-restriction-mode/">Privacy Policy</a></li>
+    </ul>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Cookie restriction notice]]></title><identifier>cookie_restriction_notice_block</identifier><content><![CDATA[<p>This website requires cookies to provide all of its features. For more information on what data is contained in the cookies, please see our <a href="{{store direct_url="privacy-policy-cookie-restriction-mode"}}">Privacy Policy page</a>. To accept cookies from this site, please click the Allow button below.
+</p>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Footer]]></title><identifier>block_footer</identifier><content><![CDATA[<div class="block_footer">
+	{{widget type="cms/widget_block" template="cms/widget/static_block/default.phtml" block_id="block_footer_bottom"}}
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Footer Bottom]]></title><identifier>block_footer_bottom</identifier><content><![CDATA[<div class="block_footer_bottom">
+	<div class="container">
+		<div class="row">
+			<div class="arw-col col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				{{widget type="cms/widget_block" template="cms/widget/static_block/default.phtml" block_id="block_footer_bottom_1"}}
+			</div>
+			<div class="arw-col col-xs-6 col-sm-6 col-md-2 col-lg-2">
+				{{widget type="cms/widget_block" template="cms/widget/static_block/default.phtml" block_id="block_footer_bottom_2"}}
+			</div>
+			<div class="arw-col col-xs-6 col-sm-6 col-md-2 col-lg-2">
+				{{widget type="cms/widget_block" template="cms/widget/static_block/default.phtml" block_id="block_footer_bottom_3"}}
+			</div>
+			<div class="arw-col col-xs-6 col-sm-6 col-md-2 col-lg-2">
+				{{widget type="cms/widget_block" template="cms/widget/static_block/default.phtml" block_id="block_footer_bottom_4"}}
+			</div>
+                        <div class="arw-col col-xs-6 col-sm-6 col-md-2 col-lg-2">
+				{{widget type="cms/widget_block" template="cms/widget/static_block/default.phtml" block_id="block_footer_bottom_5"}}
+			</div>
+		</div>
+	</div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Newsletter]]></title><identifier>block_newsletter</identifier><content><![CDATA[<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 newsletter_style_1">
+					{{block type="newsletter/subscribe" name="home.newsletter" template="newsletter/subscribe-mini.phtml"}}
+				</div>
+			</div>
+		</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Footer Bottom 1]]></title><identifier>block_footer_bottom_1</identifier><content><![CDATA[<div class="block block-logo-benz">
+	<img src="{{media url="wysiwyg/benz/logo-white.png"}}" alt="" />
+	<div class="block-content footer-benz-1">
+		<ul>
+			<li><i class="fa fa-location-arrow"></i><div class="footer-column-1 footer-address">Address: 123 Main Street, <br>Anytown,CA 12345 USA.</div></li>
+			<li><i class="fa fa-phone"></i><div class="footer-column-1 footer-phone">(800) 0123 4567 890</div></li>
+			<li><i class="fa fa-envelope-o"></i><div class="footer-column-1 email-support">Support@benz.wpelite.com</div></li>
+		</ul>
+                {{widget type="cms/widget_block" template="cms/widget/static_block/default.phtml" block_id="block_paypal_footer"}}
+	</div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Footer Bottom 2]]></title><identifier>block_footer_bottom_2</identifier><content><![CDATA[<div class="block block-style-advisor">
+	<div class="block-title">
+		<span>INFOMATION</span>
+	</div>
+	<div class="block-content">
+		<ul>
+			<li><a href="#">About us</a></li>
+			<li><a href="#">Our office</a></li>
+			<li><a href="#">Delivery</a></li>
+			<li><a href="#">Store</a></li>
+			<li><a href="#">Guarantee</a></li>
+                        <li><a href="#">Buy gift cards</a></li>
+                        <li><a href="#">Returns</a></li>
+		</ul>
+	</div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Footer Bottom 3]]></title><identifier>block_footer_bottom_3</identifier><content><![CDATA[<div class="block block-infomation">
+	<div class="block-title">
+		<span>MORE ABOUT BENZ</span>
+	</div>
+	<div class="block-content">
+		<ul>
+			<li><a href="#">Corporate Responsibility</a></li>
+			<li><a href="#">Jobs at Benz</a></li>
+			<li><a href="#">Investors</a></li>
+		</ul>
+	</div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Footer Bottom 4]]></title><identifier>block_footer_bottom_4</identifier><content><![CDATA[<div class="block block-infomation">
+	<div class="block-title">
+		<span>WHAT IN STORE</span>
+	</div>
+	<div class="block-content">
+		<ul>
+			<li><a href="#">Women</a></li>
+			<li><a href="#">Men</a></li>
+			<li><a href="#">Product A-Z</a></li>
+			<li><a href="#">Buy Gift Vouchers</a></li>
+		</ul>
+	</div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Footer Bottom 5]]></title><identifier>block_footer_bottom_5</identifier><content><![CDATA[<div class="block block-infomation">
+	<div class="block-title">
+		<span>MY ACCOUNT</span>
+	</div>
+	<div class="block-content">
+		<ul>
+			<li><a href="#">My Account</a></li>
+<li><a href="#">Login</a></li>
+<li><a href="#">My Cart</a></li>
+<li><a href="#">Wishlist</a></li>
+<li><a href="#">Checkout</a></li>
+		</ul>
+	</div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Paypal Footer]]></title><identifier>block_paypal_footer</identifier><content><![CDATA[<ul class="paypal-ft">
+    <a href="#"><img src="{{media url="wysiwyg/paypal/payment_image_paypal.png"}}" alt="" /></a>
+    <a href="#"><img src="{{media url="wysiwyg/paypal/payment_image_visa.png"}}" alt="" /></a>
+    <a href="#"><img src="{{media url="wysiwyg/paypal/payment_image_mastercard.png"}}" alt="" /></a>
+    <a href="#"><img src="{{media url="wysiwyg/paypal/payment_image_maestro.png"}}" alt="" /></a>
+</ul>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Footer home 6]]></title><identifier>block_footer_home_6</identifier><content><![CDATA[<div class="icon-footer-home-4">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-behance"></i></a>
+        <a href="#"><i class="fa fa-dribbble"></i></a>
+    </div>
+<div class="copyright_home6">
+        <span>&copy; 2015 Magento Benz Store. All Rights Reserved. Powered by <a href="http://mentothemes.com/" title="MentoThemes">Novaworks</a></span>
+    </div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Contact Us]]></title><identifier>block_contact_bottom</identifier><content><![CDATA[<div class="fluid-width">
+{{widget type="customwidgets/widget_map" address="Hanoi" map_height="300" map_type="roadmap" map_zoom="14" map_saturation="color" full_screen="yes"}}
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
+]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Contact Us Content]]></title><identifier>block_contact_content</identifier><content><![CDATA[<div class="contact_content_title"><span>Contact Infomation</span></div>
+<div class="contact_content_text">
+    <div class="text-contact">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et.</div>
+    <div class="contact_content_sub_title"><span>BENZ HEADQUATER</span></div>
+    <p class="address">Address: Your address</p>
+    <p class="telephone">Phone: 0123456789</p>
+    <p class="email">Email: <span>youremail@gmail.com</span></p>
+    <div class="contact_content_sub_title"><span>NEW YORK OFFICE</span></div>
+    <p class="address">PO Box 16122 Collins Street West</p>
+    <p class="street">Victoria 8007</p>
+    <p class="street">Australia</p>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[About Us Content]]></title><identifier>block_about_content_paralax</identifier><content><![CDATA[<div class="block_about_content_paralax">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 about-us-info-box addmargin-bot">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced" style="color:#202020;background:#ffffff;border-style:;border-color:#333333;border-width:1px;width:90px;height:90px;line-height:90px;border-radius:0;font-size:30px;display:inline-block;">
+                            <i class="fa fa-lemon-o"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">WEB DESIGN</h3>
+                </div>
+                <div class="aio-icon-description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 about-us-info-box addmargin-bot">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced" style="color:#202020;background:#ffffff;border-style:;border-color:#333333;border-width:1px;width:90px;height:90px;line-height:90px;border-radius:0;font-size:30px;display:inline-block;">
+                            <i class="fa fa-camera-retro"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">PHOTOGRAPHY</h3>
+                </div>
+                <div class="aio-icon-description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 about-us-info-box addmargin-bot">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced" style="color:#202020;background:#ffffff;border-style:;border-color:#333333;border-width:1px;width:90px;height:90px;line-height:90px;border-radius:0;font-size:30px;display:inline-block;">
+                            <i class="fa fa-cubes"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">WEB DEVELOPMENT</h3>
+                </div>
+                <div class="aio-icon-description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 about-us-info-box addmargin-bot">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced" style="color:#202020;background:#ffffff;border-style:;border-color:#333333;border-width:1px;width:90px;height:90px;line-height:90px;border-radius:0;font-size:30px;display:inline-block;">
+                            <i class="fa fa-bicycle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">MOTION GRAPHIC</h3>
+                </div>
+                <div class="aio-icon-description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 about-us-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced" style="color:#202020;background:#ffffff;border-style:;border-color:#333333;border-width:1px;width:90px;height:90px;line-height:90px;border-radius:0;font-size:30px;display:inline-block;">
+                            <i class="fa fa-life-bouy"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">UX/UI DESIGN</h3>
+                </div>
+                <div class="aio-icon-description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 about-us-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced" style="color:#202020;background:#ffffff;border-style:;border-color:#333333;border-width:1px;width:90px;height:90px;line-height:90px;border-radius:0;font-size:30px;display:inline-block;">
+                            <i class="fa fa-file-o"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">SEO ONLINE</h3>
+                </div>
+                <div class="aio-icon-description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 about-us-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced" style="color:#202020;background:#ffffff;border-style:;border-color:#333333;border-width:1px;width:90px;height:90px;line-height:90px;border-radius:0;font-size:30px;display:inline-block;">
+                            <i class="fa fa-suitcase"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">3D MODEL</h3>
+                </div>
+                <div class="aio-icon-description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 about-us-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced" style="color:#202020;background:#ffffff;border-style:;border-color:#333333;border-width:1px;width:90px;height:90px;line-height:90px;border-radius:0;font-size:30px;display:inline-block;">
+                            <i class="fa fa-download"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">CONCEPT ART</h3>
+                </div>
+                <div class="aio-icon-description">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div>
+            </div>
+        </div>
+    </div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[About Us Content Paralax]]></title><identifier>block_about_paralax</identifier><content><![CDATA[<div class="fluid-width block_about_paralax">{{widget type="customwidgets/widget_parallax" image="wysiwyg/bazien/about_us_parallax.jpg" box_height="844" block_id="block_about_content_paralax"}}
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[About Us Content Client Say]]></title><identifier>block_about_client_say</identifier><content><![CDATA[<div class="block_about_client_say">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="content-client-say testimonial_list_item_inner">
+                    <div class="testimonial_thumbnail">
+<img src="{{media url="wysiwyg/bazien/about-1.jpg"}}" alt="" />
+                    </div>
+                    <div class="testimonial_text">
+                        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. ”
+                    </div>
+                    <div class="testimonial_author"> JAMES LANNISTER </div>
+                    <div class="title_position">
+                        <span> CEO/Founder Apple Inc </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="content-client-say testimonial_list_item_inner">
+                    <div class="testimonial_thumbnail">
+<img src="{{media url="wysiwyg/bazien/about-2.jpg"}}" alt="" />
+                    </div>
+                    <div class="testimonial_text">
+                        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. ”
+                    </div>
+                    <div class="testimonial_author"> JAMES LANNISTER </div>
+                    <div class="title_position">
+                        <span> CEO/Founder Apple Inc </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="content-client-say testimonial_list_item_inner">
+                    <div class="testimonial_thumbnail">
+<img src="{{media url="wysiwyg/bazien/about-3.jpg"}}" alt="" />
+                    </div>
+                    <div class="testimonial_text">
+                        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. ”
+                    </div>
+                    <div class="testimonial_author"> JAMES LANNISTER </div>
+                    <div class="title_position">
+                        <span> CEO/Founder Apple Inc </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="content-client-say testimonial_list_item_inner">
+                    <div class="testimonial_thumbnail">
+<img src="{{media url="wysiwyg/bazien/about-4.jpg"}}" alt="" />
+                    </div>
+                    <div class="testimonial_text">
+                        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. ”
+                    </div>
+                    <div class="testimonial_author"> JAMES LANNISTER </div>
+                    <div class="title_position">
+                        <span> CEO/Founder Apple Inc </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Footer Link]]></title><identifier>block_footer_link</identifier><content><![CDATA[<div>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-behance"></i></a>
+                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                    <a href="#"><i class="fa fa-pinterest"></i></a>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Slide Menu]]></title><identifier>block_slide_menu</identifier><content><![CDATA[<div class="block_slide_menu slide-menu">
+    <div class="content-slide-menu-1">
+        <img src="{{media url="wysiwyg/benz/10_11_MENU.jpg"}}" alt="" />
+        <div class="content-1">
+            <p class="summer">Summer</p>
+            <p class="festival">FESTIVAL</p>
+            <p class="years">2015</p>
+        </div>
+    </div>
+    <div class="content-slide-menu-1">
+        <img src="{{media url="wysiwyg/benz/10_11_MENU.jpg"}}" alt="" />
+        <div class="content-1">
+            <p class="summer">Summer</p>
+            <p class="festival">FESTIVAL</p>
+            <p class="years">2015</p>
+        </div>
+    </div>
+</div>
+]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 1]]></title><identifier>block_home_one_1</identifier><content><![CDATA[<div class="fluid-width block_home_one_1 row">
+    <div class="col-nova-1 padding-left-30">
+        <div class="block_slider_1">
+            <div class="content-slide-block-1">
+                <img src="{{media url="wysiwyg/benz/block-home-1-1.jpg"}}" alt="" />
+                <div class="content-block1">
+                    <div class="img-slider1"><img src="{{media url="wysiwyg/benz/png-block-img-1-1.png"}}" alt="" /></div>
+                    <p class="content-sale">Sale</p>
+                    <p class="up-to">up to<span>75%</span></p>
+                    <span class="free-delivery">Free Delivery Worldwide</span>
+                </div>
+            </div>
+            <div class="content-slide-block-1">
+                <img src="{{media url="wysiwyg/benz/block-home-1-1.jpg"}}" alt="" />
+                <div class="content-block1">
+                    <div class="img-slider1"><img src="{{media url="wysiwyg/benz/png-block-img-1-1.png"}}" alt="" /></div>
+                    <p class="content-sale">Sale</p>
+                    <p class="up-to">up to<span>75%</span></p>
+                    <span class="free-delivery">Free Delivery Worldwide</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-nova-2">
+        <div class="wintercomming margin-bottom-30">
+            <img src="{{media url="wysiwyg/benz/block-home-1-2.jpg"}}" alt="" />
+            <div class="content-winter">
+                <p class="winter">WINTER IS COMMING</p>
+                <p class="sale-off">Sale off all products</p>
+            </div>
+        </div>
+        <div class="autumwinter">
+            <img src="{{media url="wysiwyg/benz/block-home-1-4.jpg"}}" alt="" />
+            <div class="content-autum">
+                <p class="autum">AUTUM WINTER</p>
+                <p class="festival-tribal">Festival Tribal Mirror Tank Dress</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-nova-3 padding-right-30">
+        <div class="img-block-3 margin-bottom-30">
+            <img src="{{media url="wysiwyg/benz/block-home-1-3.jpg"}}" alt="" />
+            <div class="content-block-3">
+                <div class="img-bn-3"><img src="{{media url="wysiwyg/benz/png-img-block-1-3.png"}}" alt="" /></div>
+                <p class="men-rtl">MEN’S RTL</p>
+            </div>
+        </div>
+        <div class="img-block-5">
+            <img src="{{media url="wysiwyg/benz/block-home-1-5.jpg"}}" alt="" />
+            <div class="content-block-5">
+                <p class="say-your-name">SAY YOUR NAME</p>
+                <p class="free-shipping">Free shipping</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 2]]></title><identifier>block_home_one_2</identifier><content><![CDATA[<div class="block_home_one_2 margin-top-30">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-25">
+<div class="arw-title">
+<h2><span><span>Popular Products</span></span></h2>
+</div>
+<div class="arw-sub-title"><span><img src="{{media url="wysiwyg/benz/x.png"}}" alt="" /></span></div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-5 tab_style_1">{{widget type="producttab/producttab" identifier="new_trending" tab_identifier="new-arrival,women,kid,men" template="arw/producttab/producttab.phtml"}}</div>
+</div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 3]]></title><identifier>block_home_one_3</identifier><content><![CDATA[<div class="fluid-width block_home_one_3" style="background-image:url('{{media url="wysiwyg/benz/block-home-3-1.jpg"}}');">
+    <div class="content-block_home_one_3">
+        <p class="content-block3-1">Festival Tribal Mirror Tank Dress</p>
+        <p class="content-block3-2">sale up <span>70%</span></p>
+        <a class="btn" href="">Shop now</a>
+    </div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 4]]></title><identifier>block_home_one_4</identifier><content><![CDATA[<div class="block_home_one_4 margin-top-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 block4-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced">
+                            <i class="Streamline-stationery"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">WORLD WIDE SHIP</h3>
+                </div>
+                <div class="aio-icon-description">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae</div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 block4-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced">
+                            <i class="Streamline-chat"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">BEST SUPPORT 24/7</h3>
+                </div>
+                <div class="aio-icon-description">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 block4-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced">
+                            <i class="Streamline-umbrella"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">ENJOY SHOPPING</h3>
+                </div>
+                <div class="aio-icon-description">These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 block4-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced">
+                            <i class="Streamline-setting-adjustment"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">UNLIMITED OPTIONS</h3>
+                </div>
+                <div class="aio-icon-description">so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Content Video 1]]></title><identifier>content_video_1</identifier><content><![CDATA[<div class="video-content">
+		    <video id="video1"  onended="endvideo()">
+		    	<source src="{{media url="wysiwyg/Chandelier.mp4"}}" type="video/mp4">
+		    </video>
+	        <div class="video-text-wrap">
+	        	<p>Trending ideas and inventions always make us feel proud</p>
+			<button class="playvideo"><span class="icon-play2"></span></button>
+		</div>
+	    </div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 5]]></title><identifier>block_home_one_5</identifier><content><![CDATA[<div class="fluid-width block_home_one_5">
+	{{widget type="customwidgets/widget_parallax" image="wysiwyg/benz/paralax-video.jpg" box_height="450" block_id="content_video_1"}}
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 6]]></title><identifier>block_home_one_6</identifier><content><![CDATA[<div class="block_home_one_6 margin-top-30">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-30">
+<div class="arw-title">
+<h2><span><span>Best sale products</span></span></h2>
+</div>
+<div class="arw-sub-title"><span><img src="{{media url="wysiwyg/benz/x.png"}}" alt="" /></span></div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-5 tab_style_1">{{widget type="producttab/producttab" identifier="new_trending" tab_identifier="arrival,men1,women1,shoe" template="arw/producttab/producttab.phtml"}}</div>
+</div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 7]]></title><identifier>block_home_one_7</identifier><content><![CDATA[<div class="fluid-width block_home_one_7">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-30 margin-bottom-50">
+            <div class="arw-title">
+                <h2><span><span>Shop by Collections</span></span></h2>
+            </div>
+            <div class="arw-sub-title"><span><img src="{{media url="wysiwyg/benz/x.png"}}" alt="" /></span></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 nopadding">
+            <div class="block-7 translate-left">
+                <img src="{{media url="wysiwyg/benz/block-home-7-1.jpg"}}" alt="" />
+                <div class="content-block-7">
+                    <div class="sub-content-block7">
+                        <h2 class="block7-title">Autum collections 2015</h2>
+                        <div class="line-block-7"></div>
+                        <p class="text-block7">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</p>
+                        <a class="btn2" href="">Shop now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 nopadding">
+            <div class="block-7 block7-specail">
+                <img src="{{media url="wysiwyg/benz/block-home-7-2.jpg"}}" alt="" />
+                <div class="content-block-7">
+                    <div class="sub-content-block7">
+                        <h2 class="block7-title">Winter collections 2015</h2>
+                        <div class="line-block-7"></div>
+                        <p class="text-block7">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</p>
+                        <a class="btn2" href="">Shop now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 nopadding">
+            <div class="block-7 translate-top-down">
+                <img src="{{media url="wysiwyg/benz/block-home-7-3.jpg"}}" alt="" />
+                <div class="content-block-7">
+                    <div class="sub-content-block7">
+                        <h2 class="block7-title">Summer collections 2015</h2>
+                        <div class="line-block-7"></div>
+                        <p class="text-block7">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</p>
+                        <a class="btn2" href="">Shop now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 nopadding">
+            <div class="block-7 translate-right">
+                <img src="{{media url="wysiwyg/benz/block-home-7-4.jpg"}}" alt="" />
+                <div class="content-block-7">
+                    <div class="sub-content-block7">
+                        <h2 class="block7-title">Spring collections 2015</h2>
+                        <div class="line-block-7"></div>
+                        <p class="text-block7">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</p>
+                        <a class="btn2" href="">Shop now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 8]]></title><identifier>block_home_one_8</identifier><content><![CDATA[<div class="block_home_one_8 margin-top-40">
+<div class="row">
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tab_style_3 product-tab-list-mini">{{widget type="producttab/producttab" identifier="top_sellers" tab_identifier="mini_top_sellers_fashion" template="arw/producttab/producttab.phtml"}}</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tab_style_3 product-tab-list-mini">{{widget type="producttab/producttab" identifier="sales_off" tab_identifier="mini_sales_off_fashion" template="arw/producttab/producttab.phtml"}}</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tab_style_3 product-tab-list-mini">{{widget type="producttab/producttab" identifier="top_rated" tab_identifier="mini_top_rated_fashion" template="arw/producttab/producttab.phtml"}}</div>
+</div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 9]]></title><identifier>block_home_one_9</identifier><content><![CDATA[<div class="block_home_one_9 margin-top-50">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-9">
+                <img src="{{media url="wysiwyg/benz/block-home-9-1.jpg"}}" alt="" />
+                <div class="content-block-9">
+                    <div class="sub-content-block9">
+                        <h2 class="block9-title">White Lace</h2>
+                        <p class="text-block9">WINTER IS COMMING</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-9 margin-reponsive">
+                <img src="{{media url="wysiwyg/benz/block-home-9-2.jpg"}}" alt="" />
+                <div class="content-block-9">
+                    <div class="sub-content-block9">
+                        <h2 class="block9-title">Classic- Stripes & Trench</h2>
+                        <p class="text-block9">24 YEAR OLD GIRL</p>
+                    </div>
+                </div>
+            </div>
+        </div><div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-9">
+                <img src="{{media url="wysiwyg/benz/block-home-9-3.jpg"}}" alt="" />
+                <div class="content-block-9">
+                    <div class="sub-content-block9">
+                        <h2 class="block9-title">Green inspire</h2>
+                        <p class="text-block9">A BRAND NEW CURSE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 10]]></title><identifier>block_home_one_10</identifier><content><![CDATA[<div class="fluid-width block_home_one_10 margin-top-90" style="background-image:url('{{media url="wysiwyg/benz/block-home-10.jpg"}}');">
+    <div class="content-block_home_one_10">
+        <p class="content-block10-1">Coat With Pockets</p>
+        <p class="content-block10-2">FUNNEL COLLAR TO</p>
+        <a class="btn2" href="">Shop now</a>
+    </div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 11]]></title><identifier>block_home_one_11</identifier><content><![CDATA[<div class="block_home_one_11 margin-top-10">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-top-55 padding-bottom-50">
+<div class="arw-title">
+<h2><span><span>Latest Blogs</span></span></h2>
+</div>
+<div class="arw-sub-title"><span><img src="{{media url="wysiwyg/benz/x.png"}}" alt="" /></span></div>
+</div>
+</div>
+<div>{{widget type="blog/last" blocks_count="3" categories="1,8,11" column="3"}}</div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 12]]></title><identifier>block_home_one_12</identifier><content><![CDATA[<div class="block_home_one_12 margin-top-25 margin-bottom-50">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div class="arw-title">
+<h2><span><span>Shop by Brands</span></span></h2>
+</div>
+<div class="arw-sub-title margin-bottom-10"><span><img alt="" src="{{media url="wysiwyg/benz/x.png"}}" /></span></div>
+{{widget type="brand/brand_widget" template="arw/brand/widget/default.phtml" title="Home Brands" ids="1,2,3,4,5,6,9,10" show_widget_as="slider" infinite="1" slides_to_show="4" slides_to_scroll="2" speed="300" autoplay="1" autoplaySpeed="3000" dots="1"}}</div>
+</div>
+</div>
+<div class="clear-both">&nbsp;</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home One 13]]></title><identifier>block_home_one_13</identifier><content><![CDATA[<div class="fluid-width block_home_one_13">
+	{{widget type="cms/widget_block" template="cms/widget/static_block/default.phtml" block_id="block_newsletter"}}
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Two 1]]></title><identifier>block_home_two_1</identifier><content><![CDATA[<div class="block_home_two_1 margin-top-30">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-two-1">
+                <img src="{{media url="wysiwyg/benz/block-two-1-1.jpg"}}" alt="" />
+                <div class="content-block-two-1">
+                    <div class="sub-content-block-two-1">
+                        <p class="text-block-two-1">AUTUMN WINTER</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-two-1 margin-reponsive">
+                <img src="{{media url="wysiwyg/benz/block-two-1-2.jpg"}}" alt="" />
+                <div class="content-block-two-1">
+                    <div class="sub-content-block-two-1">
+                        <p class="text-block-two-1">NEW ARRIVAL<br> 2015</p>
+                    </div>
+                </div>
+            </div>
+        </div><div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-two-1">
+                <img src="{{media url="wysiwyg/benz/block-two-1-3.jpg"}}" alt="" />
+                <div class="content-block-two-1">
+                    <div class="sub-content-block-two-1">
+                        <h2 class="block-two-1-title"><span>HUGE SALE</span></h2>
+                        <p class="text-block-two-1-spe">Wax fabric overshirt. Shirt collar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Two 2]]></title><identifier>block_home_two_2</identifier><content><![CDATA[<div class="block_home_two_2 margin-top-35">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-30">
+<div class="arw-title">
+<h2><span><span>Best sale products</span></span></h2>
+</div>
+<div class="arw-sub-title"><span><img src="{{media url="wysiwyg/benz/x.png"}}" alt="" /></span></div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-5 tab_style_1">{{widget type="producttab/producttab" identifier="new_trending" tab_identifier="arrival,men1,women1,shoe" template="arw/producttab/producttab.phtml"}}</div>
+</div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Two 3]]></title><identifier>block_home_two_3</identifier><content><![CDATA[<div class="block_home_two_3 margin-top-30">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-25">
+<div class="arw-title">
+<h2><span><span>Featured Categories</span></span></h2>
+</div>
+<div class="arw-sub-title"><span><img alt="" src="{{media url="wysiwyg/benz/x.png"}}" /></span></div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-5 tab_style_1">{{widget type="producttab/producttab" identifier="new_trending" tab_identifier="home2-newarrival,home2-men,home2-women,home2-kid" template="arw/producttab/producttab.phtml"}}</div>
+</div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Two 4]]></title><identifier>block_home_two_4</identifier><content><![CDATA[<div class="block_home_two_4 margin-top-30">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-two-4">
+                <div class="content-block-two-4">
+                    <div class="sub-content-block-two-4">
+                        <h2 class="block-two-4-title">Freeshipping UK</h2>
+                        <p class="text-block-two-4">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-two-4 margin-reponsive">
+                <div class="content-block-two-4">
+                    <div class="sub-content-block-two-4">
+                        <h2 class="block-two-4-title">Best Support 24/7</h2>
+                        <p class="text-block-two-4">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium </p>
+                    </div>
+                </div>
+            </div>
+        </div><div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-two-4">
+                <div class="content-block-two-4">
+                    <div class="sub-content-block-two-4">
+                        <h2 class="block-two-4-title">Enjoy Shopping</h2>
+                        <p class="text-block-two-4">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Two 5]]></title><identifier>block_home_two_5</identifier><content><![CDATA[<div class="block_home_two_5 margin-top-40">
+<div class="row">
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tab_style_3 product-tab-list-mini">{{widget type="producttab/producttab" identifier="top_sellers" tab_identifier="mini_top_sellers_fashion" template="arw/producttab/producttab.phtml"}}</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tab_style_3 product-tab-list-mini">{{widget type="producttab/producttab" identifier="sales_off" tab_identifier="mini_sales_off_fashion" template="arw/producttab/producttab.phtml"}}</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tab_style_3 product-tab-list-mini">{{widget type="producttab/producttab" identifier="top_rated" tab_identifier="mini_top_rated_fashion" template="arw/producttab/producttab.phtml"}}</div>
+</div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Two 6]]></title><identifier>block_home_two_6</identifier><content><![CDATA[<div class="block_home_two_6">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-35">
+            <div class="arw-title">
+                <h2><span><span>Seasonal lookbook</span></span></h2>
+            </div>
+            <div class="arw-sub-title"><span><img src="{{media url="wysiwyg/benz/x.png"}}" alt="" /></span></div>
+        </div>
+    </div>
+    <div class="content-block-two-6 margin-top-55">
+        <div class="block-two-6-inner">
+            <div class="col-lg-3 col-md-3">
+                <img src="{{media url="wysiwyg/benz/block-two-6-1.jpg"}}" alt="" />
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <img src="{{media url="wysiwyg/benz/block-two-6-2.jpg"}}" alt="" />
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <img src="{{media url="wysiwyg/benz/block-two-6-3.jpg"}}" alt="" />
+            </div>
+        </div>
+        <div class="block-two-6-inner">
+            <div class="col-lg-3 col-md-3">
+                <img src="{{media url="wysiwyg/benz/block-two-6-1.jpg"}}" alt="" />
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <img src="{{media url="wysiwyg/benz/block-two-6-2.jpg"}}" alt="" />
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <img src="{{media url="wysiwyg/benz/block-two-6-3.jpg"}}" alt="" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Testimonial Home Two 7]]></title><identifier>testimonial_home_two_7</identifier><content><![CDATA[<div class="block_content_home_two_7">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="arw-title">
+                    <h2><span><span>Testimonial</span></span></h2>
+                </div>
+                <div class="arw-sub-title"><span><img src="{{media url="wysiwyg/benz/x_while.png"}}" alt="" /></span></div>
+            </div>
+        </div>
+        <div class="content-block-two-7">
+            <div class="block-two-7-inner">
+                <div class="testimonial-img">
+                    <img src="{{media url="wysiwyg/benz/tetimonial-two-1.png"}}" alt="" />
+                </div>
+                <p class="testimonial-text">
+                    “Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna <br> aliquyam erat, sed diam voluptua. At vero eos et.”
+                </p>
+                <p class="testimonial-authur">
+                    DocCoSau
+                </p>
+                <p class="testimonial-ceo">
+                    CEO/FOUNDER BENZ CORP
+                </p>
+            </div>
+            <div class="block-two-7-inner">
+                <div class="testimonial-img">
+                    <img src="{{media url="wysiwyg/benz/tetimonial-two-1.png"}}" alt="" />
+                </div>
+                <p class="testimonial-text">
+                     “Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna <br> aliquyam erat, sed diam voluptua. At vero eos et.”
+                </p>
+                <p class="testimonial-authur">
+                    DocCoSau
+                </p>
+                <p class="testimonial-ceo">
+                    CEO/FOUNDER BENZ CORP
+                </p>
+            </div>
+        </div>
+    </div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Two 7]]></title><identifier>block_home_two_7</identifier><content><![CDATA[<div class="fluid-width block_home_two_7">{{widget type="customwidgets/widget_parallax" image="wysiwyg/benz/paralax-two-1.jpg" box_height="440" block_id="testimonial_home_two_7"}}</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Two 8]]></title><identifier>block_home_two_8</identifier><content><![CDATA[<div class="block_home_two_8 margin-top-60 margin-bottom-50">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div class="arw-title">
+<h2><span><span>Shop by Brands</span></span></h2>
+</div>
+<div class="arw-sub-title margin-bottom-10"><span><img alt="" src="{{media url="wysiwyg/benz/x.png"}}" /></span></div>
+{{widget type="brand/brand_widget" template="arw/brand/widget/default.phtml" title="Home Brands" ids="1,2,3,4,5,6,9,10" show_widget_as="slider" infinite="1" slides_to_show="4" slides_to_scroll="2" speed="300" autoplay="1" autoplaySpeed="3000" dots="1"}}</div>
+</div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Content Home Two 9]]></title><identifier>content_home_two_9</identifier><content><![CDATA[<div class="content_home_two_9">
+    <p class="content-two-9-title">LRG 2015 Spring Lookbook</p>
+    <p class="content-two-9-text">Imagining the fabric of tomorrow’s classics, longstanding streetwear label LRG presents its 2015 spring <br>collection with a lookbook shot on location in the Grand Canyon by trashhand</p>
+    <a class="btn2" href="">Shop now</a>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Two 9]]></title><identifier>block_home_two_9</identifier><content><![CDATA[<div class="fluid-width block_home_two_9">
+    {{widget type="customwidgets/widget_parallax" image="wysiwyg/benz/paralax-two-2.jpg" box_height="476" block_id="content_home_two_9"}}
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Two 10]]></title><identifier>block_home_two_10</identifier><content><![CDATA[<div class="fluid-width block_home_two_10">
+	{{widget type="cms/widget_block" template="cms/widget/static_block/default.phtml" block_id="block_newsletter"}}
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Three 1]]></title><identifier>block_home_three_1</identifier><content><![CDATA[<div class="block_home_three_1 margin-top-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 block4-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced">
+                            <i class="Streamline-stationery"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">WORLD WIDE SHIP</h3>
+                </div>
+                <div class="aio-icon-description">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae</div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 block4-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced">
+                            <i class="Streamline-chat"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">BEST SUPPORT 24/7</h3>
+                </div>
+                <div class="aio-icon-description">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 block4-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced">
+                            <i class="Streamline-umbrella"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">ENJOY SHOPPING</h3>
+                </div>
+                <div class="aio-icon-description">These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12 block4-info-box">
+                <div class="aio-icon-top">
+                    <div class="ult-just-icon-wrapper">
+                        <div class="aio-icon advanced">
+                            <i class="Streamline-setting-adjustment"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="aio-icon-header">
+                    <h3 class="aio-icon-title">UNLIMITED OPTIONS</h3>
+                </div>
+                <div class="aio-icon-description">so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Three 2]]></title><identifier>block_home_three_2</identifier><content><![CDATA[<div class="block_home_three_2 margin-top-30">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-25">
+<div class="arw-title">
+<h2><span><span>Popular Products</span></span></h2>
+</div>
+<div class="arw-sub-title"><span><img src="{{media url="wysiwyg/benz/x.png"}}" alt="" /></span></div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-top-5 tab_style_1">{{widget type="producttab/producttab" identifier="new_trending" tab_identifier="new-arrival,women,kid,men" template="arw/producttab/producttab.phtml"}}</div>
+</div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Three 3]]></title><identifier>block_home_three_3</identifier><content><![CDATA[<div class="block_home_three_3 margin-top-35">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-three3">
+                <img src="{{media url="wysiwyg/benz/block-home-9-1.jpg"}}" alt="" />
+                <div class="content-block-three3">
+                    <div class="sub-content-block-three3">
+                        <h2 class="block-three3-title">White Lace</h2>
+                        <p class="text-block-three3">WINTER IS COMMING</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-three3 margin-reponsive">
+                <img src="{{media url="wysiwyg/benz/block-home-9-2.jpg"}}" alt="" />
+                <div class="content-block-three3">
+                    <div class="sub-content-block-three3">
+                        <h2 class="block-three3-title">Classic- Stripes & Trench</h2>
+                        <p class="text-block-three3">24 YEAR OLD GIRL</p>
+                    </div>
+                </div>
+            </div>
+        </div><div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="block-three3">
+                <img src="{{media url="wysiwyg/benz/block-home-9-3.jpg"}}" alt="" />
+                <div class="content-block-three3">
+                    <div class="sub-content-block-three3">
+                        <h2 class="block-three3-title">Green inspire</h2>
+                        <p class="text-block-three3">A BRAND NEW CURSE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Three 4]]></title><identifier>block_home_three_4</identifier><content><![CDATA[<div class="block_home_three_4 margin-top-65">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="arw-title">
+                <h2><span><span>What clients say ?</span></span></h2>
+            </div>
+            <div class="arw-sub-title"><span><img src="{{media url="wysiwyg/benz/x.png"}}" alt="" /></span></div>
+        </div>
+    </div>
+    <div class="wcs-home-three4">
+        <div class="block-three-4-inner">
+            <div class="icon-three-4">
+                <i class="fa fa-quote-left"></i>
+            </div>
+            <p class="three-4-text">
+                “Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores <br>eos qui ratione voluptatem sequi nesciunt.”
+            </p>
+            <div class="line-three4"></div>
+            <p class="three-4-authur">
+                DocCoSau
+            </p>
+            <p class="three-4-ceo">
+                CEO/FOUNDER BENZ CORP
+            </p>
+        </div>
+        <div class="block-three-4-inner">
+            <div class="icon-three-4">
+                <i class="fa fa-quote-left"></i>
+            </div>
+            <p class="three-4-text">
+                “Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores <br>eos qui ratione voluptatem sequi nesciunt.”
+            </p>
+            <div class="line-three4"></div>
+            <p class="three-4-authur">
+                DocCoSau
+            </p>
+            <p class="three-4-ceo">
+                CEO/FOUNDER BENZ CORP
+            </p>
+        </div>
+    </div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Three 5]]></title><identifier>block_home_three_5</identifier><content><![CDATA[<div class="fluid-width block_home_three_5">
+    {{widget type="customwidgets/widget_parallax" image="wysiwyg/benz/paralax-home3-1.jpg" box_height="506"}}
+    <div class="macbookpro"><img src="{{media url="wysiwyg/benz/macbookpro.png"}}" alt="" /></div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Three 6]]></title><identifier>block_home_three_6</identifier><content><![CDATA[<div class="block_home_three_6 margin-top-65 margin-bottom-40">
+    <p class="three6-title">
+        Amazing Woocommerce Online Store
+    </p>
+    <p class="three6-text">
+        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias <br>excepturi sint occaecati cupiditate non provident, similique sunt in culpa <br>qui
+        Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et..
+    </p>
+    <a class="btn3" href="">PURCHASES NOW</a>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Three 7]]></title><identifier>block_home_three_7</identifier><content><![CDATA[<div class="block_home_three_7">
+<div class="row">
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tab_style_3 product-tab-list-mini">{{widget type="producttab/producttab" identifier="top_sellers" tab_identifier="mini_top_sellers_fashion" template="arw/producttab/producttab.phtml"}}</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tab_style_3 product-tab-list-mini">{{widget type="producttab/producttab" identifier="sales_off" tab_identifier="mini_sales_off_fashion" template="arw/producttab/producttab.phtml"}}</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 tab_style_3 product-tab-list-mini">{{widget type="producttab/producttab" identifier="top_rated" tab_identifier="mini_top_rated_fashion" template="arw/producttab/producttab.phtml"}}</div>
+</div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Three 8]]></title><identifier>block_home_three_8</identifier><content><![CDATA[<div class="block_home_three_8 margin-top-40 margin-bottom-50">
+    <div class="row">
+        <div class="col-lg-4 col-md-4">
+            <div class="about-benz">
+                <p class="about-benz-title">About Benz Store</p>
+                <p class="about-benz-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint <br /> Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et..</p>
+                <p class="about-benz-text1" style="display: none;">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et..</p>
+                <a class="btn3 btn-readmore-about-benz">Read more</a></div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="blog-home-3">
+                <div class="blog-home-3-content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="arw-title">
+                                <h2><span><span>Fashion news</span></span></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-vertical">{{widget type="blog/last" blocks_count="3" categories="1,8,11" column="1"}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="imgbeside-blog"><img alt="" src="{{media url="wysiwyg/benz/beside-blog.jpg"}}" />
+                <div class="content-imgblog">
+                    <p class="three8-title">Reebok Classic X FACE</p>
+                    <p class="three8-text">A BRAND NEW CURSE</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear-both"></div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Home Four 1]]></title><identifier>block_home_four_1</identifier><content><![CDATA[<div class="block_home_four_1">
+{{widget type="producttab/producttab" identifier="tab-product-home4" tab_identifier="new-arrival_home4" template="arw/producttab/producttab.phtml"}}
+<div class="nova-home4-col-1 no-padding">
+            {{widget type="producttab/producttab" identifier="big-tab" tab_identifier="top_sale" template="arw/producttab/producttab.phtml"}}
+        </div>
+        <div class="nova-home4-col-2 no-padding">
+            {{widget type="producttab/producttab" identifier="2-tab-home4" tab_identifier="top_sale_home4" template="arw/producttab/producttab.phtml"}}
+        </div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Content Video About]]></title><identifier>content_video_about</identifier><content><![CDATA[<div class="video-content">
+		    <video id="video1"  onended="endvideo()">
+		    	<source src="{{media url="wysiwyg/Chandelier.mp4"}}" type="video/mp4">
+		    </video>
+	        <div class="video-text-wrap">
+	        	<p>Trending ideas and inventions always make us feel proud</p>
+			<button class="playvideo"><span class="icon-play2"></span></button>
+		</div>
+	    </div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[About Us Paralax Video]]></title><identifier>about_us_paralax_video</identifier><content><![CDATA[<div class="fluid-width block-video-about">{{widget type="customwidgets/widget_parallax" image="wysiwyg/benz/paralax-about.jpg" box_height="710" block_id="content_video_about"}}</div>
+	    ]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Our Skills]]></title><identifier>our_skills</identifier><content><![CDATA[<div class="our_skills about-part3">
+    <div class="about-title"><h2><span><span>OUR SKILLS</span></span></h2>
+        <div class="line-about"></div>
+    </div>
+    <div class="about-subtitle"><span>We are crazy teams</span></div>
+    <div class="about-part3-content">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="about-progress">
+                    <div class="title-progress">PHOTOSHOP</div>
+                    <div class="skillbar clearfix " data-percent="98%">
+                        <div class="skillbar-title"></div>
+                        <div class="skillbar-bar"><div class="percent"></div></div>
+                    </div>
+                    <div class="title-progress">ILLUSTRATOR</div>
+                    <div class="skillbar clearfix " data-percent="75%">
+                        <div class="skillbar-title"></div>
+                        <div class="skillbar-bar"><div class="percent"></div></div>
+                    </div>
+                    <div class="title-progress">HTML/CSS3</div>
+                    <div class="skillbar clearfix " data-percent="95%">
+                        <div class="skillbar-title"></div>
+                        <div class="skillbar-bar"><div class="percent"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="about-progress">
+                    <div class="title-progress">UX/UI DESIGN</div>
+                    <div class="skillbar clearfix " data-percent="95%">
+                        <div class="skillbar-title"></div>
+                        <div class="skillbar-bar"><div class="percent"></div></div>
+                    </div>
+                    <div class="title-progress">WORDPRESS</div>
+                    <div class="skillbar clearfix " data-percent="85%">
+                        <div class="skillbar-title"></div>
+                        <div class="skillbar-bar"><div class="percent"></div></div>
+                    </div>
+                    <div class="title-progress">BRANDING</div>
+                    <div class="skillbar clearfix " data-percent="75%">
+                        <div class="skillbar-title"></div>
+                        <div class="skillbar-bar"><div class="percent"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Contact Us After]]></title><identifier>block_contact_after</identifier><content><![CDATA[<div class="block_contact_after margin-top-50 margin-bottom-80">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 margin-ct-reponsive">
+            <a href=""><div class="contact_icon color1"><i class="fa fa-facebook"></i><span class="text_icon">facebook</span></div></a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 margin-ct-reponsive">
+            <a href=""><div class="contact_icon color2"><i class="fa fa-google-plus"></i><span class="text_icon">google plus</span></div></a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+            <a href=""><div class="contact_icon color3"><i class="fa fa-twitter"></i><span class="text_icon">twitter</span></div></a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+            <a href=""><div class="contact_icon color4"><i class="fa fa-pinterest-p"></i><span class="text_icon">pinterest</span></div></a>
+        </div>
+    </div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block><cms_block><title><![CDATA[Block Sidebar Left]]></title><identifier>block_sidebar_left</identifier><content><![CDATA[<div class="block_sidebar_left">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tab_style_3 product-tab-list-mini">{{widget type="producttab/producttab" identifier="top_sellers" tab_identifier="mini_top_sale_benz" template="arw/producttab/producttab.phtml"}}</div>
+</div>
+</div>]]></content><is_active>1</is_active><stores><item>0</item></stores></cms_block></blocks></root>

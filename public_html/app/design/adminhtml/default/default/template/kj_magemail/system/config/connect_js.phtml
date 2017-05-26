@@ -1,0 +1,188 @@
+<?php
+
+/**
+ * @var $this KJ_MageMail_Block_Adminhtml_ConnectJavascript
+ */
+
+?>
+
+<script type="text/javascript">
+    function mageMailTransportToJson(transport)
+    {
+        if (transport.responseJSON) {
+            return transport.responseJSON;
+        }
+
+        if (transport.responseText) {
+            data = JSON.parse(transport.responseText);
+            return data;
+        }
+
+        return {}
+    }
+
+    function mageMailHideConnectButton()
+    {
+        $$('#row_newsletter_kj_magemail_settings_connect_button').first().hide();
+    }
+
+    function mageMailHideStatus()
+    {
+        $$('#row_newsletter_kj_magemail_settings_disconnect_button').first().hide();
+        $$('#row_newsletter_kj_magemail_settings_status').first().hide();
+    }
+
+    function mageMailHideJavascriptRow()
+    {
+        $$('#row_newsletter_kj_magemail_settings_javascript').first().hide();
+    }
+
+    function mageMailSetStatus(message, color)
+    {
+        if (typeof(color) == 'undefined') {
+            color = 'black';
+        }
+
+        $$('#row_newsletter_kj_magemail_settings_status').first().show();
+        $$('#row_newsletter_kj_magemail_settings_status td.value').first().update("<span style='color: " + color + ";'>" + message + "</span>");
+    }
+
+    function connectToMageMail()
+    {
+        $$('#row_newsletter_kj_magemail_settings_connect_button button').first().addClassName('disabled');
+        mageMailSetStatus("Generating API Keys...", "orange");
+
+        new Ajax.Request('<?php echo $this->getGenerateApiKeyUrl() ?>', {
+            method:     'post',
+            onSuccess: function(transport) {
+                var data = mageMailTransportToJson(transport);
+                if (!data.success) {
+                    alert(data.message);
+                } else {
+                    authenticateToMageMail(data.api_route, data.api_key);
+                }
+            }
+        });
+    }
+
+    function quickCreateMageMail()
+    {
+        $$('#row_newsletter_kj_magemail_settings_create_button button').first().addClassName('disabled');
+        mageMailSetStatus("Creating account...", "orange");
+
+        var username = '<?php echo $this->generateUsername(); ?>';
+        var email = '<?php echo $this->getGeneralEmail(); ?>';
+        var password = '<?php echo $this->generatePassword(); ?>';
+
+        $$('#newsletter_kj_magemail_settings_web_username').first().value = username;
+        $$('#newsletter_kj_magemail_settings_web_password').first().value = password;
+
+        new Ajax.Request('<?php echo $this->getCreateAccountUrl() ?>', {
+            method:     'POST',
+            parameters: {
+                username: username,
+                email: email,
+                password: password
+            },
+
+            onSuccess: function(transport) {
+                var data = mageMailTransportToJson(transport);
+                if (!data.success) {
+                    alert(data.message);
+                } else {
+                    connectToMageMail();
+                }
+            },
+
+            onCreate: function(response) {
+                var t = response.transport;
+                t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                    if (/^(accept|accept-language|content-language)$/i.test(k))
+                        return original(k, v);
+                    if (/^content-type$/i.test(k) &&
+                        /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                        return original(k, v);
+                    return this;
+                });
+            }
+        });
+    }
+
+    function authenticateToMageMail(apiRoute, apiKey) {
+        mageMailSetStatus("Authenticating...", "orange");
+
+        var username = $$('#newsletter_kj_magemail_settings_web_username').first().value;
+        var password = $$('#newsletter_kj_magemail_settings_web_password').first().value;
+
+        $$('#row_newsletter_kj_magemail_settings_connect_button button').first().addClassName('disabled');
+
+        new Ajax.Request('<?php echo $this->getConnectUrl() ?>', {
+            method:     'post',
+            parameters: {
+                username: username,
+                password: password,
+                api_route: apiRoute,
+                api_key: apiKey,
+                magento_base_url: '<?php echo Mage::helper('kj_magemail')->getMagentoBaseUrl();?>',
+                magemail_secure_api_url: '<?php echo Mage::helper('kj_magemail')->getSecureApiUrl();?>',
+                database_table_prefix: '<?php echo Mage::getConfig()->getTablePrefix(); ?>'
+            },
+
+            onSuccess: function(transport){
+                var data = mageMailTransportToJson(transport);
+                $$('#row_newsletter_kj_magemail_settings_connect_button button').first().removeClassName('disabled');
+
+                if (data.success && data.connected) {
+                    mageMailSaveConnectedStatusInConfig(data.username);
+                } else {
+                    alert(data.message);
+                }
+            },
+
+            onCreate: function(response) {
+                var t = response.transport;
+                t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                    if (/^(accept|accept-language|content-language)$/i.test(k))
+                        return original(k, v);
+                    if (/^content-type$/i.test(k) &&
+                        /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                        return original(k, v);
+                    return this;
+                });
+            }
+        })
+    }
+
+    function mageMailSaveConnectedStatusInConfig(username) {
+        var url = '<?php echo $this->getSaveConnectedStatusUrl() ?>web_username/' + username;
+        mageMailSetStatus("Authentication Successful.  Almost done...", "orange");
+        mageMailSetStatus("Authentication Successful.  Saving API Key.", "orange");
+
+        new Ajax.Request(url, {
+            method:     'get',
+            onSuccess: function(transport){
+                var data = mageMailTransportToJson(transport);
+
+                if (data.success) {
+                    mageMailSetStatus("Connected.  Reloading page...", "green");
+                    mageMailHideConnectButton();
+                    location.reload();
+                } else {
+                    alert("Uh-oh, there was some kind of problem connecting.");
+                }
+            }
+        });
+    }
+</script>
+
+<script>
+    mageMailHideJavascriptRow();
+    <?php if (Mage::helper('kj_magemail')->isConnected()): ?>
+        $$('#row_newsletter_kj_magemail_settings_disconnect_button').first().show();
+        $$('#row_newsletter_kj_magemail_settings_connect_button').first().hide();
+        $$('#row_newsletter_kj_magemail_settings_create_button').first().hide();
+        mageMailSetStatus("Connected", "green");
+    <?php else: ?>
+        mageMailHideStatus();
+    <?php endif; ?>
+</script>

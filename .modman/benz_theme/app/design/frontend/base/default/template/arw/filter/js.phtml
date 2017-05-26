@@ -1,0 +1,14 @@
+<?php
+?>
+<?php $barColor = Mage::helper('arwfilter')->getConfig('arwfilter/general/bar_color') ?>
+<style type="text/css">
+    #nprogress .bar {
+        background: #<?php echo $barColor?>;
+    }
+    #nprogress .peg {
+        box-shadow: 0 0 15px #<?php echo $barColor?>, 0 0 10px #<?php echo $barColor?>;
+    }
+</style>
+<script type="text/javascript">
+    window.arwFilter = new ARWFilter('arwFilter', <?php echo Mage::helper('arwfilter')->getConfig()?>);
+</script>

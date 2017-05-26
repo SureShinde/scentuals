@@ -1,0 +1,1 @@
+../../../../../../.modman/benz_theme/js/arw/arexworks/jquery/mcolorpicker/mcolorpicker.js

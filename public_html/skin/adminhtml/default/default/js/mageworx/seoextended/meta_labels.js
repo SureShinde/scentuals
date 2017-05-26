@@ -1,0 +1,1 @@
+../../../../../../../../.modman/seo_suite_ultimate/skin/adminhtml/default/default/js/mageworx/seoextended/meta_labels.js

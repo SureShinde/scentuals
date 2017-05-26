@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @category    AM
+* @package     AM_ProductTab
+* @copyright   Copyright (C) 2008-2014 ArexMage.com. All Rights Reserved.
+* @license     GNU General Public License version 2 or later
+* @author      ArexMage.com
+* @email       support@arexmage.com
+*/
+-->
+<widgets>
+    <producttab type="producttab/producttab" translate="name description" name="producttab">
+        <name>ArexWorks Product Tab</name>
+        <description>Show Product Tab</description>
+        <parameters>
+			 <identifier translate="label">
+                <label>Identifier</label>
+                <visible>1</visible>
+                <type>text</type>
+				<required>1</required>
+            </identifier>
+            <!-- <widget_title translate="label">
+                <label>Widget Title</label>
+                <visible>1</visible>
+                <type>text</type>
+            </widget_title> -->
+			<tab_identifier translate="label">
+                <label>Choose Tab</label>
+                <visible>1</visible>
+                <value>1</value>
+                <type>multiselect</type>
+                <source_model>producttab/slide</source_model>
+                <!-- <depends>
+                    <scroll>
+                        <value>1</value>
+                    </scroll>
+                </depends> -->
+                <description><![CDATA[<script>
+					
+				</script>]]></description>
+            </tab_identifier>
+			<!-- <first_slide translate="label">
+                <label>First Slide</label>
+                <visible>1</visible>
+                <value>1</value>
+                <type>select</type>
+                <source_model>producttab/slide</source_model>
+            </first_slide> -->
+			 <template translate="label">
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <values>
+                    <default translate="label">
+                        <value>arw/producttab/producttab.phtml</value>
+                        <label>Default</label>
+                    </default>
+                </values>
+            </template>
+        </parameters>
+    </producttab>
+</widgets>

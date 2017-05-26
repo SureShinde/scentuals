@@ -1,0 +1,193 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+$show_icon_search   = Mage::helper('sebian')->getCfg('header/show_icon_search');
+$show_search_by_cat = Mage::helper('sebian')->getCfg('header/show_search_by_category');
+$show_language      = Mage::helper('sebian')->getCfg('header/show_language');
+$show_currency      = Mage::helper('sebian')->getCfg('header/show_currency');
+$mini_ajaxcart_icon = Mage::helper('sebian')->getCfg('header/mini_ajaxcart_icon');
+$stick_nav          = Mage::helper('sebian')->getCfg('header/sticky_nav');
+$mobile_menu_style  = Mage::helper('sebian')->getCfg('header/mobile_menu_style');
+$header_style       = Mage::helper('sebian')->getCfg('header/style');
+
+
+$topLinks = $this->getChildHtml('topLinks');
+$store_language = $this->getChildHtml('store_language');
+$store_currency = $this->getChildHtml('store_currency');
+
+$class_header = array('header-container');
+$class_header[] = 'header_' . $header_style;
+if($stick_nav){
+    $class_header[] = 'header_fixed_menu';
+}
+?>
+<a class="btn-menu hidden-lg hidden-md" style="z-index: 9999; cursor: pointer; display: none;"><span class="lnr lnr-menu"></span></a>
+<header class="<?php echo implode(' ',$class_header)?>">
+    <div class="header-top hidden-lg hidden-md hidden-sm hidden-xs">
+        <div class="container">
+            <div class="row">
+                <div class="header-top-left hidden-xs col-sm-5 col-md-5 col-lg-5">
+                    <?php echo $this->getChildHtml('header_welcome');?>
+
+                </div>
+                <div class="header-top-right col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                    <div class="header-top-right-inner">
+                        <div class="header-top-link">
+                            <ul class="header-top-link-ul">
+                                <li>
+                                    <span><?php echo $this->__('My Account')?></span>
+                                    <?php echo $topLinks;?>
+                                </li>
+                                <li class="header-language">
+                                    <?php echo $store_language;?>
+                                </li>
+                                <?php if($store_currency):?>
+                                    <?php echo $store_currency;?>
+                                <?php endif;?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="header">
+        <div class="header-fullwidth container">
+            <div class="header-wrapper">
+                <div class="header-logo">
+                    <?php
+                        $logo_src = $this->getLogoSrc();
+                        $logo_tmp = explode('/',$logo_src);
+                        $logo_tmp2 =  $logo_tmp[count($logo_tmp) - 1];
+                        $logo_tmp2 = explode('.',$logo_tmp2);
+                        $logo_tmp3 =  $logo_tmp[count($logo_tmp) - 1];
+                        $logo_tmp3 = explode('.',$logo_tmp3);
+                        if(isset($logo_tmp2[1])){
+                            $logo_tmp[count($logo_tmp) - 1] = $logo_tmp2[0] . '-alt.' .$logo_tmp2[1];
+                        }
+                        $logo_tmp2 = implode('/',$logo_tmp);
+
+                        if(isset($logo_tmp3[1])){
+                            $logo_tmp[count($logo_tmp) - 1] = $logo_tmp3[0] . '-white.' .$logo_tmp3[1];
+                        }
+                        $logo_tmp3 = implode('/',$logo_tmp);
+                    ?>
+                    <?php if ($this->getIsHomePage()):?>
+                        <h1 class="logo"><strong class="no-display"><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img data-src-tmp="<?php echo $logo_tmp2?>" data-src-tmp3="<?php echo $logo_tmp3?>" src="<?php echo $logo_src ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+                    <?php else:?>
+                        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong class="no-display"><?php echo $this->getLogoAlt() ?></strong><img data-src-tmp="<?php echo $logo_tmp2?>" data-src-tmp3="<?php echo $logo_tmp3?>" src="<?php echo $logo_src ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                    <?php endif?>
+                </div>
+                <nav class="nav-primary-container clearfix">
+                    <div class="wrap-nav">
+                        <div class="arw-toggle-menu-mobile visible-xs">
+				
+                            <div class="arw-btn-menu-mobile" data-style="<?php echo $mobile_menu_style?>">
+                                <label><?php echo $this->__('Menu')?></label>
+                                <span class="lnr lnr-menu" data-toggle="tooltip" title="<?php echo $this->__('Main Menu') ?>"></span>
+                            </div>
+                            <div class="btn_menu_mobile" style="display: none;">
+                                <label><?php echo $this->__('Menu')?></label>
+                                <span class="lnr lnr-menu" data-toggle="tooltip" title="<?php echo $this->__('Main Menu') ?>"></span>
+                            </div>
+				
+                        </div>
+							<!--<div class="far_btn_headertop"><?php $store = Mage::app()->getStore()->getCode();				?>
+					<?php if($store == "ca"):?>
+						<a href="https://www.scentuals.com/us/?___from_store=ca"><img src="https://www.scentuals.com/skin/frontend/nova_benz/default/images/flags/ca.png"></a>
+					<?php else:?>
+						<a href="https://www.scentuals.com/ca/?___from_store=us"><img src="https://www.scentuals.com/skin/frontend/nova_benz/default/images/flags/us.png"></a>
+					<?php endif;?></div>-->
+                        <?php echo $this->getChildHtml('topMenu') ?>
+                        <div class="header-quick-access">
+                            <div class="far_btn_headertop"><a class="btn-headertop" data-toggle="tooltip" title="<?php echo $this->__('') ?>"><span class="lnr lnr-menu"></span></a></div>
+			<div class="top-link-benz">
+                                <ul class="header-top-link-ul-benz">
+				    <li class="header-language">
+					<?php if($store == "ca"):?>
+						<a style="color:#fff;" href="https://www.scentuals.com/us/?___from_store=ca"><img src="https://www.scentuals.com/skin/frontend/nova_benz/default/images/flags/ca.png">  Canada</a>
+					<?php else:?>
+						<a style="color:#fff;" href="https://www.scentuals.com/ca/?___from_store=us"><img src="https://www.scentuals.com/skin/frontend/nova_benz/default/images/flags/us.png">  United States</a>
+					<?php endif;?>
+				    </li>
+                                    <li class="benz-myaccount">
+                                        <div class="arow-down down-account-benz"><span><?php echo $this->__('My Account')?></span></div>
+                                        <?php echo $topLinks;?>
+                                    </li>
+                                    <!--<li class="header-language">
+                                        <?php echo $store_language;?>
+                                    </li>-->
+                                    <?php if($store_currency):?>
+                                        <?php echo $store_currency;?>
+                                    <?php endif;?>
+                                </ul>
+                            </div>
+		
+                            <?php if($show_icon_search):?>
+                                <div class="arw-toggle-container header-mini-search">
+                                    <div class="arw-toggle-control btn-open-search">
+                                        <span class="lnr lnr-magnifier"></span>
+                                    </div>
+                                    <div class="arw-toggle-content <?php echo $show_search_by_cat ? 'has_cat_search' : 'not_cat_search';?> top-search-inner">
+                                        <?php echo $this->getChildHtml('topSearch') ?>
+                                    </div>
+                                </div>
+                            <?php endif;?>
+				
+                            <?php if($mini_ajaxcart_icon):?>
+                                <div class="header-mini-cart arw-toggle-container">
+                                    <div class="mini-cart-header arw-toggle-control">
+                                        <span class="text-shopcart">SHOPPING CART</span><span class="lnr lnr-cart" style="font-size: 20px"></span>
+                                        <span class="total-badge"><?php echo ($total_item_cart = Mage::getSingleton('checkout/cart')->getItemsCount()) ? $total_item_cart : 0?></span>
+				
+                                    </div>
+                                    <div id="arw_mini_cart_header" class="arw-toggle-content">
+                                        <?php echo $this->getChildHtml('topCart') ?>
+                                    </div>
+					
+                                </div>
+                            <?php endif?>
+                        </div>
+                        <?php if($mobile_menu_style == 'accordion'):?>
+                            <?php echo $this->getChildHtml('topMenuMobile')?>
+                        <?php endif;?>
+                        <?php if ($block_footer_home_6 = $this->getLayout()->createBlock('cms/block')->setBlockId('block_footer_home_6')->toHtml()): ?>
+                            <div class="block-footer-home-6" style="display: none;">
+                                <?php echo $block_footer_home_6; ?>
+                            </div>
+                        <?php endif;?>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<?php echo $this->getChildHtml('topContainer'); ?>
+
+
+

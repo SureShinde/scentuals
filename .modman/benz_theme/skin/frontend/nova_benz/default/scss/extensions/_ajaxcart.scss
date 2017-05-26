@@ -1,0 +1,59 @@
+#toPopup {
+	background: #ffffff;
+	color: $text_color;
+	display: none;
+	left: 50%;
+	padding: 15px;
+	position: fixed;
+	top: 50%;
+	width: 320px;
+	z-index: 9999;
+	@include box-shadow(0 4px 13px -3px #808080);
+	@include transform(translate(-50%,-50%));
+	@media (max-width: 480px) {
+		width: 300px;
+		padding: 10px 5px;
+	}
+	dt, dd{
+		line-height: inherit;
+	}
+	label{
+		text-transform: uppercase;
+		font-weight: normal;
+		margin-bottom: 0;
+	}
+	.input-box{
+		font-size: .833em;
+	}
+	select{
+		border: 1px solid $input_border_color;
+		height: 42px;
+		line-height: 40px;
+		margin: 0;
+		padding: 0 25px 0 10px;
+		text-transform: uppercase;
+		background: url("../images/arrow-select.png") no-repeat right center;
+		@include appearance(none);
+		option{
+			padding: 5px 10px;
+		}
+	}
+	.price{
+		color: $primary;
+		letter-spacing: 2px;
+	}
+	.button{
+		cursor: pointer;
+		+ .button{
+			margin-left: 20px;
+		}
+	}
+}
+#backgroundPopup,.arw-ajaxcart-loader{
+	height: 100%;
+	position: fixed;
+	width: 100%;
+}
+.arw-ajaxcart-loader{
+	display: none;
+}

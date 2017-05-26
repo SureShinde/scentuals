@@ -1,0 +1,222 @@
+
+/* ============================================ *
+ * Catalog - MSRP MAP Popup
+ * ============================================ */
+.cart-msrp-totals {
+    color: red;
+    font-size: 12px !important;
+    font-weight: bold;
+    margin: 10px 10px 0;
+    padding: 10px;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.map-cart-sidebar-total {
+    color: red;
+    display: block;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: left;
+    padding: 2px 5px;
+}
+
+.map-popup {
+    background: #FFFFFF;
+    border: 5px solid #cccccc;
+    margin: 12px 0 0;
+    position: absolute;
+    text-align: left;
+    width: 450px;
+    z-index: 100;
+}
+@media only screen and (min-width: 771px) {
+    .map-popup.map-popup-right {
+        left: 10px !important;
+    }
+    .map-popup.map-popup-left {
+        left: auto !important;
+        right: 10px !important;
+    }
+}
+@media only screen and (max-width: 770px) {
+    .map-popup {
+        width: 100%;
+        left: 0px !important;
+    }
+}
+.map-popup .map-popup-heading {
+    padding: 8px 10px;
+    margin-right: 40px;
+    width: auto;
+}
+.map-popup .map-popup-heading h3 {
+    font-size: 14px;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-align: left;
+    text-overflow: ellipsis;
+}
+@media only screen and (max-width: 479px) {
+    .map-popup .map-popup-heading h3 {
+        text-align: center;
+    }
+}
+.map-popup .map-popup-close {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 36px;
+    width: 36px;
+    font-size: 20px;
+    line-height: 32px;
+    text-align: center;
+}
+.map-popup .map-popup-content {
+    border-top: 1px solid #ededed;
+    padding: 10px;
+    margin: 0 10px;
+    overflow: hidden;
+    text-align: left;
+}
+@media only screen and (max-width: 479px) {
+    .map-popup .map-popup-content {
+        text-align: center;
+    }
+}
+.map-popup .map-popup-checkout {
+    padding: 10px 0;
+}
+.map-popup .map-popup-checkout form:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.map-popup .map-popup-checkout span {
+    display: block;
+}
+.map-popup .map-popup-checkout .button {
+    float: left;
+    margin: 0 2px;
+    clear: left;
+}
+.map-popup .map-popup-checkout .additional-addtocart-box {
+    float: left;
+    min-width: 210px;
+}
+.map-popup .map-popup-checkout .additional-addtocart-box li {
+    list-style-type: none;
+}
+.map-popup .map-popup-checkout .paypal-logo {
+    width: auto;
+}
+.map-popup .map-popup-checkout .paypal-logo a {
+    display: inline-block;
+    float: left;
+    clear: left;
+}
+.map-popup .map-popup-checkout .paypal-logo .paypal-or {
+    float: left;
+    text-align: center;
+    padding: 5px 15px;
+    clear: left;
+}
+.map-popup .map-popup-checkout .paypal-logo:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.map-popup .map-popup-checkout .paypal-logo .bml_button a {
+    clear: left;
+}
+@media only screen and (max-width: 479px) {
+    .map-popup .map-popup-checkout {
+        text-align: center;
+    }
+    .map-popup .map-popup-checkout .button,
+    .map-popup .map-popup-checkout .additional-addtocart-box,
+    .map-popup .map-popup-checkout .paypal-logo a,
+    .map-popup .map-popup-checkout .paypal-logo .paypal-or {
+        float: none;
+    }
+    .map-popup .map-popup-checkout .additional-addtocart-box {
+        min-width: 0px;
+    }
+    .map-popup .map-popup-checkout .paypal-logo .paypal-or {
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+}
+.map-popup .map-popup-checkout:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.map-popup .map-popup-price {
+    padding: 10px 0;
+}
+@media only screen and (max-width: 479px) {
+    .map-popup .map-popup-price {
+        text-align: center;
+        padding-top: 0px;
+    }
+}
+.map-popup .map-popup-price .price-box,
+.map-popup .map-popup-price .price-box .special-price {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+.map-popup .map-popup-price .price-box .minimal-price-link {
+    display: inline-block;
+}
+.map-popup .map-popup-text {
+    padding: 10px 0;
+    margin: 0 10px;
+    word-wrap: break-word;
+}
+.map-popup .map-popup-text,
+.map-popup .map-popup-only-text {
+    border-top: 1px solid #ededed;
+}
+.catblocks{
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.catblocks:before,
+.catblocks:after{
+    content: " ";
+    display: table;
+}
+.catblocks:after{
+    clear: both;
+}
+.catblocks li{
+    float: left;
+    padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    width: 25%;
+}
+.catblocks li a img{
+    width: 100%;
+}
+.catblocks li a span{
+    font-size: 1.385em;
+    padding-top: 10px;
+    display: block;
+}
+@media (max-width: 767px) {
+    .catblocks li{
+        width: 50%;
+    }
+}
+@media (max-width: 479px) {
+    .catblocks li{
+        width: 100%;
+    }
+}

@@ -1,0 +1,2558 @@
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/mixins/_buttons.scss
+@mixin button-variant($color, $background, $border) {
+	color: $color;
+	background-color: $background;
+	border-color: $border;
+
+	&:hover,
+	&:focus,
+	&.focus,
+	&:active,
+	&.active,
+	.open > &.dropdown-toggle {
+		color: $color;
+		background-color: darken($background, 10%);
+		border-color: darken($border, 12%);
+	}
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		&,
+		&:hover,
+		&:focus,
+		&.focus,
+		&:active,
+		&.active {
+			background-color: $background;
+			border-color: $border;
+		}
+	}
+
+	.badge {
+		color: $background;
+		background-color: $color;
+	}
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/mixins/_arw.scss
+@function tint($color, $percent){
+	@return mix(white, $color, $percent);
+}
+
+// Add percentage of black to a color
+@function shade($color, $percent){
+	@return mix(black, $color, $percent);
+}
+
+%btn {
+	border-color:$button_border_color;
+	background-color:$button_bg;
+	color: $button_color;
+	&.active,
+	&:active,
+	&:hover,
+	&:focus,
+	&.focus {
+		color: $button_hover_color;
+		background-color: $button_hover_bg;
+		border-color:$button_hover_border_color;
+	}
+}
+%btn2{
+	@extend %btn;
+	border-color:$button_2_border_color;
+	background-color: $button_2_bg;
+	color: $button_2_color;
+	&.active,
+	&:active,
+	&:hover,
+	&:focus,
+	&.focus {
+		border-color:$button_2_hover_border_color;
+		background-color: $button_2_hover_bg;
+		color: $button_2_hover_color;
+	}
+}
+%btn3{
+	@extend %btn;
+	color: $button_3_color;
+	background: $button_3_bg;
+	border-color:$button_3_border_color;
+	&.active,
+	&:active,
+	&:hover,
+	&:focus,
+	&.focus {
+		color: $button_3_hover_color;
+		background-color: $button_3_hover_bg;
+		border-color:$button_3_hover_border_color;
+	}
+}
+%input-text {
+	border: 1px solid $input_border_color;
+	background-color: $input_bg;
+	color: $input_color;
+	&:focus{
+		border-color: $input_focus_border_color;
+		background: $input_focus_bg;
+		color: $input_focus_color;
+	}
+}
+
+%radio1{
+	&:checked ~ .label label{
+		&:before{
+			color: $primary;
+		}
+	}
+}
+%radio2{
+	&:checked ~ label{
+		&:before{
+			color: $primary;
+		}
+	}
+}
+%checkbox1{
+	&:checked ~ .label label{
+		&:before{
+			color: $primary;
+		}
+	}
+}
+%checkbox2{
+	&:checked ~ label{
+		&:before{
+			color: $primary;
+		}
+	}
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/core/_nav_bs.scss
+.nav {
+	> li {
+		> a {
+			&:hover,
+			&:focus {
+				color: $link_hover_color;
+			}
+		}
+
+		&.disabled > a {
+			&:hover,
+			&:focus {
+				color: $link_color;
+			}
+		}
+	}
+
+	// Open dropdowns
+	.open > a ,.active > a{
+		&,
+		&:hover,
+		&:focus {
+			color: $link_hover_color;
+		}
+	}
+}
+
+.nav-tabs {
+	border-bottom: 1px solid $border_color;
+	// pulling this in mainly for less shorthand
+	&.nav-justified {
+		@extend .nav-tabs-justified;
+	}
+}
+
+.nav-pills {
+	> li {
+		&.active > a {
+			&,
+			&:hover,
+			&:focus {
+				color: $link_hover_color;
+			}
+		}
+	}
+}
+.nav-tabs-justified {
+	> li > a {
+
+	}
+	> .active > a,
+	> .active > a:hover,
+	> .active > a:focus {
+		border: 1px solid $border_color;
+	}
+
+	@media (min-width: 768px) {
+		> li > a {
+			border-bottom: 1px solid $border_color;
+		}
+		> .active > a,
+		> .active > a:hover,
+		> .active > a:focus {
+			border-bottom-color: $border_color;
+		}
+	}
+}
+
+.dropdown-menu {
+	> li > a {
+		color: $link_color;
+	}
+}
+.dropdown-menu > li > a {
+	&:hover,
+	&:focus {
+		color: $link_hover_color;
+	}
+}
+
+.dropdown-menu > .active > a {
+	&,
+	&:hover,
+	&:focus {
+		color: $link_hover_color;
+	}
+}
+
+
+.dropdown-menu > .disabled > a {
+	&,
+	&:hover,
+	&:focus {
+		color: $text_color;
+	}
+}
+.dropdown-header {
+	color: $text_color;
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/core/_common.scss
+html{
+	font-size: $font_size;
+}
+body{
+	font-size: $font_size;
+	color: $text_color;
+	font-family: $font_family;
+	background-color: $body_bg_color;
+}
+
+a {
+	color: $link_color;
+	&:hover ,&:focus{
+		color: $link_hover_color;
+	}
+}
+
+.tooltip {
+	font-family: $font_family_highlight;
+}
+h1,.h1 {font-size: $font_h1;}
+h2,.h2 {font-size: $font_h2;}
+h3,.h3 {font-size: $font_h3;}
+h4,.h4 {font-size: $font_h4;}
+h5,.h5 {font-size: $font_h5;}
+h6,.h6 {font-size: $font_h6;}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+	color: $heading_color;
+	font-family: $font_family_heading;
+}
+.label,label{
+	color: $label_color;
+}
+button,.button, input[type="button"], input[type="reset"], input[type="submit"],.btn{
+	@extend %btn;
+}
+.btn2,.btn-primary{
+	@extend %btn2;
+}
+.btn3{
+	@extend %btn3;
+}
+
+/* -------------------------------------------- *
+ * Checkout Agreements
+ */
+
+/* -------------------------------------------- *
+ * Global Site Notice
+ */
+
+.global-site-notice {
+    background: $info;
+}
+
+/* -------------------------------------------- *
+ * Promotional Message Banner
+ */
+
+.promo-msg {
+    color: $info;
+}
+
+/* -------------------------------------------- *
+ * Messages
+ */
+.success {
+    color: $success;
+}
+
+.error {
+    color: $danger;
+}
+
+.notice {
+    color: $warning;
+}
+
+/* -------------------------------------------- *
+ * Messages
+ */
+
+.messages li li {
+    background: $info;
+}
+
+.messages .error-msg li{
+	background: $danger;
+}
+
+.messages .notice-msg li {
+    background: $warning;
+}
+
+.messages .success-msg li {
+    background: $success;
+}
+
+.rating-box ,.rating-box .rating {
+	color: #ebc52d;
+}
+//
+.toolbar{
+	color: $toolbar_text_color;
+	background: $toolbar_bg;
+	.btn{
+		border-color: $toolbar_border_color;
+	}
+	a,.btn{
+		background: $toolbar_link_bg;
+		color: $toolbar_link_color;
+		font-weight: 400;
+		&:hover{
+			background: $toolbar_link_hover_bg;
+			color: $toolbar_link_hover_color;
+			border-color: $toolbar_link_hover_color;
+		}
+	}
+	.dropdown-menu a:hover{
+		background: $toolbar_link_hover_bg;
+		color: $toolbar_link_hover_color;
+	}
+	.open .btn{
+		background: $toolbar_link_hover_bg;
+		color: $toolbar_link_hover_color;
+		border-color: $toolbar_link_hover_color;
+	}
+	.view-mode {
+		strong{
+			background: $toolbar_link_hover_bg;
+			color: $toolbar_link_hover_color;
+			border-color: $toolbar_link_hover_color;
+		}
+	}
+
+	.bootstrap-select{
+		.dropdown-menu{
+			background: $toolbar_bg;
+		}
+	}
+
+	.view-limiter{
+		a:before{
+			color: $toolbar_link_color;
+		}
+		a.selected{
+			background: $toolbar_link_hover_bg;
+			color: $toolbar_link_hover_color;
+		}
+	}
+	~ .toolbar{
+
+		.pages{
+			.category-products &{
+				border-top: 1px solid $toolbar_border_color;
+				border-bottom: 1px solid $toolbar_border_color;
+			}
+			ol{
+				li{
+					border: 1px solid $toolbar_border_color;
+					background: $toolbar_link_bg;
+					&:hover{
+						color: $toolbar_link_color;
+						background: $toolbar_link_hover_bg;
+					}
+					&.current{
+						color: $toolbar_link_hover_color;
+						background: $toolbar_link_hover_bg;
+					}
+				}
+
+			}
+		}
+	}
+}
+
+label.required:after,
+span.required:after {
+    color: $danger;
+}
+
+
+textarea {
+	@extend %input-text;
+}
+
+.input-text{
+	@extend %input-text;
+}
+input[type=email],
+input[type=search],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=text] {
+	@extend %input-text;
+}
+input[disabled]{
+	background: $input_disable_bg;
+}
+
+.input-text.validation-failed {
+    border-color: $danger;
+}
+
+// Color the outline for focused fields in Chrome, or else the default blue drowns out the 1px red border
+.input-text.validation-failed:focus {
+    outline-color: $danger;
+}
+
+/* -------------------------------------------- *
+ * Placeholder
+ */
+::-webkit-input-placeholder {
+	color: $text_color;
+}
+
+p.required,
+.validation-advice {
+	color: $danger;
+}
+
+/* ============================================ *
+ * Form List
+ * ============================================ */
+
+.form-list {
+    select {
+		border: 1px solid $input_border_color;
+    }
+}
+
+#login-form{
+	border-color:$border_color;
+}
+
+.contact-form,
+.newsletter-validate-detail{
+	.validation-advice{
+		font-family: $font_family_highlight;
+	}
+}
+
+/* ============================================ *
+ * Data Table
+ * ============================================ */
+th{
+	color: $table_head_color;
+
+}
+.data-table {
+	background: $table_bg;
+	thead {
+		border: 1px solid $table_head_border;
+		background: $table_head_bg;
+		color: $table_head_color;
+	}
+	th {
+		border: 1px solid $table_head_border;
+	}
+	tbody{
+		tr{
+			border: 1px solid $table_body_border;
+		}
+	}
+	tr{
+		td{
+			border: 1px solid $table_body_border;
+		}
+	}
+
+	tfoot {
+		border-top: 1px solid $table_body_border;
+	}
+}
+.table,.data-table{
+	color: $table_text_color;
+	a{
+		color: $table_link_color;
+		&:hover{
+			color: $table_hover_link_color;
+		}
+	}
+}
+
+#product-attribute-specs-table,
+#product-attribute-specs-table th,
+#product-attribute-specs-table td
+{
+	border: 1px solid $table_body_border;
+}
+
+@media (max-width: 767px) {
+	table.arw-responsive-table{
+		td{
+			&:before{
+				color: $table_head_color;
+			}
+		}
+	}
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/core/_block.scss
+/* -------------------------------------------- *
+ * Block Module
+ */
+.block{
+	.link-cart{
+		border: 1px solid $button_border_color;
+		color: $button_color;
+		background: $button_bg;
+		&:hover{
+			border-color: $button_hover_border_color;
+			color: $button_hover_color !important;
+			background: $button_hover_bg;
+		}
+	}
+}
+
+.block-subtitle {
+	color: $block_title_color;
+}
+
+.block .actions {
+	a {
+		.sidebar & {
+			color: $primary;
+		}
+	}
+}
+
+.block-account,
+.block-cms-menu {
+	li{
+		& + li{
+			border-top: 1px solid $block_content_border;
+		}
+		&.current{
+			strong{
+				color: $block_nav_link_hover_color;
+			}
+		}
+	}
+}
+.block-layered-nav{
+	dt{
+
+		color: $primary;
+	}
+
+	li{
+		+ li{
+
+		}
+
+	}
+	.currently{
+
+		.value {
+			color: $primary;
+		}
+	}
+
+	.configurable-swatch-list li{
+		a{
+
+			> .swatch-label{
+				border: 1px solid $block_content_border;
+			}
+		}
+		&:hover{
+			a{
+				> .swatch-label{
+					background: $primary;
+					border-color: $primary;
+				}
+			}
+		}
+
+	}
+}
+
+.opc-block-progress{
+	.block-content{
+		dt{
+			border-bottom: 1px solid $block_content_border;
+		}
+		dd{
+			&.complete{
+				border-bottom: 1px solid $block_content_border;
+			}
+		}
+	}
+}
+
+.block.block-tags{
+	ul.tags-list{
+		li{
+			a{
+				border: 1px solid $block_content_border;
+				&:hover{
+					background: $primary;
+					border-color: $primary;
+				}
+			}
+		}
+	}
+	.actions a{
+		color: $primary;
+	}
+}
+
+.mini-products-list{
+
+	.price{
+		color: $primary;
+	}
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/layouts/_global.scss
+
+.main{
+	background: $main_bg_color;
+}
+.arw-page-title{
+	background-color: $breadcrumb_bg;
+
+	&.has-page-title{
+
+	}
+
+	.arw_breadcrumbs{
+		.breadcrumbs{
+			li{
+				a{
+					color: $breadcrumb_link_color;
+					&:hover{
+						color: $breadcrumb_link_hover_color;
+					}
+				}
+				strong{
+					color: $breadcrumb_current_color;
+				}
+				span{
+					color: $breadcrumb_caret;
+				}
+			}
+		}
+	}
+}
+.arw-product-labels{
+
+	.product-sale-label{
+		background: $cat_label_sale_bg;
+		color: $cat_label_sale_color;
+		border-color: $cat_label_sale_border;
+
+	}
+	.product-new-label{
+		background: $cat_label_new_bg;
+		color: $cat_label_new_color;
+		border-color: $cat_label_new_border;
+
+	}
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/layouts/_header.scss
+.header-container{
+	.header-top{
+		color: $header_text_color;
+		background: $header_bg_color;
+		a{
+			color: $header_link_color;
+			background: $header_link_bg;
+			&:hover{
+				color:$header_link_hover_color;
+				background: $header_link_hover_bg;
+			}
+		}
+
+		.active{
+			> a{
+				color: $header_link_hover_color;
+				background: $header_link_hover_bg;
+			}
+		}
+
+		.header-top-link{
+			.header-top-link-ul{
+				> li{
+					> span{
+						color: $header_link_color;
+						background: $header_link_bg;
+						span{
+							&:before{
+								color: $header_link_color;
+							}
+							color: $header_link_hover_color;
+						}
+					}
+
+					&.header-dropdown-currency{
+						li.active > a:after{
+							color: $header_dropdown_link_color;
+						}
+					}
+				}
+			}
+			ul.links{
+				background: $header_dropdown_bg;
+				color: $header_dropdown_text_color;
+				li{
+
+					a{
+						color: $header_dropdown_link_color;
+						background: $header_dropdown_link_bg;
+					}
+					+ li{
+						> a{
+							border-top: 1px solid #303030;
+						}
+					}
+					&.active,
+					&:hover{
+						> a{
+							color: $header_dropdown_link_hover_color;
+							background: $header_dropdown_link_hover_bg;
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	.header-quick-access{
+		.arw-toggle-container{
+			.arw-toggle-content{
+				background: $primary_sub2_bg;
+				color: $level2_color;
+
+			}
+			&.active,
+			&:hover{
+				.arw-toggle-control{
+					background: $primary;
+					&.mini-cart-header{
+						color: $primary;
+					}
+				}
+			}
+		}
+		.arw-toggle-control{
+			color: $header_link_color;
+		}
+		.mini-cart-header{
+
+			.total-badge{
+				background: $primary;
+
+			}
+		}
+		.mini-products-list{
+			li.item{
+
+				border-bottom: 1px solid $level2_color;
+
+
+				.btn-remove{
+					color: $level2_color;
+
+				}
+				.btn-remove:hover,
+				.product-name a:hover{
+					color: $level2_hover_color;
+				}
+			}
+		}
+		.block{
+			.subtotal {
+
+				.price{
+					color: $primary;
+				}
+			}
+
+			.button{
+				background: tint($primary_sub2_bg,13%);
+				border-color: tint($primary_sub2_bg,13%);
+
+				&:hover{
+					background: $primary;
+					border-color: $primary;
+				}
+
+			}
+		}
+		.search_mini_form{
+			.button{
+				background: tint($primary_sub2_bg,13%);
+				&:hover{
+					background: $primary;
+				}
+			}
+		}
+	}
+}
+
+/* config theme benz*/
+.footer_link_fa{
+  div{
+	a{
+	  &:hover{
+		border-color: $primary;
+		background-color: $primary;
+		i{
+		  color: #FFFFFF;
+		}
+	  }
+	  i{
+		color: $footer_text_color;
+	  }
+	}
+  }
+}
+.top-link-benz{
+  .header-top-link-ul-benz{
+	.nv-language{
+	  color: $primary;
+	  font-size: 12px;
+	}
+	.links{
+	  a{
+		&:hover{
+		  color: $primary;
+		}
+	  }
+	}
+	.current-benz{
+	  .down-current-benz{
+		span{
+		  span{
+			color: $primary;
+			padding-left: 5px;
+		  }
+		}
+	  }
+	}
+  }
+}
+.block_slider_1,
+.block_slide_menu{
+  .owl-prev,
+  .owl-next{
+	&:hover{
+	  background-color: $primary !important;
+	  border-color: $primary !important;
+	  color: #FFFFFF;
+	}
+  }
+}
+
+.content-block3-2{
+  span{
+	color: $primary;
+  }
+}
+.block_home_three_1,
+.block_home_one_4{
+  .block4-info-box{
+	.advanced{
+	  border-color: $primary;
+	  background-color: $primary;
+	}
+  }
+}
+.block_home_two_2,
+.block_home_one_6{
+  .owl-carousel{
+	.owl-dots{
+	  .owl-dot.active{
+		border-color: $primary  !important;
+	  }
+	}
+  }
+}
+.block_home_two_8,
+.block_home_one_12{
+  .slick-slider{
+	.slick-dots{
+	  li.slick-active{
+		button{
+		  border-color: $primary !important;
+		}
+	  }
+	}
+  }
+}
+.block_home_two_10{
+  background-color: $background_color;
+}
+.block_home_one_13{
+  background-color: $primary;
+}
+.block_home_three_8{
+  .post-date{
+	.authur{
+	  color: $primary;
+	}
+  }
+}
+.header_style_5{
+  .header-wrapper{
+	.nav-primary-container{
+	  .block-footer-home-6{
+		.icon-footer-home-4{
+		  a{
+		  	&:hover{
+			  background-color: $primary;
+			  border-color: $primary;
+			  color: #FFFFFF;
+			}
+		  }
+		}
+	  }
+	}
+  }
+}
+.toolbar-bottom{
+  .toolbar{
+	.pages{
+	  ol{
+		.current{
+		  strong{
+			border-color: $primary;
+			color: $primary;
+		  }
+		}
+	  }
+	}
+  }
+}
+.megamenu {
+  li.active{
+	a {
+	  span{
+		&:after{
+		  border-color: $primary;
+		}
+	  }
+	}
+  }
+}
+.layout-header-special{
+  .megamenu {
+	li.active{
+	  a {
+		span {
+		  &:after{
+			border-color: $primary;
+		  }
+		}
+	  }
+	}
+  }
+}
+.layout-header-special .header-container:not(.active-sticky) .nav-primary-container ul#nav > li:not(.active) > a:hover:after,
+.layout-header-special .header-container:not(.active-sticky) .nav-primary-container .megamenu > li:not(.active) > a:hover:after,
+.header-container:not(.active-sticky) .nav-primary-container ul#nav > li:not(.active) > a:hover:after,
+.header-container:not(.active-sticky) .nav-primary-container .megamenu > li:not(.active) > a:hover:after{
+  border-color: $primary;
+}
+.layout-header-special .header-container .nav-primary-container ul#nav > li:not(.active) > a:hover:after,
+.layout-header-special .header-container .nav-primary-container .megamenu > li:not(.active) > a:hover:after,
+.header-container .nav-primary-container ul#nav > li:not(.active) > a:hover:after,
+.header-container .nav-primary-container .megamenu > li:not(.active) > a:hover:after{
+  border-color: $primary;
+}
+/*end*/
+
+@media (min-width: $screen-sm-min) {
+	.layout-header-special{
+		.header-container {
+			&:not(.active-sticky){
+				.header-top{
+					a{
+						&:hover{
+							color: $primary;
+						}
+					}
+				}
+				.nav-primary-container{
+					.megamenu > li > a,
+					ul#nav > li > a{
+						&:hover{
+							color: $primary;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/layouts/_primary-menu.scss
+.nav-primary-container{
+	// Level 1
+	ul#nav > li > a{
+		background:$level1_bg;
+		color: $level1_color;
+	}
+
+	ul#nav > li:hover > a,
+	ul#nav > li.active > a{
+		 background:$level1_hover_bg;
+		 color: $level1_hover_color;
+ 	}
+	ul#nav ul{
+		background: $primary_sub2_bg;
+	}
+	ul#nav ul ul{
+		background: $primary_sub3_bg;
+	}
+	ul#nav > li > ul > li > a{
+		background:$level2_bg;
+		color: $level2_color;
+	}
+
+	ul#nav > li > ul > li:hover > a,
+	ul#nav > li > ul > li.active > a{
+		background:$level2_hover_bg;
+		color: $level2_hover_color;
+	}
+	ul#nav li li ul,
+	ul#nav li.level1 ul.level1{
+		background:$primary_sub3_bg;
+		li > a{
+			background:$level3_bg;
+			color: $level3_color;
+		}
+		li.active > a,
+		li:hover > a{
+			background:$level3_hover_bg;
+			color: $level3_hover_color;
+		}
+	}
+	ul#nav{
+
+		ul{
+
+			li{
+
+				+ li{
+					> a{
+						border-top: 1px solid $level2_color;
+					}
+				}
+				li{
+					+ li{
+						> a{
+							border-top: 1px solid $level3_color;
+						}
+					}
+				}
+
+			}
+		}
+
+	}
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/layouts/_sidebar.scss
+
+.sidebar{
+	.block{
+		color: $block_text_color;
+		.block-title{
+			background: $block_title_bg;
+			color: $block_title_color;
+		  	border-bottom: 1px solid #ebebeb;
+			&:after{
+				background: $block_title_color;
+			}
+		}
+		.block-content{
+			background: $block_content_bg;
+			p.empty {
+				border: 1px solid $block_content_border;
+
+			}
+		}
+		a{
+			color: $block_link_color;
+			&:hover{
+				color: $block_link_hover_color;
+			}
+		}
+		&.block-nav{
+			a{
+				color: $block_nav_link_color;
+			}
+			li:hover,
+			li.active{
+				> a{
+					color: $block_nav_link_hover_color;
+				}
+			}
+		}
+	}
+}
+
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/layouts/_footer.scss
+.footer-container{
+	background: $footer_bg_color;
+	color: $footer_text_color;
+
+	a{
+		color: $footer_link_color;
+		&:hover{
+			color: $footer_link_hover_color;
+		}
+	}
+
+
+	.block{
+		.block-title{
+			color: $footer_heading_color;
+		}
+		.block-content{
+			.address-ft{
+			  color: $footer_link_hover_color;
+			}
+		}
+
+	}
+	.footer-copyright{
+		background: $footer_copyright_bg;
+		color: $footer_copyright_text;
+		.wrapper-copyright{
+		}
+		a{
+			color: $footer_copyright_link_color;
+			&:hover{
+				color: $footer_copyright_link_hover_color;
+			}
+		}
+	}
+}
+
+.footer-about{
+	color: $footer_text_color;
+	font-family: $font_family_highlight;
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/modules/_breadcumb.scss
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/modules/_product-list.scss
+
+.products-list,
+.products-grid{
+
+	.product-name{
+		a{
+			color: $cat_product_name_color;
+			&:hover{
+				color: $cat_product_name_hover_color;
+			}
+		}
+	}
+	.configurable-swatch-list{
+		span{ border: 1px solid $border_color}
+	}
+}
+
+.products-grid{
+
+	.btn-cart{
+		background: $cat_button_cart_bg;
+		color: $cat_button_cart_color;
+		border-color: $cat_button_cart_border_color;
+		&:hover{
+			background: $cat_button_cart_hover_bg;
+			color: $cat_button_cart_hover_color;
+			border-color: $cat_button_cart_hover_border_color;
+		}
+	}
+	.link-wishlist{
+		background: $cat_button_wishlist_bg;
+		color: $cat_button_wishlist_color;
+		border-color: $cat_button_wishlist_border_color;
+		&:hover{
+			background: $cat_button_wishlist_hover_bg;
+			color: $cat_button_wishlist_hover_color;
+			border-color: $cat_button_wishlist_hover_border_color;
+		}
+	}
+	.link-compare{
+		background: $cat_button_compare_bg;
+		color: $cat_button_compare_color;
+		border-color: $cat_button_compare_border_color;
+		&:hover{
+			background: $cat_button_compare_hover_bg;
+			border-color: $cat_button_compare_hover_border_color;
+			color: $cat_button_compare_hover_color;
+		}
+	}
+	.link-quickview{
+		background: $cat_button_quickview_bg;
+		color: $cat_button_quickview_color;
+		border-color: $cat_button_quickview_border_color;
+		&:hover{
+			background: $cat_button_quickview_hover_bg;
+			color: $cat_button_quickview_hover_color;
+			border-color: $cat_button_quickview_hover_border_color;
+		}
+	}
+	.product-name{
+
+
+	}
+	.price-box{
+		.minimal-price .price,
+		.special-price,
+		.regular-price{
+			color: $cat_price_color;
+		}
+
+	}
+
+	.availability {
+		span {
+			background: $cat_label_new_bg;
+			color: $cat_label_new_color;
+			border-color: $cat_label_new_border;
+		}
+	}
+
+}
+.products-list{
+	.outer-image{
+		border-color: $cat_border_color2;
+	}
+	.product-name{
+		a{
+			color: $cat_product_name_color2;
+			&:hover{
+				color: $cat_product_name_hover_color2;
+			}
+		}
+	}
+	.price-box {
+		.special-price,.regular-price{
+			color: $cat_price_color2;
+		}
+	}
+
+	.btn-cart{
+		background: $cat_button_cart_bg2;
+		color: $cat_button_cart_color2;
+		border-color: $cat_button_cart_border_color2;
+		&:hover{
+			background: $cat_button_cart_hover_bg2;
+			color: $cat_button_cart_hover_color2;
+			border-color: $cat_button_cart_hover_border_color2;
+		}
+	}
+	.link-wishlist{
+		background: $cat_button_wishlist_bg2;
+		color: $cat_button_wishlist_color2;
+		border-color: $cat_button_wishlist_border_color2;
+		&:hover{
+			background: $cat_button_wishlist_hover_bg2;
+			color: $cat_button_wishlist_hover_color2;
+			border-color: $cat_button_wishlist_hover_border_color2;
+		}
+	}
+	.link-compare{
+		background: $cat_button_compare_bg2;
+		color: $cat_button_compare_color2;
+		border-color: $cat_button_compare_border_color2;
+		&:hover{
+			background: $cat_button_compare_hover_bg2;
+			color: $cat_button_compare_hover_color2;
+			border-color: $cat_button_compare_hover_border_color2;
+		}
+	}
+	.link-quickview{
+		background: $cat_button_quickview_bg2;
+		color: $cat_button_quickview_color2;
+		border-color: $cat_button_quickview_border_color2;
+		&:hover{
+			background: $cat_button_quickview_hover_bg2;
+			color: $cat_button_quickview_hover_color2;
+			border-color: $cat_button_quickview_hover_border_color2;
+		}
+	}
+
+}
+.grid-style-2{
+	.products-grid{
+		.product-info{
+			background: $primary;
+		}
+	}
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/modules/_product-view.scss
+.product-view{
+	.product-shop-inner{
+		background-color: $detail_background_color;
+	}
+
+
+	.product-essential{
+
+		.product-name{
+			color: $heading_color;
+		}
+		.availability{
+			border: 1px solid $detail_borer_color;
+			span{
+				color: $heading_color;
+			}
+			&.out-of-stock{
+				span:before{
+					color: $primary;
+				}
+			}
+		}
+		.short-description {
+			border-top: 1px dashed $detail_borer_color;
+			border-bottom: 1px dashed $detail_borer_color;
+
+		}
+		.add-to-box{
+			border-top: 1px dashed $detail_borer_color;
+			border-bottom: 1px dashed $detail_borer_color;
+		}
+		.rating-links{
+			color: $text_color;
+			a{
+				color: $text_color;
+				&:hover{
+					color: $link_hover_color;
+				}
+			}
+		}
+
+		.btn-cart{
+			background: $detail_button_cart_bg;
+			color: $detail_button_cart_color;
+			border-color: $detail_button_cart_border_color;
+			&:hover{
+				background: $detail_button_cart_hover_bg;
+				color: $detail_button_cart_hover_color;
+				border-color: $detail_button_cart_hover_border_color;
+			}
+		}
+		.link-wishlist{
+			background: $detail_button_wishlist_bg;
+			color: $detail_button_wishlist_color;
+			border-color: $detail_button_wishlist_border_color;
+			&:hover{
+				background: $detail_button_wishlist_hover_bg;
+				color: $detail_button_wishlist_hover_color;
+				border-color: $detail_button_wishlist_hover_border_color;
+			}
+		}
+		.link-compare{
+			background: $detail_button_compare_bg;
+			color: $detail_button_compare_color;
+			border-color: $detail_button_compare_border_color;
+			&:hover{
+				background: $detail_button_compare_hover_bg;
+				color: $detail_button_compare_hover_color;
+				border-color: $detail_button_compare_hover_border_color;
+			}
+		}
+
+		.price-box{
+			.special-price,.regular-price{
+				color: $detail_price_color;
+			}
+		}
+
+	}
+}
+.product-collateral{
+
+	.product-collateral-item{
+		.widget{
+			background-color: $detail_background_color;
+		}
+
+	}
+}
+.product-shop{
+	.grouped-items-table{
+		.name-wrapper{
+			color: $text_color;
+		}
+	}
+}
+
+.quickview-index-view{
+	.product-img-box-slider{
+		.slick-prev, .slick-next{
+			@extend %btn2;
+		}
+	}
+}
+.product-tabs-content{
+	a{
+		color: $detail_tab_content_link_color;
+		&:hover{
+			color: $detail_tab_content_hover_link_color;
+		}
+	}
+}
+.product_details_tabs{
+	.product-tabs{
+
+		li{
+
+			a{
+				color:$detail_tab_control_color;
+				background: $detail_tab_control_bg;
+				border-left: 5px solid $detail_tab_content_border;
+			}
+			&:first-child{
+				a{
+
+				}
+			}
+			&.active,&:hover{
+				a{
+					color:$detail_tab_control_hover_color;
+					background: $detail_tab_control_hover_bg;
+				  	border-color: $primary;
+				}
+			}
+		}
+	}
+	.product-tabs-content{
+		color: $detail_tab_content_color;
+		background: $detail_tab_content_bg;
+	}
+
+	.product-accordion-heading{
+
+		color:$detail_tab_control_color;
+		background: $detail_tab_control_bg;
+		border-color: $detail_tab_control_border_color;
+
+		&.active,&:hover{
+			color:$detail_tab_control_hover_color;
+			background: $detail_tab_control_hover_bg;
+		}
+	}
+	&.active_mode_accordion,
+	&.mode_accordion{
+		.product-accordion-heading{
+			&.active{
+				+ .product-tabs-content{
+					border-color: $detail_tab_control_border_color;
+				}
+			}
+		}
+	}
+
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/modules/_review.scss
+
+#customer-reviews {
+	dl{
+		dt{
+			color: $text_color;
+		}
+
+	}
+
+	#product-review-table{
+
+		.radio{
+			@extend %radio2;
+		}
+	}
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/modules/_shopping_cart.scss
+
+.block-message-cart{
+	.arw-services-box.active{
+		.service-title,
+		.service-icon{
+			color: $primary;
+		}
+	}
+}
+
+.data-table.cart-table tbody tr{
+	border-top: 1px solid $table_body_border;
+}
+
+.cart-table{
+	.price{
+		color: $primary;
+	}
+
+}
+
+.cart-collaterals{
+	.discount,
+	.shipping
+	{
+		> h2{
+			background: $block_title_bg;
+			color: $block_title_color;
+
+			&:after{
+				background: $block_title_color;
+			}
+		}
+
+		select{
+			border: 1px solid $input_border_color;
+		}
+	}
+
+	.cart-totals{
+		border: 2px solid $primary;
+		#shopping-cart-totals-table{
+			color: $heading_color;
+			tfoot{
+				.price{
+					color: $primary;
+				}
+
+			}
+		}
+		.btn-proceed-checkout{
+			background: $primary;
+			border-color: $primary;
+		}
+
+	}
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/modules/_checkout.scss
+#checkoutSteps{
+	.section{
+		border-color: $border_color;
+
+		.step-title{
+			color: $heading_color;
+
+
+		}
+
+		&.active.allow{
+			.step-title{
+				&:before{
+					background: $heading_color;
+
+				}
+			}
+		}
+		.step{
+
+			h3,
+			h4{
+				font-size: $font_h5;
+			}
+
+			select{
+				border: 1px solid $input_border_color;
+
+			}
+
+			.data-table{
+
+				.price{
+					color: $primary;
+				}
+			}
+		}
+
+	}
+
+}
+
+// Multi checkout address
+ul#checkout-progress-state{
+	li{
+
+		background: $block_title_bg;
+		color: $heading_color;
+
+
+		&.active{
+			background: $primary;
+		}
+
+	}
+}
+.multiple-checkout{
+	form,table,.col3-set{
+		background: $table_bg;
+	}
+
+
+	#multishipping-billing-form{
+		#payment-tool-tip {
+			background: $table_head_bg;
+		}
+	}
+	#checkout-review-submit {
+		.grand-total{
+			.price{
+				color: $primary;
+			}
+		}
+
+	}
+	> p {
+		background: $table_head_bg;
+	}
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/modules/_myaccount.scss
+.dashboard{
+	.box-account{
+		.box-head{
+			color: $block_title_color;
+			&:before{
+				background:$block_title_color;
+			}
+		}
+		li.item{
+			& + li{
+				border-top: 1px solid $border_color;
+			}
+		}
+		> .col2-set{;
+			> .box{
+				.box-title{
+					h3{
+						color: $block_title_color;
+					}
+				}
+			}
+		}
+	}
+}
+.my-account{
+	.cart-cell .price{
+		color: $primary;
+	}
+
+	// Review Customer View
+	.product-review {
+		.product-details{
+			dt{
+				color: $text_color;
+			}
+		}
+		h2{
+			font-size: $font_h4;
+		}
+		h3{
+			font-size: $font_h5;
+		}
+	}
+	.my-tag-edit{
+		.btn-remove{
+			&:hover{
+				color: $link_hover_color;
+			}
+		}
+	}
+	#my-tags-table{
+		.add-to-links a{
+			background: $button_bg;
+			&:hover{
+				background: $button_hover_bg;
+			}
+		}
+	}
+	#wishlist-table{
+		.product-name{
+			font-size: $font_h5;
+		}
+	}
+
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/modules/_cms.scss
+// home 6
+
+.arw-parallax-slider{
+	.parallax-body{
+		.parallax-content-slider{
+			.content-slider{
+				.slider-button{
+					a{
+						&:hover{
+							border-color: $primary;
+							background: $primary;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.parallax-dots{
+	a{
+		span{
+			font-family: $font_family_highlight;
+		}
+	}
+}
+
+// fix home 4
+
+
+// ----------------------------------------------
+// Contact page
+
+.contact-infomation-line .fa {
+	border: 1px solid $border_color;
+	color: $heading_color;
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/modules/_blog.scss
+.post-item{
+	.post-category{
+		a{
+			color: $primary;
+		}
+	}
+
+	.post-title{
+		font-family:$font_family_highlight;
+	}
+}
+
+.blog-list{
+
+	.post-meta{
+		border-top: 1px solid $border_color;
+		border-bottom: 1px solid $border_color;
+	}
+}
+.blog-detail{
+	.post-item{
+		border-bottom: 1px solid $border_color;
+	}
+}
+
+.block-recent-post{
+	ul{
+		li{
+			+ li{
+				border-top: 1px solid $block_content_border;
+			}
+		}
+	}
+}
+.commentWrapper{
+	border: 1px solid $border_color;
+	h4.username{
+		color: $primary;
+	}
+	.commentCreate{
+		color: $heading_color;
+	}
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/extensions/_filters.scss
+.price-slider{
+	background: $block_content_border;
+	.price-slider-handle{
+		border: 2px solid #868686;
+	  	background-color: #868686;
+		&:hover,
+		&:focus{
+			border-color: $primary;
+		  	background-color: $primary;
+		}
+	}
+	.price-slider-span {
+		background:$button_bg;
+	}
+}
+.layer-price {
+	color: $heading_color;
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/extensions/_product_tab.scss
+
+.arw_tab_slider{
+	.slider-tab{
+		li{
+		  	color: #515151;
+			&:hover,
+			&.active{
+				color: $primary;
+			}
+		}
+	}
+}
+.tab-control-highlight-font{
+	.arw_tab_slider{
+		.slider-tab{
+			font-family: $font_family_highlight;
+		}
+	}
+}
+.product-tab-list-mini{
+	.products-list{
+
+		.product-name{
+
+		}
+
+
+		.link-quickview,
+		.link-compare,
+		.link-wishlist{
+
+		}
+	}
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/extensions/_brands.scss
+
+
+.sidebar{
+	ul.chars-filter {
+		li {
+			&.active a,
+			a:hover{
+				background: $primary;
+			}
+		}
+	}
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/extensions/_megamenu_accordion.scss
+.nav-accordion{
+	li{
+		&.level0{
+			+ li{
+
+			}
+		}
+		&.parent{
+			.expand{
+				color: $link_hover_color;
+			}
+			> span:hover{
+				color: $link_hover_color;
+			}
+		}
+		&.active{
+			>a{
+				color: $link_hover_color;
+			}
+		}
+
+	}
+}
+.cat-label-1 {
+	background-color:$cat_label1;
+}
+.cat-label-2 {
+	background-color:$cat_label2;
+}
+.cat-label-3 {
+	background-color:$cat_label3;
+}
+.cat-label-4 {
+	background-color:$cat_label4;
+}
+
+.arw-mobile-menu{
+	background: $mobile_menu_bg;
+}
+.arw-mobile-menu-header {
+	background:$primary;
+}
+
+.nav-mobile-accordion.nav-accordion{
+	li{
+		&.parent{
+			> span{
+				color: $mobile_menu_link_color;
+			}
+			> span:hover{
+				color: $mobile_menu_link_hover_color;
+			}
+		}
+		a{
+			color: $mobile_menu_link_color;
+		}
+		&:hover,
+		&.active{
+			>a{
+				color: $mobile_menu_link_hover_color;
+			}
+		}
+		li{
+			> a{
+				color: shade($mobile_menu_link_color,10%);
+			}
+			&:hover,
+			&.active{
+				>a{
+					color: $mobile_menu_link_hover_color;
+				}
+			}
+		}
+	}
+}
+
+.arw-toggle-menu-mobile {
+	background: $mobile_menu_bar_bg;
+	color: $mobile_menu_bar_color;
+}
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/extensions/_megamenu.scss
+.nav-primary-container{
+	background: $primary_menu_bg;
+	color: $primary_menu_text_color;
+}
+.megamenu {
+	.arwmenu-block {
+		ul {
+			.groups {
+				.title-group {
+					color: $primary_menu_text_color;
+					/*border-bottom: 1px solid tint($primary_sub2_bg,20%);*/
+				}
+			}
+		}
+	}
+	.m-dropdown {
+		.dropdown {
+			ul {
+				li {
+
+					+ li{
+						> a{
+							/*border-top: 1px solid tint($primary_sub2_bg,5%);*/
+						}
+					}
+					li{
+						+ li{
+							> a{
+								/*border-top: 1px solid tint($primary_sub3_bg,5%);*/
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* COLOR */
+
+// Level 1
+.megamenu > li > a{
+	background:$level1_bg;
+	color: $level1_color;
+}
+
+.megamenu > li:hover > a,
+.megamenu > li.active > a{
+	background:$level1_hover_bg;
+	color: $level1_hover_color;
+}
+// Level 2
+.megamenu > li > .sub-wrapper{
+	background:$primary_sub2_bg;
+	li.level1 > a{
+		background:$level2_bg;
+		color: $level2_color;
+	}
+	li.level1.active > a,
+	li.level1:hover > a{
+		background:$level2_hover_bg;
+		color: $level2_hover_color;
+	}
+}
+// Level 3
+.megamenu li.level1 .groups-wrapper,
+.megamenu li.level1 .sub-wrapper{
+	background:$primary_sub3_bg;
+	li.level2 > a{
+		background:$level3_bg;
+		color: $level3_color;
+	}
+	li.level2.active > a,
+	li.level2:hover > a{
+		background:$level3_hover_bg;
+		color: $level3_hover_color;
+	}
+}
+.megamenu li li ul,
+.megamenu li.level1 ul.level1{
+	background:$primary_sub3_bg;
+	li > a{
+		background:$level3_bg;
+		color: $level3_color;
+	}
+	li.active > a,
+	li:hover > a{
+		background:$level3_hover_bg;
+		color: $level3_hover_color;
+	}
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/extensions/_ajaxcart.scss
+#toPopup {
+	color: $text_color;
+	select{
+		border: 1px solid $input_border_color;
+	}
+	.price{
+		color: $primary;
+	}
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/extensions/_cloudzoom.scss
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/extensions/_quickview.scss
+.cloud-zoom-big{
+	border-color: $detail_borer_color;
+}
+.more-views{
+	.slick-slider{
+		.slick-next,.slick-prev{
+			color: $link_color;
+			&:hover{
+				color: $link_hover_color;
+			}
+
+		}
+	}
+}
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/extensions/_swatches-image.scss
+
+/* General Swatch Styling */
+
+.swatch-link {
+
+	.product-options & {
+		border: 1px solid $border_color;
+	}
+
+	li.selected &{
+		border-color: $primary;
+		background: $primary;
+	}
+	.not-available &{
+		border-color: tint($primary,20%);
+		background: tint($primary,20%);
+	}
+}
+
+.swatch-link .x {
+	border-top: 1px solid $border_color;
+}
+
+.currently .swatch-link:hover {
+	border-color: $primary;
+}
+
+/* Other Swatch States */
+.configurable-swatch-list .hover .swatch-link,
+.configurable-swatch-list .selected .swatch-link,
+.swatch-link:hover {
+	border-color: $primary;
+}
+.configurable-swatch-box {
+	.validation-advice {
+		background: $danger;
+	}
+}
+
+/* CUSTOM */
+
+// /Volumes/DATA/www/magento/arw_sebian/skin/frontend/arw_sebian/default/scss/core/_custom_class.scss
+/* ============================================ *
+ * Shared Classes
+ * ============================================ */
+
+.highlight-font{
+	font-family: $font_family_highlight;
+}
+
+
+.home-block-border{
+	border: 1px solid $border_color;
+}
+.home-block-shop-location{
+	ul{
+		li{
+
+			.fa{
+				border: 1px solid $border_color;
+				color: $heading_color;
+			}
+
+		}
+	}
+}
+
+.search-autocomplete {
+
+	ul {
+
+		li {
+			&:hover{
+				background: $primary;
+
+			}
+		}
+	}
+}
+.slick-slider{
+	.slick-dots{
+		li{
+			button{
+				border: 2px solid $border_color;
+				background: $border_color;
+			}
+			&.slick-active{
+				button{
+
+					border-color: $primary;
+				}
+			}
+		}
+	}
+}
+.owl-carousel{
+	.owl-dots{
+		.owl-dot{
+			border: 2px solid $border_color;
+			background: $border_color;
+			&.active{
+				border-color: $primary;
+			}
+		}
+	}
+}
+.social-networks{
+	a{
+		background: $border_color;
+		color: $heading_color;
+
+		&:hover{
+			background: $primary;
+
+		}
+	}
+}
+.support-people{
+	h5{
+		font-family: $font_family_highlight;
+		color: $text_color;
+	}
+	a{
+		color: $text_color;
+	}
+}
+
+/*	Banner image	*/
+.arw-banner{
+
+	&.style-1{
+		.banner-button{
+			a{
+				color: $heading_color;
+				&:hover{
+					background: $primary;
+				}
+			}
+		}
+	}
+	&.style-2{
+		.banner-text{
+			font-family: $font_family_highlight;
+		}
+		.banner-button{
+			a{
+				&:hover{
+					background: $primary;
+					border-color: $primary;
+				}
+			}
+		}
+	}
+	&.style-4{
+		.banner-button{
+			a{
+				&:hover{
+					color: $primary;
+				}
+			}
+		}
+	}
+	&.style-5{
+		.banner-button{
+			a{
+				&:hover{
+					border-color: $primary;
+					background: $primary;
+				}
+			}
+		}
+	}
+	&.style-6{
+		.banner-button a {
+			&:hover{
+				background: $primary;
+			}
+		}
+	}
+}
+.banner-overlay-primary{
+	.arw-banner-image:before{
+		background: $primary !important;
+	}
+}
+/* Custom Title */
+.arw-title{
+	&.style-2{
+		h2 > span{
+			&:after,
+			&:before{
+				border-bottom: 2px solid $border_color;
+			}
+		}
+	}
+}
+.arw-sub-title{
+	font-family: $font_family_highlight;
+}
+
+// Services Box
+.arw-services-box{
+	.service-thumb{
+		&.thumb-style-1{
+			.service-icon{
+				background: $text_color;
+			}
+		}
+		&.thumb-style-2{
+			.service-icon{
+				border: 1px solid $border_color;
+			}
+		}
+	}
+
+	&:hover{
+		.service-thumb{
+			&.thumb-style-1{
+				.service-icon{
+					background: $primary;
+				}
+			}
+			&.thumb-style-2{
+				.service-icon{
+					color: $primary;
+				}
+			}
+		}
+	}
+	&.style-1{
+		&:hover{
+			.service-thumb{
+				.service-icon{
+					background: $primary;
+				}
+			}
+		}
+
+	}
+	&.style-2{
+		&:hover{
+			.service-thumb{
+				.service-icon{
+					color: $primary;
+				}
+			}
+		}
+		.service-thumb{
+			.service-icon{
+				border: 1px solid shade($text_color,10%);
+			}
+		}
+		.service-content{
+			font-family: $font_family_highlight;
+			color: $text_color;
+		}
+	}
+	&.style-3{
+		.service-icon{
+			background: $primary;
+		}
+		.service-title{
+			color: $heading_color;
+		}
+		.service-content{
+			font-family: $font_family_highlight;
+		}
+	}
+	&.style-4{
+
+		.service-content{
+			font-family: $font_family_highlight;
+		}
+	}
+}
+// Our Team
+.our-team-item{
+
+	h5{
+		color: $text_color;
+		font-family: $font_family_highlight;
+	}
+}
+// Testimonial Box
+.arw-testimonial-box{
+	.testimonial-author-position,
+	.testimonial-text{
+		font-family: $font_family_highlight;
+	}
+
+	.testimonial-author{
+		font-family: $font_family_heading;
+	}
+
+	&.style-2{
+		.testimonial-text{
+			border-bottom: 1px solid $border_color;
+		}
+	}
+	&.style-3{
+		.testimonial-author{
+			color: $heading_color;
+		}
+
+	}
+	&.style-4{
+		.testimonial-author{
+			color: $heading_color;
+		}
+	}
+}
+// Lookbook
+.lookbook-item{
+	.lookbook-content{
+		.lookbook-title{
+			a{
+				&:hover{
+					color: $primary;
+				}
+			}
+		}
+		.lookbook-desc{
+			color: $text_color;
+		}
+		.lookbook-readmore{
+			color: $primary;
+		}
+	}
+}
+.product-image-slideshow{
+	.catalog-owl-nav {
+		.catalog-owl-next,
+		.catalog-owl-prev{
+			&:hover{
+				background: $primary;
+				border-color: $primary;
+			}
+		}
+	}
+}
+
+.title-divider-style-4,
+.title-divider-style-3,
+.title-divider-style-2,
+.title-divider-style-1{
+	border-color: $border_color;
+}
+.title-divider-style-5{
+	border-left: 2px solid $border_color;
+}
+.title-divider-style-6{
+	border-bottom: 1px solid $border_color;
+	&:before{
+		border: 1px solid $border_color;
+	}
+}
+.title-divider-style-7{
+	border-bottom: 1px solid $border_color;
+	&:before{
+		border: 1px solid $border_color;
+	}
+}
+.slider-tab-toggle{
+	border: 1px solid $border_color;
+	color: $heading_color;
+	> span{
+		&:after{
+
+		}
+	}
+}
+.arw_tab_slider {
+	.slider-tab-toggle.open-tab{
+		+ .slider-tab{
+			border-color: $border_color;
+			li{
+				border-bottom: 1px solid $border_color;
+			}
+		}
+	}
+}
+
+.tab_style_2{
+	.owl-nav{
+		.owl-next,
+		.owl-prev{
+			border-color: $border_color;
+		}
+	}
+}
+.tab_style_3{
+	.arw_tab_slider{
+		.slider-tab{
+			li{
+			  	border: none;
+				color: $heading_color;
+				&:hover,
+				&.active{
+					color: $heading_color;
+					border-color: $border_color;
+				}
+				&.first.active{
+					border-color: $border_color;
+				}
+			}
+		}
+	}
+}
+
+.catalog-owl-next,
+.catalog-owl-prev,
+.owl-next,
+.owl-prev{
+	@extend %btn;
+}
+
+.control-style-testimonial{
+	.owl-next,
+	.owl-prev{
+		&:hover{
+			color: $primary;
+		}
+	}
+}
+.text-color-heading{
+	color: $heading_color;
+}
+.color-heading{
+	color: $heading_color;
+}
+.background-heading{
+	background-color: $heading_color !important;
+}
+.background-primary{
+	background-color: $primary !important;
+}
+.background-body{
+	background-color: $body_bg_color !important;
+}
+.border-color-primary{
+	border-color: $primary !important;
+}
+.border-color{
+	border-color: $border_color;
+}
+.border-color-heading{
+	border-color: $heading_color !important;
+}
+.color-primary{
+	color: $primary !important;
+}
+.text-color-primary{
+	color: $primary !important;
+}
+.text-color-body{
+	color:$text_color !important;
+}
+.color-body{
+	color:$text_color !important;
+}
+
+.tp-caption.arw-sebian-slider-button a:hover{
+	background: $primary;
+	border-color: $primary;
+}
+.tp-caption.arw-sebian-slider-button-3 a:hover{
+	background: $primary;
+}
+.rev_slider_wrapper {
+	.tp-rightarrow.default,
+	.tp-leftarrow.default{
+		&:hover{
+			color: $primary;
+		}
+	}
+}

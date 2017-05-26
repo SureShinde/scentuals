@@ -1,0 +1,34 @@
+#import_brand_popup{
+	background: none repeat scroll 0 0 transparent;
+	/* display: none ; */
+	left: 30%;
+	position: fixed;
+	top: 20% ;
+	width: 36% ;
+	z-index: 9999 ; 
+}
+#background_brand_popup{
+	background: none repeat scroll 0 0 #000000;
+	/* display: none ; */
+	left: 0 ;
+	position: fixed ;
+	top: 0 ;
+	width: 100% ;
+	height: 100% ;
+	z-index: 1 ;
+}
+#search_autocomplete ul {
+    background-color: #f9f5f0;
+    border: 1px solid #5c7989;
+}
+#search_autocomplete ul li
+{
+	border-bottom: 1px solid #f4eee7 ;
+    cursor: pointer ;
+    padding: 2px 8px 1px ;
+    text-align: left;
+}
+
+#search_autocomplete li.selected {
+    background-color: #f7e8dd;
+}

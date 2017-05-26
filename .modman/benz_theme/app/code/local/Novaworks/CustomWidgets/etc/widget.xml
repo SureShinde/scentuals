@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<widgets>
+	<google_map type="customwidgets/widget_map" translate="label description" module="customwidgets">
+        <name>Novaworks - Google Maps</name>
+        <parameters>
+             <title>
+                <label>Widget Title</label>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>10</sort_order>
+                 <description><![CDATA[Heading text. Leave it empty if not needed.]]></description>
+            </title>
+             <address>
+                <label>Address</label>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>20</sort_order>
+                 <description><![CDATA[Enter the address that you would like to show on the map here, i.e. "Hanoi".]]></description>
+            </address>
+            <map_height>
+                <label>Map Height</label>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                 <value>400</value>
+                <sort_order>30</sort_order>
+                <description><![CDATA[Enter map height in pixels. Example: 300.]]></description>
+            </map_height>
+             <map_type translate="label">
+                <label>Map Type</label>
+                <visible>1</visible>
+                <required>1</required>
+                <sort_order>40</sort_order>
+                <type>select</type>
+                <values>
+                    <map translate="label">
+                        <value>roadmap</value>
+                        <label>Map</label>
+                    </map>
+                    <satellite translate="label">
+                        <value>satellite</value>
+                        <label>Satellite</label>
+                    </satellite>
+                     <hybrid translate="label">
+                        <value>hybrid</value>
+                        <label>Hybrid</label>
+                    </hybrid>
+                    <terrain translate="label">
+                        <value>terrain</value>
+                        <label>Terrain</label>
+                    </terrain>
+                </values>
+                <description><![CDATA[Select map display type. NOTE, if you set a color below, then only the standard Map type will show.]]></description>
+            </map_type>
+            <map_zoom>
+                <label>Map Zoom</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>customwidgets/map_zoom</source_model>
+                <sort_order>50</sort_order>
+            </map_zoom>
+               <map_color>
+                <label>Map Color</label>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>55</sort_order>
+                 <description><![CDATA[If you would like, you can enter a hex color here to style the map by changing the hue. Please provide the # as well, e.g. #ff9900]]></description>
+            </map_color>
+               <map_saturation translate="label">
+                <label>Map Saturation</label>
+                <visible>1</visible>
+                <required>1</required>
+                <sort_order>60</sort_order>
+                <type>select</type>
+                <values>
+                    <color translate="label">
+                        <value>color</value>
+                        <label>Color</label>
+                    </color>
+                    <mono translate="label">
+                        <value>mono</value>
+                        <label>Mono</label>
+                    </mono>
+                </values>
+                <description><![CDATA[Set whether you would like the map to be in color or mono (black/white).]]></description>
+            </map_saturation>
+            <custom_map_pin>
+                <label>Custom Map Pin</label>
+                <visible>1</visible>
+                <type>widgetimagechooser/chooser</type>
+                <sort_order>70</sort_order>
+                <description><![CDATA[Choose an image to use as the custom pin for the address on the map. Upload your custom map pin, the image size must be 150px x 75px.]]></description>
+
+            </custom_map_pin>
+               <full_screen translate="label">
+                <label>Fullscreen Display</label>
+                <visible>1</visible>
+                <required>1</required>
+                <sort_order>80</sort_order>
+                <type>select</type>
+                <values>
+                    <color translate="label">
+                        <value>no</value>
+                        <label>No</label>
+                    </color>
+                    <mono translate="label">
+                        <value>yes</value>
+                        <label>Yes</label>
+                    </mono>
+                </values>
+                <description><![CDATA[If yes, the map will be displayed from screen edge to edge.]]></description>
+            </full_screen>
+              <extra_class>
+                <label>Extra class name</label>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>90</sort_order>
+                 <description><![CDATA[If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.]]></description>
+            </extra_class>
+        </parameters>
+    </google_map>
+       
+    <parallax_background type="customwidgets/widget_parallax" translate="label description" module="customwidgets">
+        <name>Novaworks - Parallax Background</name>
+        <parameters>
+            <image>
+                <label>Image</label>
+                <required>1</required>
+                <visible>1</visible>
+                <type>widgetimagechooser/chooser</type>
+                <sort_order>10</sort_order>
+            </image>
+            <box_height>
+                <label>Box Height</label>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                 <value>350</value>
+                <sort_order>20</sort_order>
+            </box_height>
+            <box_margin>
+                <label>Box Margin</label>
+                <required>1</required>
+                <visible>1</visible>
+                <type>text</type>
+                 <value>0</value>
+                <sort_order>25</sort_order>
+            </box_margin>
+            <block_id type="complex" translate="label">
+                <visible>1</visible>
+                <label>Block Content</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/cms_block_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Block...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>30</sort_order>
+            </block_id>
+        </parameters>
+    </parallax_background>
+    
+</widgets>

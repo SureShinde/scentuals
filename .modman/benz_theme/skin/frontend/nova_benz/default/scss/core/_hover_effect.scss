@@ -1,0 +1,178 @@
+.arw_hover_object{
+	.element-display{
+		display: inline-block !important;
+		@include opacity(1);
+	}
+	.element-no-display{
+		display: none !important;
+		@include opacity(0);
+	}
+	.element-display-on-hover{
+		display: block;
+		height: 0;
+		visibility: hidden;
+		@include opacity(0);
+		@include transition(all .3s $easeInOutQuad);
+	}
+	.hover-scale{
+		@include transition(all .3s $easeInOutQuad);
+	}
+	.hover-overlay-1{
+		&:before{
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			background: #000;
+			@include opacity(.3);
+			@include transition(all .3s $easeInOutQuad);
+		}
+//		@include opacity(.3);
+//		@include transition(all .3s $easeInOutQuad);
+	}
+	.element-hidden-on-hover{
+		@include opacity(1);
+		@include scale(1);
+		@include transition(all .3s $easeInOutQuad);
+	}
+	&:hover{
+		z-index: 2;
+		.element-display-on-hover{
+			@include opacity(1);
+			height: auto;
+			visibility: visible;
+		}
+		.element-hidden-on-hover{
+			@include opacity(0);
+			@include scale(0);
+		}
+		.hover-scale{
+			@include transform(scale(1.2));
+		}
+		.hover-overlay-1{
+			&:before{
+				@include opacity(0);
+			}
+		}
+	}
+}
+.products-grid .flip-effect,
+.products-list .flip-effect,
+.flip-effect{
+	position: relative;
+	.back,.front{
+		@include backface-visibility(hidden);
+		@include transition(transform .6s ease);
+	}
+	.front{
+		position: relative;
+		z-index: 2;
+	}
+	.back{
+		position: absolute;
+		top: 0;
+		left: 0;
+		@include transform(rotateY(-180deg));
+	}
+	&:hover{
+		.front{
+			@include transform(rotateY(180deg));
+			z-index: 1;
+		}
+		.back{
+			@include transform(rotateY(0deg));
+			z-index: 2;
+		}
+	}
+	&.vertical-effect{
+		.back{
+			@include transform(rotateX(-180deg));
+		}
+		&:hover{
+			.front{
+				@include transform(rotateX(180deg));
+			}
+			.back{
+				@include transform(rotateX(0deg));
+			}
+		}
+	}
+}
+.products-grid .transform-effect,
+.products-list .transform-effect,
+.transform-effect{
+	position: relative;
+	.back,.front{
+		@include transition(transform .6s ease);
+	}
+	.front{
+		width: 100%;
+		height: 100%;
+	}
+	.back{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		@include transform(translateX(-100%))
+	}
+	&:hover{
+		.back{
+			@include transform(translateX(0));
+			z-index: 2;
+		}
+	}
+	&.skin1-effect{
+		&:hover{
+			.front{
+				@include transform(translateX(100%));
+			}
+		}
+		&.vertical-effect{
+			&:hover{
+				.front{
+					@include transform(translateY(-100%));
+				}
+			}
+		}
+	}
+	&.vertical-effect{
+		.back{
+			@include transform(translateY(100%))
+		}
+		&:hover{
+			.back{
+				@include transform(translateY(0));
+			}
+		}
+	}
+}
+
+.fade-effect{
+	.front,.back{
+		@include transition(all .3s $easeInOutQuad);
+		width: 100%;
+		height: 100%;
+	}
+	.front{
+		@include opacity(1);
+	}
+	.back{
+		@include opacity(0);
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+	}
+	&:hover{
+		.front{
+			@include opacity(0);
+		}
+		.back{
+			@include opacity(1);
+		}
+	}
+}

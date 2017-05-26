@@ -1,0 +1,177 @@
+.more-views ul{
+	margin-right: -10px;
+	margin-left: -10px;
+}
+.more-views li {
+	display: inline-block;
+	padding: 0 10px;
+}
+/* General Swatch Styling */
+
+.swatch-link {
+	display: block;
+	text-align: center;
+	position: relative;
+	.product-options & {
+		width: 30px !important;
+		height: 30px !important;
+		line-height: 28px !important;
+		border: 1px solid $border_color;
+	}
+	.swatch-label{
+		display: block;
+		height: 100% !important;
+		line-height: inherit !important;
+		width: 100% !important;
+	}
+	li.selected &{
+		border-color: $primary;
+		background: $primary;
+		color: #fff;
+	}
+	.not-available &{
+		border-color: tint($primary,20%);
+		background: tint($primary,20%);
+		color: #fff;
+	}
+}
+.swatch-link img {
+	width: 100%;
+}
+
+.swatch-link:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+.swatch-link .x {
+	border-top: 1px solid $border_color;
+	display: none;
+	left: 5px;
+	position: absolute;
+	text-indent: -999em;
+	top: 10px;
+	width: 41px;
+	z-index: 10;
+	@include transform(rotate(-45deg));
+}
+.swatch-link.has-image .swatch-label {
+	position: relative;
+}
+.swatch-link.has-image img {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.configurable-swatch-list {
+	zoom: 1;
+	-webkit-transform: translateZ(0px);
+}
+.configurable-swatch-list {
+	li {
+		float: left;
+		+ li{
+			margin-left: 7px;
+		}
+	}
+	.products-grid &{
+		margin-top: 15px;
+		+ .product-name{
+			padding-top: 5px;
+		}
+	}
+}
+.products-grid .configurable-swatch-list li {
+	display: inline-block;
+	float: none;
+	margin: 0;
+	vertical-align: top;
+}
+.configurable-swatch-list .not-available .x {
+	display: block;
+}
+
+.currently .swatch-current {
+	position: relative;
+}
+.currently .swatch-current .btn-remove {
+	position: absolute;
+	right: 0;
+}
+.currently .swatch-current span {
+	display: block;
+	float: left;
+}
+.currently .swatch-link {
+	display: inline-block;
+	margin: 0 0 0 3px;
+}
+.currently .swatch-link:hover {
+	border-color: $primary;
+	cursor: default;
+}
+
+/* Other Swatch States */
+.configurable-swatch-list .hover .swatch-link,
+.configurable-swatch-list .selected .swatch-link,
+.swatch-link:hover {
+	border-color: $primary;
+}
+.configurable-swatch-box {
+	background: none !important;
+	select.swatch-select {
+		display: none;
+	}
+	.validation-advice {
+		margin: 0 0 5px;
+		background: $danger;
+		padding: 2px 5px !important;
+		font-weight: bold;
+		color: #fff !important;
+		float: left;
+		display: block;
+		border-radius: 3px;
+	}
+}
+
+/* CUSTOM */
+
+.product-image-gallery {
+	position: relative;
+	.gallery-image {
+		display: none;
+		&.visible {
+			display: block;
+			&.hidden {
+				visibility: hidden;
+			}
+		}
+	}
+	&:before,
+	&:after{
+		content: '';
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		display: none;
+	}
+	&:before {
+		background-color: white;
+		opacity: 0.8;
+		z-index: 2;
+	}
+	&:after {
+		background-image: url("../images/opc-ajax-loader.gif");
+		background-repeat: no-repeat;
+		background-position: center;
+		z-index: 3;
+	}
+	&.loading {
+		position: relative;
+		&:before,
+		&:after{
+			display: block;
+		}
+	}
+}

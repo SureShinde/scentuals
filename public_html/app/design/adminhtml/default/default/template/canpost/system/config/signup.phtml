@@ -1,0 +1,10 @@
+<script>
+    <?php $yourl = $this->getEndpoint(); ?>
+    function registerCp()
+    {
+        document.location = '<?php echo $yourl ; ?>';
+    }
+
+</script><button onclick="javascript:registerCp(); return false;" class="scalable" type="button" id="<?php echo $this->getHtmlId() ?>">
+    <span><span><span id="canadapost_signup"><?php echo $this->escapeHtml($this->getButtonLabel()) ?></span></span></span>
+</button>

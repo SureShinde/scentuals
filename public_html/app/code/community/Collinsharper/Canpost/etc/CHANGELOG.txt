@@ -1,0 +1,75 @@
+CHANGE LOGS
+========================================================================================================================
+
+2016-07-14	MengChi Tsai	mtsai@collinsharper.com
+
+M       app/code/community/Collinsharper/Canpost/Helper/Data.php
+
+Solved the issue that creates two boxes when one configurable product is "ready to ship"
+
+************************************************************************************************************************
+
+2016-04-27      Kit Lee     customersupport@collinsharper.com
+
+#25: Soap API issue ticket 957910
+
+M       app/code/community/Collinsharper/Canpost/Helper/Rest/Shipment.php
+
+************************************************************************************************************************
+
+20160216  Shane Harper <sharper@collinsharper.com>
+
+app/code/community/Collinsharper/Canpost/controllers/Adminhtml/ShippingController.php
+app/code/community/Collinsharper/Canpost/controllers/ShippingController.php
+app/code/community/Collinsharper/Canpost/controllers/TestController.php
+
+Resolved Controller issues
+
+************************************************************************************************************************
+
+2016-02-15      Kit Lee     customersupport@collinsharper.com
+
+#302: New Foreign Key issue
+
+M       app/code/community/Collinsharper/Canpost/Model/Quote/Param.php
+
+************************************************************************************************************************
+
+2015-12-01      Kit Lee     customersupport@collinsharper.com
+
+#530: Modify CP2 to accept usage over Magento API
+
+M       app/code/community/Collinsharper/Canpost/Model/Observer.php
+
+************************************************************************************************************************
+
+2015-11-18	Roxanne Tran	customersupport@collinsharper.com
+
+app/code/community/Collinsharper/Canpost/Model/Carrier/Api.php
+app/code/community/Collinsharper/Canpost/Model/Observer.php
+
+Removed mage::log statements that cluttered system.log.
+
+************************************************************************************************************************
+
+2015-10-13	Chris Harper	customersupport@collinsharper.com
+#311: Change Default of coverage from "Always" to Never
+
+app/code/community/Collinsharper/Canpost/Model/Source/Coverage.php
+
+Updated the order of the select options so that "Never" is the default option for coverage. 
+
+************************************************************************************************************************
+
+2015-10-08      Kit Lee     customersupport@collinsharper.com
+#310: Flat Rate changing prices of shipping methods
+
+M       app/code/community/Collinsharper/Canpost/controllers/ShippingController.php
+************************************************************************************************************************
+
+20150821 -- Stephen Harper customersupport@collinsharper.com
+
+app/code/community/Collinsharper/Canpost/Model/Observer.php
+
+Corrected $bttn to $block for observer. 
+

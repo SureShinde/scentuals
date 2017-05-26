@@ -1,0 +1,48 @@
+<?php
+if(Mage::helper('producttab')->getEnableModule())
+{
+    $tabs   =   $this->getTabs();
+    $tab_first_data=$this->getTabFirst();
+    $tab_first_id=$tab_first_data['arw_tab_id'];
+    $tab_identifier = $this->getConfig('identifier');
+    $enable_countdown = $this->getConfig('countdown') ? 1 : 0;
+    $i=0;
+    if(count($tabs)){
+?>
+<div class="arw_tab_slider">
+    <div class="slider-tab-toggle"><span></span></div>
+	<ul class="slider-tab"><!--
+    <?php
+    foreach($tabs as $tab)
+    {
+        $tab_li_id = "{$tab['arw_tab_id']}_{$tab_identifier}";
+        $tab_li_class = (count($tabs)==1?'one_tab ':'').($i==0?'active first':(($i==count($tabs)-1)?'last':''));
+        echo sprintf(
+            '--><li id="%s" class="%s" data-enable-countdown="%s" title="%s"><span><span>%s</span></span></li><!--',
+            'tab_'.$tab_li_id,
+            $tab_li_class,
+            $enable_countdown,
+            $tab['arw_name'],
+            $tab['arw_name']
+        );
+        $i++;
+    }
+    ?>
+	--></ul>
+	<?php
+    foreach($tabs as $tab)
+    {
+        echo sprintf(
+            '<div id="%s">%s</div>',
+            'tab_'.$tab['arw_tab_id'].'_'.$tab_identifier.'_contents',
+            ($tab_first_id==$tab['arw_tab_id']) ? $this->getTabFirstHtml() : ''
+        );
+    }
+    ?>
+	<div class="ajax_loading_tab"></div>
+	<div class="backgroundajax_tab"></div>
+</div>
+<?php
+    }
+}
+?>

@@ -1,0 +1,9 @@
+<?php // duc?>
+<script type="text/javascript">
+//<![CDATA[
+document.observe("dom:loaded", function() {
+	var Slide=new tabSlide(<?php echo Mage::helper('producttab')->jsParam($this)?>);
+	Slide.run();
+});
+//]]
+</script>

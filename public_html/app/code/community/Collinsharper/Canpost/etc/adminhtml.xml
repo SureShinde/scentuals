@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <sales>
+            <children>
+                <manifest translate="title" module="sales">
+                    <title>Manifest</title>
+                    <action>adminhtml/manifest</action>
+                    <sort_order>35</sort_order>
+                </manifest>
+            </children>
+        </sales>
+        <report>
+            <children>
+                <salesroot>
+                    <children>
+                        <adv_shipping module="chcanpost2module" translate="title">
+                            <title>Advanced Shipping</title>
+                            <action>adminhtml/advreport/shipping</action>
+                            <sort_order>0</sort_order>
+                        </adv_shipping>
+                    </children>
+                </salesroot>
+            </children>
+        </report>
+
+    </menu>
+</config>

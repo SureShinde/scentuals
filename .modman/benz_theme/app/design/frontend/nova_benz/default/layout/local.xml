@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <default>
+        <reference name="root">
+
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+
+            <block type="core/text_list" name="arw.layout.global.top" translate="label">
+                <label>ARW Layout Global Top</label>
+            </block>
+            <block type="core/text_list" name="arw.layout.global.bottom" translate="label">
+                <label>ARW Layout Global Bottom</label>
+            </block>
+            <block type="core/text_list" name="arw.layout.content.top" translate="label">
+                <label>ARW Layout Content Top</label>
+            </block>
+            <block type="core/text_list" name="arw.layout.content.bottom" translate="label">
+                <label>ARW Layout Content Bottom</label>
+            </block>
+            <block type="core/text_list" name="arw.layout.left.top" translate="label">
+                <label>ARW Layout Left Top</label>
+            </block>
+            <block type="core/text_list" name="arw.layout.left.bottom" translate="label">
+                <label>ARW Layout Left Bottom</label>
+            </block>
+            <block type="core/text_list" name="arw.layout.right.top" translate="label">
+                <label>ARW Layout Right Top</label>
+            </block>
+            <block type="core/text_list" name="arw.layout.right.bottom" translate="label">
+                <label>ARW Layout Right Bottom</label>
+            </block>
+        </reference>
+        <reference name="head">
+            <!-- Remove js and css -->
+
+            <!-- Add JS -->
+            <action method="addJs">
+                <script>arw/arexworks/jquery/jquery-1.11.1.min.js</script>
+            </action>
+
+            <action method="addJs">
+                <script>arw/arexworks/jquery/jquery.noconflict.js</script>
+            </action>
+            <action method="addItem"><type>skin_js</type><name>vendors/imagesloaded.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>vendors/skrollr/skrollr.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>vendors/skrollr/skrollr.menu.min.js</name></action>
+            <action method="addJs">
+                <script>arw/arexworks/jquery/jquery-migrate-1.2.1.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>arw/arexworks/jquery/jquery.easing.1.3.js</script>
+            </action>
+            <action method="addItem"><type>skin_js</type><name>vendors/bootstrap/js/bootstrap.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>vendors/bootstrap-select/js/bootstrap-select.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>vendors/fancybox/js/jquery.fancybox.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>vendors/owl-carousel/owl.carousel.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>vendors/slick/js/slick.js</name></action>
+            <!--<action method="addItem"><type>skin_js</type><name>vendors/parallax/parallax.min.js</name></action>-->
+
+            <action method="addItem"><type>skin_js</type><name>vendors/jcountdown/js/jquery.jcountdown.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/html5shiv.min.js</name><params/><if>lt IE 9</if></action>
+            <action method="addItem"><type>skin_js</type><name>js/html5shiv-printshiv.min.js</name><params/><if>lt IE 9</if></action>
+            <action method="addItem"><type>skin_js</type><name>js/respond.min.js</name><params/><if>lt IE 9</if></action>
+            <action method="addItem"><type>skin_js</type><name>js/theme.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/functions.js</name></action>
+
+            <!-- Add CSS -->
+            <action method="addCss"><stylesheet>vendors/bootstrap/css/bootstrap.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>vendors/bootstrap-select/css/bootstrap-select.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>vendors/fancybox/css/jquery.fancybox.css</stylesheet></action>
+            <action method="addCss"><stylesheet>vendors/icomoon/style.css</stylesheet></action>
+            <action method="addCss"><stylesheet>vendors/font-awesome/font-awesome.css</stylesheet></action>
+            <action method="addCss"><stylesheet>vendors/linearicons/style.css</stylesheet></action>
+            <action method="addCss"><stylesheet>vendors/streamline/style.css</stylesheet></action>
+            <action method="addCss"><stylesheet>vendors/owl-carousel/assets/owl.carousel.css</stylesheet></action>
+            <action method="addCss"><stylesheet>vendors/slick/css/slick.css</stylesheet></action>
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>css/styles.css</name>
+            </action>
+            <!-- Remove AW_Blog style -->
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>aw_blog/css/style.css</name>
+            </action>
+            <action method="addCss"><stylesheet>css/arw-styles.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/static-block.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/reponsive.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/arw-custom-class.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/arw-extension.css</stylesheet></action>
+            <action method="addCss" ifconfig="sebian_layout/responsive/responsive"><stylesheet>css/arw-responsive.css</stylesheet></action>
+            <!-- Add Custom Theme-->
+            <action method="addCss"><stylesheet helper="sebian/cssgen/getDesignFile"/></action>
+            <!-- Custom CSS (has to be enabled in admin) -->
+            <action method="addCss" ifconfig="sebian/customization/custom_css"><stylesheet>css/custom.css</stylesheet></action>
+        </reference>
+        <reference name="header">
+            <block type="directory/currency" name="store_currency" template="directory/top-currency.phtml"/>
+            <block type="cms/block" name="header_welcome">
+                <action method="setBlockId"><block_id>header_welcome</block_id></action>
+            </block>
+            <block type="checkout/cart_sidebar" name="top.cart" as="topCart" template="checkout/cart/top-cart.phtml">
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                    <label>Shopping Cart Sidebar Extra Actions</label>
+                </block>
+            </block>
+        </reference>
+
+        <reference name="left">
+            <action method="unsetChild"><alias>currency</alias></action>
+            <action method="unsetChild"><alias>left.permanent.callout</alias></action>
+        </reference>
+
+        <reference name="right">
+            <action method="unsetChild"><alias>right.permanent.callout</alias></action>
+        </reference>
+
+        <reference name="footer">
+            <block type="cms/block" name="arw_global_footer_row">
+                <action method="setBlockId"><block_id>block_footer</block_id></action>
+            </block>
+            <block type="cms/block" name="footer_link_fa">
+                <action method="setBlockId"><block_id>block_footer_link</block_id></action>
+            </block>
+        </reference>
+
+        <!-- Add special global static block -->
+        <!-- Global Layout -->
+        <reference name="arw.layout.global.top">
+            <block type="cms/block" name="arw_layout_global_top">
+                <action method="setBlockId"><block_id>arw_sebian_layout_global_top</block_id></action>
+            </block>
+        </reference>
+        <reference name="arw.layout.global.bottom">
+            <block type="cms/block" name="arw_layout_global_bottom">
+                <action method="setBlockId"><block_id>arw_sebian_layout_global_bottom</block_id></action>
+            </block>
+        </reference>
+        <!-- ./Global Layout -->
+        <!-- Content Layout-->
+        <reference name="arw.layout.content.top">
+            <block type="cms/block" name="arw_global_layout_content_top">
+                <action method="setBlockId"><block_id>arw_sebian_layout_content_top</block_id></action>
+            </block>
+        </reference>
+        <reference name="arw.layout.content.bottom">
+            <block type="cms/block" name="arw_global_layout_content_bottom">
+                <action method="setBlockId"><block_id>arw_sebian_layout_content_bottom</block_id></action>
+            </block>
+        </reference>
+        <!-- ./Content Layout-->
+        <!-- Col Left -->
+        <reference name="arw.layout.left.top">
+            <block type="cms/block" name="arw_global_layout_col_left_top">
+                <action method="setBlockId"><block_id>arw_sebian_layout_col_left_top</block_id></action>
+            </block>
+        </reference>
+        <reference name="arw.layout.left.bottom">
+            <block type="cms/block" name="arw_global_layout_col_left_bottom">
+                <action method="setBlockId"><block_id>block_sidebar_left</block_id></action>
+            </block>
+        </reference>
+        <!-- ./Col Left -->
+        <!-- Col Right -->
+        <reference name="arw.layout.right.top">
+            <block type="cms/block" name="arw_global_layout_col_right_top">
+                <action method="setBlockId"><block_id>arw_sebian_layout_col_right_top</block_id></action>
+            </block>
+        </reference>
+        <reference name="arw.layout.right.bottom">
+
+        </reference>
+        <!-- ./Col Right -->
+
+	<remove name="left.newsletter"/>
+    </default>
+    <cms_index_index>
+        <reference name="arw.layout.global.top">
+            <!--block type="revslider/slider_preview" name="revo_slide" as="revo_slide" before="-">
+                <action method="setData">
+                    <name>id</name>
+                    <value helper="sebian/data/getSliderId" />
+                </action>
+            </block-->
+        </reference>
+        <reference name="arw.layout.global.bottom">
+
+        </reference>
+    </cms_index_index>
+
+    <catalog_category_default>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left">
+            <action method="unsetChild"><alias>currency</alias></action>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left">
+            <action method="unsetChild"><alias>currency</alias></action>
+        </reference>
+    </catalog_category_layered>
+
+    <catalogsearch_result_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left">
+            <action method="unsetChild"><alias>currency</alias></action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalog_product_view>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>vendors/cloudzoom/js/cloud-zoom.1.0.3.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>vendors/cloudzoom/js/jquery.mousewheel-3.0.6.pack.js</name></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="product.info">
+            <block type="catalog/product_view" name="product.info.prevnext" as="prev_next" template="catalog/product/view/prevnext.phtml"/>
+            <block type="catalog/product_view" name="product.info.sharing" as="sharing" template="catalog/product/view/sharing.phtml"/>
+            <block type="catalog/product_view_tabs" name="product.info.tabs" as="info_tabs" template="catalog/product/view/tabs.phtml" >
+                <action method="addTab" translate="title" module="catalog">
+                    <alias>description</alias>
+                    <title>Details</title>
+                    <block>catalog/product_view_description</block>
+                    <template>catalog/product/view/description.phtml</template>
+                </action>
+		<action method="addTab" translate="title" module="catalog">
+                    <alias>description2</alias>
+                    <title>How to use</title>
+                    <block>catalog/product_view_description</block>
+                    <template>catalog/product/view/usage.phtml</template>
+                </action>
+		<action method="addTab" translate="title" module="catalog">
+                    <alias>description1</alias>
+                    <title>Ingredients</title>
+                    <block>catalog/product_view_description</block>
+                    <template>catalog/product/view/ingredients.phtml</template>
+                </action>
+		
+		<!--
+                <action method="addTab" translate="title" module="catalog">
+                    <alias>product_additional</alias>
+                    <title>Additional Information</title>
+                    <block>catalog/product_view_attributes</block>
+                    <template>catalog/product/view/attributes.phtml</template>
+                </action>
+		-->
+				<!--
+                <action method="addTab" translate="title" module="catalog">
+                    <alias>tabreviews</alias>
+                    <title>Reviews</title>
+                    <block>review/product_view_list</block>
+                    <template>review/product/view/list.phtml</template>
+                </action>
+				-->
+                <action method="addTab" translate="title" module="tag">
+                    <alias>product_tags</alias>
+                    <title>Tags</title>
+                    <block>tag/product_list</block>
+                    <template>tag/list.phtml</template>
+                </action>
+            </block>
+            <block type="catalog/product_list_upsell" name="upsell_products" template="catalog/product/list/upsell.phtml"/>
+            <reference name="upsell_products">
+                <action method="setItemLimit"><type>upsell</type><limit>8</limit></action>
+            </reference>
+            <block type="catalog/product_list_related" name="related_products" template="catalog/product/list/related.phtml"/>
+            <reference name="related_products">
+                <action method="setItemLimit"><type>related</type><limit>8</limit></action>
+            </reference>
+            <reference name="tabreviews">
+                <block type="review/form" name="product.review.form" as="review_form">
+                    <block type="page/html_wrapper" name="product.review.form.fields.before" as="form_fields_before" translate="label">
+                        <label>Review Form Fields Before</label>
+                        <action method="setMayBeInvisible"><value>1</value></action>
+                    </block>
+                </block>
+            </reference>
+            <block type="cms/block" name="arw.layout.product.left">
+                <action method="setBlockId"><block_id>arw_sebian_block_product_details_left</block_id></action>
+            </block>
+            <block type="cms/block" name="arw.layout.product.right">
+                <action method="setBlockId"><block_id>arw_sebian_block_product_details_right</block_id></action>
+            </block>
+            <block type="cms/block" name="arw.layout.product.collateral.left">
+                <action method="setBlockId"><block_id>arw_sebian_block_product_collateral_left</block_id></action>
+            </block>
+            <block type="cms/block" name="arw.layout.product.collateral.right">
+                <action method="setBlockId"><block_id>arw_sebian_block_product_collateral_right</block_id></action>
+            </block>
+        </reference>
+    </catalog_product_view>
+
+    <review_product_list>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>vendors/cloudzoom/js/cloud-zoom.1.0.3.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>vendors/cloudzoom/js/jquery.mousewheel-3.0.6.pack.js</name></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="product.info">
+            <block type="catalog/product_view_tabs" name="product.info.tabs" as="info_tabs" template="catalog/product/view/tabs.phtml" >
+                <action method="addTab" translate="title" module="catalog">
+                    <alias>tabreviews</alias>
+                    <title>Customer Reviews</title>
+                    <block>review/product_view_list</block>
+                    <template>review/product/view/list.phtml</template>
+                </action>
+            </block>
+            <reference name="tabreviews">
+                <block type="review/form" name="product.review.form" as="review_form">
+                    <block type="page/html_wrapper" name="product.review.form.fields.before" as="form_fields_before" translate="label">
+                        <label>Review Form Fields Before</label>
+                        <action method="setMayBeInvisible"><value>1</value></action>
+                    </block>
+                </block>
+            </reference>
+
+        </reference>
+    </review_product_list>
+    <arexworks_quickview_index>
+        <remove name="header"/>
+        <remove name="breadcrumbs"/>
+        <remove name="footer"/>
+        <remove name="global_notices"/>
+        <remove name="arw.sidemenu"/>
+        <remove name="arw.layout.global.top"/>
+        <remove name="arw.layout.global.bottom"/>
+        <remove name="arw.layout.content.top"/>
+        <remove name="arw.layout.content.bottom"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="addJs"><script>varien/product.js</script></action>
+            <action method="addJs"><script>varien/configurable.js</script></action>
+
+            <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params/></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar.js</name></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name></action>
+            <!--<action method="addItem"><type>skin_js</type><name>vendors/cloudzoom/js/cloud-zoom.1.0.3.js</name></action>-->
+            <!--<action method="addItem"><type>skin_js</type><name>vendors/cloudzoom/js/jquery.mousewheel-3.0.6.pack.js</name></action>-->
+
+        </reference>
+        <reference name="content">
+            <remove name="before_body_end" />
+            <block type="catalog/product_view" name="product.info" template="catalog/product/view.phtml">
+                <block type="catalog/product_view_media" name="product.info.media" as="media" template="arw/quickview/media.phtml"/>
+                <block type="core/text_list" name="alert.urls" as="alert_urls" translate="label">
+                    <label>Alert Urls</label>
+                </block>
+                <action method="setTierPriceTemplate"><template>catalog/product/view/tierprices.phtml</template></action>
+
+                <block type="catalog/product_view_attributes" name="product.attributes" as="additional" template="catalog/product/view/attributes.phtml">
+                    <action method="addToParentGroup"><group>detailed_info</group></action>
+                </block>
+                <block type="catalog/product_view" name="product.info.addto" as="addto" template="catalog/product/view/addto.phtml"/>
+                <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="catalog/product/view/addtocart.phtml"/>
+
+                <block type="core/text_list" name="product.info.extrahint" as="extrahint" translate="label">
+                    <label>Product View Extra Hint</label>
+                </block>
+
+                <block type="catalog/product_view" name="product.info.options.wrapper" as="product_options_wrapper" template="catalog/product/view/options/wrapper.phtml" translate="label">
+                    <label>Info Column Options Wrapper</label>
+                    <block type="core/template" name="options_js" template="catalog/product/view/options/js.phtml"/>
+                    <block type="catalog/product_view_options" name="product.info.options" as="product_options" template="catalog/product/view/options.phtml">
+                        <action method="addOptionRenderer"><type>text</type><block>catalog/product_view_options_type_text</block><template>catalog/product/view/options/type/text.phtml</template></action>
+                        <action method="addOptionRenderer"><type>file</type><block>catalog/product_view_options_type_file</block><template>catalog/product/view/options/type/file.phtml</template></action>
+                        <action method="addOptionRenderer"><type>select</type><block>catalog/product_view_options_type_select</block><template>catalog/product/view/options/type/select.phtml</template></action>
+                        <action method="addOptionRenderer"><type>date</type><block>catalog/product_view_options_type_date</block><template>catalog/product/view/options/type/date.phtml</template></action>
+                    </block>
+                    <block type="core/html_calendar" name="html_calendar" as="html_calendar" template="page/js/calendar.phtml"/>
+                </block>
+                <block type="catalog/product_view" name="product.info.options.wrapper.bottom" as="product_options_wrapper_bottom" template="catalog/product/view/options/wrapper/bottom.phtml" translate="label">
+                    <label>Bottom Block Options Wrapper</label>
+                    <action method="insert"><block>product.tierprices</block></action>
+                    <block type="catalog/product_view" name="product.clone_prices" as="prices" template="catalog/product/view/price_clone.phtml"/>
+                    <action method="append"><block>product.info.addtocart</block></action>
+                    <action method="append"><block>product.info.addto</block></action>
+                </block>
+
+                <block type="core/template_facade" name="product.info.container1" as="container1">
+                    <action method="setDataByKey"><key>alias_in_layout</key><value>container1</value></action>
+                    <action method="setDataByKeyFromRegistry"><key>options_container</key><key_in_registry>product</key_in_registry></action>
+                    <action method="append"><block>product.info.options.wrapper</block></action>
+                    <action method="append"><block>product.info.options.wrapper.bottom</block></action>
+                </block>
+                <block type="core/template_facade" name="product.info.container2" as="container2">
+                    <action method="setDataByKey"><key>alias_in_layout</key><value>container2</value></action>
+                    <action method="setDataByKeyFromRegistry"><key>options_container</key><key_in_registry>product</key_in_registry></action>
+                    <action method="append"><block>product.info.options.wrapper</block></action>
+                    <action method="append"><block>product.info.options.wrapper.bottom</block></action>
+                </block>
+                <action method="unsetCallChild"><child>container1</child><call>ifEquals</call><if>0</if><key>alias_in_layout</key><key>options_container</key></action>
+                <action method="unsetCallChild"><child>container2</child><call>ifEquals</call><if>0</if><key>alias_in_layout</key><key>options_container</key></action>
+            </block>
+        </reference>
+    </arexworks_quickview_index>
+    <checkout_onepage_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </checkout_onepage_index>
+    <checkout_onepage_success>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </checkout_onepage_success>
+    <contacts_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </contacts_index_index>
+</layout>

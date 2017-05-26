@@ -1,0 +1,25 @@
+#import_producttab_popup{
+    background: none repeat scroll 0 0 transparent;
+    left: 30%;
+    position: fixed;
+    top: 10% ;
+    width: 50% ;
+    z-index: 9999 ;
+}
+#background_producttab_popup{
+    background: none repeat scroll 0 0 #000000;
+    left: 0 ;
+    position: fixed ;
+    top: 0 ;
+    width: 100% ;
+    height: 100% ;
+    z-index: 1 ;
+}
+#arw_information_tab{
+    background: none repeat scroll 0 0 transparent;
+    left: 30%;
+    position: fixed;
+    top: 20% ;
+    width: 36% ;
+    z-index: 9999 ;
+}

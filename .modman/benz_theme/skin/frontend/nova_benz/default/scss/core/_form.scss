@@ -1,0 +1,428 @@
+.fieldset {
+    p.required {
+        float: right;
+    }
+}
+
+.fieldset + .fieldset {
+    margin-top: 10px;
+	@include clearfix;
+}
+
+form .legend {
+	margin-top: 10px;
+}
+
+/* -------------------------------------------- *
+ * Input Box
+ */
+
+.input-box {
+	display: inline;
+	margin-top: 0;
+}
+.input-box .v-fix {
+    float: left;
+    margin-right: 5px;
+}
+
+label.required:after,
+span.required:after {
+    content: ' *';
+    color: $danger;
+    font-weight: normal;
+}
+
+label.required em,
+span.required em {
+    display: none;
+}
+select + select {
+    margin-left: 5px;
+}
+
+textarea {
+    @include box-sizing(border-box);
+	@extend %input-text;
+	padding: 5px 10px;
+}
+
+.input-text{
+	@extend %input-text;
+}
+input[type=email],
+input[type=search],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=text] {
+	@extend %input-text;
+	height: 42px;
+	padding: 0 10px;
+}
+input[disabled]{
+	background: $input_disable_bg;
+}
+
+.input-text.validation-failed {
+    border-color: $danger;
+}
+
+// Color the outline for focused fields in Chrome, or else the default blue drowns out the 1px red border
+.input-text.validation-failed:focus {
+    outline-color: $danger;
+}
+
+
+.ie8 .input-text {
+    max-width: none;
+}
+
+/* -------------------------------------------- *
+ * Inputs - Quantity
+ */
+
+input[type=number].qty,
+input[type=text].qty {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* -------------------------------------------- *
+ * Placeholder
+ */
+::-webkit-input-placeholder {
+	@include opacity(1);
+	color: $text_color;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	@include opacity(1);
+	color: inherit;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	@include opacity(1);
+	color: inherit;
+}
+
+:-ms-input-placeholder {
+	@include opacity(1);
+	color: inherit;
+}
+::-webkit-input-placeholder {
+    @include opacity(1);
+	color: inherit;
+}
+
+/* -------------------------------------------- *
+ * Checkbox And Radio
+ */
+input[type="radio"], input[type="checkbox"] {
+	border: medium none;
+	line-height: normal;
+	margin: 2px 0 0;
+	min-height: 0;
+	padding: 0;
+}
+.checkbox,
+.radio {
+    position: relative;
+    display: inline-block;
+}
+
+.checkbox + label,
+.radio + label {
+    width: auto;
+    max-width: 85%;
+    padding: 0 0 0 8px;
+    font-weight: normal;
+    vertical-align: top;
+	cursor: pointer;
+}
+
+/* -------------------------------------------- *
+ * Validation
+ */
+
+p.required,
+.validation-advice {
+    margin: 5px 0 0;
+	font-size: .85em;
+	color: $danger;
+}
+
+/* ============================================ *
+ * Form List
+ * ============================================ */
+
+.form-list {
+	label{
+		text-transform: uppercase;
+		font-size: .917em;
+	}
+    select {
+		width: 100%;
+        max-width: 100%;
+		border: 1px solid $input_border_color;
+		height: 42px;
+		line-height: 40px;
+		margin: 0;
+		padding: 0 25px 0 10px;
+		text-transform: uppercase;
+		background: url("../images/arrow-select.png") no-repeat right center;
+		@include appearance(none);
+    }
+	.fields .fields,
+    .field,
+    .wide{
+        margin-bottom: 10px;
+    }
+	li{
+		margin-bottom: 5px;
+	}
+	li,.fields,.wide{
+		clear: both;
+	}
+	.control{
+
+
+	}
+	.fields .field{
+		float: left;
+		padding-right: 15px;
+		width: 50%;
+		width: 100%\9;
+		padding-left: 0\9;
+		padding-right: 0\9;
+		&:nth-child(2n+1){
+			padding-right: 15px;
+			padding-left: 0;
+		}
+		&:nth-child(2n){
+			padding-left: 15px;
+			padding-right: 0;
+		}
+		@media (max-width: $screen-xs + 1) {
+			width: 100%;
+			padding: 0 !important;
+		}
+	}
+	.fields.additional-row{
+		.field{
+			&:nth-child(2n){
+				padding-right: 15px;
+				padding-left: 0;
+			}
+			&:nth-child(2n+1){
+				padding-left: 15px;
+				padding-right: 0;
+			}
+			@media (max-width: $screen-xs + 1) {
+				padding: 0 !important;
+			}
+		}
+	}
+	.input-box.customer-dob {
+		padding-right: 15px;
+		width: 50%;
+		@media (max-width: $screen-xs + 1) {
+			width: 100%;
+			padding-right: 0;
+		}
+		[class^="dob"]{
+			float: left;
+			width: percentage(1/3);
+			label{
+				font-size: .833em;
+			}
+			& + [class^="dob"]{
+				padding-left: 15px;
+			}
+			@media (max-width: $screen-xs + 1) {
+				width: 100%;
+				padding-left: 0 !important;
+			}
+		}
+	}
+
+}
+.sp-methods{
+	dt{
+
+	}
+	dd{
+		padding-top: 5px;
+		.step &{
+			padding-top: 0;
+		}
+	}
+	li,dt{
+
+	}
+}
+#payment_form_ccsave{
+	li{
+		clear: both;
+		margin-bottom: 15px;
+		overflow: hidden;
+	}
+	.input-box{
+		display: block;
+	}
+	.validate-cc-type-select,
+	.input-text {
+		height: 30px;
+		line-height: 30px;
+		width: 250px;
+	}
+}
+form {
+    .form-instructions {
+        font-style: italic;
+    }
+}
+#login-form{
+	border-width: 1px;
+	border-style: solid;
+	border-color:$border_color;
+	.forget-pass {
+		text-decoration: underline;
+	}
+}
+select#gender{
+	width: auto;
+}
+.remember-me-box{
+	.link-tip {
+
+	}
+}
+label[for="is_subscribed"]{
+	padding-left: 0;
+}
+.remember-me-popup{
+	display: none;
+	margin-top: 15px;
+	border: 1px solid;
+	padding: 0 15px;
+	position: relative;
+	h3{
+		margin: 10px 0 0;
+		text-transform: uppercase;
+		font-size: 1em;
+	}
+	.remember-me-popup-close {
+		position: absolute;
+		right: -1px;
+		text-align: center;
+		top: -1px;
+		width: 20px;
+		border: 1px solid;
+	}
+	.remember-me-popup-body{
+		font-size: .833em;
+	}
+	.remember-me-popup-close-button{
+		display: none;
+	}
+}
+.arw-default-form{
+	padding: 15px;
+}
+
+.additional-row .btn-remove {
+	padding-top: 5px;
+	text-decoration: underline;
+	&:before{
+		display: none;
+	}
+}
+#oar_widget_orders_and_returns_form {
+	label {
+		width: 150px;
+	}
+	select{
+		width: auto;
+	}
+}
+.form-add > label{
+	margin-top: 8px;
+	vertical-align: top;
+}
+.newsletter-validate-detail {
+	.block-content{
+		overflow: visible;
+	}
+	.input-box{
+		position: relative;
+		display: block;
+	}
+
+}
+#contactForm {
+	&:after {
+		@include clearfix;
+	}
+	.fieldset .legend + .required {
+		margin: 0;
+	}
+}
+.contact-form{
+	&:after {
+		@include clearfix;
+	}
+	.fieldset .legend + .required {
+		margin: 0;
+	}
+	.input-box{
+		padding-bottom: 30px;
+		.input-text{
+			height: 45px;
+		}
+		textarea{
+			height: 120px;
+		}
+	}
+}
+.contact-form,
+.newsletter-validate-detail{
+	.input-text.validation-failed{
+		border-color:red ;
+	}
+	.validation-advice{
+		background: #272727;
+		font-size: 1em;
+		font-family: $font_family_highlight;
+		font-style: italic;
+		border-radius: 4px;
+		color: #fff;
+		left: 15px;
+		margin: 0;
+		padding: 5px 10px;
+		position: absolute;
+		top: 0;
+		&:before{
+			content: "";
+			border-top: 5px solid #272727;
+			border-right: 5px solid transparent;
+			border-left: 5px solid transparent;
+			position: absolute;
+			bottom: -5px;
+			left: 48%;
+		}
+	}
+}
+.contact-form .input-box textarea::-webkit-input-placeholder{
+	text-transform: uppercase;
+}
+.contact-form .input-box textarea:-ms-input-placeholder{
+	text-transform: uppercase;
+}
+.contact-form .input-box textarea:-moz-placeholder{
+	text-transform: uppercase;
+}
+.contact-form .input-box input::-moz-placeholder,
+.contact-form .input-box textarea::-moz-placeholder{
+	text-transform: uppercase;
+}

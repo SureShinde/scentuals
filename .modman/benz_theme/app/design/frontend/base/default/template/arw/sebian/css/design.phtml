@@ -1,0 +1,477 @@
+<?php
+$path_scss_folder = Mage::getBaseDir('skin') . '/frontend/arw_sebian/default/scss/';
+$storeId                                =   Mage::registry('cssgen_store');
+$theme_helper                           =   Mage::helper('sebian');
+$configs                           	    =   $theme_helper->getCfgSectionDesign($storeId);
+$bgUrl                                  =   Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $theme_helper->getBgImagesPath();
+$patternUrl                             =   Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $theme_helper->getPatternPath();
+$layout_configs                         =   $theme_helper->getCfgSectionLayout($storeId);
+
+$_layout_style = $layout_configs['layout']['style'];
+$_layout_width = $layout_configs['layout']['width'];
+$_layout_width_custom = $layout_configs['layout']['custom_width'];
+
+
+$body_fonts_family ="'Raleway', sans-serif";
+$heading_fonts_family = "'Raleway', sans-serif";
+$highlight_font_family = "'Playfair Display', serif";
+
+$primary_font_family_group = $configs['font']['primary_font_family_group'];
+$heading_font_family_group = $configs['font']['heading_font_family_group'];
+$highlight_font_family_group = $configs['font']['highlight_font_family_group'];
+
+if($primary_font_family_group == 'custom')
+{
+    $body_fonts_family = $configs['font']['primary_font_family_custom'];
+}
+elseif($primary_font_family_group == 'google')
+{
+    $body_fonts_family = $configs['font']['primary_font_family'];
+}
+else
+{
+    $body_fonts_family = $configs['font']['primary_font_family_group'];
+}
+if($heading_font_family_group == 'custom')
+{
+    $heading_fonts_family = $configs['font']['heading_font_family_custom'];
+}
+elseif($heading_font_family_group == 'google')
+{
+    $heading_fonts_family = $configs['font']['heading_font_family'];
+}
+else
+{
+    $heading_fonts_family = $configs['font']['heading_font_family_group'];
+}
+
+if($highlight_font_family_group == 'custom')
+{
+    $highlight_font_family = $configs['font']['highlight_font_family_custom'];
+}
+elseif($highlight_font_family_group == 'google')
+{
+    $highlight_font_family = $configs['font']['highlight_font_family'];
+}
+else
+{
+    $highlight_font_family = $configs['font']['highlight_font_family_group'];
+}
+?>
+/*  Colors variables global*/
+$body_bg_color : <?php echo $configs['main']['body_bg_color']?>;
+$main_bg_color: <?php echo $configs['main']['main_bg_color']?>;
+
+$primary:<?php echo $configs['colors']['primary']?>;
+$text_color:<?php echo $configs['colors']['text_color']?>;
+$heading_color:<?php echo $configs['colors']['heading_color']?>;
+$link_color:<?php echo $configs['colors']['link_color']?>;
+$link_hover_color:<?php echo $configs['colors']['link_hover_color']?>;
+$label_color:<?php echo $configs['colors']['label_color']?>;
+$border_color:<?php echo $configs['colors']['border_color']?>;
+$background_color:<?php echo $configs['colors']['background_color']?>;
+
+$button_bg:<?php echo $configs['colors']['button_bg']?>;
+$button_color:<?php echo $configs['colors']['button_color']?>;
+$button_border_color:<?php echo $configs['colors']['button_border_color']?>;
+$button_hover_bg:<?php echo $configs['colors']['button_hover_bg']?>;
+$button_hover_color:<?php echo $configs['colors']['button_hover_color']?>;
+$button_hover_border_color:<?php echo $configs['colors']['button_hover_border_color']?>;
+
+$button_2_bg:<?php echo $configs['colors']['button_2_bg']?>;
+$button_2_color:<?php echo $configs['colors']['button_2_color']?>;
+$button_2_border_color:<?php echo $configs['colors']['button_2_border_color']?>;
+$button_2_hover_bg:<?php echo $configs['colors']['button_2_hover_bg']?>;
+$button_2_hover_color:<?php echo $configs['colors']['button_2_hover_color']?>;
+$button_2_hover_border_color:<?php echo $configs['colors']['button_2_hover_border_color']?>;
+
+$button_3_bg:<?php echo $configs['colors']['button_3_bg']?>;
+$button_3_color:<?php echo $configs['colors']['button_3_color']?>;
+$button_3_border_color:<?php echo $configs['colors']['button_3_border_color']?>;
+$button_3_hover_bg:<?php echo $configs['colors']['button_3_hover_bg']?>;
+$button_3_hover_color:<?php echo $configs['colors']['button_3_hover_color']?>;
+$button_3_hover_border_color:<?php echo $configs['colors']['button_3_hover_border_color']?>;
+
+$input_bg:<?php echo $configs['colors']['input_bg']?>;
+$input_color:<?php echo $configs['colors']['input_color']?>;
+$input_border_color:<?php echo $configs['colors']['input_border_color']?>;
+$input_focus_bg:<?php echo $configs['colors']['input_focus_bg']?>;
+$input_focus_border_color:<?php echo $configs['colors']['input_focus_border_color']?>;
+$input_focus_color:<?php echo $configs['colors']['input_focus_color']?>;
+$input_disable_bg:<?php echo $configs['colors']['input_disable_bg']?>;
+
+$block_title_bg:<?php echo $configs['colors']['block_title_bg']?>;
+$block_title_color:<?php echo $configs['colors']['block_title_color']?>;
+$block_content_bg:<?php echo $configs['colors']['block_content_bg']?>;
+$block_content_border:<?php echo $configs['colors']['block_content_border']?>;
+$block_text_color:<?php echo $configs['colors']['block_text_color']?>;
+$block_link_color:<?php echo $configs['colors']['block_link_color']?>;
+$block_nav_link_color:<?php echo $configs['colors']['block_nav_link_color']?>;;
+$block_nav_link_hover_color:<?php echo $configs['colors']['block_nav_link_hover_color']?>;;
+$block_link_hover_color:<?php echo $configs['colors']['block_link_hover_color']?>;;
+
+$danger:<?php echo $configs['colors']['danger']?>;
+$success:<?php echo $configs['colors']['success']?>;
+$warning:<?php echo $configs['colors']['warning']?>;
+$info:<?php echo $configs['colors']['info']?>;
+
+$cat_label1:<?php echo $configs['colors']['cat_label1']?>;
+$cat_label2:<?php echo $configs['colors']['cat_label2']?>;
+$cat_label3:<?php echo $configs['colors']['cat_label3']?>;
+$cat_label4:<?php echo $configs['colors']['cat_label4']?>;
+
+/*  Font family */
+$font_size:<?php echo $configs['font']['font_size']?>;
+$font_h1:2em;
+$font_h2:1.75em;
+$font_h3:1.429em;
+$font_h4:1.286em;
+$font_h5:1.143em;
+$font_h6:1em;
+$font_family:<?php echo $body_fonts_family?>;
+$font_family_heading:<?php echo $heading_fonts_family?>;
+$font_family_highlight:<?php echo $highlight_font_family?>;
+/*  HEADER  */
+<?php
+$header_bg_opacity = $configs['header']['header_bg_opacity'];
+if($header_bg_opacity >= 0 && $header_bg_opacity <= 100){
+    $header_bg_opacity = $header_bg_opacity / 100;
+    $header_bg_color = $theme_helper->hex2rgba($configs['header']['header_bg_color'],$header_bg_opacity);
+}else{
+    $header_bg_color = $configs['header']['header_bg_color'];
+}
+?>
+$header_bg_color:<?php echo $configs['header']['header_bg_color']?>;
+$header_bg_color2:<?php echo $header_bg_color?>;
+$header_text_color:<?php echo $configs['header']['header_text_color']?>;
+$header_link_color:<?php echo $configs['header']['header_link_color']?>;
+$header_link_bg:<?php echo $configs['header']['header_link_bg']?>;
+$header_link_hover_color:<?php echo $configs['header']['header_link_hover_color']?>;
+$header_link_hover_bg:<?php echo $configs['header']['header_link_hover_bg']?>;
+
+$header_dropdown_bg:<?php echo $configs['header']['header_dropdown_bg']?>;
+$header_dropdown_text_color:<?php echo $configs['header']['header_dropdown_text_color']?>;
+$header_dropdown_link_color:<?php echo $configs['header']['header_dropdown_link_color']?>;
+$header_dropdown_link_bg:<?php echo $configs['header']['header_dropdown_link_bg']?>;
+$header_dropdown_link_hover_color:<?php echo $configs['header']['header_dropdown_link_hover_color']?>;
+$header_dropdown_link_hover_bg:<?php echo $configs['header']['header_dropdown_link_hover_bg']?>;
+
+/*  primary */
+$primary_menu_bg:<?php echo $configs['primary_menu']['primary_menu_bg']?>;
+$primary_menu_text_color:<?php echo $configs['primary_menu']['primary_menu_text_color']?>;
+
+$mobile_menu_bar_color:<?php echo $configs['primary_menu']['mobile_menu_bar_color']?>;
+$mobile_menu_bar_bg:<?php echo $configs['primary_menu']['mobile_menu_bar_bg']?>;
+$mobile_menu_bg:<?php echo $configs['primary_menu']['mobile_menu_bg']?>;
+$mobile_menu_link_color:<?php echo $configs['primary_menu']['mobile_menu_link_color']?>;
+$mobile_menu_link_hover_color:<?php echo $configs['primary_menu']['mobile_menu_link_hover_color']?>;
+
+$level1_bg:<?php echo $configs['primary_menu']['level1_bg']?>;
+$level1_color:<?php echo $configs['primary_menu']['level1_color']?>;
+$level1_hover_bg:<?php echo $configs['primary_menu']['level1_hover_bg']?>;
+$level1_hover_color:<?php echo $configs['primary_menu']['level1_hover_color']?>;
+
+$primary_sub2_bg:<?php echo $configs['primary_menu']['primary_sub2_bg']?>;
+$level2_bg:<?php echo $configs['primary_menu']['level2_bg']?>;
+$level2_color:<?php echo $configs['primary_menu']['level2_color']?>;
+$level2_hover_bg:<?php echo $configs['primary_menu']['level2_hover_bg']?>;
+$level2_hover_color:<?php echo $configs['primary_menu']['level2_hover_color']?>;
+
+$primary_sub3_bg:<?php echo $configs['primary_menu']['primary_sub3_bg']?>;
+$level3_bg:<?php echo $configs['primary_menu']['level3_bg']?>;
+$level3_color:<?php echo $configs['primary_menu']['level3_color']?>;
+$level3_hover_bg:<?php echo $configs['primary_menu']['level3_hover_bg']?>;
+$level3_hover_color:<?php echo $configs['primary_menu']['level3_hover_color']?>;
+
+/*  Breadcumbs  */
+
+$breadcrumb_bg:<?php echo $configs['breadcrumb']['breadcrumb_bg']?>;
+$breadcrumb_link_color:<?php echo $configs['breadcrumb']['breadcrumb_link_color']?>;
+$breadcrumb_link_hover_color:<?php echo $configs['breadcrumb']['breadcrumb_link_hover_color']?>;
+$breadcrumb_current_color:<?php echo $configs['breadcrumb']['breadcrumb_current_color']?>;
+$breadcrumb_caret:<?php echo $configs['breadcrumb']['breadcrumb_caret']?>;
+
+/*  Toolbar */
+$toolbar_bg:<?php echo $configs['toolbar']['toolbar_bg']?>;
+$toolbar_text_color:<?php echo $configs['toolbar']['toolbar_text_color']?>;
+$toolbar_link_color:<?php echo $configs['toolbar']['toolbar_link_color']?>;
+$toolbar_link_bg:<?php echo $configs['toolbar']['toolbar_link_bg']?>;
+$toolbar_link_hover_color:<?php echo $configs['toolbar']['toolbar_link_hover_color']?>;
+$toolbar_link_hover_bg:<?php echo $configs['toolbar']['toolbar_link_hover_bg']?>;
+$toolbar_border_color:<?php echo $configs['toolbar']['toolbar_border_color']?>;
+
+
+/*  Table   */
+$table_bg:<?php echo $configs['table']['table_bg']?>;
+$table_head_bg:<?php echo $configs['table']['table_head_bg']?>;
+$table_head_color:<?php echo $configs['table']['table_head_color']?>;
+$table_head_border:<?php echo $configs['table']['table_head_border']?>;
+$table_body_border:<?php echo $configs['table']['table_body_border']?>;
+$table_text_color:<?php echo $configs['table']['table_text_color']?>;
+$table_link_color:<?php echo $configs['table']['table_link_color']?>;
+$table_hover_link_color:<?php echo $configs['table']['table_hover_link_color']?>;
+
+/*	Footer */
+$footer_heading_color : <?php echo $configs['footer']['footer_heading_color']?>;
+
+$footer_bg_color:<?php echo $configs['footer']['footer_bg_color']?>;
+$footer_text_color:<?php echo $configs['footer']['footer_text_color']?>;
+$footer_link_color:<?php echo $configs['footer']['footer_link_color']?>;
+$footer_link_hover_color:<?php echo $configs['footer']['footer_link_hover_color']?>;
+$footer_border_color:<?php echo $configs['footer']['footer_border_color']?>;
+
+$footer_copyright_bg:<?php echo $configs['footer']['footer_copyright_bg']?>;
+$footer_copyright_text:<?php echo $configs['footer']['footer_copyright_text']?>;
+$footer_copyright_link_color:<?php echo $configs['footer']['footer_copyright_link_color']?>;
+$footer_copyright_link_hover_color:<?php echo $configs['footer']['footer_copyright_link_hover_color']?>;
+$footer_copyright_border_color:<?php echo $configs['footer']['footer_copyright_border_color']?>;
+
+/*  Catalog List View    */
+
+$cat_product_name_color:<?php echo $configs['catalog_grid_view']['product_name_color']?>;
+$cat_product_name_hover_color:<?php echo $configs['catalog_grid_view']['product_name_hover_color']?>;
+$cat_price_color:<?php echo $configs['catalog_grid_view']['price_color']?>;
+$cat_border_color:<?php echo $configs['catalog_grid_view']['border_color']?>;
+
+$cat_product_name_color2:<?php echo $configs['catalog_list_view']['product_name_color']?>;
+$cat_product_name_hover_color2:<?php echo $configs['catalog_list_view']['product_name_hover_color']?>;
+$cat_price_color2:<?php echo $configs['catalog_list_view']['price_color']?>;
+$cat_border_color2:<?php echo $configs['catalog_list_view']['border_color']?>;
+
+$cat_label_new_bg:<?php echo $configs['catalog_view']['label_new_bg']?>;
+$cat_label_new_color:<?php echo $configs['catalog_view']['label_new_color']?>;
+$cat_label_new_border:<?php echo $configs['catalog_view']['label_new_border']?>;
+$cat_label_sale_bg:<?php echo $configs['catalog_view']['label_sale_bg']?>;
+$cat_label_sale_color:<?php echo $configs['catalog_view']['label_sale_color']?>;
+$cat_label_sale_border:<?php echo $configs['catalog_view']['label_sale_border']?>;
+
+
+$cat_button_quickview_bg:<?php echo $configs['catalog_grid_view']['button_quickview_bg']?>;
+$cat_button_quickview_color:<?php echo $configs['catalog_grid_view']['button_quickview_color']?>;
+$cat_button_quickview_border_color:<?php echo $configs['catalog_grid_view']['button_quickview_border_color']?>;
+$cat_button_quickview_hover_bg:<?php echo $configs['catalog_grid_view']['button_quickview_hover_bg']?>;
+$cat_button_quickview_hover_color:<?php echo $configs['catalog_grid_view']['button_quickview_hover_color']?>;
+$cat_button_quickview_hover_border_color:<?php echo $configs['catalog_grid_view']['button_quickview_hover_border_color']?>;
+
+$cat_button_cart_bg:<?php echo $configs['catalog_grid_view']['button_cart_bg']?>;
+$cat_button_cart_color:<?php echo $configs['catalog_grid_view']['button_cart_color']?>;
+$cat_button_cart_border_color:<?php echo $configs['catalog_grid_view']['button_cart_border_color']?>;
+$cat_button_cart_hover_bg:<?php echo $configs['catalog_grid_view']['button_cart_hover_bg']?>;
+$cat_button_cart_hover_color:<?php echo $configs['catalog_grid_view']['button_cart_hover_color']?>;
+$cat_button_cart_hover_border_color:<?php echo $configs['catalog_grid_view']['button_cart_hover_border_color']?>;
+
+$cat_button_compare_bg:<?php echo $configs['catalog_grid_view']['button_compare_bg']?>;
+$cat_button_compare_color:<?php echo $configs['catalog_grid_view']['button_compare_color']?>;
+$cat_button_compare_border_color:<?php echo $configs['catalog_grid_view']['button_compare_border_color']?>;
+$cat_button_compare_hover_bg:<?php echo $configs['catalog_grid_view']['button_compare_hover_bg']?>;
+$cat_button_compare_hover_color:<?php echo $configs['catalog_grid_view']['button_compare_hover_color']?>;
+$cat_button_compare_hover_border_color:<?php echo $configs['catalog_grid_view']['button_compare_hover_border_color']?>;
+
+$cat_button_wishlist_bg:<?php echo $configs['catalog_grid_view']['button_wishlist_bg']?>;
+$cat_button_wishlist_color:<?php echo $configs['catalog_grid_view']['button_wishlist_color']?>;
+$cat_button_wishlist_border_color:<?php echo $configs['catalog_grid_view']['button_wishlist_border_color']?>;
+$cat_button_wishlist_hover_bg:<?php echo $configs['catalog_grid_view']['button_wishlist_hover_bg']?>;
+$cat_button_wishlist_hover_color:<?php echo $configs['catalog_grid_view']['button_wishlist_hover_color']?>;
+$cat_button_wishlist_hover_border_color:<?php echo $configs['catalog_grid_view']['button_wishlist_hover_border_color']?>;
+
+
+$cat_button_quickview_bg2:<?php echo $configs['catalog_list_view']['button_quickview_bg']?>;
+$cat_button_quickview_color2:<?php echo $configs['catalog_list_view']['button_quickview_color']?>;
+$cat_button_quickview_border_color2:<?php echo $configs['catalog_list_view']['button_quickview_border_color']?>;
+$cat_button_quickview_hover_bg2:<?php echo $configs['catalog_list_view']['button_quickview_hover_bg']?>;
+$cat_button_quickview_hover_color2:<?php echo $configs['catalog_list_view']['button_quickview_hover_color']?>;
+$cat_button_quickview_hover_border_color2:<?php echo $configs['catalog_list_view']['button_quickview_hover_border_color']?>;
+
+$cat_button_cart_bg2:<?php echo $configs['catalog_list_view']['button_cart_bg']?>;
+$cat_button_cart_color2:<?php echo $configs['catalog_list_view']['button_cart_color']?>;
+$cat_button_cart_border_color2:<?php echo $configs['catalog_list_view']['button_cart_border_color']?>;
+$cat_button_cart_hover_bg2:<?php echo $configs['catalog_list_view']['button_cart_hover_bg']?>;
+$cat_button_cart_hover_color2:<?php echo $configs['catalog_list_view']['button_cart_hover_color']?>;
+$cat_button_cart_hover_border_color2:<?php echo $configs['catalog_list_view']['button_cart_hover_border_color']?>;
+
+$cat_button_compare_bg2:<?php echo $configs['catalog_list_view']['button_compare_bg']?>;
+$cat_button_compare_color2:<?php echo $configs['catalog_list_view']['button_compare_color']?>;
+$cat_button_compare_border_color2:<?php echo $configs['catalog_list_view']['button_compare_border_color']?>;
+$cat_button_compare_hover_bg2:<?php echo $configs['catalog_list_view']['button_compare_hover_bg']?>;
+$cat_button_compare_hover_color2:<?php echo $configs['catalog_list_view']['button_compare_hover_color']?>;
+$cat_button_compare_hover_border_color2:<?php echo $configs['catalog_list_view']['button_compare_hover_border_color']?>;
+
+$cat_button_wishlist_bg2:<?php echo $configs['catalog_list_view']['button_wishlist_bg']?>;
+$cat_button_wishlist_color2:<?php echo $configs['catalog_list_view']['button_wishlist_color']?>;
+$cat_button_wishlist_border_color2:<?php echo $configs['catalog_list_view']['button_wishlist_border_color']?>;
+$cat_button_wishlist_hover_bg2:<?php echo $configs['catalog_list_view']['button_wishlist_hover_bg']?>;
+$cat_button_wishlist_hover_color2:<?php echo $configs['catalog_list_view']['button_wishlist_hover_color']?>;
+$cat_button_wishlist_hover_border_color2:<?php echo $configs['catalog_list_view']['button_wishlist_hover_border_color']?>;
+
+/*  Catalog Details View    */
+$detail_borer_color:<?php echo $configs['catalog_detail']['border_color']?>;
+$detail_background_color:<?php echo $configs['catalog_detail']['detail_background_color']?>;
+$detail_price_color:<?php echo $configs['catalog_detail']['price_color']?>;
+
+$detail_button_cart_bg:<?php echo $configs['catalog_detail']['button_cart_bg']?>;
+$detail_button_cart_color:<?php echo $configs['catalog_detail']['button_cart_color']?>;
+$detail_button_cart_border_color:<?php echo $configs['catalog_detail']['button_cart_border_color']?>;
+$detail_button_cart_hover_bg:<?php echo $configs['catalog_detail']['button_cart_hover_bg']?>;
+$detail_button_cart_hover_color:<?php echo $configs['catalog_detail']['button_cart_hover_color']?>;
+$detail_button_cart_hover_border_color:<?php echo $configs['catalog_detail']['button_cart_hover_border_color']?>;
+
+$detail_button_compare_bg:<?php echo $configs['catalog_detail']['button_compare_bg']?>;
+$detail_button_compare_color:<?php echo $configs['catalog_detail']['button_compare_color']?>;
+$detail_button_compare_border_color:<?php echo $configs['catalog_detail']['button_compare_border_color']?>;
+$detail_button_compare_hover_bg:<?php echo $configs['catalog_detail']['button_compare_hover_bg']?>;
+$detail_button_compare_hover_color:<?php echo $configs['catalog_detail']['button_compare_hover_color']?>;
+$detail_button_compare_hover_border_color:<?php echo $configs['catalog_detail']['button_compare_hover_border_color']?>;
+
+$detail_button_wishlist_bg:<?php echo $configs['catalog_detail']['button_wishlist_bg']?>;
+$detail_button_wishlist_color:<?php echo $configs['catalog_detail']['button_wishlist_color']?>;
+$detail_button_wishlist_border_color:<?php echo $configs['catalog_detail']['button_wishlist_border_color']?>;
+$detail_button_wishlist_hover_bg:<?php echo $configs['catalog_detail']['button_wishlist_hover_bg']?>;
+$detail_button_wishlist_hover_color:<?php echo $configs['catalog_detail']['button_wishlist_hover_color']?>;
+$detail_button_wishlist_hover_border_color:<?php echo $configs['catalog_detail']['button_wishlist_hover_border_color']?>;
+
+$detail_tab_control_color:<?php echo $configs['catalog_detail']['tab_control_color']?>;
+$detail_tab_control_bg:<?php echo $configs['catalog_detail']['tab_control_bg']?>;
+$detail_tab_control_border_color:<?php echo $configs['catalog_detail']['tab_control_border_color']?>;
+$detail_tab_control_hover_color:<?php echo $configs['catalog_detail']['tab_control_hover_color']?>;
+$detail_tab_control_hover_bg:<?php echo $configs['catalog_detail']['tab_control_hover_bg']?>;
+$detail_tab_control_hover_border_color:<?php echo $configs['catalog_detail']['tab_control_hover_border_color']?>;
+
+$detail_tab_content_color:<?php echo $configs['catalog_detail']['tab_content_color']?>;
+$detail_tab_content_link_color:<?php echo $configs['catalog_detail']['tab_content_link_color']?>;
+$detail_tab_content_hover_link_color:<?php echo $configs['catalog_detail']['tab_content_hover_link_color']?>;
+$detail_tab_content_border:<?php echo $configs['catalog_detail']['tab_content_border']?>;
+$detail_tab_content_bg:<?php echo $configs['catalog_detail']['tab_content_bg']?>;
+
+
+//== Media queries breakpoints
+$screen-xs:                  480px;
+$screen-xs-min:              $screen-xs;
+$screen-phone:               $screen-xs-min;
+
+// Small screen / tablet
+
+$screen-sm:                  768px;
+$screen-sm-min:              $screen-sm;
+$screen-tablet:              $screen-sm-min;
+
+// Medium screen / desktop
+$screen-md:                  992px;
+$screen-md-min:              $screen-md;
+$screen-desktop:             $screen-md-min;
+
+// Large screen / wide desktop
+$screen-lg:                  1200px;
+$screen-lg-min:              $screen-lg;
+$screen-lg-desktop:          $screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-sm-max:              ($screen-md-min - 1);
+$screen-md-max:              ($screen-lg-min - 1);
+
+@import "<?php echo __DIR__?>/arw-style.scss";
+
+<?php
+$body_bg_image = $configs['main']['body_bg_image'];
+$body_bg_position = $configs['main']['body_bg_position'];
+$body_bg_position_custom = $configs['main']['body_bg_position_custom'];
+$body_bg_attachment = $configs['main']['body_bg_attachment'];
+$body_bg_repeat = $configs['main']['body_bg_repeat'];
+
+$header_bg_image = $configs['header']['header_bg_image'];
+$header_bg_position = $configs['header']['header_bg_position'];
+$header_bg_position_custom = $configs['header']['header_bg_position_custom'];
+$header_bg_attachment = $configs['header']['header_bg_attachment'];
+$header_bg_repeat = $configs['header']['header_bg_repeat'];
+
+$main_bg_image = $configs['main']['main_bg_image'];
+$main_bg_position = $configs['main']['main_bg_position'];
+$main_bg_position_custom = $configs['main']['main_bg_position_custom'];
+$main_bg_attachment = $configs['main']['main_bg_attachment'];
+$main_bg_repeat = $configs['main']['main_bg_repeat'];
+
+$footer_bg_image = $configs['footer']['footer_bg_image'];
+$footer_bg_position = $configs['footer']['footer_bg_position'];
+$footer_bg_position_custom = $configs['footer']['footer_bg_position_custom'];
+$footer_bg_attachment = $configs['footer']['footer_bg_attachment'];
+$footer_bg_repeat = $configs['footer']['footer_bg_repeat'];
+?>
+<?php if($body_bg_image != ''){?>
+    body{
+        background-image:url(<?php echo $bgUrl . $body_bg_image?>);
+        background-position: <?php echo ($body_bg_position != 'custom') ? preg_replace('/\_/',' ',$body_bg_position) : $body_bg_position_custom?>;
+        background-attachment : <?php echo $body_bg_attachment?>;
+        background-repeat : <?php echo $body_bg_repeat?>;
+    }
+<?php }?>
+<?php if($header_bg_image != ''){?>
+    .header-container{
+        background-image:url(<?php echo $bgUrl . $header_bg_image?>);
+        background-position: <?php echo ($header_bg_position != 'custom') ? preg_replace('/\_/',' ',$header_bg_position) : $header_bg_position_custom?>;
+        background-attachment : <?php echo $header_bg_attachment?>;
+        background-repeat : <?php echo $header_bg_repeat?>;
+    }
+<?php }?>
+<?php if($main_bg_image != ''){?>
+    .main-container{
+        background-image:url(<?php echo $bgUrl . $main_bg_image?>);
+        background-position: <?php echo ($main_bg_position != 'custom') ? preg_replace('/\_/',' ',$main_bg_position) : $main_bg_position_custom?>;
+        background-attachment : <?php echo $main_bg_attachment?>;
+        background-repeat : <?php echo $main_bg_repeat?>;
+    }
+<?php }?>
+    .footer-container{
+<?php if($footer_bg_image != ''){?>
+        background-image:url(<?php echo $bgUrl . $footer_bg_image?>);
+        background-position: <?php echo ($footer_bg_position != 'custom') ? preg_replace('/\_/',' ',$footer_bg_position) : $footer_bg_position_custom?>;
+        background-attachment : <?php echo $footer_bg_attachment?>;
+        background-repeat : <?php echo $footer_bg_repeat?>;
+<?php }?>
+    }
+
+/*  Layout */
+<?php
+if($_layout_width == 'custom'){
+    if($_layout_width_custom){
+        $_layout_width = $_layout_width_custom;
+    }else{
+        $_layout_width = 1170;
+    }
+}
+if($_layout_style == 'boxed'){
+?>
+    .wrapper {
+        margin:auto;
+        > .page{
+            max-width : <?php echo $_layout_width?>px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+    }
+    .container{
+        max-width:100%;
+    }
+<?php
+}
+if($_layout_style == 'stretched'){
+?>
+    @media (min-width:$screen-lg-min){
+        .body-stretched{
+            .container{
+                width : <?php echo $_layout_width?>px;
+            }
+        }
+    }
+<?php
+}
+if($_layout_style == 'fluid'){
+?>
+    .container{
+        width: 100%;
+    }
+<?php
+}
+?>
+.header-container.header_fixed_menu.active-sticky .nav-primary-container .wrap-nav{
+    max-width : <?php echo $_layout_width?>px;
+}

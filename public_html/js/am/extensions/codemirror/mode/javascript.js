@@ -1,0 +1,1 @@
+../../../../../../.modman/benz_theme/js/am/extensions/codemirror/mode/javascript.js

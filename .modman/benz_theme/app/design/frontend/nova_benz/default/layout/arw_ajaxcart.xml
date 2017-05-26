@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <default>
+        <reference name="head">
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>varien/product.js</script></action>
+            <action method="addJs" ifconfig="ajaxcart/general/enabled_jquery"><script>arw/arexworks/jquery/jquery-1.11.1.min.js</script></action>
+            <action method="addJs" ifconfig="ajaxcart/general/enabled_jquery"><script>arw/arexworks/jquery/jquery-migrate-1.2.1.min.js</script></action>
+            <action method="addJs" ifconfig="ajaxcart/general/enabled_jquery"><script>arw/arexworks/jquery/jquery.noconflict.js</script></action>
+            <action method="addJs" ifconfig="ajaxcart/general/enable"><script>arw/ajaxcart/configurable.js</script></action>
+
+            <action method="addItem" ifconfig="ajaxcart/general/enable"><type>skin_js</type><name>js/bundle.js</name></action>
+            <action method="addItem" ifconfig="ajaxcart/general/enable"><type>skin_js</type><name>arw/ajaxcart/ajaxcart.js</name><params/></action>
+
+        </reference>
+        <reference name="after_body_start">
+            <block type="ajaxcart/ajaxcart" name="arw_ajax_js" as="ajaxcart.js" before="-"></block>
+        </reference>
+    </default>
+</layout>

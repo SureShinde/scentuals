@@ -1,0 +1,146 @@
+div.ajax_loading_tab{
+	background-position: center center;
+	height: 80px;
+	width: 80px;
+	background-repeat: no-repeat;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	z-index: 9999;
+	margin-top: 20px;
+	display: none;
+	@include transform(translate(-50%,-50%));
+	@include border-radius(4px);
+}
+.arw_tab_slider{
+	margin-top: 0;
+	position: relative;
+	text-align: inherit;
+	min-height: 200px;
+	.slider-tab{
+		text-align: center;
+		margin-bottom: 20px;
+		margin-top: 20px;
+		li{
+			display: inline-block;
+			font-size: .917em;
+			text-transform: uppercase;
+			cursor: pointer;
+			margin: 0 10px;
+		  	border: 1px solid #f2f2f2;
+			letter-spacing: 3px;
+			> span{
+			  padding: 5px 20px;
+			  display: inline-block;
+			  margin-right: -2px;
+			  font-size: 14px;
+			}
+			&:hover,
+			&.active{
+				color: $primary;
+			}
+		}
+	}
+}
+.tab-control-highlight-font{
+	.arw_tab_slider{
+		.slider-tab{
+			font-family: $font_family_highlight;
+		}
+	}
+}
+.product-tab-list-mini{
+	.products-list{
+		.catalog-owl-nav,
+		.configurable-swatch-list{
+			display: none;
+		}
+		.arw-product-labels{
+			.arw-product-label{
+				top: 10px;
+				@include scale(.7);
+			}
+		}
+		li.item{
+			margin-left: -15px;
+			margin-right: -15px;
+		}
+		.inner-item{
+			float: left;
+			width: 100%;
+			overflow: hidden;
+		}
+		.outer-image{
+			width: 50%;
+			border: none;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		.product-name{
+			font-size: 1em;
+			font-weight:normal;
+			line-height: inherit;
+			letter-spacing: 1px;
+			padding-bottom: 10px;
+		}
+		.ratings,
+		.image-overlay,
+		.outer-image .link-quickview{
+			display: none;
+		}
+		.product-shop{
+			width: 50%;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		.desc.std{
+			display: none;
+		}
+		.price-box{
+			margin-bottom: 0;
+			padding-bottom: 0;
+			border: none;
+			.regular-price,
+			.special-price{
+				font-size: .833em;
+				display: block;
+			}
+			.price{
+				padding-bottom: 5px;
+			}
+		}
+		.button.btn-cart{
+			display: none;
+			white-space: pre;
+		}
+		.button1.btn-cart{
+			display: block;
+			line-height: 34px;
+			height: 34px;
+			padding: 0 15px;
+			width: auto;
+			margin: 20px 0 5px;
+		}
+		.link-quickview,
+		.link-compare,
+		.link-wishlist{
+			background: none;
+			border:none;
+			float: left;
+			height: auto;
+			line-height: inherit;
+			margin: 0 15px 0 0;
+			width: auto;
+			@include transform(translate(0));
+			position: static;
+			@include opacity(1);
+			font-size: 1em;
+			&:hover{
+				background: none;
+			}
+			span{
+				font-weight: normal;
+			}
+		}
+	}
+}

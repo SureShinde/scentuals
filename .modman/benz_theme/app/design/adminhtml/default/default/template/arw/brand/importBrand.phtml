@@ -1,0 +1,30 @@
+<?php $formKey = Mage::getSingleton('core/session')->getFormKey();?>
+<div class="entry-edit">
+    <div class="box">
+        <form id="importbrand_form" action="<?php //echo $this->getUrl('*/*/importbPost') ?> javascript:void(0)" method="post" enctype="multipart/form-data">
+		<input name="form_key" value="<?php echo $formKey ?>" type="hidden"/>
+		  <?php //echo $this->getBlockHtml('formkey')?>
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('brand')->__('Import Brand By Attribute Code') ?></h4>
+            </div>
+            <fieldset>
+				<!--<td class="label"><label for="name"><span class="required">*</span></label></td>-->
+                <legend><?php echo Mage::helper('brand')->__('Import Brand') ?></legend>
+                <input id="arw_attributecode" type="text" name="arw_attributecode" class="required-entry input-text" style="width:200px"/>
+				 <div id="search_autocomplete" class="search-autocomplete"></div>
+                <?php //echo $this->getButtonHtml('Start Importing', "this.form.submit()") ?>
+				<button style="" type="submit" class="scalable add" type="button" onclick='arw_import()'><span><?Php echo $this->__('Import Brand') ?></span></button>
+				<button style="" type="submit" class="scalable delete" type="button" onclick='close_popup()'><span id="brand_close_popup"> <?php echo $this->__('Close')?></span></button>	
+            </fieldset>
+        </form>
+        <script type="text/javascript">
+			//<![CDATA[
+				var arwsearchForm = new Varien.arwsearchForm('importbrand_form', 'arw_attributecode', '<?php echo $this->__('Attribute Code...') ?>');
+				arwsearchForm.initAutocomplete('<?php echo  $this->getUrl('*/*/getAttributeCode')?>','search_autocomplete'); 
+				//var searchForm = new Varien.searchForm('importbrand_form', 'search_attr', '<?php echo $this->__('Attribute Code...') ?>');
+				//searchForm.initAutocomplete('<?php echo  $this->getUrl('*/*/getAttributeCode')?>', 'search_autocomplete');
+				var dataForm = new varienForm('importbrand_form',true);
+			//]]
+        </script>
+    </div>
+</div>

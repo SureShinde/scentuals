@@ -1,0 +1,319 @@
+<?xml version="1.0"?>
+<config>
+     <tabs>
+		<arexworks translate="label" module="producttab">
+			<label><![CDATA[Novaworks]]></label>
+			<sort_order>108</sort_order>
+		</arexworks>
+    </tabs>
+    <sections>
+        <producttab translate="label" module="producttab">
+            <label>Product Tab</label>
+            <tab>arexworks</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>127</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>        
+                <general translate="label comment" module="producttab">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>					                                     						
+						<enabled translate="label">
+                        	<label>Enabled Tab Slider</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+                        </enabled>
+						<enabled_jquery translate="label">
+                        	<label>Using Shipped Jquery</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+                        </enabled_jquery>
+						<!-- <enabled_bootstrap translate="label">
+                        	<label>Using Shipped Bootstrap</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+                        </enabled_bootstrap> -->
+						<effect translate="label">
+                        	<label>Show Product</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>producttab/effect</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+                        </effect>
+						<duration_fade translate="label">
+                        	<label>Duration</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<effect>fade</effect>
+							</depends>
+							<comment>float value, in seconds, defaults to 1.0</comment>
+                        </duration_fade>
+						<from translate="label">
+                        	<label>From</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<effect>fade</effect>
+							</depends>
+							<comment>float value, defaults to 1.0, percent of opacity to start</comment>
+                        </from>
+						<to translate="label">
+                        	<label>To</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<effect>fade</effect>
+							</depends>
+							<comment>float value, defaults to 0.0, percent of opacity to end</comment>
+                        </to>
+						<duration_slide translate="label">
+                        	<label>Duration</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<effect>slide</effect>
+							</depends>
+							<comment>float value, in seconds, defaults to 1.0</comment>
+                        </duration_slide>
+						<direction translate="label">
+                        	<label>Direction</label>
+							<frontend_type>select</frontend_type>
+                            <sort_order>35</sort_order>
+							<source_model>producttab/direction</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<effect>slide</effect>
+							</depends>
+							<comment></comment>
+                        </direction>
+						<scaleFrom translate="label">
+                        	<label>Scale From</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<effect>slide</effect>
+							</depends>
+							<comment>integer value, percentage (0%–100%), defaults to 100</comment>
+                        </scaleFrom>
+						<scaleTo translate="label">
+                        	<label>Scale To</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<effect>slide</effect>
+							</depends>
+							<comment>integer value, percentage (0%–100%), defaults to 0</comment>
+                        </scaleTo>
+						<loading_icon translate="label comment">
+							<label>Ajax Loading</label>
+							<frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">arw/producttab/ajax</upload_dir> 
+                            <base_url type="media" scope_info="1">arw/producttab/ajax</base_url>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</loading_icon>	
+                    </fields>
+                </general>
+				<slideshow>
+					 <label>Product Slider</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>18</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						 <enable_scroll translate="label">
+                            <label>Enable Scroll</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>producttab/content</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+                        </enable_scroll>
+						 <autoplay translate="label">
+                            <label>Auto Play</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<depends>
+								<enable_scroll>1</enable_scroll>
+							</depends>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+                        </autoplay>
+						 <speed translate="label">
+                            <label>Speed</label>
+                            <frontend_type>Text</frontend_type>
+							<depends>
+								<enable_scroll>1</enable_scroll>
+							</depends>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+                        </speed>
+						<dots translate="label">
+                            <label>Show dots navigation</label>
+                            <frontend_type>select</frontend_type>
+							<depends>
+								<enable_scroll>1</enable_scroll>
+							</depends>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+                        </dots>
+						 <loop translate="label">
+                            <label>Loop</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<depends>
+								<enable_scroll>1</enable_scroll>
+							</depends>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>If enabled, animation will loop.</comment>
+                        </loop>
+						 <navigation translate="label">
+                            <label>Navigation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<depends>
+								<enable_scroll>1</enable_scroll>
+							</depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>Show next/prev buttons</comment>
+                        </navigation>
+                        <margin translate="label">
+                            <label>Margin</label>
+                            <frontend_type>Text</frontend_type>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Number only , default pixel</comment>
+                        </margin>
+						 <lazy translate="label">
+                            <label>Lazy Loading</label>
+                            <frontend_type>select</frontend_type>
+							<depends>
+								<enable_scroll>1</enable_scroll>
+							</depends>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>Delays loading of images to speed up page loading. Images outside of viewport will not be loaded before user scrolls to them.</comment>
+                        </lazy>
+						<responsive translate="label">
+                            <label>Responsive</label>
+							<depends>
+								<enable_scroll>1</enable_scroll>
+							</depends>
+                            <frontend_type>Text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>EX 1200:6,size 1200px show 6 item </comment>
+                        </responsive> 
+						<limit translate="label">
+                            <label>Limit</label>
+                            <frontend_type>Text</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment> </comment>
+                        </limit>
+                        <row translate="label">
+                            <label>Row</label>
+							<depends>
+								<enable_scroll>1</enable_scroll>
+							</depends>
+                            <frontend_type>Text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment> </comment>
+                        </row> 
+						<column translate="label">
+                            <label>Column</label>
+							<depends>
+								<enable_scroll>0</enable_scroll>
+							</depends>
+                            <frontend_type>Text</frontend_type>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment> </comment>
+                        </column> 
+					</fields>
+				</slideshow>	   
+            </groups>
+        </producttab>
+    </sections>
+</config>

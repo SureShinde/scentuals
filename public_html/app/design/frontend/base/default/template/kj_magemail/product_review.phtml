@@ -1,0 +1,29 @@
+<?php
+/**
+ * @var $this Mage_Core_Block_Template
+ */
+?>
+
+<div class="mm-review">
+    <div id="container">
+        <section id="page-title">
+            <h2><?php echo Mage::helper('kj_magemail')->langReviewProduct(); ?></h2>
+            <p class="section-paragraph">
+                <span class="mm-loading">
+                    <?php echo Mage::helper('kj_magemail')->langSubmittingReview(); ?>
+                </span>
+                <span class="mm-error" style="display: none;">
+                    <?php echo Mage::helper('kj_magemail')->langThereWasProblem(); ?> <span class="error-message"></span>
+                </span>
+                <span class="mm-complete" style="display: none;">
+                    <?php echo Mage::helper('kj_magemail')->langThanksReviewComplete(); ?>
+                </span>
+            </p>
+        </section>
+    </div>
+</div>
+
+<script>
+    MageMailData = typeof(MageMailData) != 'undefined' ? MageMailData : {};
+    MageMailData.review_data = <?php echo json_encode($this->getRequest()->getPost()); ?>;
+</script>

@@ -1,0 +1,329 @@
+<link media="all" href="<?php echo $this->getSkinUrl('faq/css/dckap_faq.css'); ?>" type="text/css" rel="stylesheet">
+<div class="dckap_faq">
+<div class="page-title">
+	<h1>
+		<strong>
+			<span>
+			<?php echo $this->__('Frequently Asked Questions') ?>
+			</span>
+		</strong>
+	</h1>
+	<div class="catdescription">
+		<?php if(Mage::getStoreConfig('faq/faq_group/description')){
+		?>
+		<span><?php echo Mage::getStoreConfig('faq/faq_group/description'); ?></span>
+		<?php } ?>
+	</div>
+</div>
+<script>
+    jQuery(document).ready(function($){
+       jQuery("h4.dckap_questions").click(function() {
+	       	var state = true;
+			var questionClass = jQuery(this).attr("id");
+			var answerClass = questionClass.replace('question', 'answer');
+			state = $( "#"+answerClass ).is( ":visible" );
+			jQuery('h4.dckap_questions').removeClass("active");
+			if(!state){
+				jQuery('h6.dckap_answers').hide();
+				jQuery('#'+answerClass).toggle();
+				jQuery('#'+questionClass).addClass("active");
+				var url = "<?php echo Mage::getUrl('faq/index/click'); ?>"; 
+				var params = 'id='+jQuery(this).data("id");
+			    $.ajax({
+		           type: "POST",
+		           url: url,
+		           data: params
+		         });
+			}else{
+				jQuery('h6.dckap_answers').hide();
+			}
+		});
+       	jQuery("span.asknew").click(function() {
+       		jQuery("form#dckap_askform").show();
+       		jQuery(this).hide();
+       	});
+       	$("#dckap_askform").submit(function(){
+       		if(!$("#dckapquestion").val()){
+       			$(".dckap_response").html("Invalid Question.");
+           		$(".dckap_response").css("color","crimson");
+           		$(".dckap_response").show();
+           		setTimeout(function() { $(".dckap_response").fadeOut(); }, 2000);
+           		return false;
+       		}
+       		$(".dckap_overlay").show();
+       		var url = $("#dckap_askform #dckap_url").val(); 
+
+		    $.ajax({
+		           type: "POST",
+		           url: url,
+		           data: $("#dckap_askform").serialize(),
+		           success: function(data)
+		           {  
+		               if(data == "1"){
+		               		$(".dckap_response").html("Your question is under review and it will be answered soon.");
+			               		$(".dckap_response").css("color","green");
+			               		$("form#dckap_askform").hide();
+			               		$("#dckapquestion").val('');
+			               		$("span.asknew").html("Ask another Question");
+							    $("span.asknew").show();
+			               }else if(data == "2"){
+			               		$(".dckap_response").html("Invalid Captcha. Please try again.");
+			               		$(".dckap_response").css("color","crimson");
+			               }
+			               else{
+			               		$(".dckap_response").html(data);
+			               		$(".dckap_response").css("color","crimson");
+			               }
+			               if($("#faqcaptcha").length){
+	                            grecaptcha.reset(); 
+	                        }
+					    setTimeout(function() { $(".dckap_response").fadeOut(); }, 2000);
+						$(".dckap_response").show();
+						$(".dckap_overlay").hide();
+			           },
+			           error: function (xhr, ajaxOptions, thrownError) {
+				        $(".dckap_response").html("Some unknown error occurred. Please try again.");
+			            $(".dckap_response").css("color","crimson");
+			            if($("#faqcaptcha").length){
+	                            grecaptcha.reset(); 
+	                        }
+					    setTimeout(function() { $(".dckap_response").fadeOut(); }, 2000);
+						$(".dckap_response").show();	
+						$(".dckap_overlay").hide();
+				      }
+			         });
+				
+			    return false;
+		    });
+	    });
+	</script>
+	<div class="dckap_wrap">
+		<?php
+		$categoryParam = 0;
+		$keywordParam = "";
+		if(isset($_REQUEST['category'])){
+			$categoryParam = $_REQUEST['category'];
+		}
+		if(isset($_REQUEST['keyword'])){
+			$keywordParam = $_REQUEST['keyword'];
+		}
+		if(Mage::getStoreConfig('faq/faq_group/category_enabled')){ ?>
+		<div class="dckap_leftbar">
+		<ul>
+		<?php
+		$categoryvalues = $this->getCategories();
+		$ik = 0;
+		$licount = 3;
+		$lock = 1;
+		$urlFull = $this->helper('core/url')->getCurrentUrl();
+		$urlWithoutParameters = explode("?", $urlFull);
+		?>
+		<li <?php if(!$categoryParam){ $lock = 0;?>class="active"<?php } ?>><a href="<?php echo $urlWithoutParameters[0]; ?>" <?php if(!$categoryParam){ ?>onclick="return false"<?php } ?>>ALL FAQ's</a></li>
+			<?php foreach ($categoryvalues as $category) {
+				if($ik < $licount){
+				?>
+					<li <?php if($category->getId()==$categoryParam) { $lock = 0;?>class="active"<?php } ?>>
+					<a href="<?php echo $urlWithoutParameters[0].'?category='.$category->getId(); ?>"	><?php echo $category->getName(); ?>
+					</a>
+					</li>
+				<?php
+				}
+				$ik++;
+			} 
+			if($categoryvalues->count() > $licount){
+			?>
+			<li class="more_menu <?php if($lock){ ?>active<?php } ?>">
+				<a id="more_menu">More <img src="<?php echo $this->getSkinUrl('faq/images/down.png') ?>" width="18"></a>
+					<ul>
+						<?php 
+						$ik = 0;
+						foreach ($categoryvalues as $category) {
+						if($ik >= $licount){
+						?>
+						<li <?php if($category->getId()==$categoryParam) { ?>class="active"<?php } ?>><a href="<?php echo $urlWithoutParameters[0].'?category='.$category->getId(); ?>" ><?php echo $category->getName(); ?></a></li>
+						<?php } $ik++; } ?>
+						
+					</ul>
+			</li>
+			<?php } ?>
+		</ul>
+		<div class="faq-search">
+			<form id="faq-searchform" method="GET" action="">
+			<input type="hidden" name="category" value="<?php echo $categoryParam; ?>" />
+				<input type="text" name="keyword"  placeholder="Search here" value="<?php echo $keywordParam; ?>" />
+				<input type="submit" value=""  class="btn-searchform">
+			</form>
+		</div>
+		</div>
+		<?php }else{ ?>
+		<div class="faq-search">
+			<form id="faq-searchform" method="GET" action="">
+			<input type="hidden" name="category" value="<?php echo $categoryParam; ?>" />
+				<input type="text" name="keyword"  placeholder="Search here" value="<?php echo $keywordParam; ?>" />
+				<input type="submit" value=""  class="btn-searchform">
+			</form>
+		</div>
+		<?php } ?>
+		<div style="clear: both;"></div>
+		<div class="dckap_content">
+				<?php
+				if(Mage::getStoreConfig('faq/faq_group/category_enabled')){
+				if($categoryParam){
+				$currentcat = Mage::getModel('faq/category')->load($categoryParam);
+				if($currentcat->description){
+				?>
+				<div class="catdescription"><span><?php echo $currentcat->description; ?></span></div>
+				<?php 
+				} } }
+
+				$currentPage=1;
+			    $_collections = $keywordParam ? $this->getFaq($keywordParam) : $this->getFaq();         
+			    $_productCollection = $this->getCollection($_collections); 
+			     
+			    $itemPerPage = Mage::getStoreConfig('faq/faq_group/faq_text');
+			    $currentPage = $this->getCurrentPage();
+			    $i = (!$currentPage || $currentPage == 1) ? 1 : $itemPerPage*($currentPage-1)+1;
+			 if($this->getPagerHtml($this->getFaq($keywordParam))) { ?> 
+			<div class="pages dckap_pager">
+			    <?php echo $this->getPagerHtml($this->getFaq($keywordParam));?>
+			    <span><b><?php echo $this->__('PAGE : ');?></b></span>
+			    <?php
+			    $pcollection = Mage::getModel('faq/faq')->getCollection();
+			    if(Mage::getStoreConfig('faq/faq_group/category_enabled')){
+			    if($categoryParam){
+			      $pcollection->addFieldtoFilter('category',$categoryParam);   
+			    }
+				}
+				$pcollection->addFieldToFilter('answer', array('neq' => '' ));
+				$pcollection->addFieldToFilter(
+			       array('store_id','store_set','store_id','store_set' ),
+			        array(
+			        array('eq'=>Mage::app()->getStore(true)->getId()), 
+			        array('like'=>'%,'.Mage::app()->getStore(true)->getId().',%'),
+			        array('eq'=>'0'), 
+			        array('like'=>'%,0,%')
+			        )
+			    );
+			    if($keywordParam){
+			            $pcollection->addFieldToFilter(
+			                array('question','answer' ),
+			                array(
+			                array('like'=>'%'.$keywordParam.'%'), 
+			                array('like'=>'%'.$keywordParam.'%')
+			                )
+			            );
+			        }
+			    $pcollection->addFieldToFilter('status',array('eq'=>1));
+			    ?>
+			    <span class="totalitems"><b>Total:</b> <?php echo $pcollection->count(); ?> questions</span>  
+			</div>
+			<?php } ?>
+			<div style="clear:both"></div>
+			<?php
+				if($_productCollection->count()){
+					foreach($_productCollection as $key)
+					{  ?>
+						<h4 id="<?php echo 'dckap_question'.$i; ?>" data-id="<?php echo $key->getId(); ?>" class="dckap_questions"><?php echo $i."&nbsp&nbsp".$key->getQuestion(); ?></h4>
+						<h6 id="<?php echo 'dckap_answer'.$i; ?>" class="dckap_answers" style="display:none"><?php 
+								$_cmsHelper = Mage::helper('cms');
+								$_process = $_cmsHelper->getBlockTemplateProcessor();
+								echo $_process->filter($key->getAnswer());
+							?></h6>
+						<?php
+						
+						$i++;
+					}	
+				}
+				else{ ?>
+					<span class="notfound">No questions available.</span>
+				<?php }
+			?>    
+			<div style="clear:both"></div>
+			<?php if($this->getPagerHtml($this->getFaq($keywordParam))):?>      
+			<div class="pages dckap_pager">
+			    <?php echo $this->getPagerHtml($this->getFaq($keywordParam));?>
+			    <span><b><?php echo $this->__('PAGE : ');?></b></span>
+			     <span class="totalitems"><b>Total:</b> <?php echo $pcollection->count(); ?> questions</span>  
+			</div>
+			<?php endif;?>
+			<div style="clear:both"></div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<?php 	
+	$guestalert = 0;
+	if(Mage::getStoreConfig('faq/faq_recaptcha/faq_customer')){
+        $condition = Mage::getSingleton('customer/session')->isLoggedIn();
+        if(!$condition && Mage::getStoreConfig('faq/faq_recaptcha/faq_user')){ ?>
+        <div class="guest-alert">Please sign in to ask questions.</div>
+	<?php }
+    }else{
+        $condition = true;
+    }
+	if(Mage::getStoreConfig('faq/faq_recaptcha/faq_user') && $condition) { ?>
+		<div class="dckap_new">
+			<h4 class="ask_title"><?php echo Mage::getStoreConfig('faq/faq_recaptcha/faq_text'); ?><br/>
+			<div style="clear:both"></div>
+			<div class="dckap_response"></div>
+			<span class="asknew"><?php echo Mage::getStoreConfig('faq/faq_recaptcha/faq_btnlabel'); ?></span></h4>
+			<div style="clear:both"></div>
+			<form id="dckap_askform" name="addnewquestion" method="POST" action="">
+			<div class="dckap_overlay">
+				<center><img width="40" src="<?php echo $this->getSkinUrl('faq/images/loading.gif') ?>"></center>
+				</div>
+				<?php if(Mage::getStoreConfig('faq/faq_group/category_enabled')){ ?>
+				<div class="fieldset">
+				<span>Category </span>
+				<select name="category">
+				<option value="">Select any</option>
+				<?php foreach ($categoryvalues as $category) {	?>
+				<option value="<?php echo $category->getId(); ?>"><?php echo $category->getName(); ?></option>
+				<?php } ?>
+				</select>
+				</div>
+				<?php } ?>
+				<?php if(!Mage::getSingleton('customer/session')->isLoggedIn()){ ?>
+				<div class="user-info">
+				<div class="fieldset-input">
+					<label>Name*</label>
+					<input type="text" name="guest-name" required />
+				</div>
+				<div class="fieldset-input">
+					<label>Email*</label>
+					<input type="email" name="guest-email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+				</div>
+				</div>
+				<?php } ?>
+				<div class="fieldset forminput">
+					<label>Question*</label>
+					<textarea id="dckapquestion" required name="question" style="width:440px;height:77px;"></textarea>
+				</div>
+				<?php if(Mage::getStoreConfig('faq/faq_recaptcha/faq_recaptchaselect') && Mage::getStoreConfig('faq/faq_recaptcha/faq_sitekey') && Mage::getStoreConfig('faq/faq_recaptcha/faq_secretkey')){ ?>
+				<center><div class="fieldset recap">
+					<div id="faqcaptcha" class="g-recaptcha" data-sitekey="<?php echo Mage::getStoreConfig('faq/faq_recaptcha/faq_sitekey'); ?>"></div>
+				</div></center>
+				<?php } ?>
+				<div class="fieldset">
+				<input type="hidden" value="<?php echo Mage::getUrl('faq/index/proceed'); ?>" id="dckap_url" />
+				<input type="submit"value="Submit" />
+				<input type="reset" value="Reset" />
+				</div>
+				<div style="clear:both"></div>
+			</form>
+			<div style="clear:both"></div>
+		</div>
+	<?php } ?>
+</div>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('.more_menu').on({
+			mouseover: function() {
+				jQuery('.more_menu ul').show();	
+			},
+			mouseout: function(){
+				jQuery('.more_menu ul').hide();		
+			},
+
+		});
+	});
+</script>

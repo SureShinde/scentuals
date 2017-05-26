@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout version="1.6.1.0">
+    <default>
+        <block type="core/template" name="kj_magemail_footer" template="kj_magemail/footer.phtml"/>
+
+        <reference name="before_body_end">
+            <action method="append" ifconfig="kj_magemail/settings/enable_javascript">
+                <name>kj_magemail_footer</name>
+            </action>
+        </reference>
+    </default>
+
+    <checkout_onepage_success>
+        <block type="core/template" name="kj_magemail_conversion" template="kj_magemail/conversion.phtml"/>
+
+        <reference name="after_body_start">
+            <action method="append" ifconfig="kj_magemail/settings/enable_javascript">
+                <name>kj_magemail_conversion</name>
+            </action>
+        </reference>
+    </checkout_onepage_success>
+
+    <magemail_customer_unsubscribe>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="magemail_unsubscribe" template='kj_magemail/unsubscribe.phtml'/>
+        </reference>
+    </magemail_customer_unsubscribe>
+
+    <magemail_product_review>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="magemail_product_review" template='kj_magemail/product_review.phtml'/>
+        </reference>
+    </magemail_product_review>
+
+</layout>

@@ -1,0 +1,253 @@
+.nav-accordion{
+	li{
+		display: block;
+		margin: 0 !important;
+		&.level0{
+			+ li{
+				border-top: 1px solid $block_content_border;
+			}
+		}
+		&.parent{
+			position: relative;
+			.expand,.collapse{
+				cursor: pointer;
+				display: block;
+				padding: 1em;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+			li{
+				.expand,.collapse{
+					padding-top: 7px;
+					padding-bottom: 7px;
+				}
+			}
+			.expand{
+				color: $link_hover_color;
+			}
+			> span:hover{
+				color: $link_hover_color;
+			}
+		}
+		&.active{
+			>a{
+				color: $link_hover_color;
+			}
+		}
+		a{
+			display: block;
+			padding: 1em 0;
+			> span {
+				display: inline-block;
+				position: relative;
+				.cat-label {
+					bottom: 80%;
+					font-size: 8px;
+					line-height: 16px;
+					padding: 0 5px;
+					position: absolute;
+					text-transform: uppercase;
+				}
+				.category_icon {
+					width: 20px;
+				}
+			}
+		}
+		li{
+			padding-left: 20px;
+			a{
+				font-size: 1em;
+				padding: 7px 0;
+				.expand,.collapse{
+					top: 7px;
+				}
+			}
+		}
+		ul{
+			display: none;
+			padding-bottom: 10px;
+		}
+	}
+}
+.cat-label-1 {
+	background-color:$cat_label1;
+}
+.cat-label-2 {
+	background-color:$cat_label2;
+}
+.cat-label-3 {
+	background-color:$cat_label3;
+}
+.cat-label-4 {
+	background-color:$cat_label4;
+}
+[class*="cat-label-"]{
+	border: 1px solid;
+}
+
+
+.arw-mobile-menu{
+	position: fixed;
+	width: 280px;
+	height: 100%;
+	top: 0;
+	z-index: 9999;
+	background: $mobile_menu_bg;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch; /* enables momentum scrolling in iOS overflow elements */
+	@include transform(translate3d(-280px,0,0));
+}
+.arw-mobile-menu-header {
+	background:$primary;
+	color: #fff;
+	cursor: pointer;
+	padding: 12px 20px;
+}
+.arw-mobile-menu-title {
+	display: inline-block;
+	font-size: 14px;
+	line-height: 26px;
+	text-transform: uppercase;
+	i {
+		float: left;
+		font-size: 26px;
+		margin-right: 10px;
+	}
+}
+.arw-close-canvas {
+	display: block;
+	float: right;
+	font-size: 20px;
+	width: 20px;
+	i {
+		float: right;
+		margin-top: 2px;
+	}
+}
+
+.nav-mobile-accordion.nav-accordion{
+	> li > a{
+		text-transform: uppercase;
+	}
+	li{
+		&.level0{
+			+ li{
+				border-top: none;
+			}
+		}
+		&.parent{
+			> span{
+				color: $mobile_menu_link_color;
+			}
+			> span:hover{
+				color: $mobile_menu_link_hover_color;
+			}
+			.expand,
+			.collapse{
+				line-height: 100%;
+				padding: 1em;
+			}
+		}
+		a{
+			color: $mobile_menu_link_color;
+			padding: 1em 15px;
+			line-height: 100%;
+		}
+		&:hover,
+		&.active{
+			>a{
+				color: $mobile_menu_link_hover_color;
+			}
+		}
+		li{
+			> a{
+				color: shade($mobile_menu_link_color,10%);
+			}
+			&:hover,
+			&.active{
+				>a{
+					color: $mobile_menu_link_hover_color;
+				}
+			}
+		}
+		ul{
+			padding-bottom: 0;
+		}
+
+	}
+}
+
+.nav-primary-container{
+	.arw-mobile-menu{
+		position: static;
+		display: none;
+		float: left;
+		height: auto;
+		width: 100%;
+		@include transform(translate(0,0));
+		.arw-mobile-menu-header{
+			display: none;
+		}
+		.sidebar-menu{
+			padding: 10px 0;
+		}
+	}
+}
+
+.arw-mobile-menu,
+.wrapper > .page{
+	-webkit-transition: -webkit-transform .2s cubic-bezier(.16, .68, .43, .99);
+	-moz-transition: -moz-transform .2s cubic-bezier(.16, .68, .43, .99);
+	-o-transition: -o-transform .2s cubic-bezier(.16, .68, .43, .99);
+	transition: transform .2s cubic-bezier(.16, .68, .43, .99);
+}
+.site-overlay{
+	display: none;
+}
+.arw-menu-open{
+	.site-overlay{
+		display: block;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 9998;
+		background-color: rgba(0,0,0,0.5);
+		@include animation(fade 500ms);
+	}
+	.arw-mobile-menu{
+		@include transform(translate3d(0,0,0));
+	}
+}
+.arw-toggle-menu-mobile {
+	@include clearfix;
+	background: $mobile_menu_bar_bg;
+	color: $mobile_menu_bar_color;
+	float: right;
+}
+.arw-btn-menu-mobile {
+	cursor: pointer;
+	padding: 10px 0px;
+	position: absolute;
+	right: 0;
+	text-transform: uppercase;
+	z-index: 2;
+	label,span{
+		height: 30px;
+		line-height: 30px;
+		margin: 0;
+		color: inherit;
+	}
+	label{
+		float: left;
+		display: none;
+		font-size: 1.25em;
+		font-weight: normal;
+	}
+	span{
+		float: right;
+		font-size: 30px;
+	}
+}

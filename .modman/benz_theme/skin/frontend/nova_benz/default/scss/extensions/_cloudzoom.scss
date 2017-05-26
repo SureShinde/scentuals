@@ -1,0 +1,36 @@
+/* This is the moving lens square underneath the mouse pointer. */
+.cloud-zoom-lens {
+	cursor:move;
+	background: #fff;
+	@include box-shadow(0 0 5px 1px #323232);
+}
+
+.cloud-zoom-title {
+	background-color: #000;
+	color: #fff;
+	padding: 3px;
+	text-align: center;
+	display: block;
+}
+
+/* This is the zoom window. */
+.cloud-zoom-big {
+	overflow:hidden;
+}
+
+/* This is the loading message. */
+.cloud-zoom-loading {
+	background: url("../images/ajax-loading.gif") no-repeat center center;
+	text-indent: -999em;
+	top: 50% !important;
+	left: 50% !important;
+	height: 80px;
+	@include transform(translate(-50%,-50%));
+}
+.mousetrap {
+	height: auto;
+	max-width: 100%;
+}
+.fancybox-title-inside-wrap{
+	display: none;
+}

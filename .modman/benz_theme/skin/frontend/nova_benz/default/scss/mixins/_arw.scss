@@ -1,0 +1,396 @@
+@function tint($color, $percent){
+	@return mix(white, $color, $percent);
+}
+
+// Add percentage of black to a color
+@function shade($color, $percent){
+	@return mix(black, $color, $percent);
+}
+
+@mixin arw_make_column(){
+	.arw-col{
+		@for $i from 1 through 8 {
+			.arw-#{$i}-col &{
+				position: relative;
+				min-height: 1px;
+				padding-left:  15px;
+				padding-right: 15px;
+				float: left;
+			}
+		}
+		.arw-1-col &{
+			width: 100%;
+		}
+		.arw-2-col &{
+			width: 50%;
+			&:nth-child(2n + 1){
+				clear: both;
+			}
+			@media (max-width: $screen-sm-max) {
+				width: 50%;
+			}
+			@media (max-width: 480px) {
+				width: 100%;
+			}
+		}
+		.arw-3-col &{
+			width: percentage(1/3);
+			&:nth-child(3n + 1){
+				clear: both;
+			}
+			@media (max-width: $screen-sm-max) {
+				width: 50%;
+				&:nth-child(2n + 1){
+					clear: both;
+				}
+				&:nth-child(3n + 1){
+					clear: none;
+				}
+			}
+			@media (max-width: $screen-xs-max) {
+				width: 100%;
+			}
+		}
+		.arw-4-col &{
+			width: percentage(1/4);
+			&:nth-child(4n + 1){
+				clear: both;
+			}
+			@media (max-width: $screen-sm-max) {
+				width: 50%;
+				&:nth-child(2n + 1){
+					clear: both;
+				}
+			}
+			@media (max-width: $screen-xs-max) {
+				width: 50%;
+				&:nth-child(2n + 1){
+					clear: both;
+				}
+			}
+			@media (max-width: 480px) {
+				width: 100%;
+			}
+		}
+		.arw-5-col &{
+			width: percentage(1/5);
+			&:nth-child(5n + 1){
+				clear: both;
+			}
+			@media (max-width: $screen-sm-max) {
+				width: 50%;
+				&:nth-child(2n + 1){
+					clear: both;
+				}
+				&:nth-child(5n + 1){
+					clear: none;
+				}
+			}
+			@media (max-width: $screen-xs-max) {
+				width: 50%;
+			}
+			@media (max-width: 480px) {
+				width: 100%;
+			}
+		}
+		.arw-6-col &{
+			width: percentage(1/6);
+			&:nth-child(6n + 1){
+				clear: both;
+			}
+			@media (max-width: $screen-sm-max) {
+				width: percentage(1/3);
+				&:nth-child(3n + 1){
+					clear: both;
+				}
+				&:nth-child(6n + 1){
+					clear: none;
+				}
+			}
+			@media (max-width: $screen-xs-max) {
+				width: percentage(1/3);
+				&:nth-child(3n + 1){
+					clear: both;
+				}
+				&:nth-child(6n + 1){
+					clear: none;
+				}
+			}
+			@media (max-width: 480px) {
+				width: 100%;
+			}
+		}
+		.arw-7-col &{
+			width: percentage(1/7);
+			&:nth-child(7n + 1){
+				clear: both;
+			}
+			@media (max-width: $screen-sm-max) {
+				width: percentage(1/5);
+				&:nth-child(5n + 1){
+					clear: both;
+				}
+				&:nth-child(7n + 1){
+					clear: none;
+				}
+			}
+			@media (max-width: $screen-xs-max) {
+				width: percentage(1/3);
+				&:nth-child(3n + 1){
+					clear: both;
+				}
+				&:nth-child(5n + 1){
+					clear: none;
+				}
+			}
+			@media (max-width: 480px) {
+				width: 100%;
+			}
+		}
+		.arw-8-col &{
+			width: percentage(1/8);
+			&:nth-child(8n + 1){
+				clear: both;
+			}
+			@media (max-width: $screen-sm-max) {
+				width: percentage(1/6);
+				&:nth-child(6n + 1){
+					clear: both;
+				}
+				&:nth-child(8n + 1){
+					clear: none;
+				}
+			}
+			@media (max-width: $screen-xs-max) {
+				width: percentage(1/3);
+				&:nth-child(3n + 1){
+					clear: both;
+				}
+			}
+			@media (max-width: 500px) {
+				width: percentage(1/2);
+				&:nth-child(2n + 1){
+					clear: none;
+				}
+				&:nth-child(3n + 1){
+					clear: none;
+				}
+			}
+			@media (max-width: 480px) {
+				width: 100%;
+			}
+		}
+		@media (max-width: 480px) {
+			width: 100%;
+		}
+	}
+	.arw-row{
+		@include clearfix;
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+}
+
+%btn {
+	border-width: 1px;
+	border-style: solid;
+	border-color:$button_border_color;
+	background-color:$button_bg;
+	color: $button_color;
+	display: inline-block;
+	font-weight: 400;
+	padding: 10px 20px;
+	vertical-align: middle;
+	text-transform: uppercase;
+	@include border-radius(0);
+	@include transition('background .2s ease-in-out 0s , color .2s ease-in-out 0s,border-color .2s ease-in-out 0s');
+	@include box-shadow(none);
+	&.active,
+	&:active,
+	&:hover,
+	&:focus,
+	&.focus {
+		color: $button_hover_color;
+		background-color: $button_hover_bg;
+		border-color:$button_hover_border_color;
+	}
+}
+%btn2{
+	@extend %btn;
+	border-color:$button_2_border_color;
+	background-color: $button_2_bg;
+	color: $button_2_color;
+	&.active,
+	&:active,
+	&:hover,
+	&:focus,
+	&.focus {
+		border-color:$button_2_hover_border_color;
+		background-color: $button_2_hover_bg;
+		color: $button_2_hover_color;
+	}
+}
+%btn3{
+	@extend %btn;
+	color: $button_3_color;
+	background: $button_3_bg;
+	border-color:$button_3_border_color;
+	&.active,
+	&:active,
+	&:hover,
+	&:focus,
+	&.focus {
+		color: $button_3_hover_color;
+		background-color: $button_3_hover_bg;
+		border-color:$button_3_hover_border_color;
+	}
+}
+%input-text {
+	border: 1px solid $input_border_color;
+	background-color: $input_bg;
+	color: $input_color;
+	width: 100%;
+	max-width: 100%;
+	@include border-radius(0);
+	&:focus{
+		border-color: $input_focus_border_color;
+		background: $input_focus_bg;
+		color: $input_focus_color;
+	}
+}
+%flexbox {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+%radio1{
+	display: none;
+	& ~ .label label{
+		cursor: pointer;
+		&:before{
+			@include icon-before("\f10c");
+			padding-right: 5px;
+			width: 20px;
+			display: inline-block;
+			text-align: left;
+		}
+	}
+	&:checked ~ .label label{
+		&:before{
+			content: "\f05d";
+			color: $primary;
+		}
+	}
+}
+%radio2{
+	display: none;
+	& ~ label{
+		cursor: pointer;
+		&:before{
+			@include icon-before("\f10c");
+			padding-right: 5px;
+			width: 20px;
+			display: inline-block;
+			text-align: left;
+		}
+	}
+	&:checked ~ label{
+		&:before{
+			content: "\f05d";
+			color: $primary;
+		}
+	}
+}
+%checkbox1{
+	@extend %radio1;
+	& ~ .label label{
+		&:before{
+			content: "\f096";
+		}
+	}
+	&:checked ~ .label label{
+		&:before{
+			content: "\f046";
+			color: $primary;
+		}
+	}
+}
+%checkbox2{
+	@extend %radio2;
+	& ~ label{
+		&:before{
+			content: "\f096";
+		}
+	}
+	&:checked ~ label{
+		&:before{
+			content: "\f046";
+			color: $primary;
+		}
+	}
+}
+%position-center-center{
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	@include transform(translate(-50%,-50%));
+}
+%position-center-width{
+	left: 50%;
+	position: absolute;
+	@include transform(translate(-50%,0));
+}
+%position-center-height{
+	position: absolute;
+	top: 50%;
+	@include transform(translate(0,-50%));
+}
+
+@-webkit-keyframes fadeOutfadeIn {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: .5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOutfadeIn {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: .5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@-webkit-keyframes fadeOutfadeIn1 {
+	0% {
+		opacity: 0;
+	}
+	25% {
+		opacity: .5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOutfadeIn1 {
+	0% {
+		opacity: 0;
+	}
+	25% {
+		opacity: .5;
+	}
+	100% {
+		opacity: 1;
+	}
+}

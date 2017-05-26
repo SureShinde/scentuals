@@ -1,0 +1,5 @@
+<?php
+class Novaworks_CustomWidgets_Block_Widget_Parallax extends Novaworks_CustomWidgets_Block_Parallax implements Mage_Widget_Block_Interface
+{
+
+}

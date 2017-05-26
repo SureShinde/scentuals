@@ -1,0 +1,7 @@
+<div id="novaworks-active" class="has-map"></div>
+<div class="gmap-widget">
+<?php if($this->getTitle()):?>
+<h3><?php echo $this->getTitle()?></h3>
+<?php endif;?>
+<div class="map-canvas <?php echo $this->getExtraClass()?>" style="width:100%;height:<?php echo $this->getMapHeight()?>px;" data-address="<?php echo $this->getAddress()?>" data-zoom="<?php echo $this->getMapZoom()?>" data-maptype="<?php echo $this->getMapType()?>" data-mapcolor="<?php echo $this->getMapColor()?>" data-mapsaturation="<?php echo $this->getMapSaturation()?>" data-pinimage="<?php echo $this->getPinUrl()?>"></div>
+</div>

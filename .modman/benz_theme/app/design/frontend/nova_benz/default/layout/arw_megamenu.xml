@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<layout>    
+	<default>
+		<reference name="top.menu">
+			<action method="unsetChild" ifconfig="megamenu/menu/enable_top_megamenu"><name>catalog.topnav</name></action>
+			<block type="megamenu/mainmenu_menu" name="catalog.topnav.menu">
+				<action method="setTemplate" ifconfig="megamenu/menu/enable_top_megamenu"><template>arw/megamenu/top.phtml</template></action>
+			</block>
+		</reference>
+        <reference name="header">
+            <block type="megamenu/mainmenu_menu" name="topMenuMobile" template="arw/megamenu/sidebar.phtml" />
+        </reference>
+        <reference name="after_body_start">
+            <block type="megamenu/mainmenu_menu" name="arw.sidemenu" template="arw/megamenu/sidebar.phtml" before="-" />
+        </reference>
+	</default>
+	<!-- Category view -->
+	<catalog_category_default>
+		<reference name='left'>
+			<block type="megamenu/mainmenu_menu" name="leftmenu" before="-" >
+				<action method='setTemplate' ifconfig="megamenu/sidemenu/enable_category_left" ><template>arw/megamenu/categoriesleft.phtml</template></action>
+			</block>
+		</reference>
+		<reference name='right'>
+			<block type="megamenu/mainmenu_menu" name="rightmenu" before="-" >
+				<action method='setTemplate' ifconfig="megamenu/sidemenu/enable_category_right"><template>arw/megamenu/categoriesright.phtml</template></action>
+			</block>
+		</reference>
+		<reference name="left">
+			<action method="unsetChild" ifconfig="megamenu/sidemenu/hide_laynav_categories"><alias>catalog.leftnav</alias></action>
+		</reference>
+		
+	</catalog_category_default>
+	
+	
+	<!-- Category view -->
+	<catalog_category_layered>
+		<reference name='left'>
+			<block type="megamenu/mainmenu_menu" name="leftmenu" before="-" >
+				<action method='setTemplate' ifconfig="megamenu/sidemenu/enable_category_left" ><template>arw/megamenu/categoriesleft.phtml</template></action>
+			</block>
+		</reference>
+		<reference name='right'>
+			<block type="megamenu/mainmenu_menu" name="rightmenu" before="-" >
+				<action method='setTemplate' ifconfig="megamenu/sidemenu/enable_category_right"><template>arw/megamenu/categoriesright.phtml</template></action>
+			</block>
+		</reference>
+		 <reference name="catalog.leftnav">
+			<action method="unsetChild" ifconfig="megamenu/sidemenu/hide_laynav_categories"><alias>category_filter</alias></action>
+		</reference>
+		 
+	</catalog_category_layered>
+
+    <!-- Category view -->
+    <catalogsearch_result_index>
+        <reference name='left'>
+            <block type="megamenu/mainmenu_menu" name="leftmenu" before="-" >
+                <action method='setTemplate' ifconfig="megamenu/sidemenu/enable_category_left" ><template>arw/megamenu/categoriesleft.phtml</template></action>
+            </block>
+        </reference>
+        <reference name='right'>
+            <block type="megamenu/mainmenu_menu" name="rightmenu" before="-" >
+                <action method='setTemplate' ifconfig="megamenu/sidemenu/enable_category_right"><template>arw/megamenu/categoriesright.phtml</template></action>
+            </block>
+        </reference>
+        <reference name="catalog.leftnav">
+            <action method="unsetChild" ifconfig="megamenu/sidemenu/hide_laynav_categories"><alias>category_filter</alias></action>
+        </reference>
+
+    </catalogsearch_result_index>
+<!-- CMS pages -->
+	<cms_page>
+		<reference name='left'>
+			<block type="megamenu/mainmenu_menu" name="leftmenu" before="-" as="cms.leftmenu">
+				<action method='setTemplate' ifconfig="megamenu/sidemenu/enable_cms_left">
+					<template>arw/megamenu/categoriesleft.phtml</template>
+				</action>
+			</block>
+		</reference>
+		<reference name='right'>
+			<block type="megamenu/mainmenu_menu" name="rightmenu" before="-" as="cms.rightmenu">
+				<action method='setTemplate' ifconfig="megamenu/sidemenu/enable_cms_right">
+					<template>arw/megamenu/categoriesright.phtml</template>
+				</action>
+			</block>
+		</reference>
+	</cms_page>
+	<!--home page-->
+	<cms_index_index>
+		<reference name='left'>	
+			<block type="megamenu/mainmenu_menu" name="leftmenu" before="-">
+				<action method='setTemplate' ifconfig="megamenu/sidemenu/enable_home_left">
+					<template>arw/megamenu/categoriesleft.phtml</template>
+				</action>
+			</block>
+			<action method="unsetChild"><alias>cms.leftmenu</alias></action>
+		</reference>
+		<reference name='right'>			
+			<block type="megamenu/mainmenu_menu" name="rightmenu" before="-"  >
+				<action method='setTemplate' ifconfig="megamenu/sidemenu/enable_home_right">
+					<template>arw/megamenu/categoriesright.phtml</template>
+				</action>
+			</block>
+			<action method="unsetChild"><alias>cms.rightmenu</alias></action> 
+		</reference>
+	</cms_index_index>
+
+	<!--product view -->
+	<catalog_product_view>	
+		<reference name='left'>
+			<block type="megamenu/mainmenu_menu" name="leftmenu" before="-" >
+				<action method='setTemplate' ifconfig="megamenu/sidemenu/enable_product_left">
+					<template>arw/megamenu/categoriesleft.phtml</template>
+				</action>
+			</block>
+		</reference>
+		<reference name='right'>
+			<block type="megamenu/mainmenu_menu" name="rightmenu" before="-" >
+				<action method='setTemplate' ifconfig="megamenu/sidemenu/enable_product_right">
+					<template>arw/megamenu/categoriesright.phtml</template>				
+				</action>
+			</block>
+		</reference>	
+	</catalog_product_view>
+</layout>

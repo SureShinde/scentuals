@@ -1,0 +1,581 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <newsletter>
+            <groups>
+                <kj_magemail_settings translate="label">
+                    <label>MageMail Settings</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>100</sort_order>
+                    <expanded>1</expanded>
+                    <fields>
+                        <web_username translate="label">
+                            <label>Username</label>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <config_path>kj_magemail/settings/web_username</config_path>
+                        </web_username>
+                        <web_password translate="label">
+                            <label>Password</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <config_path>kj_magemail/settings/web_password</config_path>
+                        </web_password>
+                        <connect_button translate="label">
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>kj_magemail/adminhtml_connectButton</frontend_model>
+                            <sort_order>750</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Login to your existing MageMail account.
+                            </comment>
+                        </connect_button>
+                        <disconnect_button translate="label">
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>kj_magemail/adminhtml_disconnectButton</frontend_model>
+                            <sort_order>750</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disconnect_button>
+                        <status translate="label">
+                            <frontend_type>label</frontend_type>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </status>
+                        <javascript translate="label">
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>kj_magemail/adminhtml_connectJavascript</frontend_model>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>900</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </javascript>
+                    </fields>
+                </kj_magemail_settings>
+                <kj_magemail_advanced translate="label">
+                    <label>MageMail Advanced Settings</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>200</sort_order>
+                    <expanded>0</expanded>
+                    <fields>
+                        <magemail_domain translate="label">
+                            <label>MageMail Domain</label>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <config_path>kj_magemail/advanced/magemail_domain</config_path>
+                        </magemail_domain>
+                        <api_route translate="label">
+                            <label>API Route</label>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <config_path>kj_magemail/advanced/api_route</config_path>
+                            <comment>
+                                This will be generated automatically when you connect
+                                using the login in the MageMail Settings above.
+                            </comment>
+                        </api_route>
+                        <api_key translate="label">
+                            <label>API Key</label>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <config_path>kj_magemail/advanced/api_key</config_path>
+                            <comment>
+                                This will be generated automatically when you connect
+                                using the login in the MageMail Settings above.
+                            </comment>
+                        </api_key>
+                        <enable_api translate="label">
+                            <label>Enable API</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Enable the API so that MageMail can grab customer data
+                                in order to prepare email recipients.
+                            </comment>
+                            <config_path>kj_magemail/settings/enable_api</config_path>
+                        </enable_api>
+                        <enable_api_write_access>
+                            <label>Enable Write Access</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Enable write access over the API
+                            </comment>
+                            <config_path>kj_magemail/settings/enable_api_write_access</config_path>
+                        </enable_api_write_access>
+                        <enable_javascript translate="label">
+                            <label>Enable Javascript</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Enable a javascript snippet in the global footer as well
+                                as one in the checkout to track orders.
+                            </comment>
+                            <config_path>kj_magemail/settings/enable_javascript</config_path>
+                        </enable_javascript>
+                        <host_javascript_locally translate="label">
+                            <label>Host Javascript Locally</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Host the javascript locally at this domain, instead of hosting
+                                it directly from magemail.co
+                            </comment>
+                        </host_javascript_locally>
+                        <enable_ip_address_whitelist translate="label">
+                            <label>Enable IP Address Whitelist</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Enable a javascript snippet in the global footer as well
+                                as one in the checkout to track orders.
+                            </comment>
+                        </enable_ip_address_whitelist>
+                        <use_x_forwarded_for translate="label">
+                            <label>Use X-Forwarded-For</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>205</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                For sites that are behind a load balancer or reverse
+                                proxy, the MageMail IP address won't show up as the
+                                IP address of the incoming API request, but it will
+                                show up as the X-Forwarded-For header
+                            </comment>
+                        </use_x_forwarded_for>
+                        <whitelisted_ip_addresses translate="label">
+                            <label>Whitelisted IP Addresses</label>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Comma-separated list
+                            </comment>
+                        </whitelisted_ip_addresses>
+                        <enable_auto_login translate="label">
+                            <label>Enable Auto Login</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Automatically log customers in when they click-through
+                                on an email.
+                            </comment>
+                        </enable_auto_login>
+                        <auto_login_ip_restricted translate="label">
+                            <label>Auto Login Restricted by IP Address</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Only auto login if customer is on the same IP address
+                                as the order that they placed.
+                            </comment>
+                        </auto_login_ip_restricted>
+                        <additional_html translate="label">
+                            <label>Additional HTML</label>
+                            <sort_order>300</sort_order>
+                            <frontend_type>textarea</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                This can be used to to add CSS for the promotional
+                                bar.
+                            </comment>
+                        </additional_html>
+                        <log_level translate="label">
+                            <label>Log Level</label>
+                            <sort_order>400</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>kj_magemail/system_config_source_logLevel</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </log_level>
+                        <disable_javascript_logging translate="label">
+                            <label>Javascript Logging Disabled</label>
+                            <sort_order>400</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                You can disable logging to the console in javascript.  For example
+                                when the cart is automatically restored, it logs things to the console
+                                for debugging purposes.
+                            </comment>
+                        </disable_javascript_logging>
+                        <query_blacklist translate="label">
+                            <label>Query Blacklist</label>
+                            <sort_order>500</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                This can be used to blacklist certain keywords from
+                                being used in MageMail queries, as a security measure.
+                            </comment>
+                        </query_blacklist>
+                        <capture_email_enabled translate="label">
+                            <label>Should Capture Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Capture email address whenever it's typed into an
+                                email field.  This should always be enabled unless
+                                Kalen wants to disable it for a specific reason.
+                            </comment>
+                        </capture_email_enabled>
+                        <disable_add_product_event_dispatch translate="label">
+                            <label>Disable 'Add Product' Event Dispatch</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>610</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Don't modify this unless you know what you're doing.
+                                In some cases, there can be custom logic observing the
+                                checkout_cart_add_product_complete event that break
+                                the cart restore functionality which needs to be disabled.
+                            </comment>
+                        </disable_add_product_event_dispatch>
+                        <enable_exit_modal translate="label">
+                            <label>Enable Exit Modal</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>620</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Enable the exit modal
+                            </comment>
+                        </enable_exit_modal>
+                        <newsletter_exit_modal_disabled translate="label">
+                            <label>Disable Newsletter Exit Modal</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>620</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Disable the newsletter exit modal so that only the exit modal
+                                for the cart is enabled.
+                            </comment>
+                        </newsletter_exit_modal_disabled>
+                        <disable_sql_api translate="label">
+                            <label>Disable the old API</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Disable the old API.  (Generally only Kalen should
+                                modify this).
+                            </comment>
+                        </disable_sql_api>
+                        <enable_order_confirmation_email translate="label">
+                            <label>Enable Order Confirmation Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>630</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                This will enable the sending of an order confirmation
+                                email through MageMail.
+                            </comment>
+                        </enable_order_confirmation_email>
+                        <dont_redirect_images translate="label">
+                            <label>Don't Redirect Images</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>640</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Instead of redirect images, just output them directly - this
+                                is meant to be used in conjunction with a CDN.
+                            </comment>
+                        </dont_redirect_images>
+                        <base_url_override translate="label">
+                            <label>Base Domain Override</label>
+                            <sort_order>700</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Just the domain - no trailing slash.
+                                This overrides the store domain that gets pulled into some javascript
+                                calls, such as the email capture ajax request.  It's useful if your
+                                base url is, for example, example.com, but the actual url customers
+                                get redirected to is example.com/us.
+                            </comment>
+                        </base_url_override>
+                    </fields>
+                </kj_magemail_advanced>
+                <kj_magemail_language translate="label">
+                    <label>MageMail Content</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>300</sort_order>
+                    <expanded>0</expanded>
+
+                    <fields>
+                        <coupon_bar_message_not_activated translate="label">
+                            <label>Coupon Bar Message (Not Activated)</label>
+                            <sort_order>350</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                The default value is: "Add items to your cart to activate your discount"
+                            </comment>
+                            <config_path>newsletter/kj_magemail_advanced/coupon_bar_message_not_activated</config_path>
+                        </coupon_bar_message_not_activated>
+                        <coupon_bar_message_activated translate="label">
+                            <label>Coupon Bar Message (Activated)</label>
+                            <sort_order>360</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                The default value is: "You've activated a discount.  Checkout now to redeem it"
+                            </comment>
+                            <config_path>newsletter/kj_magemail_advanced/coupon_bar_message_activated</config_path>
+                        </coupon_bar_message_activated>
+                        <message_updating_cart translate="label">
+                            <label>Updating Cart Message</label>
+                            <sort_order>370</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                The default value is: "Just a moment, we're updating your cart..."
+                            </comment>
+                            <config_path>newsletter/kj_magemail_advanced/message_updating_cart</config_path>
+                        </message_updating_cart>
+                        <message_reloading_for_coupon translate="label">
+                            <label>Reloading Page for Coupon Message</label>
+                            <sort_order>380</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                The default value is: "Just a moment.  Reloading the page to apply your coupon..."
+                            </comment>
+                            <config_path>newsletter/kj_magemail_advanced/message_reloading_for_coupon</config_path>
+                        </message_reloading_for_coupon>
+                        <message_reloading_for_cart translate="label">
+                            <label>Reloading page for Cart Message</label>
+                            <sort_order>390</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                The default value is: "Done updating the cart, reloading the page now..."
+                            </comment>
+                            <config_path>newsletter/kj_magemail_advanced/message_reloading_for_cart</config_path>
+                        </message_reloading_for_cart>
+                        <message_close translate="label">
+                            <label>Close Message</label>
+                            <sort_order>380</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                The default value is: "close".  It's what they can click to close
+                                the promotion bar
+                            </comment>
+                            <config_path>newsletter/kj_magemail_advanced/message_close</config_path>
+                        </message_close>
+                        <message_hours_symbol translate="label">
+                            <label>Hours Symbol</label>
+                            <sort_order>380</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                The default value is: "h".  It's the content next to the hours
+                                place in the promotion bar timer message.
+                            </comment>
+                            <config_path>newsletter/kj_magemail_advanced/message_hours_symbol</config_path>
+                        </message_hours_symbol>
+                        <product_review>
+                            <label>Product Review Title</label>
+                            <sort_order>400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                The title of the product review page
+                            </comment>
+                        </product_review>
+                        <thanks_review_complete>
+                            <label>Review Complete Message</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Confirmation message after review is complete
+                            </comment>
+                        </thanks_review_complete>
+                        <submitting_review>
+                            <label>Submitting Review</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                Message while review is being submitted ajaxly
+                            </comment>
+                        </submitting_review>
+                        <there_was_problem>
+                            <label>There Was a Problem</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </there_was_problem>
+                        <authentication_fail>
+                            <label>Authentication Failure Message</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </authentication_fail>
+                        <invalid_email>
+                            <label>Invalid Email</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invalid_email>
+                        <network_problem_couldnt_save_email>
+                            <label>Network Problem - Couldn't Save Email</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </network_problem_couldnt_save_email>
+                        <thanks_you_will_receive_email>
+                            <label>Thanks, you'll receive an email shortly</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </thanks_you_will_receive_email>
+                        <loading>
+                            <label>Loading...</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </loading>
+                        <before_you_leave>
+                            <label>Before You Leave...</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </before_you_leave>
+                        <enter_email_to_have_cart_emailed>
+                            <label>Enter email to have cart mailed</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enter_email_to_have_cart_emailed>
+                        <enter_email_to_receive_newsletter>
+                            <label>Enter email to receive newsletter</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enter_email_to_receive_newsletter>
+                        <save_exit_modal_button>
+                            <label>Save</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </save_exit_modal_button>
+                        <no_thanks>
+                            <label>No Thanks</label>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </no_thanks>
+                    </fields>
+                </kj_magemail_language>
+            </groups>
+        </newsletter>
+    </sections>
+</config>

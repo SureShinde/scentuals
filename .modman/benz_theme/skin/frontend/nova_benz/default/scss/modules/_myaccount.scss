@@ -1,0 +1,274 @@
+.dashboard{
+	.welcome-msg{
+		margin-bottom: 30px;
+	}
+	.box-account{
+		margin-bottom: 30px;
+		.box-head{
+			padding: 10px 0;
+			position: relative;
+			margin-bottom: 15px;
+			color: $block_title_color;
+			&:before{
+				background:$block_title_color;
+				bottom: 0;
+				content: "";
+				display: block;
+				height: 2px;
+				position: absolute;
+				width: 35px;
+			}
+			a{
+				float: right;
+				font-size: 12px;
+				font-weight: normal;
+				letter-spacing: 0;
+				margin-top: -22px;
+				text-transform: none;
+			}
+		}
+		li.item{
+			padding: 10px 0px;
+			@include clearfix;
+			& + li{
+				border-top: 1px solid $border_color;
+			}
+			.number{
+				float: left;
+				padding-right: 5px;
+			}
+			.details{
+				float: left;
+
+				.ratings{
+					strong{
+						float: left;
+						font-weight: normal;
+					}
+					.rating-box {
+						float: left;
+						margin: 0px 0 0 5px;
+						font-size: 1em;
+					}
+				}
+				.tags{
+					strong{
+						font-weight: normal;
+					}
+					strong,ul,li{
+						display: inline;
+					}
+				}
+			}
+		}
+		> .col2-set{
+			margin-bottom: 30px;
+			margin-left: -15px;
+			margin-right: -15px;
+			> .box{
+				.box-title{
+					h3{
+						color: $block_title_color;
+					}
+				}
+				> .box-title{
+					margin-bottom: 15px;
+					padding: 0 15px;
+				}
+			}
+		}
+	}
+	.box{
+		h3,h4{
+			display: inline;
+		}
+		.box-title{
+			a{
+				float: right;
+				padding-right: 15px;
+				font-size: 12px;
+			}
+		}
+	}
+}
+.my-account{
+	.cart-cell .price{
+		color: $primary;
+	}
+	.order-info-box{
+		margin-left: -15px;
+		margin-right: -15px;
+		width: auto;
+	}
+	.billing-agreements,
+	.recurring-profiles,
+	.addresses-list{
+		margin-left: -15px;
+		margin-right: -15px;
+		h2{
+			margin-top: 10px;
+		}
+		+ .buttons-set{
+			margin-top: 0;
+			border-top: none;
+		}
+	}
+	.billing-agreements,.recurring-profiles{
+		padding: 15px;
+	}
+	.data-table .product-name,
+	.product-name{
+		font-size: 1em;
+		letter-spacing: 1px;
+		margin: 0;
+		line-height: inherit;
+	}
+	#my-downloadable-products-table,
+	#my-reviews-table,
+	#my-orders-table{
+		tr {
+			th,
+			td{
+				text-align: left;
+			}
+		}
+	}
+	// Review Customer View
+	.product-review {
+		.product-img-box {
+			float: left;
+			width: 40%;
+			.label{
+				text-transform: uppercase;
+				text-align: left;
+				display: block;
+				margin: 0;
+				padding: 15px;
+			}
+			.ratings{
+				padding: 0 15px;
+			}
+			.rating-box{
+				margin: 0 0 15px;
+			}
+		}
+		.product-details{
+			float: left;
+			width: 58%;
+			dt{
+				color: $text_color;
+				padding: 15px 0;
+			}
+		}
+		h2{
+			font-size: $font_h4;
+		}
+		h3{
+			font-size: $font_h5;
+		}
+	}
+	.my-tag-edit{
+		padding: 15px;
+		.btn-remove{
+			background: none;
+			color: inherit;
+			margin-bottom: 3px;
+			padding: 0;
+			&:hover{
+				color: $link_hover_color;
+			}
+		}
+	}
+	#my-tags-table{
+		.product-name{
+			margin: 0;
+			font-size: 1em;
+		}
+		.btn-cart{
+			white-space: pre;
+		}
+		.add-to-links a{
+			background: $button_bg;
+			color: #fff;
+			padding: 10px;
+			white-space: pre;
+			&:hover{
+				background: $button_hover_bg;
+			}
+		}
+		@media (max-width: $screen-xs) {
+			td:first-child{
+				display: none;
+			}
+		}
+	}
+	#wishlist-table{
+		.product-name{
+			margin:0 0 5px;
+			font-size: $font_h5;
+		}
+		.price-box {
+			margin: 0 0 10px;
+		}
+		.btn-cart {
+			margin-top: 5px;
+		}
+		@media (max-width: $screen-xs-max) {
+			.btn-cart {
+				padding: 5px 10px;
+			}
+		}
+		@media (max-width: $screen-xs) {
+			th:first-child,td:first-child{
+				display: none;
+			}
+		}
+		.link-edit{
+			clear: both;
+			float: left;
+		}
+	}
+	.toolbar{
+		label{
+			color: inherit;
+			display: inline;
+			float: left;
+			margin: 0;
+			padding: 0 10px;
+		}
+	}
+	#my-orders-table{
+		th,td{
+			&:first-child{
+				text-align: left;
+			}
+		}
+	}
+	#wishlist-table{
+		th,td{
+			&:nth-child(2){
+				text-align: left;
+			}
+		}
+	}
+}
+.tag-customer-index{
+	.my-account{
+		ul.tags-list{
+			li{
+				display: inline;
+				& + li:before{
+					content: ", ";
+				}
+			}
+		}
+	}
+}
+@media (max-width: 767px) {
+	.dashboard .box-account .box-head a,
+	.dashboard .box .box-title a {
+		display: inline;
+		float: none;
+		margin: 0;
+	}
+}
