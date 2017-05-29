@@ -5057,7 +5057,7 @@ body .data-table {
   /*font-style: italic; */
   letter-spacing: -0.5px;
   position: relative;
-  text-transform: capitalize;
+  /*text-transform: capitalize;*/
   font-family: "Lato";
   font-weight: 300;
 }
