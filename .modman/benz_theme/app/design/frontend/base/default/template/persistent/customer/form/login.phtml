@@ -51,7 +51,7 @@
                 <div class="content">
 		  <?php if($store == "wholesalecanada" || $store == "wholesaleusa"):?>
 		    <h2><?php echo $this->__('Request Access') ?></h2>
-                    <p><?php echo $this->__('If you need to request access, begin by creating an account by clicking the button below. We will review your request for approval. After your account is approved you will gain access to our catalog and can begin to place orders. If you have any question or concerns please email us at ') ?><a href="mailto:service@scentuals.ca">service@scentuals.ca</a></p>
+                    <p><?php echo $this->__('If you need to request access, begin by creating an account by clicking the button below. We will review your account request. After your account is approved you will gain access to our catalog and can begin to place orders. If you have any question or concerns please email us at ') ?><a href="mailto:service@scentuals.ca">service@scentuals.ca</a></p>
 		  <?php else:?>
 		    <h2><?php echo $this->__('New Customers') ?></h2>
                     <p><?php echo $this->__('By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.') ?></p>
@@ -61,8 +61,13 @@
             </div>
             <div class="col-2 registered-users">
                 <div class="content">
-                    <h2><?php echo $this->__('Registered Customers') ?></h2>
+		  <?php if($store == "wholesalecanada" || $store == "wholesaleusa"):?>
+		    <h2><?php echo $this->__('Approved Customers') ?></h2>
+                    <p><?php echo $this->__('If you have an approved account with us, please log in.') ?></p>
+		  <?php else:?>
+		    <h2><?php echo $this->__('Registered Customers') ?></h2>
                     <p><?php echo $this->__('If you have an account with us, please log in.') ?></p>
+		  <?php endif;?>
                     <ul class="form-list">
                         <li>
                             <label for="email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
