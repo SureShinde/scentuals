@@ -32,9 +32,16 @@
  */
 /** @var $this Mage_Customer_Block_Form_Login */
 ?>
+
+<?php $store = Mage::app()->getStore()->getCode(); ?>
+
 <div class="account-login">
     <div class="page-title">
-        <h1><?php echo $this->__('Login or Create an Account') ?></h1>
+	<?php if($store == "wholesalecanada" || "wholesaleusa"):?>
+		<h1><?php echo $this->__('Login or Request Access') ?></h1> 
+	<?php else:?>
+		<h1><?php echo $this->__('Login or Create an Account') ?></h1>
+	<?php endif;?>
     </div>
     <?php echo $this->getMessagesBlock()->toHtml() ?>
     <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
