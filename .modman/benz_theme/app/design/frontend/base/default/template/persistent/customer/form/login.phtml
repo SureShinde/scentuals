@@ -37,7 +37,7 @@
 
 <div class="account-login">
     <div class="page-title">
-	<?php if($store == "wholesalecanada"):?>
+	<?php if($store == ("wholesalecanada" || "wholesaleusa")):?>
 		<h1><?php echo $this->__('Login or Request Access') ?></h1> 
 	<?php else:?>
 		<h1><?php echo $this->__('Login or Create an Account') ?></h1>
@@ -49,7 +49,7 @@
         <div class="col2-set">
             <div class="col-1 new-users">
                 <div class="content">
-		  <?php if($store == "wholesalecanada" || "wholesaleusa"):?>
+		  <?php if($store == ("wholesalecanada" || "wholesaleusa")):?>
 		    <h2><?php echo $this->__('Request Access') ?></h2>
                     <p><?php echo $this->__('If you need to request access, begin by creating an account by clicking the button below. We will review your request for approval. After your account is approved you will gain access to our catalog and can begin to place orders. If you have any question or concerns please email us at ') ?><a href="mailto:service@scentuals.ca">service@scentuals.ca</a></p>
 		  <?php else:?>
