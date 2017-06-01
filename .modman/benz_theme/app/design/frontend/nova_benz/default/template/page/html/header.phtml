@@ -117,12 +117,19 @@ if($stick_nav){
                             </div>
 				
                         </div>
+							<!--<div class="far_btn_headertop"><?php $store = Mage::app()->getStore()->getCode();				?>
+					<?php if($store == "ca"):?>
+						<a href="https://www.scentuals.com/us/?___from_store=ca"><img src="https://www.scentuals.com/skin/frontend/nova_benz/default/images/flags/ca.png"></a>
+					<?php else:?>
+						<a href="https://www.scentuals.com/ca/?___from_store=us"><img src="https://www.scentuals.com/skin/frontend/nova_benz/default/images/flags/us.png"></a>
+					<?php endif;?></div>-->
                         <?php echo $this->getChildHtml('topMenu') ?>
                         <div class="header-quick-access">
                             <div class="far_btn_headertop"><a class="btn-headertop" data-toggle="tooltip" title="<?php echo $this->__('') ?>"><span class="lnr lnr-menu"></span></a></div>
 			<div class="top-link-benz">
                                 <ul class="header-top-link-ul-benz">
 				    <li class="header-language">
+					<?php $store = Mage::app()->getStore()->getCode();?>
 					<?php if($store == "ca"):?>
 						<a style="color:#fff;" href="https://www.scentuals.com/us/?___from_store=ca"><img src="https://www.scentuals.com/skin/frontend/nova_benz/default/images/flags/ca.png">  Canada</a>
 					<?php elseif($store == "us"):?>
