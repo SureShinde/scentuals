@@ -61,13 +61,16 @@
     $grid_style = $theme_helper->getCfg('category_grid/style') ? $theme_helper->getCfg('category_grid/style') : 'style_1';
     ?>
 <div class="arw-block-related">
-    <div class="arw-title text-uppercase">
+    <!--<div class="arw-title text-uppercase">-->
+    <div class="arw-title">
         <h2><span><span><?php echo $this->__('Related Products')?></span></span></h2>
     </div>
-    <div class="arw-sub-title">
-        <span><?php echo $this->__('Most have in your Shop')?></span>
-    </div>
-    <div class="block-related<?php echo $related_slider ? ' active' : ''?> margin-top-60 xs-margin-top-30 sm-margin-top-30">
+    <!--<div class="arw-sub-title">
+        <span><?php echo $this->__('Must have in your Shop')?></span>
+    </div>-->
+<!--<div class="block-related--><?/*php echo $related_slider ? ' active' : ''?> margin-top-60 xs-margin-top-30 sm-margin-top-30">
+    <?php if($related_slider):*/?>
+    <div class="block<?php echo $related_slider ? ' active' : ''?> margin-top-60 xs-margin-top-30 sm-margin-top-30">
     <?php if($related_slider):?>
     <div class="arw_tab_slider">
         <div class="products-slide">
