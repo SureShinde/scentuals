@@ -237,12 +237,12 @@ $idSuffixArray = array( '-upsell', '-related', '-clone' ,'-list');
         <?php $_originalWeeeTaxAmount = $_store->roundPrice($_store->convertPrice($_originalWeeeTaxAmount)) ?>
 
         <?php if ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, 0)): // including ?>
-            <!--<p class="old-price">
+            <p class="old-price">
                 <span class="price-label"><?php echo $this->__('Regular Price:') ?></span>
                 <span class="price" id="old-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->formatPrice($_regularPrice + $_originalWeeeTaxAmount, false) ?>
                 </span>
-            </p>-->
+            </p>
 
             <?php if ($_taxHelper->displayBothPrices()): ?>
                 <p class="special-price">
@@ -487,3 +487,10 @@ $idSuffixArray = array( '-upsell', '-related', '-clone' ,'-list');
         </div>
     <?php endif; /* if ($this->getDisplayMinimalPrice() && $_minimalPrice): */ ?>
 <?php endif; /* if (!$_product->isGrouped()): */ ?>
+
+<style>
+  /*hide slashed price*/
+  .old-price {
+	display: none !important;
+  }
+</style>
