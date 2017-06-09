@@ -70,7 +70,7 @@
     </div>-->
 <!--<div class="block-related--><?/*php echo $related_slider ? ' active' : ''?> margin-top-60 xs-margin-top-30 sm-margin-top-30">
     <?php if($related_slider):*/?>
-    <div class="block<?php echo $related_slider ? ' active' : ''?> margin-top-60 xs-margin-top-30 sm-margin-top-30">
+    <div class="block<?php echo $related_slider ? ' active' : ''?> margin-top-30 xs-margin-top-30 sm-margin-top-30">
     <?php if($related_slider):?>
     <div class="arw_tab_slider">
         <div class="products-slide">
@@ -165,15 +165,6 @@
                                         <?php else: ?>
                                             <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                                         <?php endif; ?>
-                                        <?php if($_product->getRatingSummary()):?>
-                                            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-                                        <?php else:?>
-                                            <div class="ratings">
-                                                <div class="rating-box">
-                                                    <div class="rating" style="width:0%"></div>
-                                                </div>
-                                            </div>
-                                        <?php endif;?>
                                     </div>
                                 <?php endif;?>
                                 <?php if($grid_style == 'style_2'):?>

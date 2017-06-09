@@ -4777,7 +4777,7 @@ body .data-table {
 }
 .product-view .product-essential .product-img-box,
 .product-view .product-essential .product-shop {
-  margin-bottom: 30px;
+  /*margin-bottom: 30px;*/
 }
 .product-view .product-essential .prev-next {
   float: right;

@@ -936,10 +936,11 @@
   font-family: "Playfair Display", serif;
 }
 .arw-title h2 span span {
-  font-style: italic;
-  font-family: "Playfair Display", serif;
+  /*font-style: italic;*/
+  font-family: "Lato", serif;
   text-transform: capitalize;
   letter-spacing: 0px;
+  font-weight: 300;
 }
 
 .arw-services-box .service-thumb .service-icon {
