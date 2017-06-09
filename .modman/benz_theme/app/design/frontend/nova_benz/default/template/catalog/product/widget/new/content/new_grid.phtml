@@ -49,11 +49,6 @@
     $enable_countdown = $this->getData('enable_countdown');
 ?>
 <div class="widget widget-new-products">
-	<!--
-    <div class="widget-title">
-        <h2><?php echo $this->__('New Products') ?></h2>
-    </div>
--->
     <div class="widget-products">
     <?php echo $this->getPagerHtml() ?>
     <?php
@@ -146,17 +141,6 @@
                                 <?php else: ?>
                                     <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                                 <?php endif; ?>
-				<!--
-                                <?php if($_product->getRatingSummary()):?>
-                                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-                                <?php else:?>
-                                    <div class="ratings">
-                                        <div class="rating-box">
-                                            <div class="rating" style="width:0%"></div>
-                                        </div>
-                                    </div>
-                                <?php endif;?>
-				-->
                             </div>
                         <?php endif;?>
                         <?php if($grid_style == 'style_2'):?>
