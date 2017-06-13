@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <AK_Multiaddtocart>
+      <version>0.1.0</version>
+    </AK_Multiaddtocart>
+  </modules>
+  <global>
+    <helpers>
+      <multiaddtocart>
+        <class>AK_Multiaddtocart_Helper</class>
+      </multiaddtocart>
+    </helpers>
+  </global>
+
+  <frontend>
+    <routers>
+      <checkout>
+       <args>
+           <modules>
+               <AK_Multiaddtocart before="Mage_Checkout">AK_Multiaddtocart</AK_Multiaddtocart>
+           </modules>
+       </args>
+    </checkout>
+    </routers>
+
+    <layout>
+      <updates>
+        <multiaddtocart>
+          <file>multiaddtocart.xml</file>
+        </multiaddtocart>
+      </updates>
+    </layout>
+
+  </frontend>
+
+  <adminhtml>
+
+  <acl>
+    <resources>
+    <all>
+      <title>Allow Everything</title>
+    </all>
+    <admin>
+      <children>
+      <system>
+          <children>
+                <config>
+                    <children>
+                        <multiaddtocart>
+                          <title>Multi Add to Cart - All</title>
+                        </multiaddtocart>
+                    </children>
+                </config>
+         </children>
+      </system>
+      </children>
+    </admin>
+    </resources>
+  </acl>
+
+  </adminhtml>
+
+</config> 
