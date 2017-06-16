@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+    <config>
+      <modules>
+        <Magegeeks_Checkoutdiscountcoupon>
+          <active>true</active>
+          <codePool>local</codePool>
+          <version>0.1.0</version>
+        </Magegeeks_Checkoutdiscountcoupon>
+      </modules>
+    </config>
+
+
