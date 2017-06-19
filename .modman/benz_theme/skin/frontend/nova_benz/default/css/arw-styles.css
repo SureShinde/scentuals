@@ -3995,7 +3995,7 @@ body .data-table {
 }
 .footer-container .block .block-title {
   color: #b8b8b8;
-  font-size: 1.2em;
+  font-size: 13px;
   font-weight: normal;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -4824,7 +4824,7 @@ body .data-table {
   border-bottom: 1px dashed #ebebeb; 
   /* margin: 30px 0; */
   padding: 15px 0 25px 0;
-  color: #515151;
+  color: #272727;
   font-size: 13px;
 }
 .product-view .product-essential .ratings {
@@ -6693,7 +6693,7 @@ ul.messages {
 .post-item .post-excerpt {
   margin: 0 0 30px;
   text-align: inherit;
-  color: #515151;
+  color: #272727;
   text-align: justify;
 }
 
