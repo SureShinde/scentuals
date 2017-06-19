@@ -996,7 +996,7 @@ a.slider-nova {
   margin-right: 10px;
 }
 .price-box .special-price, .price-box .regular-price {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 /* -------------------------------------------- *
@@ -4778,6 +4778,7 @@ body .data-table {
 .product-view .product-essential .product-img-box,
 .product-view .product-essential .product-shop {
   /*margin-bottom: 30px;*/
+  font-size: 13px;
 }
 .product-view .product-essential .prev-next {
   float: right;
