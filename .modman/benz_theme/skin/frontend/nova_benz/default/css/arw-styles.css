@@ -5282,6 +5282,7 @@ body .data-table {
 .data-table.cart-table tr,
 .data-table.cart-table th {
   border: medium none;
+  font-size: 13px;
 }
 
 .data-table.cart-table th {
