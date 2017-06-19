@@ -3407,6 +3407,7 @@ body .data-table {
   background: #272727;
   color: #858585;
   top: 50px;
+  font-size: 13px;
 }
 .header-container .header-quick-access .arw-toggle-container .has_cat_search{
   background-color: transparent !important;
