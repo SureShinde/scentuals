@@ -973,7 +973,7 @@
   background: #eeb013;
 }
 .arw-services-box:hover .service-thumb.thumb-style-2 .service-icon {
-  color: #eeb013;
+  /*color: #808080;*/
 }
 .arw-services-box.style-1 {
   text-align: center;
