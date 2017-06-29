@@ -145,7 +145,9 @@ $show_countdown = $theme_helper->getCfg('product_countdown/catalog') ? true : fa
                             <div class="product-shop">
                                 <div class="f-fix">
                                     <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
-                                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><span><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></span></a></h2>
+                                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><span><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></span></a>
+<span style="color:#b8b8b8;"><?php echo $_product->getAttributeText('volume') ?></span>
+</h2>
                                     <?php
                                     if ($this->getChild('name.after')) {
                                         $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
@@ -340,9 +342,9 @@ $show_countdown = $theme_helper->getCfg('product_countdown/catalog') ? true : fa
                                             <span><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
                                         </a>
 						<span style="color:#b8b8b8;"><?php echo $_product->getAttributeText('volume') ?></span>
-<?php $store = Mage::app()->getStore()->getCode(); if($store == "wholesalecanada" || $store == "wholesaleusa"):?>
-<?php $attribute = $_product->getResource()->getAttribute('min_qty_wholesale'); ?>
-<span style="color:#b8b8b8;"><strong>Min. Quantity:</strong> <?php echo $attribute_value = $attribute ->getFrontend()->getValue($_product); ?></span>
+<?php $store = Mage::app()->getStore()->getCode(); if($store == "wholesalecanada" || $store == "wholesaleusa"): 
+	$attribute = $_product->getResource()->getAttribute('min_qty_wholesale'); ?>
+<span style="color:#b8b8b8;"><br><strong>Min. Qty:</strong> <?php echo $attribute_value = $attribute ->getFrontend()->getValue($_product); ?></span>
 <?php endif;?>
                                     </h2>
                                     <?php echo $this->getPriceHtml($_product, true ,'-list') ?>
