@@ -1,0 +1,152 @@
+<?php
+/**
+* BSS Commerce Co.
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the EULA
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://bsscommerce.com/Bss-Commerce-License.txt
+*
+* =================================================================
+*                 MAGENTO EDITION USAGE NOTICE
+* =================================================================
+* This package designed for Magento COMMUNITY edition
+* BSS Commerce does not guarantee correct work of this extension
+* on any other Magento edition except Magento COMMUNITY edition.
+* BSS Commerce does not provide extension support in case of
+* incorrect edition usage.
+* =================================================================
+*
+* @category   BSS
+* @package    Bss_SalesQtyForCustomerGroup
+* @author     Extension Team
+* @copyright  Copyright (c) 2014-2016 BSS Commerce Co. ( http://bsscommerce.com )
+* @license    http://bsscommerce.com/Bss-Commerce-License.txt
+*/
+?>
+<?php
+$_htmlId = 'max_sales_qty_customer_group';
+$_htmlClass = 'validate-number';
+$_htmlName = 'max_sales_qty_customer_group';
+$_qtyValueValidation = $this->getSalesQtyValidation('validate-zero-or-greater');
+
+if ($this->isReadonly()) {
+    $_readonly = ' disabled="disabled" ';
+} else {
+    $_readonly = '';
+}
+?>
+<tr>
+    <td class="label"><label for="inventory_max_sale_qty"><?php echo $this->getLabel(); ?></label></td>
+    <td colspan="10" class="grid tier value">
+    <table cellspacing="0" class="data border" id="inventory_max_sale_qty">
+        <col width="120" />
+        <col />
+        <col width="1" />
+        <thead>
+            <tr class="headings">
+                <th><?php echo Mage::helper('salesqtyforcustomergroup')->__('Customer Group'); ?></th>
+                <th><?php echo Mage::helper('salesqtyforcustomergroup')->__('Max Qty'); ?></th>
+                <th class="last"><?php echo Mage::helper('salesqtyforcustomergroup')->__('Action'); ?></th>
+            </tr>
+        </thead>
+        <tbody id="<?php echo $_htmlId; ?>_container"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="a-right"><?php echo $this->getAddButtonHtml(); ?></td>
+            </tr>
+        </tfoot>
+    </table>
+    <?php $_checked = ($this->getFieldValue('use_config_max_sale_qty') || $this->IsNew()) ? 'checked="checked"' : '' ?>
+        <input type="checkbox" id="inventory_use_config_max_sale_qty" name="<?php echo $this->getFieldSuffix() ?>[stock_data][use_config_max_sale_qty]" value="1" <?php echo $_checked ?> onclick="toggleValueElements(this, this.parentNode);" class="checkbox" <?php echo $_readonly;?> />
+        <label for="inventory_use_config_max_sale_qty" class="normal"><?php echo Mage::helper('catalog')->__('Use Config Settings') ?></label>
+        <?php if (!$this->isReadonly()):?><script type="text/javascript">toggleValueElements($('inventory_use_config_max_sale_qty'), $('inventory_use_config_max_sale_qty').parentNode);</script>
+    <?php endif; ?>
+
+<script type="text/javascript">
+//<![CDATA[
+var groupMaxSalesRowTemplate = '<tr>'
+    + '<td><select class="<?php echo $_htmlClass; ?> custgroup required-entry" name="<?php echo $_htmlName; ?>[{{index}}][cust_group]" id="group_max_sales_qty_row_{{index}}_cust_group">'
+    <?php foreach ($this->getCustomerGroups() as $_groupId => $_groupName): ?>
+    + '<option value="<?php echo $_groupId; ?>"><?php echo $this->jsQuoteEscape($this->escapeHtml($_groupName)); ?></option>'
+    <?php endforeach; ?>
+    + '</select></td>'
+    + '<td><input class="<?php echo $_htmlClass; ?> required-entry <?php echo $_qtyValueValidation; ?>" type="text" name="<?php echo $_htmlName; ?>[{{index}}][qty]" value="{{qty}}" id="group_max_sales_qty_row_{{index}}_qty" /></td>'
+    + '<td class="last"><input type="hidden" name="<?php echo $_htmlName; ?>[{{index}}][delete]" class="delete" value="" id="group_max_sales_qty_row_{{index}}_delete" />'
+    + '<button title="<?php echo $this->jsQuoteEscape(Mage::helper('catalog')->__('Delete Group Price')); ?>" type="button" class="scalable delete icon-btn delete-product-option" id="group_max_sales_qty_row_{{index}}_delete_button" onclick="return groupMaxQtyControl.deleteItem(event);">'
+    + '<span><?php echo $this->jsQuoteEscape(Mage::helper('catalog')->__('Delete')); ?></span></button></td>'
+    + '</tr>';
+
+var groupMaxQtyControl = {
+    template: new Template(groupMaxSalesRowTemplate, new RegExp('(^|.|\\r|\\n)({{\\s*(\\w+)\\s*}})', '')),
+    itemsCount: 0,
+    addItem : function () {
+        var data = {
+            group: '<?php echo $this->getDefaultCustomerGroup(); ?>',
+            qty: '',
+            readOnly: false,
+            index: this.itemsCount++
+        };
+
+        data.group = arguments[0];
+        data.qty = arguments[1];
+
+        if (arguments.length == 3) {
+            data.readOnly = arguments[2];
+        }
+
+        Element.insert($('<?php echo $_htmlId; ?>_container'), {
+            bottom : this.template.evaluate(data)
+        });
+
+        $('group_max_sales_qty_row_' + data.index + '_cust_group').value = data.group;
+
+        if (data.readOnly == '1') {
+            ['cust_group', 'qty', 'delete', 'delete_button'].each(function(element_suffix) {
+                $('group_max_sales_qty_row_' + data.index + '_' + element_suffix).disabled = true;
+            });
+            $('group_max_sales_qty_row_' + data.index + '_delete_button').addClassName('disabled');
+        }
+
+        <?php if ($_readonly): ?>
+        $('<?php echo $_htmlId; ?>_container').select('input', 'select').each(this.disableElement);
+        $('<?php echo $_htmlId; ?>_container').up('table').select('button').each(this.disableElement);
+        <?php else: ?>
+        $('<?php echo $_htmlId; ?>_container').select('input', 'select').each(function(element) {
+            Event.observe(element, 'change', element.setHasChanges.bind(element));
+        });
+        <?php endif; ?>
+    },
+    disableElement: function(element) {
+        element.disabled = true;
+        element.addClassName('disabled');
+    },
+    deleteItem: function(event) {
+        var tr = Event.findElement(event, 'tr');
+        if (tr) {
+            Element.select(tr, '.delete').each(function(element) {
+                element.value='1';
+            });
+            Element.select(tr, ['input', 'select']).each(function(element) {
+                element.hide();
+            });
+            Element.hide(tr);
+            Element.addClassName(tr, 'no-display template');
+        }
+        return false;
+    }
+};
+<?php foreach ($this->getValues() as $_item) : ?>
+groupMaxQtyControl.addItem('<?php echo $_item['cust_group']; ?>', '<?php echo $_item['qty']*1; ?>', <?php echo ($this->getFieldValue('use_config_max_sale_qty') || $this->IsNew()) ? 1 : 0; ?>);
+<?php endforeach; ?>
+<?php if ($_readonly) : ?>
+$('<?php echo $_htmlId; ?>_container').up('table').select('button')
+    .each(groupMaxQtyControl.disableElement);
+<?php endif; ?>
+//]]>
+</script>
+</td>
+<td class="value scope-label"><?php echo Mage::helper('adminhtml')->__('[GLOBAL]') ?></td>
+</tr>

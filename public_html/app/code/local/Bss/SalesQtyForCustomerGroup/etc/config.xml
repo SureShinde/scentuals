@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!--
+/**
+* BSS Commerce Co.
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the EULA
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://bsscommerce.com/Bss-Commerce-License.txt
+*
+* =================================================================
+*                 MAGENTO EDITION USAGE NOTICE
+* =================================================================
+* This package designed for Magento COMMUNITY edition
+* BSS Commerce does not guarantee correct work of this extension
+* on any other Magento edition except Magento COMMUNITY edition.
+* BSS Commerce does not provide extension support in case of
+* incorrect edition usage.
+* =================================================================
+*
+* @category   BSS
+* @package    Bss_SalesQtyForCustomerGroup
+* @author     Extension Team
+* @copyright  Copyright (c) 2014-2016 BSS Commerce Co. ( http://bsscommerce.com )
+* @license    http://bsscommerce.com/Bss-Commerce-License.txt
+*/
+-->
+<config>
+	<modules>
+		<Bss_SalesQtyForCustomerGroup>
+			<version>1.0.2</version>
+		</Bss_SalesQtyForCustomerGroup>
+	</modules>
+	<global>
+		<blocks>
+			<salesqtyforcustomergroup>
+				<class>Bss_SalesQtyForCustomerGroup_Block</class>
+			</salesqtyforcustomergroup>
+			<adminhtml>
+				<rewrite>
+					<catalog_product_edit_tab_inventory>Bss_SalesQtyForCustomerGroup_Block_Adminhtml_Product_Edit_Tab_Inventory</catalog_product_edit_tab_inventory>
+				</rewrite>
+			</adminhtml>
+		</blocks>
+		<helpers>
+			<salesqtyforcustomergroup>
+				<class>Bss_SalesQtyForCustomerGroup_Helper</class>
+			</salesqtyforcustomergroup>
+		</helpers>
+		<models>
+			<salesqtyforcustomergroup>
+				<class>Bss_SalesQtyForCustomerGroup_Model</class>
+			</salesqtyforcustomergroup>
+			<cataloginventory>
+				<rewrite>
+                    <stock_item>Bss_SalesQtyForCustomerGroup_Model_CatalogInventory_Stock_Item</stock_item>
+				</rewrite>
+			</cataloginventory>
+		</models>
+		<resources>
+	        <salesqtyforcustomergroup_setup>
+	            <setup>
+	                <module>Bss_SalesQtyForCustomerGroup</module>
+	            </setup>
+	        </salesqtyforcustomergroup_setup>
+	    </resources>
+	    <events>
+	    	<catalog_product_save_after>
+                <observers>
+                    <inventory>
+                        <type>disabled</type>
+                    </inventory>
+					<bss_salesqtyforcustomergroup>
+						<class>Bss_SalesQtyForCustomerGroup_Model_CatalogInventory_Observer</class>
+                        <method>saveInventoryData</method>
+					</bss_salesqtyforcustomergroup>
+                </observers>
+            </catalog_product_save_after>
+	    </events>
+	</global>
+	<adminhtml>
+		<events>
+	    	<catalog_product_validate_after>
+                <observers>
+					<bss_salesqtyforcustomergroup>
+						<class>Bss_SalesQtyForCustomerGroup_Model_CatalogInventory_Observer</class>
+                        <method>validateSalesQty</method>
+					</bss_salesqtyforcustomergroup>
+                </observers>
+            </catalog_product_validate_after>
+	    </events>
+	</adminhtml>
+	<default>
+		<bss_salesqty>
+			<general>
+				<enabled>1</enabled>
+			</general>
+		</bss_salesqty>
+	</default>
+</config>

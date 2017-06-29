@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Bss_SalesQtyForCustomerGroup>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Bss_SalesQtyForCustomerGroup>
+	</modules>
+</config>
