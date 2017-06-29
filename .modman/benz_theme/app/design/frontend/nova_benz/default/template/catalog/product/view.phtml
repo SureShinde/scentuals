@@ -109,6 +109,7 @@ $_product = $this->getProduct();
                                 	-->
 
 				</div>
+				<?php $_product = $this->getProduct(); ?>
 				<?php $store = Mage::app()->getStore()->getCode(); if($store == "wholesalecanada" || $store == "wholesaleusa"):?>
 				<strong>Min Qty:</strong> <?php echo $_product->getAttributeText('min_qty_wholesale') ?>
 <?php endif;?>
