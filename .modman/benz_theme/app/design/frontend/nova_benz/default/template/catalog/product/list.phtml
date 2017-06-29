@@ -341,7 +341,8 @@ $show_countdown = $theme_helper->getCfg('product_countdown/catalog') ? true : fa
                                         </a>
 						<span style="color:#b8b8b8;"><?php echo $_product->getAttributeText('volume') ?></span>
 <?php $store = Mage::app()->getStore()->getCode(); if($store == "wholesalecanada" || $store == "wholesaleusa"):?>
-<span style="color:#b8b8b8;"><?php echo $_product->getAttributeText('min_qty_wholesale') ?></span>
+<?php $attribute = $_product->getResource()->getAttribute('min_qty_wholesale'); ?>
+<span style="color:#b8b8b8;"><strong>Min. Quantity:</strong> <?php echo $attribute_value = $attribute ->getFrontend()->getValue($_product); ?></span>
 <?php endif;?>
                                     </h2>
                                     <?php echo $this->getPriceHtml($_product, true ,'-list') ?>
