@@ -153,7 +153,6 @@ New customer registration
         </reference>
     </customer_account_forgotpassword>
 
-    <!--<customer_account_resetpassword translate="label">-->
     <customer_account_changeforgotten translate="label">
         <label>Reset a Password</label>
         <remove name="right"/>
@@ -174,10 +173,8 @@ New customer registration
         </reference>
         <reference name="content">
 		<block type="customer/account_changeforgotten" name="changeForgottenPassword" template="customer/form/resetforgottenpassword.phtml"/>
-            <!--<block type="customer/account_resetpassword" name="resetPassword" template="customer/form/resetforgottenpassword.phtml"/>-->
         </reference>
     </customer_account_changeforgotten>
-    <!--</customer_account_resetpassword>-->
 
     <customer_account_confirmation>
         <remove name="right"/>
