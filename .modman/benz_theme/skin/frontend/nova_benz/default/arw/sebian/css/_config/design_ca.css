@@ -413,7 +413,7 @@ background:rgba(0, 0, 0, 0);
 }
 .header-container .header-quick-access .arw-toggle-container .arw-toggle-content{
 background:#272727;
-color:#fff;
+color:#272727;
 }
 .header-container .header-quick-access .arw-toggle-container.active .arw-toggle-control,.header-container .header-quick-access .arw-toggle-container:hover .arw-toggle-control{
 background:#81d294;
