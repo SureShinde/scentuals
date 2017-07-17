@@ -70,7 +70,6 @@ jQuery(window).scroll(function() {
     });
 });
 
-
 //js benz
 jQuery(document).ready(function() {
     if (jQuery('.header-container').hasClass('header_style_2')){
