@@ -33,7 +33,7 @@
 		<?php $store = Mage::app()->getStore()->getCode();?>
 		<?php $attribute = $_product->getResource()->getAttribute('min_qty_wholesale'); ?>
 		<?php if($store == "wholesalecanada"):?>
-			<input type="number" min="<?php $attribute_value = $attribute ->getFrontend()->getValue($_product); ?>" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+			<input type="number" min="<?php echo $attribute ->getFrontend()->getValue($_product); ?>" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
 		<?php else:?>
 			<button class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>              
 			<input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
