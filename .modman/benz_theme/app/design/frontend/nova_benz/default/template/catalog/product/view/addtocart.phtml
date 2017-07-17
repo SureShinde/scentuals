@@ -30,9 +30,17 @@
     <?php if(!$_product->isGrouped()): ?>
         <div class="arw-box-quantity">
             <div class="wrap">
-                <button class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>
-                <input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
-                <button class="qty-plus" type="button"><i class="fa fa-angle-up"></i></button>
+		<?php $store = Mage::app()->getStore()->getCode();?>
+		<?php if($store == "wholesalecanada"):?>
+			<button class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>
+			<input type="number" min="6" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+			<button class="qty-plus" type="button"><i class="fa fa-angle-up"></i></button>
+		<?php else:?>
+			<button class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>              
+			<input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+		        <button class="qty-plus" type="button"><i class="fa fa-angle-up"></i></button>
+		<?php endif;?>
+                
             </div>
         </div>
     <?php endif; ?>
