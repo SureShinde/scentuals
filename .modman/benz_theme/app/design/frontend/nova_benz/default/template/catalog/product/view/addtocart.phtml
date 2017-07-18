@@ -37,17 +37,18 @@
 function checkQty() {
 	var inputValue = document.getElementById("qty").value;
 	var minValue = "<?php echo $attribute ->getFrontend()->getValue($_product); ?>";
+	document.getElementById("test").innerHTML = inputValue;
 	if (inputValue <= minValue){
 		document.getElementById("qtydown").style.visibility = "hidden";
-	} else {
+	}else {
 		document.getElementById("qtydown").style.visibility = "visible";
 	}
 	
 }
 </script>
-	
+	<p id="test"></p>
 			<button onclick="checkQty()" id="qtydown"  class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>     
-			<input type="number" min="<?php echo $attribute ->getFrontend()->getValue($_product); ?>" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+			<input type="number" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
 			<button id="qtyup" onclick="checkQty()" class="qty-plus" type="button"><i class="fa fa-angle-up"></i></button>
 		<?php else:?>
 			<button class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>              
