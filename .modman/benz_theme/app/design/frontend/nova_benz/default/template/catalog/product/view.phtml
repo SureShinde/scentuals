@@ -111,7 +111,7 @@ $_product = $this->getProduct();
 				</div>
 				<?php $attribute = $_product->getResource()->getAttribute('min_qty_wholesale'); ?>
 				<?php $store = Mage::app()->getStore()->getCode(); if($store == "wholesalecanada" || $store == "wholesaleusa"):?>
-				<strong>Min. Quantity:</strong> <?php echo $attribute_value = $attribute ->getFrontend()->getValue($_product); ?>
+				<div id="min-qty-required"><strong>Min. Quantity:</strong> <?php echo $attribute_value = $attribute ->getFrontend()->getValue($_product); ?></div>
 <?php endif;?>
                                 <?php if (!$this->hasOptions()):?>
                                     <div class="add-to-box clearfix">
