@@ -46,7 +46,7 @@ function checkQty() {
 	
 }
 function checkQtyUp() {
-	var inputValue = document.getElementById("qty").value + 1;
+	var inputValue = parseInt(document.getElementById("qty").value) + 1;
 	var minValue = "<?php echo $attribute ->getFrontend()->getValue($_product); ?>";
 	document.getElementById("test").innerHTML = inputValue;
 	if (inputValue <= minValue){
