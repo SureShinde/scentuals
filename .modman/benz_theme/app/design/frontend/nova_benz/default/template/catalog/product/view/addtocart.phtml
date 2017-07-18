@@ -38,6 +38,8 @@ function checkQty() {
 	alert('triggered');
 	var inputValue = document.getElementById("qty").value;
 	var minValue = "<?php echo $attribute ->getFrontend()->getValue($_product); ?>";
+	alert (minValue);
+	alert (inputValue);
 	if (inputValue <= minValue){
 		document.getElementById("qtydown").visibility = "hidden";
 	}
