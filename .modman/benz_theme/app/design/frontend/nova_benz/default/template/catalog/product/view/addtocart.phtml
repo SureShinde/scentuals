@@ -64,15 +64,15 @@
    qdown.style.visibility = "hidden";
    atocart.style.visibility = "hidden";
    mqty.style.color = "red";
-  } else if (inputValue == minValue) { //met min qty
-   qdown.style.visibility = "hidden";
-   atocart.style.visibility = "visible";
-   mqty.style.color = "#808080";
   } else {
-   qdown.style.visibility = "visible";
-   atocart.style.visibility = "visible";
-   mqty.style.color = "#808080";
+    if (inputValue == minValue) { 
+     qdown.style.visibility = "hidden"; 
+    } else {
+     qdown.style.visibility = "visible";      
+    }
+    atocart.style.visibility = "visible";
+    mqty.style.color = "#808080";
   }
- }
+}
 </script>
 
