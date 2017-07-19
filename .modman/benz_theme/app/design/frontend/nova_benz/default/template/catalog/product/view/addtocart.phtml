@@ -33,7 +33,6 @@
 		<?php $store = Mage::app()->getStore()->getCode();?>
 		<?php $attribute = $_product->getResource()->getAttribute('min_qty_wholesale'); ?>
 		<?php if($store == "wholesalecanada"):?>
-		
 			<button style="visibility:hidden;" id="qtydown"  class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>     
 			<input type="text" onchange="hideCheck()" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
 			<button id="qtyup" class="qty-plus" type="button"><i class="fa fa-angle-up"></i></button>
@@ -57,16 +56,18 @@
  var minValue = parseInt("<?php echo $attribute ->getFrontend()->getValue($_product); ?>");
  function hideCheck() {
   var inputValue = parseInt(document.getElementById("qty").value);
-  alert(inputValue);
   if (inputValue < minValue) { //did not meet min qty
    document.getElementById("qtydown").style.visibility = "hidden";
    document.getElementById("product-addtocart-button").style.visibility = "hidden";
+   document.getElementById("min-qty-required").style.color = "red";
   } else if (inputValue == minValue) { //met min qty
    document.getElementById("qtydown").style.visibility = "hidden";
    document.getElementById("product-addtocart-button").style.visibility = "visible";
+   document.getElementById("min-qty-required").style.color = "#808080";
   } else {
    document.getElementById("qtydown").style.visibility = "visible";
    document.getElementById("product-addtocart-button").style.visibility = "visible";
+   document.getElementById("min-qty-required").style.color = "#808080";
   }
  }
 </script>
