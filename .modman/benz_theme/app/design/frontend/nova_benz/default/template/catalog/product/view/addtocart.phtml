@@ -58,7 +58,7 @@
  function hideCheck() {
   var inputValue = parseInt(document.getElementById("qty").value);
   alert(inputValue);
-  if (inputValue <= minValue) { //did not meet min qty
+  if (inputValue < minValue) { //did not meet min qty
    document.getElementById("qtydown").style.visibility = "hidden";
    document.getElementById("product-addtocart-button").style.visibility = "hidden";
   } else if (inputValue == minValue) { //met min qty
