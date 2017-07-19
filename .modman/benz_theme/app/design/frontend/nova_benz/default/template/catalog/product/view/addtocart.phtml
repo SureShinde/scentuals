@@ -34,7 +34,7 @@
 		<?php $attribute = $_product->getResource()->getAttribute('min_qty_wholesale'); ?>
 		<?php if($store == "wholesalecanada"):?>
 		
-			<button id="qtydown"  class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>     
+			<button style="visibility:hidden;" id="qtydown"  class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>     
 			<input type="text" onchange="hideCheck()" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
 			<button id="qtyup" class="qty-plus" type="button"><i class="fa fa-angle-up"></i></button>
 		<?php else:?>
