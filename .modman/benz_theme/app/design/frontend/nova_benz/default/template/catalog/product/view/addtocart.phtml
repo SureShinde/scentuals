@@ -56,18 +56,22 @@
  var minValue = parseInt("<?php echo $attribute ->getFrontend()->getValue($_product); ?>");
  function hideCheck() {
   var inputValue = parseInt(document.getElementById("qty").value);
+  var qdown = document.getElementById("qtydown");
+  var atocart = document.getElementById("product-addtocart-button");
+  var mqty = document.getElementById("min-qty-required");  
+
   if (inputValue < minValue) { //did not meet min qty
-   document.getElementById("qtydown").style.visibility = "hidden";
-   document.getElementById("product-addtocart-button").style.visibility = "hidden";
-   document.getElementById("min-qty-required").style.color = "red";
+   qdown.style.visibility = "hidden";
+   atocart.style.visibility = "hidden";
+   mqty.style.color = "red";
   } else if (inputValue == minValue) { //met min qty
-   document.getElementById("qtydown").style.visibility = "hidden";
-   document.getElementById("product-addtocart-button").style.visibility = "visible";
-   document.getElementById("min-qty-required").style.color = "#808080";
+   qdown.style.visibility = "hidden";
+   atocart.style.visibility = "visible";
+   mqty.style.color = "#808080";
   } else {
-   document.getElementById("qtydown").style.visibility = "visible";
-   document.getElementById("product-addtocart-button").style.visibility = "visible";
-   document.getElementById("min-qty-required").style.color = "#808080";
+   qdown.style.visibility = "visible";
+   atocart.style.visibility = "visible";
+   mqty.style.color = "#808080";
   }
  }
 </script>
