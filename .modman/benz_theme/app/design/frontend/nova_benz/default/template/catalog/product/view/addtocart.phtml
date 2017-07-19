@@ -39,12 +39,14 @@
 			var inputValue = document.getElementById("qty").value - 1;
 			if (inputValue <= minValue){
 				document.getElementById("qtydown").style.visibility = "hidden";
+				document.getElementById("product-addtocart-button").style.visiblity = "hidden";
 			}
 		}
 		function checkQtyUp() {
 			var inputValue = parseInt(document.getElementById("qty").value) + 1;;
 			if (inputValue > minValue){
 				document.getElementById("qtydown").style.visibility = "visible";
+				document.getElementById("product-addtocart-button").style.visiblity = "visible";
 			}
 		}
 		function hideADD() {
@@ -52,8 +54,10 @@
 			alert(inputValue);
 			document.getElementById("product-addtocart-button").style.visiblity = "hidden";
 			if (inputValue < minValue) {
+				alert("1");
 				document.getElementById("product-addtocart-button").style.visiblity = "hidden";
 			} else {
+				alert("2");
 				document.getElementById("product-addtocart-button").style.visiblity = "visible";
 			}
 		}
