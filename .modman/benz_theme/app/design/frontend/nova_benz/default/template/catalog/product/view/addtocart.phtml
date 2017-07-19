@@ -50,6 +50,7 @@
 		function hideADD() {
 			var inputValue = document.getElementById("qty").value;
 			alert(inputValue);
+			document.getElementById("product-addtocart-button").style.visiblity = "hidden";
 			if (inputValue < minValue) {
 				document.getElementById("product-addtocart-button").style.visiblity = "hidden";
 			} else {
