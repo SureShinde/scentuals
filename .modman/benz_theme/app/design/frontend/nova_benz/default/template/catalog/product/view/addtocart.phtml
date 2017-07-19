@@ -39,26 +39,25 @@
 			var inputValue = document.getElementById("qty").value - 1;
 			if (inputValue <= minValue){
 				document.getElementById("qtydown").style.visibility = "hidden";
-				document.getElementById("product-addtocart-button").style.visiblity = "hidden";
+				document.getElementById("atc").style.visiblity = "hidden";
 			}
 		}
 		function checkQtyUp() {
 			var inputValue = parseInt(document.getElementById("qty").value) + 1;;
 			if (inputValue > minValue){
 				document.getElementById("qtydown").style.visibility = "visible";
-				document.getElementById("product-addtocart-button").style.visiblity = "visible";
+				document.getElementById("atc").style.visiblity = "visible";
 			}
 		}
 		function hideADD() {
 			var inputValue = document.getElementById("qty").value;
 			alert(inputValue);
-			document.getElementById("product-addtocart-button").style.visiblity = "hidden";
 			if (inputValue < minValue) {
 				alert("1");
-				document.getElementById("product-addtocart-button").style.visiblity = "hidden";
+				document.getElementById("atc").style.visiblity = "hidden";
 			} else {
 				alert("2");
-				document.getElementById("product-addtocart-button").style.visiblity = "visible";
+				document.getElementById("atc").style.visiblity = "visible";
 			}
 		}
 		</script>
@@ -75,7 +74,7 @@
         </div>
     <?php endif; ?>
     <div class="add-to-box-actions"><!-- ./ start add-to-box-actions-->
-    <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span class="lnr lnr-cart"></span><span class="text"><?php echo $buttonTitle ?></span></span></button>
+    <button type="button" title="<?php echo $buttonTitle ?>" id="atc" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span class="lnr lnr-cart"></span><span class="text"><?php echo $buttonTitle ?></span></span></button>
     <?php echo $this->getChildHtml('', true, true) ?>
 <?php else:?>
     <div class="add-to-box-actions"><!-- ./ start add-to-box-actions-->
