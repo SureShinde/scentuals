@@ -57,10 +57,14 @@
  var minValue = "<?php echo $attribute ->getFrontend()->getValue($_product); ?>";
  function hideCheck() {
   var inputValue = document.getElementById("qty").value;
+  alert(inputValue);
   if (inputValue <= minValue) { //did not meet min qty
    document.getElementById("qtydown").style.visibility = "hidden";
    document.getElementById("product-addtocart-button").style.visibility = "hidden";
-  } else { //met min qty
+  } else if (inputValue == minValue) { //met min qty
+   document.getElementById("qtydown").style.visibility = "hidden";
+   document.getElementById("product-addtocart-button").style.visibility = "visible";
+  } else {
    document.getElementById("qtydown").style.visibility = "visible";
    document.getElementById("product-addtocart-button").style.visibility = "visible";
   }
