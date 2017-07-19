@@ -33,37 +33,10 @@
 		<?php $store = Mage::app()->getStore()->getCode();?>
 		<?php $attribute = $_product->getResource()->getAttribute('min_qty_wholesale'); ?>
 		<?php if($store == "wholesalecanada"):?>
-		<script>
-		var minValue = "<?php echo $attribute ->getFrontend()->getValue($_product); ?>";
-		function checkQtyDown() {
-			var inputValue = document.getElementById("qty").value - 1;
-			if (inputValue <= minValue){
-				document.getElementById("qtydown").style.visibility = "hidden";
-				document.getElementById("atc").style.visiblity = "hidden";
-			}
-		}
-		function checkQtyUp() {
-			var inputValue = parseInt(document.getElementById("qty").value) + 1;;
-			if (inputValue > minValue){
-				document.getElementById("qtydown").style.visibility = "visible";
-				document.getElementById("atc").style.visiblity = "visible";
-			}
-		}
-		function hideADD() {
-			var inputValue = document.getElementById("qty").value;
-			alert(inputValue);
-			if (inputValue < minValue) {
-				alert("1");
-				document.getElementById("atc").style.visiblity = "hidden";
-			} else {
-				alert("2");
-				document.getElementById("atc").style.visiblity = "visible";
-			}
-		}
-		</script>
-			<button onclick="checkQtyDown()" id="qtydown"  class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>     
-			<input type="text" onchange="hideADD()" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
-			<button id="qtyup" onclick="checkQtyUp()" class="qty-plus" type="button"><i class="fa fa-angle-up"></i></button>
+		
+			<button id="qtydown"  class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>     
+			<input type="text" onchange="hideCheck()" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+			<button id="qtyup" class="qty-plus" type="button"><i class="fa fa-angle-up"></i></button>
 		<?php else:?>
 			<button class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>              
 			<input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
@@ -74,11 +47,22 @@
         </div>
     <?php endif; ?>
     <div class="add-to-box-actions"><!-- ./ start add-to-box-actions-->
-    <button type="button" title="<?php echo $buttonTitle ?>" id="atc" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span class="lnr lnr-cart"></span><span class="text"><?php echo $buttonTitle ?></span></span></button>
+    <button id="product-addtocart-button" type="button" title="<?php echo $buttonTitle ?>"  class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span class="lnr lnr-cart"></span><span class="text"><?php echo $buttonTitle ?></span></span></button>
     <?php echo $this->getChildHtml('', true, true) ?>
 <?php else:?>
     <div class="add-to-box-actions"><!-- ./ start add-to-box-actions-->
 <?php endif; ?>
 
-
+<script>
+ var minValue = "<?php echo $attribute ->getFrontend()->getValue($_product); ?>";
+ function hideCheck() {
+  var inputValue = document.getElementById("qty").value;
+  if (inputValue <= minValue) { //did not meet min qty
+   document.getElementById("qtydown").style.visibility = "hidden";
+   document.getElementById("product-addtocart-button").style.visibility = "hidden";
+  } else { //met min qty
+   document.getElementById("qtydown").style.visibility = "visible";
+  }
+ }
+</script>
 
