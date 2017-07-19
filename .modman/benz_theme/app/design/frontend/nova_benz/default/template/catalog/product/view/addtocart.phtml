@@ -54,9 +54,9 @@
 <?php endif; ?>
 
 <script>
- var minValue = "<?php echo $attribute ->getFrontend()->getValue($_product); ?>";
+ var minValue = parseInt("<?php echo $attribute ->getFrontend()->getValue($_product); ?>");
  function hideCheck() {
-  var inputValue = document.getElementById("qty").value;
+  var inputValue = parseInt(document.getElementById("qty").value);
   alert(inputValue);
   if (inputValue <= minValue) { //did not meet min qty
    document.getElementById("qtydown").style.visibility = "hidden";
