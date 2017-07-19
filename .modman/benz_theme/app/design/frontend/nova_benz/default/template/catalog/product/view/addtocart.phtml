@@ -62,7 +62,7 @@
 		}
 		</script>
 			<button onclick="checkQtyDown()" id="qtydown"  class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>     
-			<input type="text" onblur="hideADD()" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+			<input type="text" onchange="hideADD()" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
 			<button id="qtyup" onclick="checkQtyUp()" class="qty-plus" type="button"><i class="fa fa-angle-up"></i></button>
 		<?php else:?>
 			<button class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>              
