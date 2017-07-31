@@ -31,8 +31,8 @@
         <div class="arw-box-quantity">
             <div class="wrap">
 		<?php $store = Mage::app()->getStore()->getCode();?>
-		<?php $attribute = $_product->getResource()->getAttribute('min_qty_wholesale'); ?>
-		<?php if($store == "wholesalecanada"):?>
+		<?php $attribute = $_product->getResource()->getAttribute('min_qty_wholesale');
+		if($store == "wholesalecanada" || $store == "wholesaleusa"):?>
 			<button style="visibility:hidden;" id="qtydown"  class="qty-minus" type="button"><i class="fa fa-angle-down"></i></button>     
 			<input type="text" onchange="hideCheck()" name="qty" id="qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
 			<button id="qtyup" class="qty-plus" type="button"><i class="fa fa-angle-up"></i></button>
