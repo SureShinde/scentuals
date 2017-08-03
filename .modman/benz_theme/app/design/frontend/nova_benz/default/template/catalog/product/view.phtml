@@ -250,8 +250,3 @@ $_product = $this->getProduct();
     </div>
 <?php endif;?>
 <div id="stamped-main-widget-placeholder"></div>
-<div style="display:none;" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"> 
-<?php $array = $this->helper('stamped')->getRichSnippet($this); ?> 
-<span itemprop="ratingValue"><?php echo $array["average_score"]; ?></span> 
-<span itemprop="ratingCount"><?php echo $array["reviews_count"]; ?></span> 
-</div>
