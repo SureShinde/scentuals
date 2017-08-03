@@ -240,7 +240,6 @@ $_product = $this->getProduct();
 	<?php $store = Mage::app()->getStore()->getCode(); if($store == "wholesalecanada" || $store == "wholesaleusa"):?>
         	<?php echo $this->getChildHtml('related_products')?>
 		<?php echo "test"?>
-		<?php echo $this->getLayout()->getBlock(‘catalog.product.related’)->toHtml()?>
 		<?php echo $this->getChildHtml(‘catalog.product.related’) ?>
 		<?php echo $this->getChildHtml(‘related’);?>
 	<?php endif;?>
