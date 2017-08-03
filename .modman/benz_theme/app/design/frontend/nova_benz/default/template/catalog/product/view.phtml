@@ -239,6 +239,7 @@ $_product = $this->getProduct();
       -->
 	<?php $store = Mage::app()->getStore()->getCode(); if($store == "wholesalecanada" || $store == "wholesaleusa"):?>
         	<?php echo $this->getChildHtml('related_products')?>
+		<?php echo "test"?>
 	<?php endif;?>
         <?php echo $this->getChildHtml('upsell_products')?>
     </div>
