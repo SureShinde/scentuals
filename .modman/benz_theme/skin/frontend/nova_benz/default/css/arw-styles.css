@@ -4825,7 +4825,7 @@ body .data-table {
   /* border-top: 1px dashed #ebebeb; */
   border-bottom: 1px dashed #ebebeb; 
   /* margin: 30px 0; */
-  padding: 15px 0 25px 0;
+  padding: 15px 0 15px 0;
   color: #272727;
   font-size: 13px;
 }
